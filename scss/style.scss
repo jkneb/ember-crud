@@ -1,0 +1,17 @@
+@import "vars";
+@import "mixins";
+@import "normalize";
+@import "icons";
+@import "utils";
+
+body { font:75% Helvetica, Arial, sans-serif; }
+
+// sticky footer
+html, body { height:100%; }
+body { overflow-y:scroll; }
+body .wrap { min-height:100%; height:auto !important; height:100%; margin:0 auto -50px; }
+
+header, footer { 
+    background-color:#f1f1f1; height:50px; padding:20px; 
+    @include box-sizing(border-box);
+}

@@ -1,0 +1,45 @@
+<!doctype html public="♥">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Ember CRUD</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <script type="text/x-handlebars" data-template-name="application">
+        <div class="wrap">
+            {{partial header}}
+            <div class="main">
+                {{outlet}}
+            </div>
+        </div>
+        <footer>© Copyright 2013. Bob The Sponge. All rights reserved.</footer>
+    </script>
+    
+    <script type="text/x-handlebars" data-template-name="_header">
+        <header>
+            {{#linkTo "index"}}Home{{/linkTo}} 
+            {{#linkTo "client"}}Client{{/linkTo}}
+        </header>
+    </script>
+    
+    
+    <script type="text/x-handlebars" data-template-name="index">
+        
+        <p>index view</p>
+        
+    </script>
+    
+    <script type="text/x-handlebars" data-template-name="client">
+        
+        <p>client view</p>
+        
+    </script>
+    
+    <script src="js/libs/jquery-1.9.1.js"></script>
+    <script src="js/libs/handlebars.js"></script>
+    <script src="js/libs/ember-1.0.0-rc.1.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
