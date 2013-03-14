@@ -478,3 +478,6 @@ body .wrap { min-height: 100%; height: auto !important; height: 100%; margin: 0 
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000314}}
 header, footer { background-color: #f1f1f1; height: 50px; padding: 20px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000318}}
+.main { padding: 20px; }
