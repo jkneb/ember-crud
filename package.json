@@ -1,0 +1,10 @@
+{
+  "name": "ember",
+  "description": "How to create a CRUD with Ember JS",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "connect": "*"
+  }
+}
+
