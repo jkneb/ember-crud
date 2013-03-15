@@ -1,15 +1,17 @@
-{
-    "id": "1",
-    "name": "VSC Groupe",
-    "address": "21 rue des bob 82999 Chantilly"
-}, 
-{
-    "id": "2",
-    "name": "Fitizzy",
-    "address": "7 avenue Pasquier 29000 Andore"
-},
-{
-    "id": "3",
-    "name": "USK Conseil",
-    "address": "Chemin de Perchêne, 27150 Trouville sur Yvettes"
-}
+[
+    {
+        "id": "1",
+        "name": "VSC Groupe",
+        "address": "21 rue des bob 82999 Chantilly"
+    }, 
+    {
+        "id": "2",
+        "name": "Fitizzy",
+        "address": "7 avenue Pasquier 29000 Andore"
+    },
+    {
+        "id": "3",
+        "name": "USK Conseil",
+        "address": "Chemin de Perchêne, 27150 Trouville sur Yvettes"
+    }
+]
