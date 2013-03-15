@@ -3,7 +3,9 @@ window.App = Ember.Application.create();
 
 // this is where we declare our routes
 App.Router.map(function(){
-    this.resource('clients');
+    this.resource('clients', function(){
+        this.resource('client', { path:'/:client_id' });
+    });
 });
 
 // get rid of the /#/ in the urls
@@ -51,6 +53,8 @@ App.Context = Ember.Object.create({
 App.ClientsController = Ember.ArrayController.extend({
     contentBinding:'App.Context.clients'
 });
+
+App.ClientController = Ember.ObjectController.extend();
 
 
 // App.ready will act as our init 
