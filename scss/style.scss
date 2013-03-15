@@ -16,3 +16,15 @@ header, footer {
     @include box-sizing(border-box); 
 }
 .main { padding:20px; }
+i, address { font-style:normal; }
+
+// client
+.client { 
+    position:relative; padding:10px;
+    &:nth-child(even) { background-color:#f7f7f7; }
+    
+    h2 {  }
+    h4 { margin:0; display:inline-block; }
+    address { font-size:12px; }
+    .id { font-size:11px; display:inline-block; background-color:white; border:1px solid #eee; border-radius:4px; padding:1px 4px; }
+}

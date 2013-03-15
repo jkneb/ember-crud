@@ -12,7 +12,6 @@
             <header>
                 {{#linkTo "index"}}Home{{/linkTo}} 
                 {{#linkTo "clients"}}Clients{{/linkTo}}
-                {{#linkTo "clients.add"}}Add client{{/linkTo}}
             </header>
             
             <div class="main">
@@ -30,9 +29,7 @@
         <h2>clients list</h2>
         {{#each client in controller}}
         <div class="client">
-            <span class="client-id">{{client.id}}</span>
             <h4>{{client.name}}</h4>
-            <p>{{client.address}}</p>
         </div>
         {{/each}}
     </script>

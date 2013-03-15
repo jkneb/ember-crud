@@ -6,6 +6,11 @@ App.Router.map(function(){
     this.resource('clients');
 });
 
+// get rid of the /#/ in the urls
+App.Router.reopen({ 
+    location: 'history' 
+});
+
 // we can customize what's happening when accessing the client route
 // http://emberjs.com/guides/routing/specifying-a-routes-model/
 App.ClientsRoute = Ember.Route.extend({
@@ -14,7 +19,7 @@ App.ClientsRoute = Ember.Route.extend({
     }
 });
 
-// let's declare a client class
+// let's declare the clients class
 App.Clients = Ember.Object.extend({
     id: 0,
     name: "", 
@@ -23,6 +28,7 @@ App.Clients = Ember.Object.extend({
 // let's give it a static method so we can call it later
 // http://emberjs.com/guides/object-model/reopening-classes-and-instances/
 // here we create a findAll method, its goal is to retreive the datas from clients.json
+// and to convert the json objects into ember objects
 App.Clients.reopenClass({
     findAll: function(){ 
         return $.getJSON('/json/clients.json').then(function(json){
