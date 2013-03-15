@@ -9,7 +9,12 @@
     
     <script type="text/x-handlebars" data-template-name="application">
         <div class="wrap">
-            {{partial header}}
+            <header>
+                {{#linkTo "index"}}Home{{/linkTo}} 
+                {{#linkTo "clients"}}Clients{{/linkTo}}
+                {{#linkTo "clients.add"}}Add client{{/linkTo}}
+            </header>
+            
             <div class="main">
                 {{outlet}}
             </div>
@@ -17,23 +22,14 @@
         <footer>© Copyright 2013. Bob The Sponge. All rights reserved.</footer>
     </script>
     
-    <script type="text/x-handlebars" data-template-name="_header">
-        <header>
-            {{#linkTo "index"}}Home{{/linkTo}} 
-            {{#linkTo "client"}}Client{{/linkTo}}
-        </header>
-    </script>
-    
-    
     <script type="text/x-handlebars" data-template-name="index">
-        
         <p>index view</p>
-        
     </script>
     
-    <script type="text/x-handlebars" data-template-name="client">
+    <script type="text/x-handlebars" data-template-name="clients">
+        <h2>clients list</h2>
         {{#each client in controller}}
-        <div class="client" id="client-{{client.id}}">
+        <div class="client">
             <span class="client-id">{{client.id}}</span>
             <h4>{{client.name}}</h4>
             <p>{{client.address}}</p>
