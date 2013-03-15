@@ -1,6 +1,13 @@
 ### How to compile css
-`cd /project`  
-`sass --style compact --watch scss:css`
 
-And with debug infos (for Chrome source maps)  
-`sass --style compact --debug-info --watch scss:css`
+`sass --style compact --watch scss:css`  
+or with debug infos    
+`sass --style compact --debug-info --watch scss:css`  
+
+
+### How to start the local server
+`npm install`  
+it will install Connect  
+`node server.js`  
+it will start a node server on port 3000  
+http://localhost:3000  

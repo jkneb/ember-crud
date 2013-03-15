@@ -32,9 +32,13 @@
     </script>
     
     <script type="text/x-handlebars" data-template-name="client">
-        
-        <p>client view</p>
-        
+        {{#each client in controller}}
+        <div class="client" id="client-{{client.id}}">
+            <span class="client-id">{{client.id}}</span>
+            <h4>{{client.name}}</h4>
+            <p>{{client.address}}</p>
+        </div>
+        {{/each}}
     </script>
     
     <script src="js/libs/jquery-1.9.1.js"></script>
