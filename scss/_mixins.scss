@@ -10,7 +10,7 @@
 }
 
 // css3 transitions
-@mixin transition($params) {
+@mixin transition($params...) {
   -webkit-transition: $params;
      -moz-transition: $params;
       -ms-transition: $params;

@@ -28,3 +28,26 @@ i, address { font-style:normal; }
     address { font-size:12px; }
     .id { font-size:11px; display:inline-block; background-color:white; border:1px solid #eee; border-radius:4px; padding:1px 4px; }
 }
+
+.client-profile { 
+    -webkit-perspective:2500px; 
+       -moz-perspective:2500px; 
+   -webkit-transform-style:preserve-3d; 
+      -moz-transform-style:preserve-3d;
+    //@include transition( width .5s, height .5s );
+    @include transform( rotateY(0deg) rotateX(0deg) translateZ(0px) );
+    background:white; padding:15px; 
+    width:250px; height:300px; 
+    position:absolute; top:0; right:100px; 
+    border:1px solid #ddd; 
+}
+.flip {
+    @include animation(flip .8s ease); 
+}
+@-webkit-keyframes flip { 
+    from { -webkit-transform: rotateY(0deg) rotateX(0deg); }
+    to   { -webkit-transform: rotateY(180deg) rotateX(0deg); } }
+@-moz-keyframes flip { 
+    from { -moz-transform: rotateY(0deg) rotateX(0deg); }
+    to   { -moz-transform: rotateY(180deg) rotateX(0deg); } 
+}

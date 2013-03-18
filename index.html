@@ -34,14 +34,14 @@
             {{/linkTo}}
         </div>
         {{/each}}
+        
+        {{outlet}}
     </script>
     
     <script type="text/x-handlebars" data-template-name="client">
-        <div class="client-profile">
-            <h2>{{name}}</h2>
-            <i class="id">#{{id}}</i>
-            <address>{{address}}</address>
-        </div>
+        <h2>{{name}}</h2>
+        <i class="id">#{{id}}</i>
+        <address>{{address}}</address>
     </script>
     
     <script src="js/libs/jquery-1.9.1.js"></script>

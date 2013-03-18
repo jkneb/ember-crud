@@ -9,15 +9,21 @@ App.Router.map(function(){
 });
 
 // get rid of the /#/ in the urls
-App.Router.reopen({ 
+/*App.Router.reopen({ 
     location: 'history' 
-});
+});*/
 
 // we can customize what's happening when accessing the client route
 // http://emberjs.com/guides/routing/specifying-a-routes-model/
 App.ClientsRoute = Ember.Route.extend({
     model:function(){
         return App.Context.get('clients');
+    }
+});
+App.ClientRoute = Ember.Route.extend({
+    model: function(params){
+        var clientId = parseInt(params.client_id);
+        return App.Context.get('clients')[clientId];
     }
 });
 
@@ -55,6 +61,20 @@ App.ClientsController = Ember.ArrayController.extend({
 });
 
 App.ClientController = Ember.ObjectController.extend();
+
+
+App.ClientView = Ember.View.extend({
+    classNames: ['client-profile'], 
+    classNameBindings: ['flipIt:flip'], 
+    
+    willInsertElement: function(){
+        
+    }, 
+    
+    flipIt: function(){
+        return true;
+    }
+})
 
 
 // App.ready will act as our init 

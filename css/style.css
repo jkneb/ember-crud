@@ -495,3 +495,15 @@ i, address { font-style: normal; }
 .client address { font-size: 12px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000329}}
 .client .id { font-size: 11px; display: inline-block; background-color: white; border: 1px solid #eeeeee; border-radius: 4px; padding: 1px 4px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000332}}
+.client-profile { -webkit-perspective: 2500px; -moz-perspective: 2500px; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -webkit-transform: rotateY(0deg) rotateX(0deg) translateZ(0px); -moz-transform: rotateY(0deg) rotateX(0deg) translateZ(0px); -ms-transform: rotateY(0deg) rotateX(0deg) translateZ(0px); transform: rotateY(0deg) rotateX(0deg) translateZ(0px); background: white; padding: 15px; width: 250px; height: 300px; position: absolute; top: 0; right: 100px; border: 1px solid #dddddd; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000344}}
+.flip { -webkit-animation: flip 0.8s ease; -moz-animation: flip 0.8s ease; -ms-animation: flip 0.8s ease; animation: flip 0.8s ease; }
+
+@-webkit-keyframes flip { from { -webkit-transform: rotateY(0deg) rotateX(0deg); }
+  to { -webkit-transform: rotateY(180deg) rotateX(0deg); } }
+
+@-moz-keyframes flip { from { -moz-transform: rotateY(0deg) rotateX(0deg); }
+  to { -moz-transform: rotateY(180deg) rotateX(0deg); } }
