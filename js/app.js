@@ -55,7 +55,7 @@ App.Context = Ember.Object.create({
 });
 
 // pay attention to the handlbars data-template-name="clients" template 
-// {{#each client in controller}}, well in this case controller = ClientsController
+// see the {{#each client in controller}} tag? In this case controller = ClientsController
 App.ClientsController = Ember.ArrayController.extend({
     contentBinding:'App.Context.clients'
 });
@@ -64,17 +64,53 @@ App.ClientController = Ember.ObjectController.extend();
 
 
 App.ClientView = Ember.View.extend({
-    classNames: ['client-profile'], 
-    classNameBindings: ['flipIt:flip'], 
+    classNames: ['client-profile', 'flip'], 
     
-    willInsertElement: function(){
+    didInsertElement: function(){
+        var $elem = this.$();
         
-    }, 
-    
-    flipIt: function(){
-        return true;
+        /* rotate things with mousemove for debug mode */
+        $(window).on('mousedown mouseup', function(e){
+            var $this = $(this); 
+            var oldX = e.pageX; 
+            var oldY = e.pageY; 
+
+            if (e.type == 'mousedown') {
+                //console.group();
+                //  console.log('$this > ',$this);
+                //  console.log('oldX > ',oldX);
+                //  console.log('oldY > ',oldY);
+                //console.groupEnd();
+
+                $elem.addClass('unselectable');
+
+                $this.on('mousemove', function(e){
+                    var currX = e.pageX;
+                    var currY = e.pageY;
+                    //console.log(currX +' < x | y > '+currY);
+                    var newX = currY-oldY;
+                    //var newY = currX-oldX;
+                    console.log('%d - %d = %d', currY, oldY, currY-oldY);
+                    console.log('newX > ',newX);
+                    //console.log('newY > ',newY);
+
+                    $elem.css({
+                        '-webkit-transform':'rotateY(-35deg) rotateX(-'+newX+'deg)',
+                        '-moz-transform':'rotateY(-35deg) rotateX(-'+newX+'deg)',
+                        'transform':'rotateY(-35deg) rotateX(-'+newX+'deg)'
+                    });
+                });
+
+            } else {
+                // console.log('mouseup');
+                $this.off('mousemove');
+                $elem.removeClass('unselectable');
+            }
+
+            return false;
+        });
     }
-})
+});
 
 
 // App.ready will act as our init 

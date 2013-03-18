@@ -15,7 +15,8 @@ header, footer {
     background-color:#f1f1f1; height:50px; padding:20px; 
     @include box-sizing(border-box); 
 }
-.main { padding:20px; }
+.main { padding:20px; -webkit-perspective:2500px; 
+       -moz-perspective:2500px;  }
 i, address { font-style:normal; }
 
 // client
@@ -30,24 +31,31 @@ i, address { font-style:normal; }
 }
 
 .client-profile { 
-    -webkit-perspective:2500px; 
-       -moz-perspective:2500px; 
    -webkit-transform-style:preserve-3d; 
-      -moz-transform-style:preserve-3d;
+      -moz-transform-style:preserve-3d; 
     //@include transition( width .5s, height .5s );
-    @include transform( rotateY(0deg) rotateX(0deg) translateZ(0px) );
+    @include transform( rotateY(-35deg) rotateX(0deg) translateZ(0px) );
     background:white; padding:15px; 
     width:250px; height:300px; 
     position:absolute; top:0; right:100px; 
     border:1px solid #ddd; 
+    
+    // 3d faces
+    [class*="face-"] { 
+        position:absolute; background-color:rgba(0,0,0,.2); 
+    }
+    .face-left, .face-right { top:0; bottom:0; width:10px; @include transform(translateZ(-5px) rotateY(90deg)); }
+    .face-left  { left:-5px; }
+    .face-right { right:-5px; }
+    .face-top, .face-bottom { left:0; right:0; height:10px; @include transform(translateZ(-5px) rotateX(90deg));  }
+    .face-top    { top:-5px; }
+    .face-bottom { bottom:-5px; }
+    .face-back { top:0; bottom:0; left:0; right:0; background-color:#f1f1f1; @include transform(translateZ(-5px)); }
 }
 .flip {
     @include animation(flip .8s ease); 
 }
 @-webkit-keyframes flip { 
-    from { -webkit-transform: rotateY(0deg) rotateX(0deg); }
-    to   { -webkit-transform: rotateY(180deg) rotateX(0deg); } }
-@-moz-keyframes flip { 
-    from { -moz-transform: rotateY(0deg) rotateX(0deg); }
-    to   { -moz-transform: rotateY(180deg) rotateX(0deg); } 
+    from { -webkit-transform: rotateY(-35deg) rotateX(180deg); }
+    to   { -webkit-transform: rotateY(-35deg) rotateX(0deg); } 
 }
