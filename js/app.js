@@ -96,9 +96,9 @@ App.ClientView = Ember.View.extend({
                     //console.log('newY > ',newY);
 
                     $elem.css({
-                        '-webkit-transform':'rotateY(-35deg) rotateX('+newX+'deg)',
-                        '-moz-transform':'rotateY(-35deg) rotateX('+newX+'deg)',
-                        'transform':'rotateY(-35deg) rotateX('+newX+'deg)'
+                        '-webkit-transform':'rotateX('+newX+'deg)',
+                        '-moz-transform':'rotateX('+newX+'deg)',
+                        'transform':'rotateX('+newX+'deg)'
                     });
                 });
 
@@ -113,12 +113,7 @@ App.ClientView = Ember.View.extend({
     }
 });
 
-App.ClientSliderController = Ember.ObjectController.extend({
-    
-});
 App.ClientSliderView = Ember.View.extend({
-    templateName: 'client-slider',
-    //classNames: ['client-slider'],
     // values are representing degrees units
     defaultValue: 35, 
     minValue: 0,
