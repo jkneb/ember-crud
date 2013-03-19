@@ -65,6 +65,7 @@ App.ClientController = Ember.ObjectController.extend();
 
 App.ClientView = Ember.View.extend({
     classNames: ['client-profile', 'flip'], 
+    rangeSliderValue: 35, // degrees
     
     didInsertElement: function(){
         var $elem = this.$();
@@ -90,14 +91,14 @@ App.ClientView = Ember.View.extend({
                     //console.log(currX +' < x | y > '+currY);
                     var newX = currY-oldY;
                     //var newY = currX-oldX;
-                    console.log('%d - %d = %d', currY, oldY, currY-oldY);
-                    console.log('newX > ',newX);
+                    //console.log('%d - %d = %d', currY, oldY, currY-oldY);
+                    //console.log('newX > ',newX);
                     //console.log('newY > ',newY);
 
                     $elem.css({
-                        '-webkit-transform':'rotateY(-35deg) rotateX(-'+newX+'deg)',
-                        '-moz-transform':'rotateY(-35deg) rotateX(-'+newX+'deg)',
-                        'transform':'rotateY(-35deg) rotateX(-'+newX+'deg)'
+                        '-webkit-transform':'rotateY(-35deg) rotateX('+newX+'deg)',
+                        '-moz-transform':'rotateY(-35deg) rotateX('+newX+'deg)',
+                        'transform':'rotateY(-35deg) rotateX('+newX+'deg)'
                     });
                 });
 
@@ -107,11 +108,22 @@ App.ClientView = Ember.View.extend({
                 $elem.removeClass('unselectable');
             }
 
-            return false;
+            e.stopPropagation();
         });
     }
 });
 
+App.ClientSliderController = Ember.ObjectController.extend({
+    
+});
+App.ClientSliderView = Ember.View.extend({
+    templateName: 'client-slider',
+    //classNames: ['client-slider'],
+    // values are representing degrees units
+    defaultValue: 35, 
+    minValue: 0,
+    maxValue: 360
+});
 
 // App.ready will act as our init 
 App.ready = function () {

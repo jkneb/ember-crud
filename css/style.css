@@ -464,6 +464,9 @@ table { border-collapse: collapse; border-spacing: 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/_utils\.scss}line{font-family:\0000310}}
 .acenter { text-align: center; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/_utils\.scss}line{font-family:\0000311}}
+.unselectable { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\000037}}
 body { font: 75% Helvetica, Arial, sans-serif; }
 
@@ -497,26 +500,29 @@ i, address { font-style: normal; }
 .client .id { font-size: 11px; display: inline-block; background-color: white; border: 1px solid #eee; border-radius: 4px; padding: 1px 4px; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000333}}
-.client-profile { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -webkit-transform: rotateY(-35deg) rotateX(0deg) translateZ(0px); -moz-transform: rotateY(-35deg) rotateX(0deg) translateZ(0px); -ms-transform: rotateY(-35deg) rotateX(0deg) translateZ(0px); transform: rotateY(-35deg) rotateX(0deg) translateZ(0px); background: white; padding: 15px; width: 250px; height: 300px; position: absolute; top: 0; right: 100px; border: 1px solid #ddd; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000344}}
-.client-profile [class*="face-"] { position: absolute; background-color: rgba(0, 0, 0, 0.2); }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000347}}
-.client-profile .face-left, .client-profile .face-right { top: 0; bottom: 0; width: 10px; -webkit-transform: translateZ(-5px) rotateY(90deg); -moz-transform: translateZ(-5px) rotateY(90deg); -ms-transform: translateZ(-5px) rotateY(90deg); transform: translateZ(-5px) rotateY(90deg); }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000348}}
-.client-profile .face-left { left: -5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000349}}
-.client-profile .face-right { right: -5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000350}}
-.client-profile .face-top, .client-profile .face-bottom { left: 0; right: 0; height: 10px; -webkit-transform: translateZ(-5px) rotateX(90deg); -moz-transform: translateZ(-5px) rotateX(90deg); -ms-transform: translateZ(-5px) rotateX(90deg); transform: translateZ(-5px) rotateX(90deg); }
+.client-pane { width: 300px; height: 400px; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -webkit-transform: rotateY(35deg); -moz-transform: rotateY(35deg); -ms-transform: rotateY(35deg); transform: rotateY(35deg); outline: 1px solid pink; position: absolute; top: 0; right: 100px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000342}}
+.client-profile { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; background: white; padding: 15px; width: 250px; height: 300px; border: 1px solid #ddd; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000351}}
+.client-profile [class*="face-"] { position: absolute; background-color: rgba(0, 0, 0, 0.2); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000354}}
+.client-profile .face-left, .client-profile .face-right { top: 0; bottom: 0; width: 10px; -webkit-transform: translateZ(-5px) rotateY(90deg); -moz-transform: translateZ(-5px) rotateY(90deg); -ms-transform: translateZ(-5px) rotateY(90deg); transform: translateZ(-5px) rotateY(90deg); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000355}}
+.client-profile .face-left { left: -5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000356}}
+.client-profile .face-right { right: -5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000357}}
+.client-profile .face-top, .client-profile .face-bottom { left: 0; right: 0; height: 10px; -webkit-transform: translateZ(-5px) rotateX(90deg); -moz-transform: translateZ(-5px) rotateX(90deg); -ms-transform: translateZ(-5px) rotateX(90deg); transform: translateZ(-5px) rotateX(90deg); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000358}}
 .client-profile .face-top { top: -5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000359}}
 .client-profile .face-bottom { bottom: -5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000360}}
 .client-profile .face-back { top: 0; bottom: 0; left: 0; right: 0; background-color: #f1f1f1; -webkit-transform: translateZ(-5px); -moz-transform: translateZ(-5px); -ms-transform: translateZ(-5px); transform: translateZ(-5px); }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000355}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/inno\/Desktop\/perso\/ember-crud\/scss\/style\.scss}line{font-family:\0000362}}
 .flip { -webkit-animation: flip 0.8s ease; -moz-animation: flip 0.8s ease; -ms-animation: flip 0.8s ease; animation: flip 0.8s ease; }
 
-@-webkit-keyframes flip { from { -webkit-transform: rotateY(-35deg) rotateX(180deg); }
-  to { -webkit-transform: rotateY(-35deg) rotateX(0deg); } }
+@-webkit-keyframes flip { from { -webkit-transform: rotateX(180deg); }
+  to { -webkit-transform: rotateX(0deg); } }

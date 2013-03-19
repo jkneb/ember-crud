@@ -34,8 +34,12 @@
             {{/linkTo}}
         </div>
         {{/each}}
-        
-        {{outlet}}
+
+        <div class="client-pane">
+            {{outlet}}
+        </div>
+
+        {{view App.ClientSliderView class="client-slider"}}
     </script>
     
     <script type="text/x-handlebars" data-template-name="client">
@@ -48,6 +52,10 @@
         <span class="face-top"></span>
         <span class="face-bottom"></span>
         <span class="face-back"></span>
+    </script>
+    
+    <script type="text/x-handlebars" data-template-name="client-slider">
+        {{view Ember.TextField type="range" min="view.minValue" max="view.maxValue" valueBinding="view.defaultValue"}}
     </script>
     
     <script src="js/libs/jquery-1.9.1.js"></script>

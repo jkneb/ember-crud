@@ -8,3 +8,9 @@
 .aleft { text-align:left; }
 .aright { text-align:right; }
 .acenter { text-align:center; }
+.unselectable { 
+     -webkit-user-select:none;
+        -moz-user-select:none;
+         -ms-user-select:none;
+             user-select:none;
+}

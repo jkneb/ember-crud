@@ -30,14 +30,21 @@ i, address { font-style:normal; }
     .id { font-size:11px; display:inline-block; background-color:white; border:1px solid #eee; border-radius:4px; padding:1px 4px; }
 }
 
+.client-pane {
+    width:300px; height:400px;
+    -webkit-transform-style:preserve-3d; 
+    -moz-transform-style:preserve-3d;
+    @include transform(rotateY(35deg));
+    outline:1px solid pink;
+    position:absolute; top:0; right:100px;
+}
+
 .client-profile { 
-   -webkit-transform-style:preserve-3d; 
-      -moz-transform-style:preserve-3d; 
-    //@include transition( width .5s, height .5s );
-    @include transform( rotateY(-35deg) rotateX(0deg) translateZ(0px) );
+    -webkit-transform-style:preserve-3d; 
+    -moz-transform-style:preserve-3d;
     background:white; padding:15px; 
     width:250px; height:300px; 
-    position:absolute; top:0; right:100px; 
+     
     border:1px solid #ddd; 
     
     // 3d faces
@@ -56,6 +63,6 @@ i, address { font-style:normal; }
     @include animation(flip .8s ease); 
 }
 @-webkit-keyframes flip { 
-    from { -webkit-transform: rotateY(-35deg) rotateX(180deg); }
-    to   { -webkit-transform: rotateY(-35deg) rotateX(0deg); } 
+    from { -webkit-transform: rotateX(180deg); }
+    to   { -webkit-transform: rotateX(0deg); } 
 }
