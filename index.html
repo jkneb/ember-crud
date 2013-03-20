@@ -29,7 +29,7 @@
         <h2>clients list</h2>
         {{#each client in controller}}
         <div class="client">
-            {{#linkTo "client" client}}
+            {{#linkTo "client" client.id}}
                 <h4>{{client.name}}</h4>
             {{/linkTo}}
         </div>

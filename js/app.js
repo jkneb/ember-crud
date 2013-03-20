@@ -8,22 +8,29 @@ App.Router.map(function(){
     });
 });
 
-// get rid of the /#/ in the urls
-/*App.Router.reopen({ 
-    location: 'history' 
-});*/
-
 // we can customize what's happening when accessing the client route
 // http://emberjs.com/guides/routing/specifying-a-routes-model/
 App.ClientsRoute = Ember.Route.extend({
-    model:function(){
-        return App.Context.get('clients');
+    setupController:function(controller){
+        App.Clients.findAll().done(function(clients){
+            // when the AJAX call is done fill the content property with our "ember converted" clients
+            controller.set('content', clients);
+        });
     }
 });
 App.ClientRoute = Ember.Route.extend({
     model: function(params){
-        var clientId = parseInt(params.client_id);
-        return App.Context.get('clients')[clientId];
+        return params.client_id;
+    }, 
+    setupController: function(controller, params){
+        var clientId = parseInt(params);
+
+        App.Clients.findById(clientId).done(function(client){
+            controller.set('content', client);
+        });
+    }, 
+    serialize: function(id){
+        return { client_id: id }
     }
 });
 
@@ -38,6 +45,11 @@ App.Clients = Ember.Object.extend({
 // here we create a findAll method, its goal is to retreive the datas from clients.json
 // and to convert the json objects into ember objects
 App.Clients.reopenClass({
+    findById: function(id){
+        return this.findAll().then(function(clients){
+            return clients[id];
+        });
+    }, 
     findAll: function(){ 
         return $.getJSON('/json/clients.json').then(function(json){
             var emberClients = [];
@@ -46,19 +58,16 @@ App.Clients.reopenClass({
                 emberClients.push( App.Clients.create(json[i]) );
             }
             return emberClients;
+        }, function(err){
+            // something went wrong...
+            throw new Error( 'json file status is: ' + err.state() );
         });
     }
 });
 
-App.Context = Ember.Object.create({
-   clients: []
-});
-
 // pay attention to the handlbars data-template-name="clients" template 
 // see the {{#each client in controller}} tag? In this case controller = ClientsController
-App.ClientsController = Ember.ArrayController.extend({
-    contentBinding:'App.Context.clients'
-});
+App.ClientsController = Ember.ArrayController.extend();
 
 App.ClientController = Ember.ObjectController.extend();
 
@@ -120,19 +129,4 @@ App.ClientSliderView = Ember.View.extend({
     maxValue: 360
 });
 
-// App.ready will act as our init 
-App.ready = function () {
-    
-    // now when a user acces the app for the first time we need to call our Client.findAll() method
-    
-    App.Clients.findAll()
-        .done(function(clients){
-            // when the AJAX call is done fill the clients property (of the context object) with our "ember converted" clients
-            App.Context.set('clients', clients);
-        })
-        .fail(function(err){
-            // something went wrong...
-            throw new Error( 'json file status is: ' + err.state() );
-        });
-    
-};
+
