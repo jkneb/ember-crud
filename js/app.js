@@ -40,28 +40,32 @@ App.Clients = Ember.Object.extend({
     name: "", 
     address: ""
 });
-// let's give it a static method so we can call it later
+// let's give it some static methods so we can call it later
 // http://emberjs.com/guides/object-model/reopening-classes-and-instances/
-// here we create a findAll method, its goal is to retreive the datas from clients.json
-// and to convert the json objects into ember objects
+// as we are not using Ember-Data let's create some convenient methods to access our json datas
+// to convert them into ember objects
 App.Clients.reopenClass({
     findById: function(id){
         return this.findAll().then(function(clients){
-            return clients[id];
+            return clients[id - 1];
         });
     }, 
     findAll: function(){ 
-        return $.getJSON('/json/clients.json').then(function(json){
-            var emberClients = [];
-            var len = json.length;
-            for (var i=0; i<len; i++){
-                emberClients.push( App.Clients.create(json[i]) );
-            }
-            return emberClients;
-        }, function(err){
+        return $.getJSON('/json/clients.json').then(
+            // everything went fine...
+            function(json) {
+                var emberClients = [];
+                var len = json.length;
+                for (var i=0; i<len; i++){
+                    emberClients.push( App.Clients.create(json[i]) );
+                }
+                return emberClients;
+            }, 
             // something went wrong...
-            throw new Error( 'json file status is: ' + err.state() );
-        });
+            function(err) {
+                throw new Error( 'json file status is: ' + err.state() );
+            }
+        );
     }
 });
 
