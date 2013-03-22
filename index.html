@@ -29,7 +29,7 @@
         <h2>clients list</h2>
         {{#each client in controller}}
         <div class="client">
-            {{#linkTo "client" client.id}}
+            {{#linkTo "client" client}}
                 <h4>{{client.name}}</h4>
             {{/linkTo}}
         </div>
@@ -38,16 +38,15 @@
         <div class="client-pane">
             {{outlet}}
         </div>
-
-        {{#view App.ClientSliderView class="client-slider"}}
-            {{view Ember.TextField type="range" min="view.minValue" max="view.maxValue" valueBinding="view.defaultValue"}}
-        {{/view}}
     </script>
     
     <script type="text/x-handlebars" data-template-name="client">
         <h2>{{name}}</h2>
         <i class="id">#{{id}}</i>
         <address>{{address}}</address>
+        
+        <a href="#" {{action goToNext target="controller"}}>next</a>
+
         
         <span class="face-left"></span>
         <span class="face-right"></span>

@@ -1,5 +1,7 @@
 // first things first: let's create our app
-window.App = Ember.Application.create();
+window.App = Ember.Application.create({
+    LOG_TRANSITIONS: true
+});
 
 // this is where we declare our routes
 App.Router.map(function(){
@@ -19,20 +21,18 @@ App.ClientsRoute = Ember.Route.extend({
     }
 });
 App.ClientRoute = Ember.Route.extend({
+    // nextClient: Ember.Route.transitionTo('clients.client'), 
     model: function(params){
-        return params.client_id;
+        var clientId = parseInt(params.client_id);
+        return App.Clients.findById(clientId);
     }, 
-    setupController: function(controller, params){
-        var clientId = parseInt(params);
-
-        App.Clients.findById(clientId).done(function(client){
-            controller.set('content', client);
-        });
-    }, 
-    serialize: function(id){
-        return { client_id: id }
+    events: { 
+        nextClient: function(client){ 
+            this.transitionTo('client', client);
+        } 
     }
-});
+
+}); 
 
 // let's declare the clients class
 App.Clients = Ember.Object.extend({
@@ -46,9 +46,15 @@ App.Clients = Ember.Object.extend({
 // to convert them into ember objects
 App.Clients.reopenClass({
     findById: function(id){
-        return this.findAll().then(function(clients){
-            return clients[id - 1];
+        /*debugger;
+        var clientProxy = Ember.ObjectProxy.create({ 
+            content: App.Clients.create({ id: id })
         });
+        this.findAll().then(function(clients){
+            clientProxy.set('content', clients[id - 1]);
+        });
+        return clientProxy;*/
+        return App.Clients.create({ id:id });
     }, 
     findAll: function(){ 
         return $.getJSON('/json/clients.json').then(
@@ -73,18 +79,25 @@ App.Clients.reopenClass({
 // see the {{#each client in controller}} tag? In this case controller = ClientsController
 App.ClientsController = Ember.ArrayController.extend();
 
-App.ClientController = Ember.ObjectController.extend();
+App.ClientController = Ember.ObjectController.extend({
+    goToNext: function(){
+        var id = this.get('id');
+        debugger;
+        var nextClient = App.Clients.findById(id);
+        this.send( 'nextClient', nextClient );
+        // Ember.Route.transitionTo('clients.client', nextClient);
+    }
+});
 
 
 App.ClientView = Ember.View.extend({
     classNames: ['client-profile', 'flip'], 
-    rangeSliderValue: 35, // degrees
     
     didInsertElement: function(){
         var $elem = this.$();
         
         /* rotate things with mousemove for debug mode */
-        $(window).on('mousedown mouseup', function(e){
+        /*$(window).on('mousedown mouseup', function(e){
             var $this = $(this); 
             var oldX = e.pageX; 
             var oldY = e.pageY; 
@@ -122,15 +135,8 @@ App.ClientView = Ember.View.extend({
             }
 
             e.stopPropagation();
-        });
+        });*/
     }
-});
-
-App.ClientSliderView = Ember.View.extend({
-    // values are representing degrees units
-    defaultValue: 35, 
-    minValue: 0,
-    maxValue: 360
 });
 
 
