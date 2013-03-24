@@ -11,7 +11,7 @@
         <div class="wrap">
             <header>
                 {{#linkTo "index"}}Home{{/linkTo}} 
-                {{#linkTo "clients"}}Clients{{/linkTo}}
+                {{#linkTo "users"}}Users{{/linkTo}}
             </header>
             
             <div class="main">
@@ -25,28 +25,28 @@
         <p>index view</p>
     </script>
     
-    <script type="text/x-handlebars" data-template-name="clients">
-        <h2>clients list</h2>
-        {{#each client in controller}}
-        <div class="client">
-            {{#linkTo "client" client}}
-                <h4>{{client.name}}</h4>
+    <script type="text/x-handlebars" data-template-name="users">
+        <h2>users list</h2>
+        {{#each user in controller}}
+        <div class="user">
+            {{#linkTo "user" user.id}}
+                <h4>{{user.name}}</h4>
             {{/linkTo}}
         </div>
         {{/each}}
 
-        <div class="client-pane">
+        <div class="user-pane">
             {{outlet}}
         </div>
     </script>
     
-    <script type="text/x-handlebars" data-template-name="client">
+    <script type="text/x-handlebars" data-template-name="user">
+        <img src="{{avatar}}">
         <h2>{{name}}</h2>
+        <address>{{email}}</address>
         <i class="id">#{{id}}</i>
-        <address>{{address}}</address>
         
         <a href="#" {{action goToNext target="controller"}}>next</a>
-
         
         <span class="face-left"></span>
         <span class="face-right"></span>
@@ -58,6 +58,7 @@
     <script src="js/libs/jquery-1.9.1.js"></script>
     <script src="js/libs/handlebars.js"></script>
     <script src="js/libs/ember-1.0.0-rc.1.js"></script>
+    <!--script src="js/libs/ember-data-latest.js"></script-->
     <script src="js/app.js"></script>
 </body>
 </html>

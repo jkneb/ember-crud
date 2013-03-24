@@ -19,8 +19,8 @@ header, footer {
        -moz-perspective:2500px;  }
 i, address { font-style:normal; }
 
-// client
-.client { 
+// user
+.user { 
     position:relative; padding:10px;
     &:nth-child(even) { background-color:#f7f7f7; }
     
@@ -30,7 +30,7 @@ i, address { font-style:normal; }
     .id { font-size:11px; display:inline-block; background-color:white; border:1px solid #eee; border-radius:4px; padding:1px 4px; }
 }
 
-.client-pane {
+.user-pane {
     width:300px; height:400px;
     -webkit-transform-style:preserve-3d; 
     -moz-transform-style:preserve-3d;
@@ -38,7 +38,7 @@ i, address { font-style:normal; }
     position:absolute; top:0; right:100px;
 }
 
-.client-profile { 
+.user-profile { 
     -webkit-transform-style:preserve-3d; 
        -moz-transform-style:preserve-3d; 
     background:white; padding:15px; 

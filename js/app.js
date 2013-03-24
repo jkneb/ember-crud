@@ -5,67 +5,58 @@ window.App = Ember.Application.create({
 
 // this is where we declare our routes
 App.Router.map(function(){
-    this.resource('clients', function(){
-        this.resource('client', { path:'/:client_id' });
+    this.resource('users', function(){
+        this.resource('user', { path:'/:user_id' });
     });
 });
 
-// we can customize what's happening when accessing the client route
+// we can customize what's happening when accessing the user route
 // http://emberjs.com/guides/routing/specifying-a-routes-model/
-App.ClientsRoute = Ember.Route.extend({
+App.UsersRoute = Ember.Route.extend({
     setupController:function(controller){
-        App.Clients.findAll().done(function(clients){
-            // when the AJAX call is done fill the content property with our "ember converted" clients
-            controller.set('content', clients);
+        App.User.findAll().done(function(users){
+            // when the AJAX call is done fill the content property with our "ember converted" users
+            controller.set('content', users);
         });
     }
 });
-App.ClientRoute = Ember.Route.extend({
-    // nextClient: Ember.Route.transitionTo('clients.client'), 
+App.UserRoute = Ember.Route.extend({
     model: function(params){
-        var clientId = parseInt(params.client_id);
-        return App.Clients.findById(clientId);
+        return params.user_id;
     }, 
-    events: { 
-        nextClient: function(client){ 
-            this.transitionTo('client', client);
-        } 
-    }
+    setupController: function(controller, params){
+        var userId = parseInt(params);
 
+        App.User.findById(userId).done(function(user){
+            controller.set('content', user);
+        });
+    }, 
+    serialize: function(id){
+        return { user_id: id }
+    }
 }); 
 
-// let's declare the clients class
-App.Clients = Ember.Object.extend({
-    id: 0,
-    name: "", 
-    address: ""
-});
+
 // let's give it some static methods so we can call it later
 // http://emberjs.com/guides/object-model/reopening-classes-and-instances/
 // as we are not using Ember-Data let's create some convenient methods to access our json datas
 // to convert them into ember objects
-App.Clients.reopenClass({
+/*App.User.reopenClass({
     findById: function(id){
-        /*debugger;
-        var clientProxy = Ember.ObjectProxy.create({ 
-            content: App.Clients.create({ id: id })
+        return this.findAll().then(function(users){
+            return users[id];
         });
-        this.findAll().then(function(clients){
-            clientProxy.set('content', clients[id - 1]);
-        });
-        return clientProxy;*/
-        return App.Clients.create({ id:id });
     }, 
     findAll: function(){ 
-        return $.getJSON('/json/clients.json').then(
+        return $.getJSON('/json/users.json').then(
             // everything went fine...
             function(json) {
-                var emberClients = [];
+                var emberUsers = [];
                 var len = json.length;
                 for (var i=0; i<len; i++){
-                    emberClients.push( App.Clients.create(json[i]) );
+                    emberUsers.push( App.User.create(json[i]) );
                 }
-                return emberClients;
+                return emberUsers;
             }, 
             // something went wrong...
             function(err) {
@@ -73,25 +64,17 @@ App.Clients.reopenClass({
             }
         );
     }
-});
+});*/
 
-// pay attention to the handlbars data-template-name="clients" template 
-// see the {{#each client in controller}} tag? In this case controller = ClientsController
-App.ClientsController = Ember.ArrayController.extend();
+// pay attention to the handlbars data-template-name="users" template 
+// see the {{#each user in controller}} tag? In this case controller = UsersController
+App.UsersController = Ember.ArrayController.extend();
 
-App.ClientController = Ember.ObjectController.extend({
-    goToNext: function(){
-        var id = this.get('id');
-        debugger;
-        var nextClient = App.Clients.findById(id);
-        this.send( 'nextClient', nextClient );
-        // Ember.Route.transitionTo('clients.client', nextClient);
-    }
-});
+App.UserController = Ember.ObjectController.extend();
 
 
-App.ClientView = Ember.View.extend({
-    classNames: ['client-profile', 'flip'], 
+App.UserView = Ember.View.extend({
+    classNames: ['user-profile', 'flip'], 
     
     didInsertElement: function(){
         var $elem = this.$();
