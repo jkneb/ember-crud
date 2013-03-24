@@ -114,328 +114,34 @@ table { border-collapse: collapse; border-spacing: 0; }
 [class^="ico-"]:before { font-family: 'icons'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; -webkit-font-smoothing: antialiased; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000311}}
-.ico-warning:before { content: "\e000"; }
+.icon-plus:before { content: "\e000"; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000312}}
-.ico-cloud:before { content: "\e001"; }
+.icon-cross:before { content: "\e001"; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000313}}
-.ico-locked:before { content: "\e002"; }
+.icon-arrow-right:before { content: "\e002"; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000314}}
-.ico-inbox:before { content: "\e003"; }
+.icon-arrow-left:before { content: "\e003"; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000315}}
-.ico-comment:before { content: "\e004"; }
+.icon-pencil:before { content: "\e004"; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000316}}
-.ico-mic:before { content: "\e005"; }
+.icon-wrench:before { content: "\e005"; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000317}}
-.ico-envelope:before { content: "\e006"; }
+.icon-cog:before { content: "\e006"; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000318}}
-.ico-briefcase:before { content: "\e007"; }
+.icon-trashcan:before { content: "\e007"; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000319}}
-.ico-cart:before { content: "\e008"; }
+.icon-eye:before { content: "\e008"; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000320}}
-.ico-contrast:before { content: "\e009"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000321}}
-.ico-clock:before { content: "\e00a"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000322}}
-.ico-user:before { content: "\e00b"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000323}}
-.ico-cog:before { content: "\e00c"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000324}}
-.ico-music:before { content: "\e00d"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000325}}
-.ico-twitter:before { content: "\e00e"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000326}}
-.ico-pencil:before { content: "\e00f"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000327}}
-.ico-frame:before { content: "\e010"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000328}}
-.ico-switch:before { content: "\e011"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000329}}
-.ico-star:before { content: "\e012"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000330}}
-.ico-key:before { content: "\e013"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000331}}
-.ico-chart:before { content: "\e014"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000332}}
-.ico-apple:before { content: "\e015"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000333}}
-.ico-file:before { content: "\e016"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000334}}
-.ico-plus:before { content: "\e017"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000335}}
-.ico-minus:before { content: "\e018"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000336}}
-.ico-picture:before { content: "\e019"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000337}}
-.ico-folder:before { content: "\e01a"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000338}}
-.ico-camera:before { content: "\e01b"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000339}}
-.ico-search:before { content: "\e01c"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000340}}
-.ico-dribbble:before { content: "\e01d"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000341}}
-.ico-forrst:before { content: "\e01e"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000342}}
-.ico-feed:before { content: "\e01f"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000343}}
-.ico-blocked:before { content: "\e020"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000344}}
-.ico-target:before { content: "\e021"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000345}}
-.ico-play:before { content: "\e022"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000346}}
-.ico-pause:before { content: "\e023"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000347}}
-.ico-bug:before { content: "\e024"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000348}}
-.ico-console:before { content: "\e025"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000349}}
-.ico-film:before { content: "\e026"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000350}}
-.ico-type:before { content: "\e027"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000351}}
-.ico-home:before { content: "\e028"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000352}}
-.ico-earth:before { content: "\e029"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000353}}
-.ico-location:before { content: "\e02a"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000354}}
-.ico-info:before { content: "\e02b"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000355}}
-.ico-eye:before { content: "\e02c"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000356}}
-.ico-heart:before { content: "\e02d"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000357}}
-.ico-bookmark:before { content: "\e02e"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000358}}
-.ico-wrench:before { content: "\e02f"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000359}}
-.ico-calendar:before { content: "\e030"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000360}}
-.ico-window:before { content: "\e031"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000361}}
-.ico-monitor:before { content: "\e032"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000362}}
-.ico-mobile:before { content: "\e033"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000363}}
-.ico-droplet:before { content: "\e034"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000364}}
-.ico-mouse:before { content: "\e035"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000365}}
-.ico-refresh:before { content: "\e036"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000366}}
-.ico-location-2:before { content: "\e037"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000367}}
-.ico-tag:before { content: "\e038"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000368}}
-.ico-phone:before { content: "\e039"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000369}}
-.ico-star-2:before { content: "\e03a"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000370}}
-.ico-pointer:before { content: "\e03b"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000371}}
-.ico-thumbs-up:before { content: "\e03c"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000372}}
-.ico-thumbs-down:before { content: "\e03d"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000373}}
-.ico-headphones:before { content: "\e03e"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000374}}
-.ico-move:before { content: "\e03f"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000375}}
-.ico-checkmark:before { content: "\e040"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000376}}
-.ico-cancel:before { content: "\e041"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000377}}
-.ico-skype:before { content: "\e042"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000378}}
-.ico-gift:before { content: "\e043"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000379}}
-.ico-cone:before { content: "\e044"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000380}}
-.ico-alarm:before { content: "\e045"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000381}}
-.ico-coffee:before { content: "\e046"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000382}}
-.ico-basket:before { content: "\e047"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000383}}
-.ico-flag:before { content: "\e048"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000384}}
-.ico-ipod:before { content: "\e049"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000385}}
-.ico-trashcan:before { content: "\e04a"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000386}}
-.ico-bolt:before { content: "\e04b"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000387}}
-.ico-ampersand:before { content: "\e04c"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000388}}
-.ico-compass:before { content: "\e04d"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000389}}
-.ico-list:before { content: "\e04e"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000390}}
-.ico-grid:before { content: "\e04f"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000391}}
-.ico-volume:before { content: "\e050"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000392}}
-.ico-volume-2:before { content: "\e051"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000393}}
-.ico-stats:before { content: "\e052"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000394}}
-.ico-target-2:before { content: "\e053"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000395}}
-.ico-forward:before { content: "\e054"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000396}}
-.ico-paperclip:before { content: "\e055"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000397}}
-.ico-keyboard:before { content: "\e056"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000398}}
-.ico-crop:before { content: "\e057"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\0000399}}
-.ico-floppy:before { content: "\e058"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003100}}
-.ico-filter:before { content: "\e059"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003101}}
-.ico-trophy:before { content: "\e05a"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003102}}
-.ico-diary:before { content: "\e05b"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003103}}
-.ico-address-book:before { content: "\e05c"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003104}}
-.ico-stop:before { content: "\e05d"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003105}}
-.ico-smiley:before { content: "\e05e"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003106}}
-.ico-shit:before { content: "\e05f"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003107}}
-.ico-bookmark-2:before { content: "\e060"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003108}}
-.ico-camera-2:before { content: "\e061"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003109}}
-.ico-lamp:before { content: "\e062"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003110}}
-.ico-disk:before { content: "\e063"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003111}}
-.ico-button:before { content: "\e064"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003112}}
-.ico-database:before { content: "\e065"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003113}}
-.ico-credit-card:before { content: "\e066"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003114}}
-.ico-atom:before { content: "\e067"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003115}}
-.ico-winsows:before { content: "\e068"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003116}}
-.ico-target-3:before { content: "\e069"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003117}}
-.ico-battery:before { content: "\e06a"; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_icons\.scss}line{font-family:\00003118}}
-.ico-code:before { content: "\e06b"; }
+.icon-pencil-2:before { content: "\e009"; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_utils\.scss}line{font-family:\000032}}
 .hidden { display: none !important; visibility: hidden; }
