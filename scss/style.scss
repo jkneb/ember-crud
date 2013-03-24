@@ -44,7 +44,18 @@ i, address { font-style:normal; }
     background:white; padding:15px; 
     width:250px; height:300px; 
     
-    border:1px solid #ddd; 
+    border-radius:3px; text-align:center; 
+    //border:1px solid #ddd; 
+    box-shadow:0 0 5px rgba(0,0,0,.3); 
+    
+    h2 { 
+        margin-bottom:0; 
+        text-transform:uppercase; 
+        font:bold 18px 'Helvetica Neue', Arial; 
+        color:#333; 
+    }
+    img { border-radius:100%; width:110px; padding:5px; border:1px solid #ddd; }
+    address { color:#999; font-size:14px; }
     
     // 3d faces 
     [class*="face-"] { 

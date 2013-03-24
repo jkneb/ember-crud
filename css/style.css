@@ -209,25 +209,31 @@ i, address { font-style: normal; }
 .user-pane { width: 300px; height: 400px; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -webkit-transform: rotateY(0deg); -moz-transform: rotateY(0deg); -ms-transform: rotateY(0deg); transform: rotateY(0deg); position: absolute; top: 0; right: 100px; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000341}}
-.user-profile { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; background: white; padding: 15px; width: 250px; height: 300px; border: 1px solid #dddddd; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000350}}
-.user-profile [class*="face-"] { position: absolute; background-color: rgba(0, 0, 0, 0.2); }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000353}}
-.user-profile .face-left, .user-profile .face-right { top: 0; bottom: 0; width: 10px; -webkit-transform: translateZ(-5px) rotateY(90deg); -moz-transform: translateZ(-5px) rotateY(90deg); -ms-transform: translateZ(-5px) rotateY(90deg); transform: translateZ(-5px) rotateY(90deg); }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000354}}
-.user-profile .face-left { left: -5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000355}}
-.user-profile .face-right { right: -5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000356}}
-.user-profile .face-top, .user-profile .face-bottom { left: 0; right: 0; height: 10px; -webkit-transform: translateZ(-5px) rotateX(90deg); -moz-transform: translateZ(-5px) rotateX(90deg); -ms-transform: translateZ(-5px) rotateX(90deg); transform: translateZ(-5px) rotateX(90deg); }
+.user-profile { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; background: white; padding: 15px; width: 250px; height: 300px; border-radius: 3px; text-align: center; box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000351}}
+.user-profile h2 { margin-bottom: 0; text-transform: uppercase; font: bold 18px "Helvetica Neue", Arial; color: #333; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000357}}
-.user-profile .face-top { top: -5px; }
+.user-profile img { border-radius: 100%; width: 110px; padding: 5px; border: 1px solid #dddddd; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000358}}
+.user-profile address { color: #999; font-size: 14px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000361}}
+.user-profile [class*="face-"] { position: absolute; background-color: rgba(0, 0, 0, 0.2); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000364}}
+.user-profile .face-left, .user-profile .face-right { top: 0; bottom: 0; width: 10px; -webkit-transform: translateZ(-5px) rotateY(90deg); -moz-transform: translateZ(-5px) rotateY(90deg); -ms-transform: translateZ(-5px) rotateY(90deg); transform: translateZ(-5px) rotateY(90deg); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000365}}
+.user-profile .face-left { left: -5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000366}}
+.user-profile .face-right { right: -5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000367}}
+.user-profile .face-top, .user-profile .face-bottom { left: 0; right: 0; height: 10px; -webkit-transform: translateZ(-5px) rotateX(90deg); -moz-transform: translateZ(-5px) rotateX(90deg); -ms-transform: translateZ(-5px) rotateX(90deg); transform: translateZ(-5px) rotateX(90deg); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000368}}
+.user-profile .face-top { top: -5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000369}}
 .user-profile .face-bottom { bottom: -5px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000370}}
 .user-profile .face-back { top: 0; bottom: 0; left: 0; right: 0; background-color: #f1f1f1; -webkit-transform: translateZ(-5px); -moz-transform: translateZ(-5px); -ms-transform: translateZ(-5px); transform: translateZ(-5px); }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000372}}
 .flip { -webkit-animation: flip 0.8s ease; -moz-animation: flip 0.8s ease; -ms-animation: flip 0.8s ease; animation: flip 0.8s ease; }
 
 @-webkit-keyframes flip { from { -webkit-transform: rotateX(180deg); }
