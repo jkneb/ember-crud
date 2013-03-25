@@ -90,6 +90,12 @@ $mainColHeight: 400px;
     .face-bottom { bottom:-$faceLength/2; }
     .face-back { top:0; bottom:0; left:0; right:0; background-color:#f1f1f1; @include transform(translateZ(-$faceLength/2)); }
 }
+.half-1, .half-2 { 
+    position:absolute; top:15px; width:50%; overflow:hidden; 
+    .wraper { position:relative; top:0; left:0; width:$mainColWidth/2; }
+}
+.half-1 { left:0; }
+.half-2 { right:0; .wraper { margin-left:-$mainColWidth/2; } }
 
 // css animations
 .flip-in {

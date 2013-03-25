@@ -38,6 +38,21 @@
         <address>{{email}}</address>
         <!--i class="id">#{{id}}</i-->
         
+        <div class="half-1">
+            <div class="wraper">
+                <img {{bindAttr src="avatarUrl"}}>
+                <h2>{{name}}</h2>
+                <address>{{email}}</address>
+            </div>
+        </div>
+        <div class="half-2">
+            <div class="wraper">
+                <img {{bindAttr src="avatarUrl"}}>
+                <h2>{{name}}</h2>
+                <address>{{email}}</address>
+            </div>
+        </div>
+        
         {{partial faces}}
     </script>
     <script type="text/x-handlebars" data-template-name="_faces">
