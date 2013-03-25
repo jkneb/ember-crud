@@ -26,26 +26,24 @@
             </li>
             {{/each}}
         </ul>
-
+        
         <div class="user-pane">
             {{outlet}}
         </div>
     </script>
     
     <script type="text/x-handlebars" data-template-name="user">
-        <img {{bindAttr src="avatarUrl"}}>
-        <h2>{{name}}</h2>
-        <address>{{email}}</address>
-        <!--i class="id">#{{id}}</i-->
-        
-        <div class="half-1">
+        <div class="edit">
+            <a href="#" class="icon-pencil" {{action edit}}></a>
+        </div>
+        <div {{bindAttr class=":half-1 isOpen:sol"}}>
             <div class="wraper">
                 <img {{bindAttr src="avatarUrl"}}>
                 <h2>{{name}}</h2>
                 <address>{{email}}</address>
             </div>
         </div>
-        <div class="half-2">
+        <div {{bindAttr class=":half-2 isOpen:sor"}}>
             <div class="wraper">
                 <img {{bindAttr src="avatarUrl"}}>
                 <h2>{{name}}</h2>
@@ -60,7 +58,7 @@
         <span class="face-right"></span>
         <span class="face-top"></span>
         <span class="face-bottom"></span>
-        <span class="face-back"></span>
+        <!--span class="face-back"></span-->
     </script>
     
     

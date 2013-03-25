@@ -80,7 +80,13 @@ App.UserRoute = Ember.Route.extend({
 // see the {{#each user in controller}} tag? In this case controller = UsersController
 App.UsersController = Ember.ArrayController.extend();
 
-App.UserController = Ember.ObjectController.extend();
+App.UserController = Ember.ObjectController.extend({
+    isOpen: false, 
+    
+    edit: function(){
+        this.toggleProperty('isOpen', true);
+    }
+});
 
 App.UserView = Ember.View.extend({
     classNames: ['profile', 'flip-in'], 

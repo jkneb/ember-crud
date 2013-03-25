@@ -14,6 +14,7 @@ $mainColHeight: 400px;
 }
 .main { 
     @extend .border-box; 
+    position:relative; 
     margin:0 auto; 
     width:$mainColWidth; 
     -webkit-perspective:2500px; 
@@ -62,11 +63,8 @@ $mainColHeight: 400px;
     @extend .border-box; 
     -webkit-transform-style:preserve-3d; 
        -moz-transform-style:preserve-3d; 
-    background:white; padding:15px; 
     width:100%; height:350px; 
     text-align:center; 
-    border-radius:3px; 
-    box-shadow:0 0 5px rgba(0,0,0,.3); 
     
     h2 { 
         margin-bottom:0; 
@@ -78,9 +76,9 @@ $mainColHeight: 400px;
     address { color:#999; font-size:14px; font-style:normal; }
     
     // 3d faces 
-    $faceLength: 5px; 
+    $faceLength: 10px; 
     [class*="face-"] { 
-        position:absolute; background-color:rgba(0,0,0,.1); 
+        position:absolute; background-color:rgba(0,0,0,.3); 
     }
     .face-left, .face-right { top:0; bottom:0; width:$faceLength; @include transform(translateZ(-$faceLength/2) rotateY(90deg)); }
     .face-left  { left:-$faceLength/2; }
@@ -91,21 +89,44 @@ $mainColHeight: 400px;
     .face-back { top:0; bottom:0; left:0; right:0; background-color:#f1f1f1; @include transform(translateZ(-$faceLength/2)); }
 }
 .half-1, .half-2 { 
-    position:absolute; top:15px; width:50%; overflow:hidden; 
-    .wraper { position:relative; top:0; left:0; width:$mainColWidth/2; }
+    background:white; border-radius:3px; height:350px; 
+    position:absolute; top:0; width:50%; overflow:hidden; 
+    -webkit-transform-style:preserve-3d; 
+       -moz-transform-style:preserve-3d; 
+    .wraper { position:relative; top:0; left:0; width:$mainColWidth/2; padding:15px; }
 }
 .half-1 { left:0; }
-.half-2 { right:0; .wraper { margin-left:-$mainColWidth/2; } }
+.half-1 .wraper { left:0; }
+.half-2 { right:0; }
+.half-2 .wraper { right:0; margin-left:-$mainColWidth/4; }
+
+.edit { 
+    display:inline-block; 
+    position:absolute; top:10px; right:10px; z-index:2; 
+    @include transform(translate3d(0,0,1px));
+    .icon-pencil { 
+        display:block; cursor:pointer; 
+        font-size:22px; text-decoration:none; 
+    }
+}
+
 
 // css animations
-.flip-in {
-    @include animation(flip-in .8s ease); 
-}
+.flip-in { @include animation(flip-in 1.5s ease); }
 @-webkit-keyframes flip-in { 
     from { -webkit-transform: rotateX(180deg); }
-    to   { -webkit-transform: rotateX(0deg); } 
-}
+    to   { -webkit-transform: rotateX(0deg); } }
 @-moz-keyframes flip-in { 
     from { -moz-transform: rotateX(180deg); }
     to   { -moz-transform: rotateX(0deg); } 
+}
+.sol { @include animation(sol 1.5s ease both); }
+@-webkit-keyframes sol { 
+    from { -webkit-transform: rotateX(  0deg); }
+    to   { -webkit-transform: rotateY(-80deg); } 
+}
+.sor { @include animation(sor 1.5s ease both); }
+@-webkit-keyframes sor { 
+    from { -webkit-transform: rotateX(  0deg); }
+    to   { -webkit-transform: rotateY(80deg); }
 }
