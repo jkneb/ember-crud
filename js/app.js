@@ -13,15 +13,18 @@ App.Router.map(function(){
 // we can customize what's happening when accessing the user route
 // http://emberjs.com/guides/routing/specifying-a-routes-model/
 App.UsersRoute = Ember.Route.extend({
+    model: function(){
+        return App.User.find();
+    },
     setupController:function(controller){
-        App.User.findAll().done(function(users){
+        /*App.User.findAll().done(function(users){
             // when the AJAX call is done fill the content property with our "ember converted" users
             controller.set('content', users);
-        });
+        });*/
     }
 });
 App.UserRoute = Ember.Route.extend({
-    model: function(params){
+    /*model: function(params){
         return params.user_id;
     }, 
     setupController: function(controller, params){
@@ -33,7 +36,7 @@ App.UserRoute = Ember.Route.extend({
     }, 
     serialize: function(id){
         return { user_id: id }
-    }
+    }*/
 }); 
 
 
@@ -71,7 +74,6 @@ App.UserRoute = Ember.Route.extend({
 App.UsersController = Ember.ArrayController.extend();
 
 App.UserController = Ember.ObjectController.extend();
-
 
 App.UserView = Ember.View.extend({
     classNames: ['user-profile', 'flip'], 

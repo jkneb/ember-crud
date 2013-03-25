@@ -41,7 +41,7 @@
         <h2>users list</h2>
         {{#each user in controller}}
         <div class="user">
-            {{#linkTo "user" user.id}}
+            {{#linkTo "user" user}}
                 <h4>{{user.name}}</h4>
             {{/linkTo}}
         </div>
@@ -53,7 +53,7 @@
     </script>
     
     <script type="text/x-handlebars" data-template-name="user">
-        <img src="{{avatar}}">
+        <img {{bindAttr src="avatarUrl"}}>
         <h2>{{name}}</h2>
         <address>{{email}}</address>
         <i class="id">#{{id}}</i>
@@ -72,5 +72,6 @@
     <script src="js/libs/ember-1.0.0-rc.1.js"></script>
     <script src="js/libs/ember-data.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/model.js"></script>
 </body>
 </html>
