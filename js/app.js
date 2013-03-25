@@ -10,6 +10,13 @@ App.Router.map(function(){
     });
 });
 
+// no need of a home page
+App.IndexRoute = Ember.Route.extend({
+    redirect: function(){
+        this.transitionTo('users');
+    }
+});
+
 // we can customize what's happening when accessing the user route
 // http://emberjs.com/guides/routing/specifying-a-routes-model/
 App.UsersRoute = Ember.Route.extend({
@@ -76,7 +83,7 @@ App.UsersController = Ember.ArrayController.extend();
 App.UserController = Ember.ObjectController.extend();
 
 App.UserView = Ember.View.extend({
-    classNames: ['user-profile', 'flip'], 
+    classNames: ['profile', 'flip-in'], 
     
     didInsertElement: function(){
         var $elem = this.$();

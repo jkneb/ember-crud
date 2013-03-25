@@ -8,44 +8,24 @@
 <body>
     
     <script type="text/x-handlebars" data-template-name="application">
-        <div class="wrap">
-            <header>
-                {{#linkTo "index"}}Home{{/linkTo}} 
-                {{#linkTo "users"}}Users{{/linkTo}}
-            </header>
-            
-            <div class="main">
-                {{outlet}}
-            </div>
-        </div>
-        <footer>© Copyright 2013. Bob The Sponge. All rights reserved.</footer>
-    </script>
-    
-    <script type="text/x-handlebars" data-template-name="index">
-        <div class="user-profile">
-            <img src="images/avatars/jk.jpg">
-            <h2>Julien Knebel</h2>
-            <address>julienknebel@gmail.com</address>
-            
-            <!--i class="id">1</i-->
-            
-            <!--span class="face-left"></span>
-            <span class="face-right"></span>
-            <span class="face-top"></span>
-            <span class="face-bottom"></span>
-            <span class="face-back"></span-->
+        <header>
+            {{#linkTo "index"}}Home{{/linkTo}} 
+            {{#linkTo "users"}}Users{{/linkTo}}
+        </header>
+        
+        <div class="main">
+            {{outlet}}
         </div>
     </script>
     
     <script type="text/x-handlebars" data-template-name="users">
-        <h2>users list</h2>
-        {{#each user in controller}}
-        <div class="user">
-            {{#linkTo "user" user}}
-                <h4>{{user.name}}</h4>
-            {{/linkTo}}
-        </div>
-        {{/each}}
+        <ul class="user-list">
+            {{#each user in controller}}
+            <li>
+                {{#linkTo "user" user}}{{user.name}}{{/linkTo}}
+            </li>
+            {{/each}}
+        </ul>
 
         <div class="user-pane">
             {{outlet}}
@@ -56,16 +36,18 @@
         <img {{bindAttr src="avatarUrl"}}>
         <h2>{{name}}</h2>
         <address>{{email}}</address>
-        <i class="id">#{{id}}</i>
+        <!--i class="id">#{{id}}</i-->
         
-        <a href="#" {{action goToNext target="controller"}}>next</a>
-        
+        {{partial faces}}
+    </script>
+    <script type="text/x-handlebars" data-template-name="_faces">
         <span class="face-left"></span>
         <span class="face-right"></span>
         <span class="face-top"></span>
         <span class="face-bottom"></span>
         <span class="face-back"></span>
     </script>
+    
     
     <script src="js/libs/jquery-1.9.1.js"></script>
     <script src="js/libs/handlebars.js"></script>
