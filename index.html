@@ -51,6 +51,8 @@
             </div>
         </div>
         
+        {{outlet}}
+        
         {{partial faces}}
     </script>
     <script type="text/x-handlebars" data-template-name="_faces">
@@ -61,6 +63,11 @@
         <!--span class="face-back"></span-->
     </script>
     
+    <script type="text/x-handlebars" data-template-name="user/edit">
+        <input type="text" name="some_name" value="" id="some_name">
+        <input type="text" name="some_name" value="" id="some_name">
+        <input type="text" name="some_name" value="" id="some_name">
+    </script>
     
     <script src="js/libs/jquery-1.9.1.js"></script>
     <script src="js/libs/handlebars.js"></script>

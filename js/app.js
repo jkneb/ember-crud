@@ -6,7 +6,9 @@ window.App = Ember.Application.create({
 // this is where we declare our routes
 App.Router.map(function(){
     this.resource('users', function(){
-        this.resource('user', { path:'/:user_id' });
+        this.resource('user', { path:'/:user_id' }, function(){
+            this.route('edit');
+        });
     });
 });
 
@@ -84,7 +86,8 @@ App.UserController = Ember.ObjectController.extend({
     isOpen: false, 
     
     edit: function(){
-        this.toggleProperty('isOpen', true);
+        this.toggleProperty('isOpen', true); 
+        this.transitionToRoute('user.edit'); 
     }
 });
 
