@@ -7,10 +7,10 @@
 
 // structure 
 $mainColWidth: 550px; 
-$mainColHeight: 400px;
+$mainColHeight: 400px; 
 
 .border-box { 
-    @include box-sizing(border-box);
+    @include box-sizing(border-box); 
 }
 .main { 
     @extend .border-box; 
@@ -40,6 +40,7 @@ $mainColHeight: 400px;
 
 // user list styles
 .user-list { 
+    position:relative; top:5px; 
     border:4px solid rgba(0,0,0,.5); 
     background:rgb(50,50,50); 
     border-radius:4px; 
@@ -57,36 +58,41 @@ $mainColHeight: 400px;
     }
 }
 
+.pane { 
+    @extend .border-box; 
+    -webkit-transform-style:preserve-3d; 
+       -moz-transform-style:preserve-3d; 
+   //box-shadow:0 0 5px rgba(0,0,0,.3); 
+   background:white; border-radius:3px; 
+   border:1px solid #ccc; 
+   
+   // 3d faces 
+   $faceLength: 10px; 
+   [class*="face-"] { 
+       position:absolute; background-color:rgba(0,0,0,.3); 
+   }
+   .face-left, .face-right { top:0; bottom:0; width:$faceLength; @include transform(translateZ(-$faceLength/2) rotateY(90deg)); }
+   .face-left  { left:-$faceLength/2; }
+   .face-right { right:-$faceLength/2; }
+   .face-top, .face-bottom { left:0; right:0; height:$faceLength; @include transform(translateZ(-$faceLength/2) rotateX(90deg)); }
+   .face-top    { top:-$faceLength/2; }
+   .face-bottom { bottom:-$faceLength/2; }
+   .face-back { top:0; bottom:0; left:0; right:0; background-color:#f1f1f1; @include transform(translateZ(-$faceLength/2)); }
+}
 
 // user pane styles
-.user-pane .profile { 
+.user-profile { 
     @extend .border-box; 
     -webkit-transform-style:preserve-3d; 
        -moz-transform-style:preserve-3d; 
     width:100%; height:350px; 
     text-align:center; 
+    position:absolute; top:0; z-index:2; 
+    padding:15px; 
     
-    h2 { 
-        margin-bottom:0; 
-        text-transform:uppercase; 
-        font:bold 18px 'Helvetica Neue', Arial; 
-        color:#333; 
-    }
+    h2 { margin-bottom:0; text-transform:uppercase; font:bold 18px 'Helvetica Neue', Arial; color:#333; }
     img { border-radius:100%; width:110px; padding:5px; border:1px solid #ddd; }
     address { color:#999; font-size:14px; font-style:normal; }
-    
-    // 3d faces 
-    $faceLength: 10px; 
-    [class*="face-"] { 
-        position:absolute; background-color:rgba(0,0,0,.3); 
-    }
-    .face-left, .face-right { top:0; bottom:0; width:$faceLength; @include transform(translateZ(-$faceLength/2) rotateY(90deg)); }
-    .face-left  { left:-$faceLength/2; }
-    .face-right { right:-$faceLength/2; }
-    .face-top, .face-bottom { left:0; right:0; height:$faceLength; @include transform(translateZ(-$faceLength/2) rotateX(90deg)); }
-    .face-top    { top:-$faceLength/2; }
-    .face-bottom { bottom:-$faceLength/2; }
-    .face-back { top:0; bottom:0; left:0; right:0; background-color:#f1f1f1; @include transform(translateZ(-$faceLength/2)); }
 }
 .half-1, .half-2 { 
     background:white; border-radius:3px; height:350px; 
@@ -100,7 +106,7 @@ $mainColHeight: 400px;
 .half-2 { right:0; }
 .half-2 .wraper { right:0; margin-left:-$mainColWidth/4; }
 
-.edit { 
+.tools { 
     display:inline-block; 
     position:absolute; top:10px; right:10px; z-index:2; 
     @include transform(translate3d(0,0,1px));
@@ -110,15 +116,28 @@ $mainColHeight: 400px;
     }
 }
 
+// edit view
+.user-edit { 
+    width:100%; height:350px; 
+    text-align:center; 
+    position:absolute; right:0; z-index:1; 
+    
+    &.hidden { @include transform( scale(.95) ); }
+    &.shown  { @include transform( scale(1) ); }
+}
+
 
 // css animations
-.flip-in { @include animation(flip-in 1.5s ease); }
-@-webkit-keyframes flip-in { 
+.flipin { @include animation(flipin 1.5s ease both); }
+@-webkit-keyframes flipin { 
     from { -webkit-transform: rotateX(180deg); }
-    to   { -webkit-transform: rotateX(0deg); } }
-@-moz-keyframes flip-in { 
-    from { -moz-transform: rotateX(180deg); }
-    to   { -moz-transform: rotateX(0deg); } 
+    to   { -webkit-transform: rotateX(0deg); } 
+}
+.flipout { @include animation(flipout 1.5s ease both); }
+@-webkit-keyframes flipout { 
+    from { -webkit-transform: translateX(0px) scale(1); } 
+    50%  { -webkit-transform: translateX(-100px) scale(.8); } 
+    to   { -webkit-transform: translateX(-80px) scale(.8); } 
 }
 .sol { @include animation(sol 1.5s ease both); }
 @-webkit-keyframes sol { 

@@ -83,17 +83,15 @@ App.UserRoute = Ember.Route.extend({
 App.UsersController = Ember.ArrayController.extend();
 
 App.UserController = Ember.ObjectController.extend({
-    isOpen: false, 
+    isEditing: false, 
     
     edit: function(){
-        this.toggleProperty('isOpen', true); 
+        this.set('isEditing', true); 
         this.transitionToRoute('user.edit'); 
     }
 });
 
 App.UserView = Ember.View.extend({
-    classNames: ['profile', 'flip-in'], 
-    
     didInsertElement: function(){
         var $elem = this.$();
         

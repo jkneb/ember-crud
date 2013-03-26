@@ -33,40 +33,34 @@
     </script>
     
     <script type="text/x-handlebars" data-template-name="user">
-        <div class="edit">
-            <a href="#" class="icon-pencil" {{action edit}}></a>
-        </div>
-        <div {{bindAttr class=":half-1 isOpen:sol"}}>
-            <div class="wraper">
-                <img {{bindAttr src="avatarUrl"}}>
-                <h2>{{name}}</h2>
-                <address>{{email}}</address>
+        <div {{bindAttr class=":user-profile :pane isEditing:flipout:flipin"}}>
+            <div class="tools">
+                <a href="#" class="icon-pencil" {{action edit}}></a>
             </div>
-        </div>
-        <div {{bindAttr class=":half-2 isOpen:sor"}}>
-            <div class="wraper">
-                <img {{bindAttr src="avatarUrl"}}>
-                <h2>{{name}}</h2>
-                <address>{{email}}</address>
-            </div>
+            
+            <img {{bindAttr src="avatarUrl"}}>
+            <h2>{{name}}</h2>
+            <address>{{email}}</address>
+            
+            {{partial faces}}
         </div>
         
-        {{outlet}}
-        
-        {{partial faces}}
+        <div {{bindAttr class=":user-edit :pane isEditing:shown:hidden"}}>
+            {{outlet}}
+            {{partial faces}}
+        </div>
     </script>
+    
+    <script type="text/x-handlebars" data-template-name="user/edit">
+        <p>I am the edit view</p>
+    </script>
+    
     <script type="text/x-handlebars" data-template-name="_faces">
         <span class="face-left"></span>
         <span class="face-right"></span>
         <span class="face-top"></span>
         <span class="face-bottom"></span>
-        <!--span class="face-back"></span-->
-    </script>
-    
-    <script type="text/x-handlebars" data-template-name="user/edit">
-        <input type="text" name="some_name" value="" id="some_name">
-        <input type="text" name="some_name" value="" id="some_name">
-        <input type="text" name="some_name" value="" id="some_name">
+        <span class="face-back"></span>
     </script>
     
     <script src="js/libs/jquery-1.9.1.js"></script>

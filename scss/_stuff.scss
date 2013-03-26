@@ -1,7 +1,7 @@
-body { font:75% Helvetica, Arial, sans-serif; overflow-y:scroll; }
+body { font:75% Helvetica, Arial, sans-serif; overflow-y:scroll; background-color:#f1f1f1; }
 
 header, footer { 
     @extend .border-box; 
-    height:35px; padding:10px; background-color:#f1f1f1; 
+    height:35px; padding:10px; 
 }
 i { font-style:normal; }
