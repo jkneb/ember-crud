@@ -2,6 +2,7 @@
 @import "mixins";
 @import "normalize";
 @import "forms";
+@import "buttons";
 @import "icons";
 @import "utils";
 @import "stuff";
@@ -16,7 +17,7 @@ $mainColHeight: 400px;
 .main { 
     @extend .border-box; 
     position:relative; 
-    margin:0 auto; 
+    margin:50px auto; 
     width:$mainColWidth; 
     -webkit-perspective:2500px; 
        -moz-perspective:2500px; 
@@ -125,9 +126,7 @@ $mainColHeight: 400px;
     visibility:hidden; 
     padding:25px; 
     
-    label {  }
-    input { width:100%; }
-    textarea { width:100%; height:80px; }
+    button { margin-top:5px; }
     
     &.hidden {  }
     &.shown  {  }

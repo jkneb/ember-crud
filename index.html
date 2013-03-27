@@ -47,7 +47,7 @@
         {{! http://emberjs.com/guides/templates/binding-element-class-names/#toc_binding-to-boolean-values }}
         <div {{bindAttr class=":user-profile :pane isEditing:flipout:flipin"}}>
             <div class="tools">
-                <a href="#" class="icon-pencil" {{action edit}}></a>
+                <button class="icon-pencil" {{action edit}}></button>
             </div>
             
             <img {{bindAttr src="avatarUrl"}}>
@@ -69,8 +69,8 @@
     <script type="text/x-handlebars" data-template-name="user/edit">
         <form>
             <div class="line">
-                <label for="avatarUrl">Choose your avatar image</label>
-                <input type="text" name="avatarUrl" {{bindAttr value="avatarUrl"}} id="avatarUrl" />
+                <label for="avatarUrl">Choose your avatar</label>
+                {{view Ember.TextField valueBinding="view.avatarUrl"}}
             </div>
             <div class="line">
                 <label for="name">Your name</label>
@@ -82,7 +82,11 @@
             </div>
             <div class="line">
                 <label for="bio">Your short bio</label>
-                <textarea name="bio" id="bio">{{bio}}</textarea>
+                <textarea name="bio" id="bio" value="bob"></textarea>
+            </div>
+            <div class="line">
+                <button type="submit" value="save"  class="fright">save</button>
+                <button type="reset" value="cancel" class="icon-arrow-left fleft" {{action closeEditing}}></button>
             </div>
         </form>
     </script>
