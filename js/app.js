@@ -50,7 +50,7 @@ App.UsersController = Ember.ArrayController.extend();
 App.UserController = Ember.ObjectController.extend({
     // the property isEditing is also used in the user template 
     // this will let us switch class names if false or true
-    isEditing: false, 
+    isEditing: true, 
     
     edit: function(){
         this.set('isEditing', true); 

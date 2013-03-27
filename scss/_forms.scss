@@ -1,0 +1,17 @@
+// forms styles
+
+form { 
+    margin:0; text-align:left; 
+}
+input, textarea { 
+    @include box-sizing(border-box); 
+    padding:5px; margin-bottom:7px; 
+    color:#666; 
+    border:1px solid #ccc; 
+    box-shadow:inset 0px 1px 1px rgba(0,0,0,.1); 
+    border-radius:4px; 
+}
+label {
+    display:block; 
+    margin-bottom:2px; 
+}

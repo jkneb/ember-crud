@@ -1,6 +1,7 @@
 @import "vars";
 @import "mixins";
 @import "normalize";
+@import "forms";
 @import "icons";
 @import "utils";
 @import "stuff";
@@ -122,7 +123,12 @@ $mainColHeight: 400px;
     text-align:center; 
     position:absolute; right:0; z-index:1; 
     visibility:hidden; 
-
+    padding:25px; 
+    
+    label {  }
+    input { width:100%; }
+    textarea { width:100%; height:80px; }
+    
     &.hidden {  }
     &.shown  {  }
 }
@@ -149,8 +155,8 @@ $mainColHeight: 400px;
 .flipout { @include animation(flipout 1.2s ease both); }
 @-webkit-keyframes flipout { 
     from { -webkit-transform: translateZ(0px) translateX(0px) scale(1); } 
-    50%  { -webkit-transform: translateZ(-10px) translateX(-100px) scale(.9); } 
-    to   { -webkit-transform: translateZ(-10px) translateX( -80px) scale(.9); } 
+    50%  { -webkit-transform: translateZ(-10px) translateX(-150px) scale(.9); } 
+    to   { -webkit-transform: translateZ(-10px) translateX( -120px) scale(.9); } 
 }
 .sol { @include animation(sol 1.5s ease both); }
 @-webkit-keyframes sol { 

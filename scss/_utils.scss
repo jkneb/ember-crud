@@ -14,3 +14,4 @@
          -ms-user-select:none;
              user-select:none;
 }
+.line { @include clearfix(); }

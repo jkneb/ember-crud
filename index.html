@@ -67,7 +67,24 @@
     </script>
     
     <script type="text/x-handlebars" data-template-name="user/edit">
-        <p>I am the edit view</p>
+        <form>
+            <div class="line">
+                <label for="avatarUrl">Choose your avatar image</label>
+                <input type="text" name="avatarUrl" {{bindAttr value="avatarUrl"}} id="avatarUrl" />
+            </div>
+            <div class="line">
+                <label for="name">Your name</label>
+                <input type="text" name="name" {{bindAttr value="name"}} id="name" />
+            </div>
+            <div class="line">
+                <label for="email">Your email</label>
+                <input type="text" name="email" {{bindAttr value="email"}} id="email" />
+            </div>
+            <div class="line">
+                <label for="bio">Your short bio</label>
+                <textarea name="bio" id="bio">{{bio}}</textarea>
+            </div>
+        </form>
     </script>
     
     <script type="text/x-handlebars" data-template-name="users/create">
