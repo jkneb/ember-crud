@@ -38,6 +38,7 @@ App.UsersRoute = Ember.Route.extend({
 // in fact we don't even need to declare the userRoute 
 /*App.UserRoute = Ember.Route.extend();*/
 
+//App.EditRoute = Ember.Route.extend();
 
 // the users route will render a list of users so we need an ArrayController
 // and also pay attention to the handlbars users template 
@@ -50,11 +51,19 @@ App.UsersController = Ember.ArrayController.extend();
 App.UserController = Ember.ObjectController.extend({
     // the property isEditing is also used in the user template 
     // this will let us switch class names if false or true
-    isEditing: true, 
+    isEditing: false, 
     
     edit: function(){
         this.set('isEditing', true); 
         this.transitionToRoute('user.edit'); 
+    }
+});
+
+App.UserEditController = Ember.ObjectController.extend({
+    needs: ['user'],
+    closeEditing: function(){
+        this.get('controllers.user').set('isEditing', false); 
+        this.transitionToRoute('user'); 
     }
 });
 
@@ -104,6 +113,3 @@ App.UserView = Ember.View.extend({
         });*/
     }
 });
-
-App.EditController = Ember.ObjectController.extend();
-
