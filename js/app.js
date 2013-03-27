@@ -9,6 +9,7 @@ App.Router.map(function(){
         this.resource('user', { path:'/:user_id' }, function(){
             this.route('edit');
         });
+        this.route('create');
     });
 });
 
@@ -24,59 +25,10 @@ App.IndexRoute = Ember.Route.extend({
 App.UsersRoute = Ember.Route.extend({
     model: function(){
         return App.User.find();
-    },
-    setupController:function(controller){
-        /*App.User.findAll().done(function(users){
-            // when the AJAX call is done fill the content property with our "ember converted" users
-            controller.set('content', users);
-        });*/
     }
 });
-App.UserRoute = Ember.Route.extend({
-    /*model: function(params){
-        return params.user_id;
-    }, 
-    setupController: function(controller, params){
-        var userId = parseInt(params);
-
-        App.User.findById(userId).done(function(user){
-            controller.set('content', user);
-        });
-    }, 
-    serialize: function(id){
-        return { user_id: id }
-    }*/
-}); 
 
 
-// let's give it some static methods so we can call it later
-// http://emberjs.com/guides/object-model/reopening-classes-and-instances/
-// as we are not using Ember-Data let's create some convenient methods to access our json datas
-// to convert them into ember objects
-/*App.User.reopenClass({
-    findById: function(id){
-        return this.findAll().then(function(users){
-            return users[id];
-        });
-    }, 
-    findAll: function(){ 
-        return $.getJSON('/json/users.json').then(
-            // everything went fine...
-            function(json) {
-                var emberUsers = [];
-                var len = json.length;
-                for (var i=0; i<len; i++){
-                    emberUsers.push( App.User.create(json[i]) );
-                }
-                return emberUsers;
-            }, 
-            // something went wrong...
-            function(err) {
-                throw new Error( 'json file status is: ' + err.state() );
-            }
-        );
-    }
-});*/
 
 // pay attention to the handlbars data-template-name="users" template 
 // see the {{#each user in controller}} tag? In this case controller = UsersController
@@ -138,4 +90,5 @@ App.UserView = Ember.View.extend({
     }
 });
 
+App.EditController = Ember.ObjectController.extend();
 

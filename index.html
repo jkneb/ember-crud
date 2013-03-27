@@ -8,14 +8,7 @@
 <body>
     
     <script type="text/x-handlebars" data-template-name="application">
-        <header>
-            {{#linkTo "index"}}Home{{/linkTo}} 
-            {{#linkTo "users"}}Users{{/linkTo}}
-        </header>
-        
-        <div class="main">
             {{outlet}}
-        </div>
     </script>
     
     <script type="text/x-handlebars" data-template-name="users">
@@ -47,12 +40,15 @@
         
         <div {{bindAttr class=":user-edit :pane isEditing:shown:hidden"}}>
             {{outlet}}
-            {{partial faces}}
         </div>
     </script>
     
     <script type="text/x-handlebars" data-template-name="user/edit">
         <p>I am the edit view</p>
+    </script>
+    
+    <script type="text/x-handlebars" data-template-name="users/create">
+        <p>Oh yeah lets create a new user</p>
     </script>
     
     <script type="text/x-handlebars" data-template-name="_faces">
