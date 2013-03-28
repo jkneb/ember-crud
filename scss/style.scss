@@ -48,9 +48,6 @@ $mainColHeight: 400px;
     border-radius:4px; 
     padding:0; list-style:none; 
     
-    > li { 
-        //&:nth-child(odd) { background-color:#f7f7f7; }
-    }
     li a { 
         display:block; padding:15px 20px; 
         text-decoration:none; color:#eee; 
@@ -69,7 +66,7 @@ $mainColHeight: 400px;
    border:1px solid #ccc; 
    
    // 3d faces 
-   $faceLength: 10px; 
+   $faceLength: 6px; 
    [class*="face-"] { 
        position:absolute; background-color:rgba(0,0,0,.3); 
    }
@@ -95,6 +92,7 @@ $mainColHeight: 400px;
     h2 { margin-bottom:0; text-transform:uppercase; font:bold 18px 'Helvetica Neue', Arial; color:#333; }
     img { border-radius:100%; width:110px; padding:5px; border:1px solid #ddd; }
     address { color:#999; font-size:14px; font-style:normal; }
+    .bio { color:#999; font-size:13px; text-align:justify; }
 }
 .half-1, .half-2 { 
     background:white; border-radius:3px; height:350px; 
@@ -111,10 +109,11 @@ $mainColHeight: 400px;
 .tools { 
     display:inline-block; 
     position:absolute; top:10px; right:10px; z-index:2; 
-    @include transform(translate3d(0,0,1px));
+    @include transform(translate3d(0,0,0));
     .icon-pencil { 
         display:block; cursor:pointer; 
-        font-size:22px; text-decoration:none; 
+        font-size:15px; text-decoration:none; 
+        padding:4px 5px; 
     }
 }
 
@@ -139,31 +138,54 @@ $mainColHeight: 400px;
     from { -webkit-transform: rotateX(180deg); }
     to   { -webkit-transform: rotateX(0deg); } 
 }
+@-moz-keyframes flipin { 
+    from { -moz-transform: rotateX(180deg); }
+    to   { -moz-transform: rotateX(0deg); } 
+}
+
+.scalein { @include animation(scalein .8s ease both); }
+@-webkit-keyframes scalein { 
+    from { -webkit-transform: translateZ(-10px) translateX(-150px) scale(.9); } 
+    50%  { -webkit-transform: translateZ( 0px) translateX(-120px) scale(1); } 
+    to   { -webkit-transform: translateZ( 0px) translateX(0px) scale(1); } 
+}
+@-moz-keyframes scalein { 
+    from { -moz-transform: translateZ(0px) translateX(0px) scale(1); } 
+    50%  { -moz-transform: translateZ(-10px) translateX(-150px) scale(.9); } 
+    to   { -moz-transform: translateZ(-10px) translateX( -120px) scale(.9); } 
+}
+
+.scaleout { @include animation(scaleout .8s ease both); }
+@-webkit-keyframes scaleout { 
+    from { -webkit-transform: translateZ(0px) translateX(0px) scale(1); } 
+    50%  { -webkit-transform: translateZ(-10px) translateX(-150px) scale(.9); } 
+    to   { -webkit-transform: translateZ(-10px) translateX( -120px) scale(.9); } 
+}
+@-moz-keyframes scaleout { 
+    from { -moz-transform: translateZ(0px) translateX(0px) scale(1); } 
+    50%  { -moz-transform: translateZ(-10px) translateX(-150px) scale(.9); } 
+    to   { -moz-transform: translateZ(-10px) translateX( -120px) scale(.9); } 
+}
+
+.hidden { @include animation(hidden 1s ease both); }
+@-webkit-keyframes hidden { 
+    from { opacity:1; } 
+    to   { opacity:0; } 
+}
+@-moz-keyframes hidden { 
+    from { opacity:1; } 
+    to   { opacity:0; } 
+}
+
 .shown { visibility:visible; @include animation(shown 1s ease both); }
 @-webkit-keyframes shown { 
     from { opacity:0; -webkit-transform: translateZ(-10px) translateX(0px) scale(.9); } 
     50%  { opacity:1; -webkit-transform: translateZ(0px) translateX(100px) scale(1); } 
     to   { opacity:1; -webkit-transform: translateZ(0px) translateX(0px) scale(1); } 
 }
-.hidden { @include animation(hidden 1s ease both); }
-@-webkit-keyframes hidden { 
-    from { opacity:1; } 
-    50%  { opacity:0; } 
-    to   { opacity:0; } 
+@-moz-keyframes shown { 
+    from { opacity:0; -moz-transform: translateZ(-10px) translateX(0px) scale(.9); } 
+    50%  { opacity:1; -moz-transform: translateZ(0px) translateX(100px) scale(1); } 
+    to   { opacity:1; -moz-transform: translateZ(0px) translateX(0px) scale(1); } 
 }
-.flipout { @include animation(flipout 1.2s ease both); }
-@-webkit-keyframes flipout { 
-    from { -webkit-transform: translateZ(0px) translateX(0px) scale(1); } 
-    50%  { -webkit-transform: translateZ(-10px) translateX(-150px) scale(.9); } 
-    to   { -webkit-transform: translateZ(-10px) translateX( -120px) scale(.9); } 
-}
-.sol { @include animation(sol 1.5s ease both); }
-@-webkit-keyframes sol { 
-    from { -webkit-transform: rotateX(  0deg); }
-    to   { -webkit-transform: rotateY(-80deg); } 
-}
-.sor { @include animation(sor 1.5s ease both); }
-@-webkit-keyframes sor { 
-    from { -webkit-transform: rotateX(  0deg); }
-    to   { -webkit-transform: rotateY(80deg); }
-}
+

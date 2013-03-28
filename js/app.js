@@ -3,11 +3,16 @@ window.App = Ember.Application.create({
     LOG_TRANSITIONS: true
 });
 
+
+// ----------------- \
+// ROUTING
+// ----------------- \
+
 // this is where we declare our routes
 App.Router.map(function(){
     // this route will be our list of all users
     this.resource('users', function(){
-        // this one is nested and dynamic we need it to see one user at a time with its id
+        // this one is nested and is dynamic, we need it to see one user at a time with its id
         this.resource('user', { path:'/:user_id' }, function(){
             // and another nested one for editing the current user
             this.route('edit');
@@ -33,39 +38,69 @@ App.UsersRoute = Ember.Route.extend({
     }
 });
 
-// we would need to define model for our nested/dynamic userRoute 
-// but by following Ember's naming conventions we get it for free 
-// in fact we don't even need to declare the userRoute 
-/*App.UserRoute = Ember.Route.extend();*/
+// when accessing this route we want to make sure 
+// that the editMode property remains false 
+App.UserRoute = Ember.Route.extend({
+    setupController: function(controller){
+        controller.set('editMode', false);
+    }
+});
 
-//App.EditRoute = Ember.Route.extend();
 
-// the users route will render a list of users so we need an ArrayController
+App.UserEditRoute = Ember.Route.extend({
+    activate: function(){
+        console.log('entering edit route');
+        App.get('controllers.user').set('editMode', true); 
+    },
+    deactivate: function(){
+        console.log('exiting edit route');
+        App.get('controllers.user').set('editMode', false); 
+    }
+});
+
+
+// ----------------- \
+// CONTROLLERS
+// ----------------- \
+
+// as the usersRoute grabs a list of users we need an ArrayController 
+// because ArrayController are meant to manage multiple models 
+// http://emberjs.com/guides/controllers/#toc_representing-models 
 // and also pay attention to the handlbars users template 
 // you'll see the {{#each user in controller}} which starts the loop 
-// well in that particular case controller means UsersController
+// well in the template controller = UsersController
 App.UsersController = Ember.ArrayController.extend();
 
 // our nested user route will render only a single user at a time 
 // so in this case we'll use an ObjectController
 App.UserController = Ember.ObjectController.extend({
-    // the property isEditing is also used in the user template 
-    // this will let us switch class names if false or true
-    isEditing: false, 
+    // the property editMode is also used in the user template 
+    // we will use it to manage css transitions when entering and exiting the edit route
+    editMode: false, 
     
     edit: function(){
-        this.set('isEditing', true); 
         this.transitionToRoute('user.edit'); 
     }
 });
 
 App.UserEditController = Ember.ObjectController.extend({
-    needs: ['user'],
+    // we want this controller to inherit from its parent controller 
+    // in this case it's userController 
+    // http://emberjs.com/guides/controllers/dependencies-between-controllers/ 
+    needs: ['user'], 
+    
+    // this method sets the userController editMode property
     closeEditing: function(){
-        this.get('controllers.user').set('isEditing', false); 
+        //this.get('controllers.user').set('editMode', false); 
+        // and then goes back to the previous route 
         this.transitionToRoute('user'); 
     }
 });
+
+
+// ----------------- \
+// VIEWS
+// ----------------- \
 
 App.UserView = Ember.View.extend({
     didInsertElement: function(){

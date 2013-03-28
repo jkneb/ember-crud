@@ -42,10 +42,10 @@
     
     <script type="text/x-handlebars" data-template-name="user">
         {{! "user-profile" and "pane" are static class names }}
-        {{! if "isEditing" is true, "flipout" will be printed }}
-        {{! if "isEditing" is true, then "flipin" will be printed }}
+        {{! if "editMode" is true, "scaleout" will be printed }}
+        {{! if "editMode" is false, then "scalein" will be printed }}
         {{! http://emberjs.com/guides/templates/binding-element-class-names/#toc_binding-to-boolean-values }}
-        <div {{bindAttr class=":user-profile :pane isEditing:flipout:flipin"}}>
+        <div {{bindAttr class=":user-profile :pane editMode:scaleout:flipin"}}>
             <div class="tools">
                 <button class="icon-pencil" {{action edit}}></button>
             </div>
@@ -53,6 +53,7 @@
             <img {{bindAttr src="avatarUrl"}}>
             <h2>{{name}}</h2>
             <address>{{email}}</address>
+            <!--p class="bio">{{bio}}</p-->
             
             {{! partials are a good way to clean a bit the code, think of it as includes in php }}
             {{! simply start your template name with a _ }}
@@ -60,35 +61,33 @@
             {{partial faces}}
         </div>
         
-        {{! again here use the isEditing property to switch class names between "shown" and "hidden" }}
-        <div {{bindAttr class=":user-edit :pane isEditing:shown:hidden"}}>
+        {{! again here use the editMode property to switch class names between "shown" and "hidden" }}
+        <div {{bindAttr class=":user-edit :pane editMode:shown:hidden"}}>
             {{outlet}}
         </div>
     </script>
     
     <script type="text/x-handlebars" data-template-name="user/edit">
-        <form>
-            <div class="line">
-                <label for="avatarUrl">Choose your avatar</label>
-                {{view Ember.TextField valueBinding="view.avatarUrl"}}
-            </div>
-            <div class="line">
-                <label for="name">Your name</label>
-                <input type="text" name="name" {{bindAttr value="name"}} id="name" />
-            </div>
-            <div class="line">
-                <label for="email">Your email</label>
-                <input type="text" name="email" {{bindAttr value="email"}} id="email" />
-            </div>
-            <div class="line">
-                <label for="bio">Your short bio</label>
-                <textarea name="bio" id="bio" value="bob"></textarea>
-            </div>
-            <div class="line">
-                <button type="submit" value="save"  class="fright">save</button>
-                <button type="reset" value="cancel" class="icon-arrow-left fleft" {{action closeEditing}}></button>
-            </div>
-        </form>
+        <div class="line">
+            <label for="avatarUrl">Choose your avatar</label>
+            {{view Ember.TextField valueBinding="view.avatarUrl"}}
+        </div>
+        <div class="line">
+            <label for="name">Your name</label>
+            <input type="text" name="name" {{bindAttr value="name"}} id="name" />
+        </div>
+        <div class="line">
+            <label for="email">Your email</label>
+            <input type="text" name="email" {{bindAttr value="email"}} id="email" />
+        </div>
+        <div class="line">
+            <label for="bio">Your short bio</label>
+            <textarea name="bio" id="bio" value="bob"></textarea>
+        </div>
+        <div class="line">
+            <button class="blue fright" {{action saveRecord}}>save <i class="icon-arrow-right"></i></button>
+            <button class="icon-arrow-left fleft" {{action closeEditing}}> back </button>
+        </div>
     </script>
     
     <script type="text/x-handlebars" data-template-name="users/create">

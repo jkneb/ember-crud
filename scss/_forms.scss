@@ -1,8 +1,5 @@
 // forms styles 
 // ------------------------------------ \
-form { 
-    margin:0; text-align:left; 
-}
 input, textarea { 
     @include box-sizing(border-box); 
     padding:5px; margin-bottom:7px; 
@@ -13,7 +10,8 @@ input, textarea {
     width:100%; 
 }
 textarea { min-height:80px; }
-label {
+label { 
+    text-align:left; 
     display:block; 
     margin-bottom:2px; 
 }
@@ -21,15 +19,15 @@ label {
 
 // buttons 
 // ------------------------------------ \
-[type=submit], [type=reset], button, .button {
+button, .button {
     display:inline-block; width:auto; 
     box-shadow:none; box-shadow:0 1px 1px rgba(0,0,0,.3); 
     padding:4px 12px; 
     border-radius:3px; 
 }
 
-$blue:#0088cc;
 $gray:#eee;
+$blue:#30a1e2;
 
 @mixin buttonColorz($colorScheme) {
     color:white; 
@@ -40,11 +38,5 @@ $gray:#eee;
     &:hover { background:$colorScheme; }
     &:active { background:$colorScheme; box-shadow:inset 0 1px 1px rgba(0,0,0,.2); }
 }
-[type=submit], .blue { 
-    @include buttonColorz($blue); 
-}
-[type=reset], .gray, button { 
-    @include buttonColorz($gray){ 
-        color:#666; text-shadow:0 1px 0 white; 
-    }
-}
+button, .gray   { @include buttonColorz($gray){ color:#666; text-shadow:0 1px 0 white; } }
+.blue           { @include buttonColorz($blue); }
