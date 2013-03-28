@@ -53,10 +53,9 @@
             <img {{bindAttr src="avatarUrl"}}>
             <h2>{{name}}</h2>
             <address>{{email}}</address>
-            <!--p class="bio">{{bio}}</p-->
             
             {{! partials are a good way to clean a bit the code, think of it as includes in php }}
-            {{! simply start your template name with a _ }}
+            {{! remember to start your template name with a _ }}
             {{! here we inject a _faces template with this partial tag }}
             {{partial faces}}
         </div>

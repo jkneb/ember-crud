@@ -122,13 +122,13 @@ $mainColHeight: 400px;
     width:100%; height:350px; 
     text-align:center; 
     position:absolute; right:0; z-index:1; 
-    visibility:hidden; 
+    
     padding:25px; 
     
     button { margin-top:5px; }
     
-    &.hidden {  }
-    &.shown  {  }
+    &.hidden { visibility:hidden; }
+    &.shown  { visibility:visible; }
 }
 
 
@@ -177,7 +177,7 @@ $mainColHeight: 400px;
     to   { opacity:0; } 
 }
 
-.shown { visibility:visible; @include animation(shown 1s ease both); }
+.shown { @include animation(shown 1s ease both); }
 @-webkit-keyframes shown { 
     from { opacity:0; -webkit-transform: translateZ(-10px) translateX(0px) scale(.9); } 
     50%  { opacity:1; -webkit-transform: translateZ(0px) translateX(100px) scale(1); } 

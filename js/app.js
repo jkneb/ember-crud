@@ -47,16 +47,9 @@ App.UserRoute = Ember.Route.extend({
 });
 
 
-App.UserEditRoute = Ember.Route.extend({
-    activate: function(){
-        console.log('entering edit route');
-        App.get('controllers.user').set('editMode', true); 
-    },
-    deactivate: function(){
-        console.log('exiting edit route');
-        App.get('controllers.user').set('editMode', false); 
-    }
-});
+/*App.UserEditRoute = Ember.Route.extend({
+    
+});*/
 
 
 // ----------------- \
@@ -79,7 +72,8 @@ App.UserController = Ember.ObjectController.extend({
     editMode: false, 
     
     edit: function(){
-        this.transitionToRoute('user.edit'); 
+        this.set('editMode', true);
+        this.transitionToRoute('user.edit');
     }
 });
 
@@ -91,7 +85,7 @@ App.UserEditController = Ember.ObjectController.extend({
     
     // this method sets the userController editMode property
     closeEditing: function(){
-        //this.get('controllers.user').set('editMode', false); 
+        this.get('controllers.user').set('editMode', false); 
         // and then goes back to the previous route 
         this.transitionToRoute('user'); 
     }
