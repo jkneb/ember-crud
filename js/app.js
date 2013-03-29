@@ -41,27 +41,42 @@ App.UsersRoute = Ember.Route.extend({
 // when accessing this route we want to make sure 
 // that the editMode property remains false 
 App.UserRoute = Ember.Route.extend({
+    // this route model is auto generated internally by Ember
+    // because we following its naming conventions 
+    /*model: function(params) { 
+        return App.User.find(params.post_id);
+    },*/
+    
+    // and here we use the setupController hook to set a userController property
     setupController: function(controller){
-        controller.set('editMode', false);
+        //controller.set('editMode', false);
     }
 });
 
-
-/*App.UserEditRoute = Ember.Route.extend({
-    
-});*/
+// we also want to manually set user.editMode when accessing the userEditRoute (its child route) 
+// so we can use the controllerFor method to access the parent controller 
+// http://emberjs.com/guides/routing/setting-up-a-controller/ 
+App.UserEditRoute = Ember.Route.extend({
+    model: function() {
+        return this.modelFor('user');
+    }, 
+    setupController: function(controller){
+        this.controllerFor('user').set('editMode', true);
+    }, 
+    // fix when trying to 
+    deactivate: function(){ 
+        this.controllerFor('user').set('editMode', false);
+    }
+});
 
 
 // ----------------- \
 // CONTROLLERS
 // ----------------- \
 
-// as the usersRoute grabs a list of users we need an ArrayController 
+// the usersRoute grabs a LIST of users so we need an ArrayController 
 // because ArrayController are meant to manage multiple models 
 // http://emberjs.com/guides/controllers/#toc_representing-models 
-// and also pay attention to the handlbars users template 
-// you'll see the {{#each user in controller}} which starts the loop 
-// well in the template controller = UsersController
 App.UsersController = Ember.ArrayController.extend();
 
 // our nested user route will render only a single user at a time 
@@ -83,8 +98,12 @@ App.UserEditController = Ember.ObjectController.extend({
     // http://emberjs.com/guides/controllers/dependencies-between-controllers/ 
     needs: ['user'], 
     
-    // this method sets the userController editMode property
+    //user: null, 
+    //userBinding: 'controllers.user.model',
+    
+    // in the template we used a {{action closeEditing}} tag wich will trigger this method on click 
     closeEditing: function(){
+        // sets the parent controller editMode to false
         this.get('controllers.user').set('editMode', false); 
         // and then goes back to the previous route 
         this.transitionToRoute('user'); 
@@ -96,9 +115,10 @@ App.UserEditController = Ember.ObjectController.extend({
 // VIEWS
 // ----------------- \
 
+
 App.UserView = Ember.View.extend({
     didInsertElement: function(){
-        var $elem = this.$();
+        //$elem = this.$();
         
         /* rotate things with mousemove for debug mode */
         /*$(window).on('mousedown mouseup', function(e){

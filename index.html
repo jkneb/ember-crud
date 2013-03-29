@@ -69,19 +69,19 @@
     <script type="text/x-handlebars" data-template-name="user/edit">
         <div class="line">
             <label for="avatarUrl">Choose your avatar</label>
-            {{view Ember.TextField valueBinding="view.avatarUrl"}}
+            {{view Ember.TextField id="avatarUrl" valueBinding="avatarUrl"}}
         </div>
         <div class="line">
             <label for="name">Your name</label>
-            <input type="text" name="name" {{bindAttr value="name"}} id="name" />
+            {{view Ember.TextField id="name" valueBinding="name"}}
         </div>
         <div class="line">
             <label for="email">Your email</label>
-            <input type="text" name="email" {{bindAttr value="email"}} id="email" />
+            {{view Ember.TextField id="email" valueBinding="email"}}
         </div>
         <div class="line">
             <label for="bio">Your short bio</label>
-            <textarea name="bio" id="bio" value="bob"></textarea>
+            <textarea name="bio" id="bio">{{unbound bio}}</textarea>
         </div>
         <div class="line">
             <button class="blue fright" {{action saveRecord}}>save <i class="icon-arrow-right"></i></button>
