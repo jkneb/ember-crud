@@ -20,6 +20,8 @@
         {{! this is the users template (associated with the usersRoute and the usersController) }}
         {{! naming convetions are VERY important in Ember }}
         <ul class="user-list">
+            <li class="create-button">{{#linkTo "users.create" class="icon-plus"}}{{/linkTo}}</li>
+            
             {{! this is our users loop, here controller is usersController }}
             {{#each user in controller}}
             <li>
@@ -55,8 +57,8 @@
             <address>{{email}}</address>
             
             {{! partials are a good way to clean a bit the code, think of it as includes in php }}
-            {{! remember to start your template name with a _ }}
-            {{! here we inject a _faces template with this partial tag }}
+            {{! remember to start partials template name by a _ }}
+            {{! here we inject the partial _faces, it contains some reusable divs }}
             {{partial faces}}
         </div>
         
@@ -69,19 +71,19 @@
     <script type="text/x-handlebars" data-template-name="user/edit">
         <div class="line">
             <label for="avatarUrl">Choose your avatar</label>
-            {{view Ember.TextField id="avatarUrl" valueBinding="avatarUrl"}}
+            {{view Ember.TextField valueBinding="avatarUrl"}}
         </div>
         <div class="line">
             <label for="name">Your name</label>
-            {{view Ember.TextField id="name" valueBinding="name"}}
+            {{view Ember.TextField valueBinding="name"}}
         </div>
         <div class="line">
             <label for="email">Your email</label>
-            {{view Ember.TextField id="email" valueBinding="email"}}
+            {{view Ember.TextField valueBinding="email"}}
         </div>
         <div class="line">
             <label for="bio">Your short bio</label>
-            <textarea name="bio" id="bio">{{unbound bio}}</textarea>
+            {{view Ember.TextArea valueBinding="bio"}}
         </div>
         <div class="line">
             <button class="blue fright" {{action saveRecord}}>save <i class="icon-arrow-right"></i></button>
@@ -90,7 +92,28 @@
     </script>
     
     <script type="text/x-handlebars" data-template-name="users/create">
-        <p>Oh yeah lets create a new user</p>
+        <div class="user-create pane flipin">
+            <div class="line">
+                <label for="avatarUrl">Choose your avatar</label>
+                {{view Ember.TextField valueBinding="avatarUrl"}}
+            </div>
+            <div class="line">
+                <label for="name">Your name</label>
+                {{view Ember.TextField valueBinding="name"}}
+            </div>
+            <div class="line">
+                <label for="email">Your email</label>
+                {{view Ember.TextField valueBinding="email"}}
+            </div>
+            <div class="line">
+                <label for="bio">Your short bio</label>
+                {{view Ember.TextArea valueBinding="bio"}}
+            </div>
+            <div class="line">
+                <button class="blue fright" {{action addUser}}>add user</button>
+            </div>
+            {{partial faces}}
+        </div>
     </script>
     
     <script type="text/x-handlebars" data-template-name="_faces">

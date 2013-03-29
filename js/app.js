@@ -42,15 +42,10 @@ App.UsersRoute = Ember.Route.extend({
 // that the editMode property remains false 
 App.UserRoute = Ember.Route.extend({
     // this route model is auto generated internally by Ember
-    // because we following its naming conventions 
+    // because we followed its naming conventions 
     /*model: function(params) { 
         return App.User.find(params.post_id);
     },*/
-    
-    // and here we use the setupController hook to set a userController property
-    setupController: function(controller){
-        //controller.set('editMode', false);
-    }
 });
 
 // we also want to manually set user.editMode when accessing the userEditRoute (its child route) 
@@ -58,12 +53,14 @@ App.UserRoute = Ember.Route.extend({
 // http://emberjs.com/guides/routing/setting-up-a-controller/ 
 App.UserEditRoute = Ember.Route.extend({
     model: function() {
-        return this.modelFor('user');
+        // here we tell the route to use its parent model 
+        return this.modelFor('user'); 
     }, 
+    // fix when trying to manually access the route 
     setupController: function(controller){
         this.controllerFor('user').set('editMode', true);
     }, 
-    // fix when trying to 
+    // fix when trying to manually leave the route 
     deactivate: function(){ 
         this.controllerFor('user').set('editMode', false);
     }
@@ -97,9 +94,6 @@ App.UserEditController = Ember.ObjectController.extend({
     // in this case it's userController 
     // http://emberjs.com/guides/controllers/dependencies-between-controllers/ 
     needs: ['user'], 
-    
-    //user: null, 
-    //userBinding: 'controllers.user.model',
     
     // in the template we used a {{action closeEditing}} tag wich will trigger this method on click 
     closeEditing: function(){

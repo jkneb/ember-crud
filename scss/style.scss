@@ -40,6 +40,7 @@ $mainColHeight: 400px;
     position:absolute; top:0; right:0; 
 }
 
+
 // user list styles
 .user-list { 
     position:relative; top:10px; 
@@ -54,6 +55,9 @@ $mainColHeight: 400px;
         
         &:hover  { background-color:#222; }
         &.active { background-color:#000; }
+    }
+    li.create-button { 
+        
     }
 }
 
@@ -131,6 +135,10 @@ $mainColHeight: 400px;
     &.shown  { visibility:visible; }
 }
 
+// user creation styles
+.user-create {
+    @extend .user-edit; 
+}
 
 // css animations
 .flipin { @include animation(flipin 1s ease both); }

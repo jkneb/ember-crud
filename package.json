@@ -1,6 +1,6 @@
 {
   "name": "ember",
-  "description": "How to create a CRUD with Ember JS",
+  "description": "How to create a ncie simple Ember JS app with cool transitions",
   "version": "0.0.1",
   "private": true,
   "dependencies": {

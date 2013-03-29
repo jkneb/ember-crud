@@ -26,7 +26,7 @@
 }
 
 // css3 transform
-@mixin transform($params) {
+@mixin transform($params...) {
   -webkit-transform:$params;
     -moz-transform:$params;
      -ms-transform:$params;

@@ -52,12 +52,5 @@ App.User.FIXTURES = [
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
         avatarUrl: '/images/avatars/default.png'
-    },
-    {
-        id: 7,
-        name: 'John Doe',
-        email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-        avatarUrl: '/images/avatars/default.png'
     }
 ];

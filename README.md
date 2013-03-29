@@ -6,6 +6,7 @@ or with debug infos
 
 
 ### How to start the local server
+`cd path/to/this/project`  
 `npm install`  
 it will install Connect  
 `node server.js`  
