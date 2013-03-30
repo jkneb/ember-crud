@@ -151,28 +151,16 @@ $mainColHeight: 400px;
     to   { -moz-transform: rotateX(0deg); } 
 }
 
-.scalein { @include animation(scalein .8s ease both); }
-@-webkit-keyframes scalein { 
-    from { -webkit-transform: translateZ(-10px) translateX(-150px) scale(.9); } 
-    50%  { -webkit-transform: translateZ( 0px) translateX(-120px) scale(1); } 
-    to   { -webkit-transform: translateZ( 0px) translateX(0px) scale(1); } 
-}
-@-moz-keyframes scalein { 
-    from { -moz-transform: translateZ(0px) translateX(0px) scale(1); } 
-    50%  { -moz-transform: translateZ(-10px) translateX(-150px) scale(.9); } 
-    to   { -moz-transform: translateZ(-10px) translateX( -120px) scale(.9); } 
-}
-
 .scaleout { @include animation(scaleout .8s ease both); }
 @-webkit-keyframes scaleout { 
     from { -webkit-transform: translateZ(0px) translateX(0px) scale(1); } 
-    50%  { -webkit-transform: translateZ(-10px) translateX(-150px) scale(.9); } 
-    to   { -webkit-transform: translateZ(-10px) translateX( -120px) scale(.9); } 
+    50%  { -webkit-transform: translateZ(-10px) translateX(-150px) scale(.95); } 
+    to   { -webkit-transform: translateZ(-10px) translateX( -90px) scale(.95); } 
 }
 @-moz-keyframes scaleout { 
     from { -moz-transform: translateZ(0px) translateX(0px) scale(1); } 
-    50%  { -moz-transform: translateZ(-10px) translateX(-150px) scale(.9); } 
-    to   { -moz-transform: translateZ(-10px) translateX( -120px) scale(.9); } 
+    50%  { -moz-transform: translateZ(-10px) translateX(-150px) scale(.95); } 
+    to   { -moz-transform: translateZ(-10px) translateX( -90px) scale(.95); } 
 }
 
 .hidden { @include animation(hidden 1s ease both); }
@@ -187,13 +175,29 @@ $mainColHeight: 400px;
 
 .shown { @include animation(shown 1s ease both); }
 @-webkit-keyframes shown { 
-    from { opacity:0; -webkit-transform: translateZ(-10px) translateX(0px) scale(.9); } 
+    from { opacity:0; -webkit-transform: translateZ(-10px) translateX(0px) scale(.95); } 
     50%  { opacity:1; -webkit-transform: translateZ(0px) translateX(100px) scale(1); } 
     to   { opacity:1; -webkit-transform: translateZ(0px) translateX(0px) scale(1); } 
 }
 @-moz-keyframes shown { 
-    from { opacity:0; -moz-transform: translateZ(-10px) translateX(0px) scale(.9); } 
+    from { opacity:0; -moz-transform: translateZ(-10px) translateX(0px) scale(.95); } 
     50%  { opacity:1; -moz-transform: translateZ(0px) translateX(100px) scale(1); } 
     to   { opacity:1; -moz-transform: translateZ(0px) translateX(0px) scale(1); } 
 }
 
+.user-preview-mode { @include animation(user-preview-mode .8s ease both); }
+@-webkit-keyframes user-preview-mode { 
+    from { -webkit-transform: translateZ(-10px) translateX(-90px) scale(.95); }
+    to   { -webkit-transform: translateZ( 0px) translateX(0px) scale(1); } 
+}
+@-moz-keyframes user-preview-mode { 
+    from { -moz-transform: translateZ(-10px) translateX(-90px) scale(.95); }
+    to   { -moz-transform: translateZ( 0px) translateX(0px) scale(1); } 
+}
+.edit-preview-mode { @include animation(edit-preview-mode .8s ease both); }
+@-webkit-keyframes edit-preview-mode { 
+    to   { -webkit-transform: translateZ( 0px) translateX(295px) scale(1); } 
+}
+@-moz-keyframes edit-preview-mode { 
+    to   { -moz-transform: translateZ( 0px) translateX(295px) scale(1); } 
+}

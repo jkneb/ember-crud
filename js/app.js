@@ -62,7 +62,10 @@ App.UserEditRoute = Ember.Route.extend({
     }, 
     // fix when trying to manually leave the route 
     deactivate: function(){ 
-        this.controllerFor('user').set('editMode', false);
+        this.controllerFor('user').setProperties({
+            'editMode': false, 
+            'previewMode': false
+        });
     }
 });
 
@@ -83,6 +86,8 @@ App.UserController = Ember.ObjectController.extend({
     // we will use it to manage css transitions when entering and exiting the edit route
     editMode: false, 
     
+    previewMode: false, 
+    
     edit: function(){
         this.set('editMode', true);
         this.transitionToRoute('user.edit');
@@ -101,6 +106,9 @@ App.UserEditController = Ember.ObjectController.extend({
         this.get('controllers.user').set('editMode', false); 
         // and then goes back to the previous route 
         this.transitionToRoute('user'); 
+    }, 
+    togglePreviewMode: function(){
+        this.get('controllers.user').toggleProperty('previewMode'); 
     }
 });
 

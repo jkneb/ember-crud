@@ -17,7 +17,7 @@ $blue:#30a1e2;
     @include linear-gradient(lighten($colorScheme,4%), darken($colorScheme,2%)); 
     @content;
     &:hover { background:$colorScheme; }
-    &:active { background:$colorScheme; box-shadow:inset 0 1px 1px rgba(0,0,0,.2); }
+    &:active, &.active { background:$colorScheme; box-shadow:inset 0 1px 1px rgba(0,0,0,.2); }
 }
 button, .gray   { @include buttonColorz($gray){ color:#666; text-shadow:0 1px 0 white; } }
-.blue           { @include buttonColorz($blue); }
+.blue, button.active  { @include buttonColorz($blue); }

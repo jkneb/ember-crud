@@ -47,9 +47,9 @@
         {{! if "editMode" is true, "scaleout" will be printed }}
         {{! if "editMode" is false, then "scalein" will be printed }}
         {{! http://emberjs.com/guides/templates/binding-element-class-names/#toc_binding-to-boolean-values }}
-        <div {{bindAttr class=":user-profile :pane editMode:scaleout:flipin"}}>
+        <div {{bindAttr class=":user-profile :pane editMode:scaleout:flipin previewMode:user-preview-mode"}}>
             <div class="tools">
-                <button class="icon-pencil" {{action edit}}></button>
+                <button {{bindAttr class=":icon-pencil editMode:active"}} {{action edit}}></button>
             </div>
             
             <img {{bindAttr src="avatarUrl"}}>
@@ -63,7 +63,7 @@
         </div>
         
         {{! again here use the editMode property to switch class names between "shown" and "hidden" }}
-        <div {{bindAttr class=":user-edit :pane editMode:shown:hidden"}}>
+        <div {{bindAttr class=":user-edit :pane editMode:shown:hidden previewMode:edit-preview-mode"}}>
             {{outlet}}
         </div>
     </script>
@@ -86,8 +86,8 @@
             {{view Ember.TextArea valueBinding="bio"}}
         </div>
         <div class="line">
-            <button class="blue fright" {{action saveRecord}}>save <i class="icon-arrow-right"></i></button>
-            <button class="icon-arrow-left fleft" {{action closeEditing}}> back </button>
+            <button class="fright" {{action closeEditing}}> ok </button>
+            <button {{bindAttr class=":icon-eye :fleft controllers.user.previewMode:active"}} {{action togglePreviewMode}}> preview </button>
         </div>
     </script>
     
