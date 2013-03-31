@@ -57,7 +57,7 @@ $mainColHeight: 400px;
         &.active { background-color:#000; }
     }
     li.create-button { 
-        
+        position:absolute; top:0; right:5px;
     }
 }
 
@@ -96,7 +96,7 @@ $mainColHeight: 400px;
     h2 { margin-bottom:0; text-transform:uppercase; font:bold 18px 'Helvetica Neue', Arial; color:#333; }
     img { border-radius:100%; width:110px; padding:5px; border:1px solid #ddd; }
     address { color:#999; font-size:14px; font-style:normal; }
-    .bio { color:#999; font-size:13px; text-align:justify; }
+    .bio { color:#999; font-size:13px; margin-top:10px; padding:0 25px; }
 }
 .half-1, .half-2 { 
     background:white; border-radius:3px; height:350px; 
@@ -154,13 +154,13 @@ $mainColHeight: 400px;
 .scaleout { @include animation(scaleout .8s ease both); }
 @-webkit-keyframes scaleout { 
     from { -webkit-transform: translateZ(0px) translateX(0px) scale(1); } 
-    50%  { -webkit-transform: translateZ(-10px) translateX(-150px) scale(.95); } 
-    to   { -webkit-transform: translateZ(-10px) translateX( -90px) scale(.95); } 
+    50%  { -webkit-transform: translateZ(-10px) translateX(-170px) scale(.95); } 
+    to   { -webkit-transform: translateZ(-10px) translateX( -130px) scale(.95); } 
 }
 @-moz-keyframes scaleout { 
     from { -moz-transform: translateZ(0px) translateX(0px) scale(1); } 
-    50%  { -moz-transform: translateZ(-10px) translateX(-150px) scale(.95); } 
-    to   { -moz-transform: translateZ(-10px) translateX( -90px) scale(.95); } 
+    50%  { -moz-transform: translateZ(-10px) translateX(-170px) scale(.95); } 
+    to   { -moz-transform: translateZ(-10px) translateX( -130px) scale(.95); } 
 }
 
 .hidden { @include animation(hidden 1s ease both); }
@@ -177,27 +177,10 @@ $mainColHeight: 400px;
 @-webkit-keyframes shown { 
     from { opacity:0; -webkit-transform: translateZ(-10px) translateX(0px) scale(.95); } 
     50%  { opacity:1; -webkit-transform: translateZ(0px) translateX(100px) scale(1); } 
-    to   { opacity:1; -webkit-transform: translateZ(0px) translateX(0px) scale(1); } 
+    to   { opacity:1; -webkit-transform: translateZ(0px) translateX(50px) scale(1); } 
 }
 @-moz-keyframes shown { 
     from { opacity:0; -moz-transform: translateZ(-10px) translateX(0px) scale(.95); } 
     50%  { opacity:1; -moz-transform: translateZ(0px) translateX(100px) scale(1); } 
     to   { opacity:1; -moz-transform: translateZ(0px) translateX(0px) scale(1); } 
-}
-
-.user-preview-mode { @include animation(user-preview-mode .8s ease both); }
-@-webkit-keyframes user-preview-mode { 
-    from { -webkit-transform: translateZ(-10px) translateX(-90px) scale(.95); }
-    to   { -webkit-transform: translateZ( 0px) translateX(0px) scale(1); } 
-}
-@-moz-keyframes user-preview-mode { 
-    from { -moz-transform: translateZ(-10px) translateX(-90px) scale(.95); }
-    to   { -moz-transform: translateZ( 0px) translateX(0px) scale(1); } 
-}
-.edit-preview-mode { @include animation(edit-preview-mode .8s ease both); }
-@-webkit-keyframes edit-preview-mode { 
-    to   { -webkit-transform: translateZ( 0px) translateX(295px) scale(1); } 
-}
-@-moz-keyframes edit-preview-mode { 
-    to   { -moz-transform: translateZ( 0px) translateX(295px) scale(1); } 
 }

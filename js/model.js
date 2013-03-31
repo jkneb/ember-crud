@@ -15,42 +15,35 @@ App.User.FIXTURES = [
         id: 1,
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
-        bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        bio: 'Freelance web & print designer + front-end developer',
         avatarUrl: '/images/avatars/jk.jpg'
     }, 
     {
         id: 2,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
-        bio: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        bio: 'Duis aute irure dolor in reprehenderit in voluptate fugiat nulla pariatur.',
         avatarUrl: '/images/avatars/sb.jpg'
     },
     {
         id: 3,
         name: 'John Doe',
         email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         avatarUrl: '/images/avatars/default.png'
     },
     {
         id: 4,
         name: 'Jane Doe',
         email: 'jane@doe.com',
-        bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        bio: 'Duis aute irure in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
         avatarUrl: '/images/avatars/default.png'
     },
     {
         id: 5,
         name: 'John Doe',
         email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-        avatarUrl: '/images/avatars/default.png'
-    },
-    {
-        id: 6,
-        name: 'John Doe',
-        email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        bio: 'Sed do eiusmod tempor in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
         avatarUrl: '/images/avatars/default.png'
     }
 ];

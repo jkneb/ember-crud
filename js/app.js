@@ -29,7 +29,7 @@ App.IndexRoute = Ember.Route.extend({
     }
 });
 
-// we can customize what's happening when accessing the user route
+// we can customize what's happening when accessing the users route
 // here we simply retreive datas from our model and assign it to the usersRoute model
 // http://emberjs.com/guides/routing/specifying-a-routes-model/
 App.UsersRoute = Ember.Route.extend({
@@ -38,11 +38,11 @@ App.UsersRoute = Ember.Route.extend({
     }
 });
 
-// when accessing this route we want to make sure 
-// that the editMode property remains false 
+// normally we would certainly have to set stuff on our userRoute but Ember auto generated it for us :) 
+// in fact we could even delete this userRoute lines of code
 App.UserRoute = Ember.Route.extend({
-    // this route model is auto generated internally by Ember
-    // because we followed its naming conventions 
+    // this route model is auto generated internally 
+    // because we followed Ember's naming conventions 
     /*model: function(params) { 
         return App.User.find(params.post_id);
     },*/
@@ -62,10 +62,7 @@ App.UserEditRoute = Ember.Route.extend({
     }, 
     // fix when trying to manually leave the route 
     deactivate: function(){ 
-        this.controllerFor('user').setProperties({
-            'editMode': false, 
-            'previewMode': false
-        });
+        this.controllerFor('user').set('editMode', false);
     }
 });
 
@@ -77,7 +74,10 @@ App.UserEditRoute = Ember.Route.extend({
 // the usersRoute grabs a LIST of users so we need an ArrayController 
 // because ArrayController are meant to manage multiple models 
 // http://emberjs.com/guides/controllers/#toc_representing-models 
-App.UsersController = Ember.ArrayController.extend();
+App.UsersController = Ember.ArrayController.extend({
+    // and here we make it inherit from the UserController
+    needs: ['user']
+});
 
 // our nested user route will render only a single user at a time 
 // so in this case we'll use an ObjectController
@@ -85,8 +85,6 @@ App.UserController = Ember.ObjectController.extend({
     // the property editMode is also used in the user template 
     // we will use it to manage css transitions when entering and exiting the edit route
     editMode: false, 
-    
-    previewMode: false, 
     
     edit: function(){
         this.set('editMode', true);
@@ -107,9 +105,8 @@ App.UserEditController = Ember.ObjectController.extend({
         this.get('controllers.user').set('editMode', false); 
         // and then goes back to the previous route 
         this.transitionToRoute('user'); 
-    }, 
-    togglePreviewMode: function(){
-        this.get('controllers.user').toggleProperty('previewMode'); 
+        // this will save modifications we made while editing the user 
+        this.get('store').commit();
     }
 });
 

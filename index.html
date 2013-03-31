@@ -11,15 +11,15 @@
         {{! this is our main template which is called application }}
         {{! all our other templates are injected into this outlet }}
         {{! http://emberjs.com/guides/routing/generated-objects/#toc_generated-views-and-templates }}
-        <div class="main">
         {{outlet}}
-        </div>
     </script>
     
     <script type="text/x-handlebars" data-template-name="users">
+    <div {{bindAttr class=":main controllers.user.editMode:editing"}}>
+        
         {{! this is the users template (associated with the usersRoute and the usersController) }}
         {{! naming convetions are VERY important in Ember }}
-        <ul class="user-list">
+        <ul {{bindAttr class=":user-list"}}>
             <li class="create-button">{{#linkTo "users.create" class="icon-plus"}}{{/linkTo}}</li>
             
             {{! this is our users loop, here controller is usersController }}
@@ -36,10 +36,12 @@
             {{/each}}
         </ul>
         
-        {{! see the linkTo tags a few lines above? This outlet will host views reached by clicking on them (the linkTo tags) }}
+        {{! see the linkTo tag a few lines above? This outlet will host views reached by clicking on it (the linkTo tag) }}
         <div class="user-pane">
             {{outlet}}
         </div>
+        
+    </div>
     </script>
     
     <script type="text/x-handlebars" data-template-name="user">
@@ -47,7 +49,7 @@
         {{! if "editMode" is true, "scaleout" will be printed }}
         {{! if "editMode" is false, then "scalein" will be printed }}
         {{! http://emberjs.com/guides/templates/binding-element-class-names/#toc_binding-to-boolean-values }}
-        <div {{bindAttr class=":user-profile :pane editMode:scaleout:flipin previewMode:user-preview-mode"}}>
+        <div {{bindAttr class=":user-profile :pane editMode:scaleout:flipin"}}>
             <div class="tools">
                 <button {{bindAttr class=":icon-pencil editMode:active"}} {{action edit}}></button>
             </div>
@@ -55,6 +57,7 @@
             <img {{bindAttr src="avatarUrl"}}>
             <h2>{{name}}</h2>
             <address>{{email}}</address>
+            <p class="bio">{{bio}}</p>
             
             {{! partials are a good way to clean a bit the code, think of it as includes in php }}
             {{! remember to start partials template name by a _ }}
@@ -63,7 +66,7 @@
         </div>
         
         {{! again here use the editMode property to switch class names between "shown" and "hidden" }}
-        <div {{bindAttr class=":user-edit :pane editMode:shown:hidden previewMode:edit-preview-mode"}}>
+        <div {{bindAttr class=":user-edit :pane editMode:shown:hidden"}}>
             {{outlet}}
         </div>
     </script>
@@ -85,9 +88,8 @@
             <label for="bio">Your short bio</label>
             {{view Ember.TextArea valueBinding="bio"}}
         </div>
-        <div class="line">
-            <button class="fright" {{action closeEditing}}> ok </button>
-            <button {{bindAttr class=":icon-eye :fleft controllers.user.previewMode:active"}} {{action togglePreviewMode}}> preview </button>
+        <div class="aright">
+            <button class="blue" {{action closeEditing}}> ok </button>
         </div>
     </script>
     

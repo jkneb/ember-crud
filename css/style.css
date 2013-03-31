@@ -229,6 +229,8 @@ i { font-style: normal; }
 .user-list li a:hover { background-color: #222; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000357}}
 .user-list li a.active { background-color: #000; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000359}}
+.user-list li.create-button { position: absolute; top: 0; right: 5px; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000364}}
 .pane { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; background: white; border-radius: 3px; border: 1px solid #cccccc; }
@@ -258,7 +260,7 @@ i { font-style: normal; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000398}}
 .user-profile address { color: #999; font-size: 14px; font-style: normal; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000399}}
-.user-profile .bio { color: #999; font-size: 13px; text-align: justify; }
+.user-profile .bio { color: #999; font-size: 13px; margin-top: 10px; padding: 0 25px; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003101}}
 .half-1, .half-2 { background: white; border-radius: 3px; height: 350px; position: absolute; top: 0; width: 50%; overflow: hidden; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; }
@@ -304,12 +306,12 @@ i { font-style: normal; }
 .scaleout { -webkit-animation: scaleout 0.8s ease both; -moz-animation: scaleout 0.8s ease both; -ms-animation: scaleout 0.8s ease both; animation: scaleout 0.8s ease both; }
 
 @-webkit-keyframes scaleout { from { -webkit-transform: translateZ(0px) translateX(0px) scale(1); }
-  50% { -webkit-transform: translateZ(-10px) translateX(-150px) scale(0.95); }
-  to { -webkit-transform: translateZ(-10px) translateX(-90px) scale(0.95); } }
+  50% { -webkit-transform: translateZ(-10px) translateX(-170px) scale(0.95); }
+  to { -webkit-transform: translateZ(-10px) translateX(-130px) scale(0.95); } }
 
 @-moz-keyframes scaleout { from { -moz-transform: translateZ(0px) translateX(0px) scale(1); }
-  50% { -moz-transform: translateZ(-10px) translateX(-150px) scale(0.95); }
-  to { -moz-transform: translateZ(-10px) translateX(-90px) scale(0.95); } }
+  50% { -moz-transform: translateZ(-10px) translateX(-170px) scale(0.95); }
+  to { -moz-transform: translateZ(-10px) translateX(-130px) scale(0.95); } }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003166}}
 .hidden { -webkit-animation: hidden 1s ease both; -moz-animation: hidden 1s ease both; -ms-animation: hidden 1s ease both; animation: hidden 1s ease both; }
@@ -325,24 +327,8 @@ i { font-style: normal; }
 
 @-webkit-keyframes shown { from { opacity: 0; -webkit-transform: translateZ(-10px) translateX(0px) scale(0.95); }
   50% { opacity: 1; -webkit-transform: translateZ(0px) translateX(100px) scale(1); }
-  to { opacity: 1; -webkit-transform: translateZ(0px) translateX(0px) scale(1); } }
+  to { opacity: 1; -webkit-transform: translateZ(0px) translateX(50px) scale(1); } }
 
 @-moz-keyframes shown { from { opacity: 0; -moz-transform: translateZ(-10px) translateX(0px) scale(0.95); }
   50% { opacity: 1; -moz-transform: translateZ(0px) translateX(100px) scale(1); }
   to { opacity: 1; -moz-transform: translateZ(0px) translateX(0px) scale(1); } }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003188}}
-.user-preview-mode { -webkit-animation: user-preview-mode 0.8s ease both; -moz-animation: user-preview-mode 0.8s ease both; -ms-animation: user-preview-mode 0.8s ease both; animation: user-preview-mode 0.8s ease both; }
-
-@-webkit-keyframes user-preview-mode { from { -webkit-transform: translateZ(-10px) translateX(-90px) scale(0.95); }
-  to { -webkit-transform: translateZ(0px) translateX(0px) scale(1); } }
-
-@-moz-keyframes user-preview-mode { from { -moz-transform: translateZ(-10px) translateX(-90px) scale(0.95); }
-  to { -moz-transform: translateZ(0px) translateX(0px) scale(1); } }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003197}}
-.edit-preview-mode { -webkit-animation: edit-preview-mode 0.8s ease both; -moz-animation: edit-preview-mode 0.8s ease both; -ms-animation: edit-preview-mode 0.8s ease both; animation: edit-preview-mode 0.8s ease both; }
-
-@-webkit-keyframes edit-preview-mode { to { -webkit-transform: translateZ(0px) translateX(295px) scale(1); } }
-
-@-moz-keyframes edit-preview-mode { to { -moz-transform: translateZ(0px) translateX(295px) scale(1); } }
