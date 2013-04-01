@@ -46,6 +46,11 @@ App.UserRoute = Ember.Route.extend({
     /*model: function(params) { 
         return App.User.find(params.post_id);
     },*/
+
+    // force the deleteMode to false when accessing user
+    setupController: function(controller){
+        this.controllerFor('user').set('deleteMode', false);
+    }
 });
 
 // we also want to manually set user.editMode when accessing the userEditRoute (its child route) 
@@ -58,11 +63,17 @@ App.UserEditRoute = Ember.Route.extend({
     }, 
     // fix when trying to manually access the route 
     setupController: function(controller){
-        this.controllerFor('user').set('editMode', true);
+        this.controllerFor('user').setProperties({
+            'editMode': true,
+            'deleteMode': false
+        });
     }, 
     // fix when trying to manually leave the route 
     deactivate: function(){ 
-        this.controllerFor('user').set('editMode', false);
+        this.controllerFor('user').setProperties({
+            'editMode': false,
+            'deleteMode': false
+        });
     }
 });
 
@@ -85,9 +96,23 @@ App.UserController = Ember.ObjectController.extend({
     // the property editMode is also used in the user template 
     // we will use it to manage css transitions when entering and exiting the edit route
     editMode: false, 
+
+    deleteMode: false, 
     
+    delete: function(){
+        this.toggleProperty('deleteMode', true);
+    },
+    cancelDelete: function(){
+        this.set('deleteMode', false);
+    },
+    confirmDelete: function(){
+        
+    },
     edit: function(){
-        this.set('editMode', true);
+        this.setProperties({
+            'editMode': true,
+            'deleteMode': false
+        });
         this.transitionToRoute('user.edit');
     }
 });

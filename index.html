@@ -50,9 +50,18 @@
         {{! if "editMode" is false, then "scalein" will be printed }}
         {{! http://emberjs.com/guides/templates/binding-element-class-names/#toc_binding-to-boolean-values }}
         <div {{bindAttr class=":user-profile :pane editMode:scaleout:flipin"}}>
-            <div class="tools">
+            <div class="tools aright">
+                <button {{bindAttr class=":icon-trashcan :red deleteMode:active"}} {{action delete}}></button>
                 <button {{bindAttr class=":icon-pencil editMode:active"}} {{action edit}}></button>
             </div>
+
+            {{#if deleteMode}}
+            <div class="confirm-box confirmin">
+                <h4>Really?</h4>
+                <button {{action confirmDelete}} title="yes" class="delete">y</button>
+                <button {{action cancelDelete }} title="no">n</button>
+            </div>
+            {{/if}}
             
             <img {{bindAttr src="avatarUrl"}}>
             <h2>{{name}}</h2>

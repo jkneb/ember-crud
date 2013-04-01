@@ -9,6 +9,7 @@ button, .button {
 
 $gray:#eee;
 $blue:#30a1e2;
+$red:#ee6666;
 
 @mixin buttonColorz($colorScheme) {
     color:white; 
@@ -21,3 +22,4 @@ $blue:#30a1e2;
 }
 button, .gray   { @include buttonColorz($gray){ color:#666; text-shadow:0 1px 0 white; } }
 .blue, button.active  { @include buttonColorz($blue); }
+.delete, button.red.active  { @include buttonColorz($red); }
