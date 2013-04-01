@@ -18,7 +18,7 @@
     <div {{bindAttr class=":main controllers.user.editMode:editing"}}>
         
         <div class="tools">
-            {{#linkTo "users.create" class="button blue create-btn"}}<i class="icon-plus"></i>{{/linkTo}}
+            {{#linkTo "users.create" class="button blue create-btn" title="Add a new user"}}<i class="icon-plus"></i>{{/linkTo}}
         </div>
 
         {{! this is the users template (associated with the usersRoute and the usersController) }}
@@ -54,8 +54,8 @@
         {{! http://emberjs.com/guides/templates/binding-element-class-names/#toc_binding-to-boolean-values }}
         <div {{bindAttr class=":user-profile :pane editMode:scaleout:flipin"}}>
             <div class="tools aright">
-                <button {{bindAttr class=":icon-trashcan :red deleteMode:active"}} {{action delete}}></button>
-                <button {{bindAttr class=":icon-pencil editMode:active"}} {{action edit}}></button>
+                <button {{bindAttr class=":icon-trashcan :red deleteMode:active"}} {{action delete}} title="Delete user"></button>
+                <button {{bindAttr class=":icon-pencil editMode:active"}} {{action edit}} title="Edit user"></button>
             </div>
 
             {{#if deleteMode}}
@@ -101,7 +101,7 @@
             {{view Ember.TextArea valueBinding="bio"}}
         </div>
         <div class="aright">
-            <button class="blue" {{action closeEditing}}> ok </button>
+            <button class="blue" {{action closeEditing}} title="Save modifications"> ok </button>
         </div>
     </script>
     
