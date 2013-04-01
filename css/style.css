@@ -216,6 +216,9 @@ body { font: 75% Helvetica, Arial, sans-serif; overflow-y: scroll; background-co
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_stuff\.scss}line{font-family:\000032}}
 i { font-style: normal; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_stuff\.scss}line{font-family:\000033}}
+h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
+
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_confirm-box\.scss}line{font-family:\000031}}
 .confirm-box { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 7px; position: absolute; top: 0px; left: 50%; margin-left: -63px; background: white; border-radius: 3px; border: 1px solid #dddddd; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_confirm-box\.scss}line{font-family:\000039}}

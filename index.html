@@ -85,6 +85,9 @@
     
     <script type="text/x-handlebars" data-template-name="user/edit">
         <div class="line">
+            <h3>Edit user infos</h3>
+        </div>
+        <div class="line">
             <label for="avatarUrl">Choose your avatar</label>
             {{view Ember.TextField valueBinding="avatarUrl"}}
         </div>
@@ -107,6 +110,9 @@
     
     <script type="text/x-handlebars" data-template-name="users/create">
         <div class="user-create pane flipin">
+            <div class="line">
+                <h3>Add a new user</h3>
+            </div>
             <div class="line">
                 <label for="avatarUrl">Choose your avatar</label>
                 {{view Ember.TextField valueBinding="avatarUrl"}}
