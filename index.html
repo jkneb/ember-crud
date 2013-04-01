@@ -17,10 +17,13 @@
     <script type="text/x-handlebars" data-template-name="users">
     <div {{bindAttr class=":main controllers.user.editMode:editing"}}>
         
+        <div class="tools">
+            {{#linkTo "users.create" class="button blue create-btn"}}<i class="icon-plus"></i>{{/linkTo}}
+        </div>
+
         {{! this is the users template (associated with the usersRoute and the usersController) }}
         {{! naming convetions are VERY important in Ember }}
         <ul {{bindAttr class=":user-list"}}>
-            <li class="create-button">{{#linkTo "users.create" class="icon-plus"}}{{/linkTo}}</li>
             
             {{! this is our users loop, here controller is usersController }}
             {{#each user in controller}}
