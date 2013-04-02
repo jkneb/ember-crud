@@ -3,6 +3,18 @@ window.App = Ember.Application.create({
     LOG_TRANSITIONS: true
 });
 
+// this trick will handle a basic 404 error page 
+App.Router = Ember.Router.extend({
+    handleURL: function (url) {
+        try {
+            this._super(url);
+        }
+        catch (e) {
+            Em.debug('url not recognized: ' + url);
+            this.transitionTo('404');
+        }
+    }
+});
 
 // ----------------- \
 // ROUTING
@@ -20,7 +32,11 @@ App.Router.map(function(){
         // and finally the create route nested in users
         this.route('create');
     });
+
+    // our 404 error route
+    this.route('404');
 });
+
 
 // no need of a home page so we redirect "/" to "/users"
 App.IndexRoute = Ember.Route.extend({
@@ -89,6 +105,8 @@ App.UserEditRoute = Ember.Route.extend({
 // ----------------- \
 // CONTROLLERS
 // ----------------- \
+
+App.TestController = Ember.ObjectController.extend();
 
 // the usersRoute grabs a LIST of users so we need an ArrayController 
 // because ArrayController are meant to manage multiple models 
