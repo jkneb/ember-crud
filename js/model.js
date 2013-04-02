@@ -40,14 +40,14 @@ App.User.FIXTURES = [
         avatarUrl: './images/avatars/default.png'
     },
     {
-        id: 6,
+        id: 5,
         name: 'Dean Winchester',
         email: 'deany@plopmail.com',
         bio: ':)',
         avatarUrl: './images/avatars/dean.jpg'
     },
     {
-        id: 7,
+        id: 6,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
