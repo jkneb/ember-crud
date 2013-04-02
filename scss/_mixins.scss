@@ -53,3 +53,10 @@
      -moz-box-sizing: $boxmodel;
           box-sizing: $boxmodel;
 }
+
+@mixin text-shadow($params...) {
+    -webkit-text-shadow: $params;
+       -moz-text-shadow: $params;
+        -ms-text-shadow: $params;
+            text-shadow: $params;
+}
