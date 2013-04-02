@@ -53,6 +53,14 @@ App.UserRoute = Ember.Route.extend({
     }
 });
 
+
+App.UsersCreateRoute = Ember.Route.extend({
+    model: function(){
+        return {};
+    }
+});
+
+
 // we also want to manually set user.editMode when accessing the userEditRoute (its child route) 
 // so we can use the controllerFor method to access the parent controller 
 // http://emberjs.com/guides/routing/setting-up-a-controller/ 
@@ -106,7 +114,8 @@ App.UserController = Ember.ObjectController.extend({
         this.set('deleteMode', false);
     },
     confirmDelete: function(){
-        
+        this.get('content').deleteRecord();
+        this.transitionToRoute('users');
     },
     edit: function(){
         this.setProperties({
@@ -132,6 +141,12 @@ App.UserEditController = Ember.ObjectController.extend({
         this.transitionToRoute('user'); 
         // this will save modifications we made while editing the user 
         this.get('store').commit();
+    }
+});
+
+App.UsersCreateController = Ember.ObjectController.extend({
+    addUser: function(){
+        App.User.createRecord(this.content);
     }
 });
 
