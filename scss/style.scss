@@ -98,7 +98,13 @@ $mainColHeight: 400px;
     h2 { margin-bottom:0; text-transform:uppercase; font:bold 18px 'Helvetica Neue', Arial; color:#333; }
     img { border-radius:100%; width:110px; padding:5px; border:1px solid #ddd; }
     address { color:#999; font-size:14px; font-style:normal; }
-    .bio { color:#999; font-size:13px; margin-top:10px; padding:0 25px; }
+    .bio { 
+        color:#999; font-size:13px; 
+        margin:25px -15px 0 -15px; padding:20px 25px;
+        background:white;
+        border:1px solid #eee;
+        border-left:none; border-right:none;
+    }
 }
 .half-1, .half-2 { 
     background:white; border-radius:3px; height:350px; 
