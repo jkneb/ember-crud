@@ -218,3 +218,28 @@ App.UserView = Ember.View.extend({
         });*/
     }
 });
+
+App.ConfirmDeleteButtonView = Ember.View.extend({
+    // here we can handle the click event on the view
+    click: function(){
+        
+        // this.$() is the ember-ish version of the famous jQuery $(this)
+        var $this = this.$().parents('.user-profile');
+        
+        // let's clone a light version of our view by first removing all unecessary elements
+        var $lightClonedView = $this.removeClass('flipin').clone().find('.tools,.confirm-box,script,[class^=face-],.cloned-views').remove().end();
+        // now we can clone it 3 times more
+        var $firstOne  = $lightClonedView.clone().addClass('third-1');
+        var $secondOne = $lightClonedView.clone().addClass('third-2');
+        var $thirdOne  = $lightClonedView.clone().addClass('third-3');
+
+        // and agregate our three clones together into a jquery selector
+        $clonedDivs = $firstOne.add($secondOne).add($thirdOne);
+        // and finally we can append them all at once into a cloned-views container
+        $clonedDivs.appendTo('.cloned-views');
+        
+        // TODO: create 3 cool css animations for our 3 parts cloned view
+        
+        //this.get('controller').send('confirmDelete');
+    }
+});

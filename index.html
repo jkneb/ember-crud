@@ -61,8 +61,8 @@
             {{#if deleteMode}}
             <div class="confirm-box confirmin">
                 <h4>Really?</h4>
-                <button {{action confirmDelete}} title="yes">y</button>
-                <button {{action cancelDelete }} title="no">n</button>
+                {{#view App.ConfirmDeleteButtonView tagName="button"}}y{{/view}}
+                <button {{action cancelDelete}} title="no">n</button>
             </div>
             {{/if}}
             
@@ -75,6 +75,9 @@
             {{! remember to start partials template name by a _ }}
             {{! here we inject the partial _faces, it contains some reusable divs }}
             {{partial faces}}
+
+            {{! this div is empty for now but we use it for the deleteUser css animation }}
+            <div class="cloned-views"></div>
         </div>
         
         {{! again here use the editMode property to switch class names between "shown" and "hidden" }}
