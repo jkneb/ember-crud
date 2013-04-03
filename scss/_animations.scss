@@ -1,0 +1,61 @@
+/* 
+ * A collection of css animations 
+ * stored in class names so you can easely addClass/removeClass them on any HTML elements 
+ * the simple action to add the class on a newly added element will trigger the animations
+*/
+
+
+.flipin { @include animation(flipin 1s ease both); }
+@-webkit-keyframes flipin { 
+    from { -webkit-transform: rotateX(180deg); }
+    to   { -webkit-transform: rotateX(0deg); } 
+}
+@-moz-keyframes flipin { 
+    from { -moz-transform: rotateX(180deg); }
+    to   { -moz-transform: rotateX(0deg); } 
+}
+
+.scaleout { @include animation(scaleout .8s ease both); }
+@-webkit-keyframes scaleout { 
+    from { -webkit-transform: translateZ(0px) translateX(0px) scale(1); } 
+    50%  { -webkit-transform: translateZ(-10px) translateX(-170px) scale(.95); } 
+    to   { -webkit-transform: translateZ(-10px) translateX( -130px) scale(.95); } 
+}
+@-moz-keyframes scaleout { 
+    from { -moz-transform: translateZ(0px) translateX(0px) scale(1); } 
+    50%  { -moz-transform: translateZ(-10px) translateX(-170px) scale(.95); } 
+    to   { -moz-transform: translateZ(-10px) translateX( -130px) scale(.95); } 
+}
+
+.hidden { @include animation(hidden 1s ease both); }
+@-webkit-keyframes hidden { 
+    from { opacity:1; } 
+    to   { opacity:0; } 
+}
+@-moz-keyframes hidden { 
+    from { -moz-opacity:1; } 
+    to   { -moz-opacity:0; } 
+}
+
+.shown { @include animation(shown 1s ease both); }
+@-webkit-keyframes shown { 
+    from { opacity:0; -webkit-transform: translateZ(-10px) translateX(0px) scale(.95); } 
+    50%  { opacity:1; -webkit-transform: translateZ(0px) translateX(100px) scale(1); } 
+    to   { opacity:1; -webkit-transform: translateZ(0px) translateX(50px) scale(1); } 
+}
+@-moz-keyframes shown { 
+    from { -moz-opacity:0; -moz-transform: translateZ(-10px) translateX(0px) scale(.95); } 
+    50%  { -moz-opacity:1; -moz-transform: translateZ(0px) translateX(100px) scale(1); } 
+    to   { -moz-opacity:1; -moz-transform: translateZ(0px) translateX(0px) scale(1); } 
+}
+
+// fadein
+.fadein { @include animation(fadein .5s ease); }
+@-webkit-keyframes fadein { 
+    from { opacity:0; } 
+    to   { opacity:1; } 
+}
+@-moz-keyframes fadein { 
+    from { -moz-opacity:0; } 
+    to   { -moz-opacity:1; } 
+}

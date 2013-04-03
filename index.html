@@ -32,7 +32,7 @@
                 {{! basically here it means user.name will be surrounded by <a href="user/user_id">user.name</a> }}
                 {{! http://emberjs.com/guides/templates/links/#toc_links-the-code-linkto-code-helper }}
                 {{! and http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_linkTo }}
-                {{#linkTo "user" user}}
+                {{#linkTo "user" user class="fadein"}}
                     {{user.name}}
                 {{/linkTo}}
             </li>
@@ -66,7 +66,7 @@
             </div>
             {{/if}}
             
-            <img {{bindAttr src="avatarUrl"}}>
+            <div class="img"><img {{bindAttr src="avatarUrl"}}></div>
             <h2>{{name}}</h2>
             <address>{{email}}</address>
             <p class="bio">{{bio}}</p>
