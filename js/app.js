@@ -163,6 +163,7 @@ App.UserEditController = Ember.ObjectController.extend({
 App.UsersCreateController = Ember.ObjectController.extend({
     addUser: function(){
         App.User.createRecord(this.content);
+        this.transitionToRoute('user');
     }
 });
 
@@ -232,7 +233,7 @@ App.ConfirmDeleteButtonView = Ember.View.extend({
         // we know our delete-animation will take 500ms seconds to complete
         // Ember.run.later is ember's equivalent to setTimout
         Ember.run.later(this, function() {
-            // and when the animation is done we can inform the controller to trigger the confirmDelete event
+            // and when the animation is done we can call the controller to trigger its confirmDelete method
             this.get('controller').confirmDelete();
         }, 500);
     }
