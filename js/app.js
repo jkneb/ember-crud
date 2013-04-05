@@ -72,7 +72,7 @@ App.UserRoute = Ember.Route.extend({
 
 App.UsersCreateRoute = Ember.Route.extend({
     model: function(){
-        return {};
+        return { id:new Date().getTime() };
     }
 });
 
