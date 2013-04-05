@@ -196,15 +196,15 @@ App.UserView = Ember.View.extend({
                     var currY = e.pageY;
                     //console.log(currX +' < x | y > '+currY);
                     var newX = currY-oldY;
-                    //var newY = currX-oldX;
+                    var newY = currX-oldX;
                     //console.log('%d - %d = %d', currY, oldY, currY-oldY);
                     //console.log('newX > ',newX);
                     //console.log('newY > ',newY);
 
                     $elem.css({
-                        '-webkit-transform':'rotateX('+newX+'deg)',
-                        '-moz-transform':'rotateX('+newX+'deg)',
-                        'transform':'rotateX('+newX+'deg)'
+                        '-webkit-transform':'rotateX('+newX+'deg) rotateY('+newY+'deg)',
+                        '-moz-transform':'rotateX('+newX+'deg) rotateY('+newY+'deg)',
+                        'transform':'rotateX('+newX+'deg) rotateY('+newY+'deg)'
                     });
                 });
 
@@ -221,22 +221,32 @@ App.UserView = Ember.View.extend({
 
 App.ConfirmDeleteButtonView = Ember.View.extend({
     // here we can handle the click event on the view
+    // and do almost every thing we want with regular jQuery
+    click: function(){
+        var $this = this.$().parents('.user-profile');
+    }
+});
+App.OldConfirmDeleteButtonView = Ember.View.extend({
+    // here we can handle the click event on the view
     click: function(){
         
         // this.$() is the ember-ish version of the famous jQuery $(this)
         var $this = this.$().parents('.user-profile');
         
         // let's clone a light version of our view by first removing all unecessary elements
-        var $lightClonedView = $this.removeClass('flipin').clone().find('.tools,.confirm-box,script,[class^=face-],.cloned-views').remove().end();
-        // now we can clone it 3 times more
-        var $firstOne  = $lightClonedView.clone().addClass('third-1');
-        var $secondOne = $lightClonedView.clone().addClass('third-2');
-        var $thirdOne  = $lightClonedView.clone().addClass('third-3');
+        var $lightClonedView = $this.removeClass('flipin').clone().find('.confirm-box,script,.cloned-views').remove().end();
+        // now we can clone it 3 times more and wrap them with another div
+        var $firstOne  = $lightClonedView.clone().wrap('<div class="third-1" />').parent();
+        var $secondOne = $lightClonedView.clone().wrap('<div class="third-2" />').parent();
+        var $thirdOne  = $lightClonedView.clone().wrap('<div class="third-3" />').parent();
 
         // and agregate our three clones together into a jquery selector
         $clonedDivs = $firstOne.add($secondOne).add($thirdOne);
         // and finally we can append them all at once into a cloned-views container
         $clonedDivs.appendTo('.cloned-views');
+
+        // let's put a class on a parent div, it will let us have more control on our css
+        $this.parent().addClass('deletion-in-progress');
         
         // TODO: create 3 cool css animations for our 3 parts cloned view
         

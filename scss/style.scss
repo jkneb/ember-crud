@@ -67,8 +67,6 @@ $mainColHeight: 400px;
 
 .pane { 
     @extend .border-box; 
-    -webkit-transform-style:preserve-3d; 
-       -moz-transform-style:preserve-3d; 
    //box-shadow:0 0 5px rgba(0,0,0,.3); 
    background:white; border-radius:3px; 
    border:1px solid #ccc; 
@@ -112,18 +110,11 @@ $mainColHeight: 400px;
         border:1px solid #eee;
         border-left:none; border-right:none;
     }
+
+    // -webkit-transform:rotateY(40deg) !important;
 }
-.half-1, .half-2 { 
-    background:white; border-radius:3px; height:350px; 
-    position:absolute; top:0; width:50%; overflow:hidden; 
-    -webkit-transform-style:preserve-3d; 
-       -moz-transform-style:preserve-3d; 
-    .wraper { position:relative; top:0; left:0; width:$mainColWidth/2; padding:15px; }
-}
-.half-1 { left:0; }
-.half-1 .wraper { left:0; }
-.half-2 { right:0; }
-.half-2 .wraper { right:0; margin-left:-$mainColWidth/4; }
+
+@import "delete-animation";
 
 .tools { 
     display:block; 
