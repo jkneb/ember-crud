@@ -68,6 +68,8 @@ $mainColHeight: 400px;
 .pane { 
     @extend .border-box; 
    //box-shadow:0 0 5px rgba(0,0,0,.3); 
+   -webkit-transform-style:preserve-3d; 
+      -moz-transform-style:preserve-3d; 
    background:white; border-radius:3px; 
    border:1px solid #ccc; 
    
@@ -114,7 +116,7 @@ $mainColHeight: 400px;
     // -webkit-transform:rotateY(40deg) !important;
 }
 
-@import "delete-animation";
+//@import "delete-animation";
 
 .tools { 
     display:block; 

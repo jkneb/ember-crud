@@ -59,3 +59,14 @@
     from { -moz-opacity:0; } 
     to   { -moz-opacity:1; } 
 }
+
+// delete-animation
+.delete-animation { @include animation(delete-animation .4s ease both); }
+@-webkit-keyframes delete-animation { 
+    from { opacity:1; -webkit-transform-origin:top right; -webkit-transform:rotate( 0deg) translate(0px, 0px); } 
+    to   { opacity:0; -webkit-transform-origin:top right; -webkit-transform:rotate(15deg) translate(50px, -100px); } 
+}
+@-moz-keyframes delete-animation { 
+    from { opacity:1; -moz-transform-origin:top right; -moz-transform:rotate( 0deg) translate(0px, 0px); } 
+    to   { opacity:0; -moz-transform-origin:top right; -moz-transform:rotate(15deg) translate(50px, -100px); } 
+}

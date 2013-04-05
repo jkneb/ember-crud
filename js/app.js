@@ -223,33 +223,18 @@ App.ConfirmDeleteButtonView = Ember.View.extend({
     // here we can handle the click event on the view
     // and do almost every thing we want with regular jQuery
     click: function(){
-        var $this = this.$().parents('.user-profile');
+        // In Ember the jQuery-ish $(this) is a bit different, it's : this.$()
+        var $thisParent = this.$().parents('.user-profile');
+        
+        // now we can add an animation to any div as we would do with regular jQuery
+        $thisParent.addClass('delete-animation');
+        
+        // we know our delete-animation will take 500ms seconds to complete
+        // Ember.run.later is ember's equivalent to setTimout
+        Ember.run.later(this, function() {
+            // and when the animation is done we can inform the controller to trigger the confirmDelete event
+            this.get('controller').confirmDelete();
+        }, 500);
     }
 });
-App.OldConfirmDeleteButtonView = Ember.View.extend({
-    // here we can handle the click event on the view
-    click: function(){
-        
-        // this.$() is the ember-ish version of the famous jQuery $(this)
-        var $this = this.$().parents('.user-profile');
-        
-        // let's clone a light version of our view by first removing all unecessary elements
-        var $lightClonedView = $this.removeClass('flipin').clone().find('.confirm-box,script,.cloned-views').remove().end();
-        // now we can clone it 3 times more and wrap them with another div
-        var $firstOne  = $lightClonedView.clone().wrap('<div class="third-1" />').parent();
-        var $secondOne = $lightClonedView.clone().wrap('<div class="third-2" />').parent();
-        var $thirdOne  = $lightClonedView.clone().wrap('<div class="third-3" />').parent();
 
-        // and agregate our three clones together into a jquery selector
-        $clonedDivs = $firstOne.add($secondOne).add($thirdOne);
-        // and finally we can append them all at once into a cloned-views container
-        $clonedDivs.appendTo('.cloned-views');
-
-        // let's put a class on a parent div, it will let us have more control on our css
-        $this.parent().addClass('deletion-in-progress');
-        
-        // TODO: create 3 cool css animations for our 3 parts cloned view
-        
-        //this.get('controller').send('confirmDelete');
-    }
-});

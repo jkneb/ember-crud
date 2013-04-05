@@ -295,6 +295,15 @@ h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
 @-moz-keyframes fadein { from { -moz-opacity: 0; }
   to { -moz-opacity: 1; } }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_animations\.scss}line{font-family:\0000364}}
+.delete-animation { -webkit-animation: delete-animation 0.4s ease both; -moz-animation: delete-animation 0.4s ease both; animation: delete-animation 0.4s ease both; }
+
+@-webkit-keyframes delete-animation { from { opacity: 1; -webkit-transform-origin: top right; -webkit-transform: rotate(0deg) translate(0px, 0px); }
+  to { opacity: 0; -webkit-transform-origin: top right; -webkit-transform: rotate(15deg) translate(50px, -100px); } }
+
+@-moz-keyframes delete-animation { from { opacity: 1; -moz-transform-origin: top right; -moz-transform: rotate(0deg) translate(0px, 0px); }
+  to { opacity: 0; -moz-transform-origin: top right; -moz-transform: rotate(15deg) translate(50px, -100px); } }
+
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000317}}
 .border-box, .main, .user-list, .user-pane, .pane, .user-profile { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
@@ -320,79 +329,47 @@ h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
 .create-btn { padding: 4px 5px; position: static; top: -18px; left: 0; }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000368}}
-.pane { background: white; border-radius: 3px; border: 1px solid #cccccc; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000376}}
+.pane { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; background: white; border-radius: 3px; border: 1px solid #cccccc; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000378}}
 .pane [class*="face-"] { position: absolute; background-color: rgba(0, 0, 0, 0.3); }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000379}}
-.pane .face-left, .pane .face-right { top: 0; bottom: 0; width: 6px; -webkit-transform: translateZ(-3px) rotateY(90deg); -moz-transform: translateZ(-3px) rotateY(90deg); -ms-transform: translateZ(-3px) rotateY(90deg); transform: translateZ(-3px) rotateY(90deg); }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000380}}
-.pane .face-left { left: -3px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000381}}
-.pane .face-right { right: -3px; }
+.pane .face-left, .pane .face-right { top: 0; bottom: 0; width: 6px; -webkit-transform: translateZ(-3px) rotateY(90deg); -moz-transform: translateZ(-3px) rotateY(90deg); -ms-transform: translateZ(-3px) rotateY(90deg); transform: translateZ(-3px) rotateY(90deg); }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000382}}
-.pane .face-top, .pane .face-bottom { left: 0; right: 0; height: 6px; -webkit-transform: translateZ(-3px) rotateX(90deg); -moz-transform: translateZ(-3px) rotateX(90deg); -ms-transform: translateZ(-3px) rotateX(90deg); transform: translateZ(-3px) rotateX(90deg); }
+.pane .face-left { left: -3px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000383}}
-.pane .face-top { top: -3px; }
+.pane .face-right { right: -3px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000384}}
-.pane .face-bottom { bottom: -3px; }
+.pane .face-top, .pane .face-bottom { left: 0; right: 0; height: 6px; -webkit-transform: translateZ(-3px) rotateX(90deg); -moz-transform: translateZ(-3px) rotateX(90deg); -ms-transform: translateZ(-3px) rotateX(90deg); transform: translateZ(-3px) rotateX(90deg); }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000385}}
+.pane .face-top { top: -3px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000386}}
+.pane .face-bottom { bottom: -3px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000387}}
 .pane .face-back { top: 0; bottom: 0; left: 0; right: 0; background-color: #f1f1f1; -webkit-transform: translateZ(-3px); -moz-transform: translateZ(-3px); -ms-transform: translateZ(-3px); transform: translateZ(-3px); }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000389}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000391}}
 .user-profile { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; width: 100%; height: 350px; text-align: center; position: absolute; top: 0; z-index: 2; padding: 15px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000398}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003100}}
 .user-profile h2 { margin-bottom: 0; text-transform: uppercase; font: bold 18px "Helvetica Neue", Arial; color: #333; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\0000399}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003101}}
 .user-profile .img { width: 110px; height: 110px; margin: 0 auto; padding: 5px; border: 1px solid #dddddd; border-radius: 100%; overflow: hidden; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003103}}
-.user-profile .img img { max-width: 100%; border-radius: 100%; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003105}}
+.user-profile .img img { max-width: 100%; border-radius: 100%; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003107}}
 .user-profile address { color: #999; font-size: 14px; font-style: normal; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003106}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003108}}
 .user-profile .bio { color: #999; font-size: 13px; margin: 25px -15px 0 -15px; padding: 20px 25px; background: white; border: 1px solid #eeeeee; border-left: none; border-right: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_delete-animation\.scss}line{font-family:\000035}}
-.user-profile .cloned-views { position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: -1; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_delete-animation\.scss}line{font-family:\0000311}}
-.user-profile [class*="third-"] { overflow: hidden; height: 116.66667px; position: relative; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_delete-animation\.scss}line{font-family:\0000318}}
-.user-profile .third-1 { -webkit-animation: delete-third-1 1s both; -moz-animation: delete-third-1 1s both; animation: delete-third-1 1s both; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_delete-animation\.scss}line{font-family:\0000321}}
-.user-profile .third-1 .user-profile { margin-top: 0; border-bottom: none; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_delete-animation\.scss}line{font-family:\0000323}}
-.user-profile .third-2 { -webkit-animation: delete-third-2 1s both; -moz-animation: delete-third-2 1s both; animation: delete-third-2 1s both; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_delete-animation\.scss}line{font-family:\0000325}}
-.user-profile .third-2 .user-profile { margin-top: -116.66667px; border-radius: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_delete-animation\.scss}line{font-family:\0000327}}
-.user-profile .third-3 { -webkit-animation: delete-third-3 1s both; -moz-animation: delete-third-3 1s both; animation: delete-third-3 1s both; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_delete-animation\.scss}line{font-family:\0000329}}
-.user-profile .third-3 .user-profile { margin-top: -233.33333px; border-top: none; border-top-left-radius: 0; border-top-right-radius: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_delete-animation\.scss}line{font-family:\0000333}}
-.deletion-in-progress > .user-profile { border: none; background: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/_delete-animation\.scss}line{font-family:\0000335}}
-.deletion-in-progress > .user-profile > *:not(.cloned-views) { visibility: hidden; }
-
-@-webkit-keyframes delete-third-1 { 0% { -webkit-animation-timing-function: linear; -webkit-transform-origin: bottom center; -webkit-transform: rotateX(0deg) rotateY(0deg) translate3d(0px, 0px, 0px); }
-  25% { -webkit-animation-timing-function: linear; -webkit-transform-origin: bottom center; -webkit-transform: rotateX(-10deg) rotateY(0deg) translate3d(0px, 0px, 10px); }
-  50% { -webkit-animation-timing-function: linear; -webkit-transform-origin: bottom left; -webkit-transform: rotateX(-30deg) rotateY(0deg) translate3d(0px, 0px, 10px); }
-  100% { -webkit-animation-timing-function: linear; -webkit-transform-origin: bottom left; -webkit-transform: rotateX(-120deg) rotateY(-10deg) translate3d(0px, 0px, 10px); } }
-
-@-webkit-keyframes delete-third-2 { from { -webkit-transform: rotateX(0deg); }
-  to { -webkit-transform: rotateX(0deg); } }
-
-@-webkit-keyframes delete-third-3 { from { -webkit-transform: rotateX(0deg); }
-  to { -webkit-transform: rotateX(0deg); } }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003121}}
 .tools { display: block; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003122}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003124}}
 .tools .icon-pencil, .tools .icon-trashcan { display: inline-block; cursor: pointer; font-size: 15px; text-decoration: none; padding: 4px 5px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003130}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003132}}
 .user-edit, .user-create { width: 100%; height: 350px; text-align: center; position: absolute; right: 0; z-index: 1; padding: 25px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003137}}
-.user-edit button, .user-create button { margin-top: 5px; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003139}}
+.user-edit button, .user-create button { margin-top: 5px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003141}}
 .user-edit.hidden, .hidden.user-create { visibility: hidden; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003140}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/divers\/tests\/ember-crud\/scss\/style\.scss}line{font-family:\00003142}}
 .user-edit.shown, .shown.user-create { visibility: visible; }
