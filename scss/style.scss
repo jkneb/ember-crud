@@ -63,6 +63,7 @@ $mainColHeight: 400px;
 .create-btn { 
     padding:4px 5px;
     position:static; top:-18px; left:0;
+    > span { position:absolute; color:black; font-size:11px; text-shadow:none; left:30px; }
 }
 
 .pane { 
