@@ -24,7 +24,7 @@
 
         {{! this is the users template (associated with the usersRoute and the usersController) }}
         {{! naming convetions are VERY important in Ember }}
-        <ul {{bindAttr class=":user-list"}}>
+        <ul class="users-listing">
             
             {{! this is our users loop, here controller is usersController }}
             {{#each user in controller}}
