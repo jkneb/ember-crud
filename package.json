@@ -1,5 +1,5 @@
 {
-  "name": "ember",
+  "name": "Ember-CRUD-Desktop-Mobile",
   "description": "How to create a nice simple Ember JS app with cool transitions",
   "version": "0.0.1",
   "private": true,
@@ -10,4 +10,3 @@
     "grunt-contrib-handlebars": "~0.5.10"
   }
 }
-
