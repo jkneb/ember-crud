@@ -1,7 +1,9 @@
+### Install Grunt
+
+http://gruntjs.com/getting-started
+
 ### How to compile css
 
-`sass --style compact --watch scss:css`  
-or with debug infos    
-`sass --style compact --debug-info --watch scss:css`  
+Run the folling command:  
+`grunt sass` or `grunt watch`  
 
- 
