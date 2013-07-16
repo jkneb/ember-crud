@@ -17,10 +17,10 @@ $oneThirdHeight:350px / 3;
     }
     .third-1 {
         //cubic-bezier(.85, 0, 1, 1)
+        
         @include animation(delete-third-1 1s both);
-       .user-profile { margin-top:0; border-bottom:none; border-bottom-left-radius:0; border-bottom-right-radius:0; }
     }
-    .third-2 {
+    .third-22 {
         @include animation(delete-third-2 1s both);
         .user-profile { margin-top:-$oneThirdHeight; border-radius:0; }
     }
