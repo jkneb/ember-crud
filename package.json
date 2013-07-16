@@ -1,10 +1,13 @@
 {
   "name": "ember",
-  "description": "How to create a ncie simple Ember JS app with cool transitions",
+  "description": "How to create a nice simple Ember JS app with cool transitions",
   "version": "0.0.1",
   "private": true,
-  "dependencies": {
-    "connect": "*"
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.4.4",
+    "grunt-contrib-sass": "~0.4.1",
+    "grunt-contrib-handlebars": "~0.5.10"
   }
 }
 
