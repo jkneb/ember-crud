@@ -12,12 +12,9 @@ module.exports = function(grunt) {
         }
       }
     },
-
-    handlebars: {
+    
+    ember_handlebars: {
       compile: {
-        options: {
-          namespace: "App.TEMPLATES"
-        },
         files: {
           'assets/js/app/templates.js': 'assets/js/app/templates/*/**.hbs'
         }
@@ -28,14 +25,19 @@ module.exports = function(grunt) {
       sass: {
         files: 'assets/scss/*.scss',
         tasks: ['sass']
+      }, 
+      ember_handlebars: {
+        files: 'assets/js/app/templates/*/**.hbs',
+        tasks: ['ember_handlebars']
       }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-handlebars');
+  // grunt.loadNpmTasks('grunt-contrib-handlebars');
+  grunt.loadNpmTasks('grunt-ember-handlebars');
 
   // Default task(s).
-  grunt.registerTask('default', ['sass','handlebars']);
+  grunt.registerTask('default', ['sass','ember_handlebars']);
 };

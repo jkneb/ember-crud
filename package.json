@@ -7,6 +7,6 @@
     "grunt": "~0.4.1",
     "grunt-contrib-watch": "~0.4.4",
     "grunt-contrib-sass": "~0.4.1",
-    "grunt-contrib-handlebars": "~0.5.10"
+    "grunt-ember-handlebars": "*"
   }
 }
