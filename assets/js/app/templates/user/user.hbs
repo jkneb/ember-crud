@@ -1,0 +1,36 @@
+{{! "user-profile" and "pane" are static class names }}
+{{! if "editMode" is true, "scaleout" will be printed }}
+{{! if "editMode" is false, then "scalein" will be printed }}
+{{! http://emberjs.com/guides/templates/binding-element-class-names/#toc_binding-to-boolean-values }}
+<div {{bindAttr class=":user-profile :pane editMode:scaleout:flipin"}}>
+    <div class="tools aright">
+        <button {{bindAttr class=":icon-trashcan :red deleteMode:active"}} {{action delete}} title="Delete user"></button>
+        <button {{bindAttr class=":icon-pencil editMode:active"}} {{action edit}} title="Edit user"></button>
+    </div>
+
+    {{#if deleteMode}}
+    <div class="confirm-box confirmin">
+        <h4>Really?</h4>
+        {{#view App.ConfirmDeleteButtonView tagName="button"}}y{{/view}}
+        <button {{action cancelDelete}} title="no">n</button>
+    </div>
+    {{/if}}
+
+    <div class="img"><img {{bindAttr src="avatarUrl"}}></div>
+    <h2>{{name}}</h2>
+    <address>{{email}}</address>
+    <p class="bio">{{bio}}</p>
+
+    {{! partials are a good way to clean a bit the code, think of it as includes in php }}
+    {{! remember to start partials template name by a _ }}
+    {{! here we inject the partial _faces, it contains some reusable divs }}
+    {{partial faces}}
+
+    {{! this div is empty for now but we use it for the deleteUser css animation }}
+    <div class="cloned-views"></div>
+</div>
+
+{{! again here use the editMode property to switch class names between "shown" and "hidden" }}
+<div {{bindAttr class=":user-edit :pane editMode:shown:hidden"}}>
+    {{outlet}}
+</div>

@@ -1,0 +1,33 @@
+<div {{bindAttr class=":main controllers.user.editMode:editing"}}>
+
+    <div class="tools">
+        {{#linkTo "users.create" class="button blue create-btn" title="Add a new user"}}
+            <i class="icon-plus"></i><span>⬅ Add user</span>
+        {{/linkTo}}
+    </div>
+
+    {{! this is the users template (associated with the usersRoute and the usersController) }}
+    {{! naming convetions are VERY important in Ember }}
+    <ul class="users-listing">
+
+        {{! this is our users loop, here controller is usersController }}
+        {{#each user in controller}}
+        <li>
+        {{! linkTo are <a> tags but Ember handles for us the "active" class when clicking on it }}
+        {{! basically here it means user.name will be surrounded by <a href="user/user_id">user.name</a> }}
+        {{! http://emberjs.com/guides/templates/links/#toc_links-the-code-linkto-code-helper }}
+        {{! and http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_linkTo }}
+        {{#linkTo "user" user class="fadein"}}
+            {{user.name}}
+        {{/linkTo}}
+        </li>
+        {{/each}}
+
+    </ul>
+
+    {{! see the linkTo tag a few lines above? This outlet will host views reached by clicking on it (the linkTo tag) }}
+    <div class="user-pane">
+        {{outlet}}
+    </div>
+
+</div>
