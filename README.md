@@ -6,9 +6,14 @@ http://gruntjs.com/getting-started
 cd into the project and run:  
 `npm install`  
 it will install the following node modules  
-Grunt, grunt-contrib-sass, grunt-contrib-handlebars, and grunt-contrib-watch
+Grunt, grunt-contrib-sass, grunt-contrib-watch, and grunt-ember-handlebars 
 
 ### How to compile css
+
+Run the following command:  
+`grunt watch`
+
+### How to compile .hbs templates
 
 Run the following command:  
 `grunt watch`
