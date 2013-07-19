@@ -1,4 +1,11 @@
 module.exports = function(grunt) {
+
+var getName = function(filePath) {
+    var pieces = filePath.split("/");
+    var filename = pieces[pieces.length - 1];
+    return filename.replace('.hbs', '').replace(/-/g, '/');
+}
+
   grunt.initConfig({
     pkg: grunt.file.readJSON( 'package.json' ),
     
@@ -14,9 +21,13 @@ module.exports = function(grunt) {
     },
     
     ember_handlebars: {
+        options: {
+            processName: getName,
+            processPartialName: getName
+        },
       compile: {
         files: {
-          'assets/js/app/templates.js': 'assets/js/app/templates/*/**.hbs'
+          'assets/js/app/templates.js': 'assets/js/app/templates/**/*.hbs'
         }
       }
     },
@@ -27,7 +38,7 @@ module.exports = function(grunt) {
         tasks: ['sass']
       }, 
       ember_handlebars: {
-        files: 'assets/js/app/templates/*/**.hbs',
+        files: 'assets/js/app/templates/**/*.hbs',
         tasks: ['ember_handlebars']
       }
     }
@@ -35,7 +46,6 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-sass');
-  // grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-ember-handlebars');
 
   // Default task(s).

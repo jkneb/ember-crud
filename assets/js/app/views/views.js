@@ -2,6 +2,9 @@
 // VIEWS
 // ----------------- \
 
+// App.ApplicationView = Ember.View.extend({
+//     templateName: 'assets/js/app/templates/application.hbs'
+// });
 
 App.UserView = Ember.View.extend({
     didInsertElement: function(){
