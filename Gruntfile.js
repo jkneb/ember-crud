@@ -1,11 +1,4 @@
 module.exports = function(grunt) {
-
-var getName = function(filePath) {
-    var pieces = filePath.split("/");
-    var filename = pieces[pieces.length - 1];
-    return filename.replace('.hbs', '').replace(/-/g, '/');
-}
-
   grunt.initConfig({
     pkg: grunt.file.readJSON( 'package.json' ),
     
@@ -21,10 +14,16 @@ var getName = function(filePath) {
     },
     
     ember_handlebars: {
-        options: {
-            processName: getName,
-            processPartialName: getName
-        },
+      options: {
+          processName: function(filePath) {
+            var shortFilePath = filePath.replace(/assets\/js\/app\/templates\//, '').replace('.hbs', '');
+            return shortFilePath;
+          },
+          processPartialName: function(filePath) {
+            var shortFilePath = filePath.replace(/assets\/js\/app\/templates\//, '').replace('.hbs', '');
+            return shortFilePath;
+          }
+      },
       compile: {
         files: {
           'assets/js/app/templates.js': 'assets/js/app/templates/**/*.hbs'
