@@ -1,0 +1,54 @@
+// Mixins ------------------------- /
+
+// linear gradient
+@mixin linear-gradient($top, $bottom) {
+  background-image:-webkit-gradient(linear, 0 0, 0 100%, from($top), to($bottom)); 
+  background-image:-moz-linear-gradient($top, $bottom); 
+    background-image:-o-linear-gradient($top, $bottom); 
+       background-image:linear-gradient($top, $bottom); 
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$top}', EndColorStr='#{$bottom}'); 
+}
+
+// css3 transitions
+@mixin transition($params...) {
+  -webkit-transition: $params;
+     -moz-transition: $params;
+      -ms-transition: $params;
+          transition: $params;
+}
+
+// css3 animations
+@mixin animation($params) {
+  -webkit-animation: $params;
+     -moz-animation: $params;
+          animation: $params;
+}
+
+// css3 transform
+@mixin transform($params...) {
+  -webkit-transform:$params;
+    -moz-transform:$params;
+     -ms-transform:$params;
+         transform:$params;
+}
+
+// clearfix
+@mixin clearfix() {
+  &:before, &:after { content:""; display:table; line-height:0; }
+  &:after { clear:both; }
+}
+
+// opacity
+@mixin opacity($opacity) {
+  $iefix : $opacity*100;
+  opacity: $opacity; 
+  -moz-opacity: $opacity; 
+  filter:alpha(opacity=$iefix);
+}
+
+// box-sizing
+@mixin box-sizing($boxmodel) {
+  -webkit-box-sizing: $boxmodel;
+     -moz-box-sizing: $boxmodel;
+          box-sizing: $boxmodel;
+}

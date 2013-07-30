@@ -1,0 +1,17 @@
+// could be usefull
+//.hidden { display: none !important; visibility: hidden; }
+.invisible { visibility: hidden; }
+.fleft { float:left; }
+.fright { float:right; }
+.upper { text-transform:uppercase; }
+.bold { font-weight:bold; }
+.aleft { text-align:left; }
+.aright { text-align:right; }
+.acenter { text-align:center; }
+.unselectable { 
+     -webkit-user-select:none;
+        -moz-user-select:none;
+         -ms-user-select:none;
+             user-select:none;
+}
+.line { @include clearfix(); }

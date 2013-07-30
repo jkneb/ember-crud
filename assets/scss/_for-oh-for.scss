@@ -1,0 +1,11 @@
+.for-oh-for {
+    text-align:center;
+
+    > span { 
+        font-family:'Helvetica Neue', Arial; 
+        text-transform:uppercase; color:#999; font-size:90px; font-weight:bold; color:rgba(10,10,10,.1); 
+        text-shadow:0px 2px 3px #eee, 0px 0px 0px #ccc, 1px 1px 1px white; 
+    }
+    > p { color:#999; margin:0px 0px 15px; }
+    // > button {  }
+}
