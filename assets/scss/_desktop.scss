@@ -39,7 +39,7 @@ $mainColHeight: 400px;
     background:rgb(50,50,50); 
     border-radius:4px; 
     padding:0; list-style:none; 
-    
+
     li a { 
         display:block; padding:15px 20px; 
         text-decoration:none; color:#eee; 
@@ -59,7 +59,7 @@ $mainColHeight: 400px;
       -moz-transform-style:preserve-3d; 
    background:white; border-radius:3px; 
    border:1px solid #ccc; 
-   
+
    // 3d faces 
    $faceLength: 6px; 
    [class*="face-"] { 
@@ -83,7 +83,7 @@ $mainColHeight: 400px;
     text-align:center; 
     position:absolute; top:0; z-index:2; 
     padding:15px; 
-    
+
     h2 { margin-bottom:0; text-transform:uppercase; font:bold 18px 'Helvetica Neue', Arial; color:#333; }
     .img { 
         width:110px; height:110px; margin:0 auto;
@@ -120,11 +120,11 @@ $mainColHeight: 400px;
     width:100%; height:350px; 
     text-align:center; 
     position:absolute; right:0; z-index:1; 
-    
+
     padding:25px; 
-    
+
     button { margin-top:5px; }
-    
+
     &.hidden { visibility:hidden; }
     &.shown  { visibility:visible; }
 }

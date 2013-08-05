@@ -73,7 +73,7 @@
 
 
 
-// must be default offscreen then this animation applies a slide from right to left
+// must be default offscreen then this animation apply a slide from right to left
 @-webkit-keyframes slideFromRightToLeft {
     form { -webkit-transform:translate3d(0%,0,0); } 
     to   { -webkit-transform:translate3d(-100%,0,0); } }

@@ -11,10 +11,11 @@
     .user-profile, .user-edit, .user-create { height:auto; }
     .pane { border-radius:0; @include animation(none); }
 
+
     // ------------
     // now let's apply small screens styles
     // ------------
-    
+
     // vars
     $toolsHeight: 45px;
     
