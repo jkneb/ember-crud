@@ -43,8 +43,6 @@ $mainColHeight: 400px;
     li a { 
         display:block; padding:15px 20px; 
         text-decoration:none; color:#eee; 
-        
-        &:hover  { background-color:#222; }
         &.active { background-color:#000; }
     }
 }
