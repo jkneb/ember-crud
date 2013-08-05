@@ -57,5 +57,68 @@ App.User.FIXTURES = [
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
         avatarUrl: './images/avatars/default.png'
+    },
+    {
+        id: 7,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './images/avatars/default.png'
+    },
+    {
+        id: 8,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './images/avatars/default.png'
+    },
+    {
+        id: 9,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './images/avatars/default.png'
+    },
+    {
+        id: 10,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './images/avatars/default.png'
+    },
+    {
+        id: 11,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './images/avatars/default.png'
+    },
+    {
+        id: 12,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './images/avatars/default.png'
+    },
+    {
+        id: 13,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './images/avatars/default.png'
+    },
+    {
+        id: 14,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './images/avatars/default.png'
+    },
+    {
+        id: 15,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './images/avatars/default.png'
     }
 ];
