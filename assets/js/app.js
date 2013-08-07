@@ -229,7 +229,7 @@ App.UserEditRoute = Ember.Route.extend({
         return this.modelFor('user'); 
     }, 
     // fix when trying to manually access the route 
-    setupController: function(controller){
+    activate: function(){
         this.controllerFor('user').setProperties({
             'editMode': true,
             'deleteMode': false
@@ -253,7 +253,7 @@ App.UserRoute = Ember.Route.extend({
     },*/
 
     // force the deleteMode to false when accessing user
-    setupController: function(controller){
+    activate: function(){
         this.controllerFor('user').set('deleteMode', false);
     }
 });
