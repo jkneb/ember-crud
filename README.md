@@ -4,7 +4,8 @@ http://jkneb.github.io/ember-crud
 
 ### Install Grunt
 
-http://gruntjs.com/getting-started
+http://gruntjs.com/getting-started  
+`sudo npm install -g grunt-cli`
 
 ### Install the dev dependencies
 cd into the project and run:  
@@ -17,6 +18,9 @@ it will install locally the following node modules
 * grunt-ember-handlebars 
 
 ### How to compile css
+
+Requirements:  
+Install Ruby ([RVM](https://rvm.io/rvm/install) is your friend), then `gem install sass`
 
 Run the following command:  
 `grunt watch` or `grunt sass`
