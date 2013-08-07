@@ -1,3 +1,7 @@
+### See the demo of this app
+
+http://jkneb.github.io/ember-crud
+
 ### Install Grunt
 
 http://gruntjs.com/getting-started

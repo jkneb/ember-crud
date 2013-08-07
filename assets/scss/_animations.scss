@@ -70,3 +70,20 @@
     from { opacity:1; -moz-transform-origin:top right; -moz-transform:rotate( 0deg) translate(0px, 0px); } 
     to   { opacity:0; -moz-transform-origin:top right; -moz-transform:rotate(15deg) translate(50px, -100px); } 
 }
+
+
+
+// must be default offscreen then this animation apply a slide from right to left
+@-webkit-keyframes slideFromRightToLeft {
+    form { -webkit-transform:translate3d(0%,0,0); } 
+    to   { -webkit-transform:translate3d(-100%,0,0); } }
+@-moz-keyframes slideFromRightToLeft {
+    form { -moz-transform:translate3d(0%,0,0); } 
+    to   { -moz-transform:translate3d(-100%,0,0); } }
+@-ms-keyframes slideFromRightToLeft {
+    form { -ms-transform:translate3d(0%,0,0); } 
+    to   { -ms-transform:translate3d(-100%,0,0); } }
+@keyframes slideFromRightToLeft {
+    form { transform:translate3d(0%,0,0); } 
+    to   { transform:translate3d(-100%,0,0); } 
+}
