@@ -7,7 +7,7 @@ App.UserEditRoute = Ember.Route.extend({
         return this.modelFor('user'); 
     }, 
     // fix when trying to manually access the route 
-    setupController: function(controller){
+    activate: function(){
         this.controllerFor('user').setProperties({
             'editMode': true,
             'deleteMode': false
