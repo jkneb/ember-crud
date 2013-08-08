@@ -7,20 +7,20 @@
     
     .main { width:auto; margin:0; -webkit-perspective:none; -moz-perspective:none; }
     .users-listing { margin:0; width:auto; max-height:none; overflow:visible; border-radius:0; }
-    .users-listing li a:hover { background-color:transparent; }
     .user-pane { width:auto; height:auto; position:static; top:auto; right:auto; }
     .user-profile, .user-edit, .user-create { height:auto; }
     .pane { border-radius:0; @include animation(none); }
 
+
     // ------------
     // now let's apply small screens styles
     // ------------
-    
+
     // vars
     $toolsHeight: 45px;
     
-    //.main { overflow:hidden; }
-    
+    .main { overflow:hidden; }
+
     .main > .tools { 
         @include box-sizing(border-box);
         position:fixed; top:0; z-index:1; padding:10px 20px; 
@@ -32,7 +32,6 @@
         overflow:scroll; -webkit-overflow-scrolling:touch;
         height:100%; padding-top:$toolsHeight;
         li a { border-bottom:3px solid #292929; }
-        li a:active { background-color:#222; }
     }
     
     .user-pane { 

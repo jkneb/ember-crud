@@ -238,7 +238,6 @@ h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
 
 .users-listing { position: relative; margin-top: 5px; border: 4px solid rgba(0, 0, 0, 0.5); background: #323232; border-radius: 4px; padding: 0; list-style: none; }
 .users-listing li a { display: block; padding: 15px 20px; text-decoration: none; color: #eee; }
-.users-listing li a:hover { background-color: #222; }
 .users-listing li a.active { background-color: #000; }
 
 .create-btn { padding: 4px 5px; position: static; top: -18px; left: 0; }
@@ -271,14 +270,13 @@ h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
 
 @media screen and (max-width: 650px) { .main { width: auto; margin: 0; -webkit-perspective: none; -moz-perspective: none; }
   .users-listing { margin: 0; width: auto; max-height: none; overflow: visible; border-radius: 0; }
-  .users-listing li a:hover { background-color: transparent; }
   .user-pane { width: auto; height: auto; position: static; top: auto; right: auto; }
   .user-profile, .user-edit, .user-create, .user-create { height: auto; }
   .pane { border-radius: 0; -webkit-animation: none; -moz-animation: none; animation: none; }
+  .main { overflow: hidden; }
   .main > .tools { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; position: fixed; top: 0; z-index: 1; padding: 10px 20px; width: 100%; height: 45px; background-color: #222; border: 4px solid black; border-top: none; }
   .main > .tools .create-btn > span { color: white; left: 50px; }
   .users-listing { overflow: scroll; -webkit-overflow-scrolling: touch; height: 100%; padding-top: 45px; }
   .users-listing li a { border-bottom: 3px solid #292929; }
-  .users-listing li a:active { background-color: #222; }
   .user-pane { position: absolute; z-index: 1; top: 0; left: 100%; outline: 1px solid hotpink; width: 100%; height: 100%; padding-top: 45px; }
   .user-profile { -webkit-animation: slideFromRightToLeft 0.3s both; -moz-animation: slideFromRightToLeft 0.3s both; animation: slideFromRightToLeft 0.3s both; } }

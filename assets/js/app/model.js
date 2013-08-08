@@ -21,41 +21,104 @@ App.User.FIXTURES = [
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg'
     }, 
     {
         id: 2,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg'
     },
     {
         id: 3,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        avatarUrl: './images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png'
     },
     {
         id: 4,
         name: 'Jane Doe',
         email: 'jane@doe.com',
         bio: 'Duis aute irure in voluptate velit esse cillum nulla pariatur.',
-        avatarUrl: './images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png'
     },
     {
         id: 5,
         name: 'Dean Winchester',
         email: 'deany@plopmail.com',
         bio: ':)',
-        avatarUrl: './images/avatars/dean.jpg'
+        avatarUrl: './assets/images/avatars/dean.jpg'
     },
     {
         id: 6,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
-        avatarUrl: './images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png'
+    },
+    {
+        id: 7,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './assets/images/avatars/default.png'
+    },
+    {
+        id: 8,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './assets/images/avatars/default.png'
+    },
+    {
+        id: 9,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './assets/images/avatars/default.png'
+    },
+    {
+        id: 10,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './assets/images/avatars/default.png'
+    },
+    {
+        id: 11,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './assets/images/avatars/default.png'
+    },
+    {
+        id: 12,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './assets/images/avatars/default.png'
+    },
+    {
+        id: 13,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './assets/images/avatars/default.png'
+    },
+    {
+        id: 14,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './assets/images/avatars/default.png'
+    },
+    {
+        id: 15,
+        name: 'John Doe',
+        email: 'john@doe.com',
+        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        avatarUrl: './assets/images/avatars/default.png'
     }
 ];

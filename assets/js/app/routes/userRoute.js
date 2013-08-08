@@ -4,11 +4,11 @@ App.UserRoute = Ember.Route.extend({
     // this route model is auto generated internally 
     // because we followed Ember's naming conventions 
     /*model: function(params) { 
-        return App.User.find(params.post_id);
+        return App.User.find(params.user_id);
     },*/
 
     // force the deleteMode to false when accessing user
-    setupController: function(controller){
+    activate: function(){
         this.controllerFor('user').set('deleteMode', false);
     }
 });
