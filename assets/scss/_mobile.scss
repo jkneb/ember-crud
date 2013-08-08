@@ -4,11 +4,11 @@
     // ------------
     // desktop styles reset
     // ------------
-    
+
     .main { width:auto; margin:0; -webkit-perspective:none; -moz-perspective:none; }
     .users-listing { margin:0; width:auto; max-height:none; overflow:visible; border-radius:0; }
     .user-pane { width:auto; height:auto; position:static; top:auto; right:auto; }
-    .user-profile, .user-edit, .user-create { height:auto; }
+    .user-profile, .user-edit, .user-create { height:100%; }
     .pane { border-radius:0; @include animation(none); }
 
 
@@ -18,7 +18,7 @@
 
     // vars
     $toolsHeight: 45px;
-    
+
     .main { overflow:hidden; }
 
     .main > .tools { 
@@ -33,20 +33,22 @@
         height:100%; padding-top:$toolsHeight;
         li a { border-bottom:3px solid #292929; }
     }
-    
+
     .user-pane { 
         // offscreen by default
         position:absolute; z-index:1; top:0; left:100%; outline:1px solid hotpink;
         // takes all space possible
         width:100%; height:100%; padding-top:$toolsHeight; 
+        // can transition if any transform property changes (but with a micro delay)
+        -webkit-transition:-webkit-transform .4s ease .1s;
+           -moz-transition:   -moz-transform .4s ease .1s;
+            -ms-transition:    -ms-transform .4s ease .1s;
+                transition:        transform .4s ease .1s;
     }
     .user-profile {
-        // can transition if any transform property changes (but with a micro delay)
-        //-webkit-transition:-webkit-transform .4s ease .1s;
-        //-moz-transition:-moz-transform .4s ease .1s;
-        //-ms-transition:-ms-transform .4s ease .1s;
-        //transition:transform .4s ease .1s;
-        
+        // trigger the entrance animation
+        //@include transform(translate3d(-100%,0,0));
+
         @include animation(slideFromRightToLeft .3s both);
     }
 }
