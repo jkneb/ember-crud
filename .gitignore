@@ -2,3 +2,5 @@ node_modules/
 .sass-cache/
 assets/js/app.js
 assets/js/libs.js
+*.iml
+.idea

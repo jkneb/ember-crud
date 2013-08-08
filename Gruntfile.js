@@ -61,14 +61,14 @@ module.exports = function(grunt) {
         tasks: ['concat']
       },
       karma: {
-        files: ['assets/js/**/*.js', 'assets/js/**/*.coffee'],
+        files: ['tests/unit/**/*'],
         tasks: ['karma:unit:run']
       }
     },
 
     karma: {
       unit: {
-        configFile: 'karma.conf.js',
+        configFile: 'tests/karma.unit.conf.js',
         background: true
       }
     }

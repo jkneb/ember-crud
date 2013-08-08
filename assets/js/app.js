@@ -30,6 +30,7 @@ App.UserController = Ember.ObjectController.extend({
         this.transitionToRoute('user.edit');
     }
 });
+
 App.UserEditController = Ember.ObjectController.extend({
     // we want this controller to inherit from its parent controller 
     // in this case it's userController 
@@ -94,17 +95,17 @@ App.User.FIXTURES = [
     },
     {
         id: 3,
-        name: 'John Doe',
-        email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        avatarUrl: './assets/images/avatars/default.png'
-    },
+        name: 'Julien Knebel',
+        email: 'julienknebel@gmail.com',
+        bio: 'Freelance web & print designer + front-end developer',
+        avatarUrl: './assets/images/avatars/jk.jpg'
+    }, 
     {
         id: 4,
-        name: 'Jane Doe',
-        email: 'jane@doe.com',
-        bio: 'Duis aute irure in voluptate velit esse cillum nulla pariatur.',
-        avatarUrl: './assets/images/avatars/default.png'
+        name: 'Sponge Bob',
+        email: 'bob@sponge.com',
+        bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
+        avatarUrl: './assets/images/avatars/sb.jpg'
     },
     {
         id: 5,
@@ -122,65 +123,65 @@ App.User.FIXTURES = [
     },
     {
         id: 7,
-        name: 'John Doe',
-        email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
-        avatarUrl: './assets/images/avatars/default.png'
-    },
+        name: 'Julien Knebel',
+        email: 'julienknebel@gmail.com',
+        bio: 'Freelance web & print designer + front-end developer',
+        avatarUrl: './assets/images/avatars/jk.jpg'
+    }, 
     {
         id: 8,
-        name: 'John Doe',
-        email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
-        avatarUrl: './assets/images/avatars/default.png'
+        name: 'Sponge Bob',
+        email: 'bob@sponge.com',
+        bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
+        avatarUrl: './assets/images/avatars/sb.jpg'
     },
     {
         id: 9,
         name: 'John Doe',
         email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         avatarUrl: './assets/images/avatars/default.png'
     },
     {
         id: 10,
-        name: 'John Doe',
-        email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
-        avatarUrl: './assets/images/avatars/default.png'
-    },
+        name: 'Julien Knebel',
+        email: 'julienknebel@gmail.com',
+        bio: 'Freelance web & print designer + front-end developer',
+        avatarUrl: './assets/images/avatars/jk.jpg'
+    }, 
     {
         id: 11,
-        name: 'John Doe',
-        email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
-        avatarUrl: './assets/images/avatars/default.png'
+        name: 'Sponge Bob',
+        email: 'bob@sponge.com',
+        bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
+        avatarUrl: './assets/images/avatars/sb.jpg'
     },
     {
         id: 12,
         name: 'John Doe',
         email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         avatarUrl: './assets/images/avatars/default.png'
     },
     {
         id: 13,
-        name: 'John Doe',
-        email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
-        avatarUrl: './assets/images/avatars/default.png'
-    },
+        name: 'Julien Knebel',
+        email: 'julienknebel@gmail.com',
+        bio: 'Freelance web & print designer + front-end developer',
+        avatarUrl: './assets/images/avatars/jk.jpg'
+    }, 
     {
         id: 14,
-        name: 'John Doe',
-        email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
-        avatarUrl: './assets/images/avatars/default.png'
+        name: 'Sponge Bob',
+        email: 'bob@sponge.com',
+        bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
+        avatarUrl: './assets/images/avatars/sb.jpg'
     },
     {
         id: 15,
         name: 'John Doe',
         email: 'john@doe.com',
-        bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
+        bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         avatarUrl: './assets/images/avatars/default.png'
     }
 ];
