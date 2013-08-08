@@ -13,7 +13,7 @@ App.UserController = Ember.ObjectController.extend({
     deleteMode: false, 
     
     delete: function(){
-        this.toggleProperty('deleteMode', true);
+        this.toggleProperty('deleteMode');
     },
     cancelDelete: function(){
         this.set('deleteMode', false);
@@ -30,6 +30,7 @@ App.UserController = Ember.ObjectController.extend({
         this.transitionToRoute('user.edit');
     }
 });
+
 App.UserEditController = Ember.ObjectController.extend({
     // we want this controller to inherit from its parent controller 
     // in this case it's userController 
