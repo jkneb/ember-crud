@@ -7,7 +7,7 @@ module.exports = function(config) {
             'karma-phantomjs-launcher',
             'karma-firefox-launcher',
             "karma-coverage",
-            "karma-coffee"
+            "karma-coffee-preprocessor"
         ],
 
         files: [
@@ -30,7 +30,7 @@ module.exports = function(config) {
             dir : 'coverage/'
         },
 
-        reporters: ['progress'],
+        reporters: ['progress', 'coverage'],
         basePath: '../',
         frameworks: ['mocha'],
         exclude: [],
@@ -40,7 +40,7 @@ module.exports = function(config) {
         autoWatch: true,
         browsers: ['PhantomJS'],
         captureTimeout: 20000,
-        singleRun: true,
+        singleRun: false,
         reportSlowerThan: 500
     });
 };
