@@ -8,7 +8,7 @@ App.UserController = Ember.ObjectController.extend({
     deleteMode: false, 
     
     delete: function(){
-        this.toggleProperty('deleteMode', true);
+        this.toggleProperty('deleteMode');
     },
     cancelDelete: function(){
         this.set('deleteMode', false);

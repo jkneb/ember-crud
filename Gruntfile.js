@@ -59,14 +59,27 @@ module.exports = function(grunt) {
       concat: {
         files: ['assets/js/**/*.js', '!assets/js/app.js', '!assets/js/libs.js'],
         tasks: ['concat']
+      },
+      karma: {
+        files: ['assets/js/**/*.js', 'assets/js/**/*.coffee'],
+        tasks: ['karma:unit:run']
+      }
+    },
+
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        background: true
       }
     }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-ember-handlebars');
+  grunt.loadNpmTasks('grunt-karma');
 
   // Default task(s).
   grunt.registerTask('default', ['sass', 'concat', 'ember_handlebars']);
