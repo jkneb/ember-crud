@@ -255,10 +255,11 @@ h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
 
 .user-profile { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; width: 100%; height: 350px; text-align: center; position: absolute; top: 0; z-index: 2; padding: 15px; }
 .user-profile h2 { margin-bottom: 0; text-transform: uppercase; font: bold 18px 'Helvetica Neue', Arial; color: #333; }
-.user-profile .img { width: 110px; height: 110px; margin: 0 auto; padding: 5px; border: 1px solid #ddd; border-radius: 100%; overflow: hidden; }
+.user-profile .img { width: 110px; height: 110px; margin: 12px auto 0; padding: 5px; border: 1px solid #ddd; border-radius: 100%; overflow: hidden; }
 .user-profile .img img { max-width: 100%; border-radius: 100%; }
 .user-profile address { color: #999; font-size: 14px; font-style: normal; }
 .user-profile .bio { color: #999; font-size: 13px; margin: 25px -15px 0 -15px; padding: 20px 25px; background: white; border: 1px solid #eee; border-left: none; border-right: none; }
+.user-profile .date { padding: .4em .6em; color: #999; font-size: 10px; position: absolute; top: 17px; left: 17px; border: 1px solid #eee; border-radius: 2px; }
 
 .tools { display: block; }
 .tools .icon-pencil, .tools .icon-trashcan { display: inline-block; cursor: pointer; font-size: 15px; text-decoration: none; padding: 4px 5px; }

@@ -61,6 +61,32 @@ App.UsersCreateController = Ember.ObjectController.extend({
         this.transitionToRoute('user');
     }
 });
+// ----------------
+// For static datas you can use basic helpers
+// ----------------
+
+
+// this helper takes a raw date and format it with the moment.js library -> `2 days ago`
+Ember.Handlebars.helper('formatDate', function(date){
+    return moment(date).fromNow();
+});
+
+
+// ----------------
+// For datas that can be data-binded you should use BoundHelpers
+// ----------------
+
+// this helper takes a raw price and format it with 2 digits -> `0.00`
+/* Ember.Handlebars.registerBoundHelper('formatPrice', function(price){
+    return parseFloat(price).toFixed(2);
+});
+*/
+
+// this helper takes a raw date and format it with the moment.js library -> `August 9 2013`
+/* Ember.Handlebars.registerBoundHelper('formatDate', function(date){
+    return moment(date).format('LL');
+});
+*/
 App.Store = DS.Store.extend({
     revision: 13, 
     adapter: 'DS.FixtureAdapter'
@@ -70,7 +96,8 @@ App.User = DS.Model.extend({
     name   : DS.attr('string'),
     email  : DS.attr('string'),
     bio    : DS.attr('string'),
-    avatarUrl : DS.attr('string')
+    avatarUrl : DS.attr('string'),
+    creationDate : DS.attr('date')
 });
 
 // this is Ember-Data's fixtureAdapter 
@@ -84,105 +111,120 @@ App.User.FIXTURES = [
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './assets/images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg',
+        creationDate: 'Fri Aug 09 2013 15:13:16 GMT+0200 (CEST)'
     }, 
     {
         id: 2,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './assets/images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg',
+        creationDate: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)'
     },
     {
         id: 3,
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './assets/images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg',
+        creationDate: 'Mon Aug 17 2012 15:43:12 GMT+0200 (CEST)'
     }, 
     {
         id: 4,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './assets/images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg',
+        creationDate: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)'
     },
     {
         id: 5,
         name: 'Dean Winchester',
         email: 'deany@plopmail.com',
         bio: ':)',
-        avatarUrl: './assets/images/avatars/dean.jpg'
+        avatarUrl: './assets/images/avatars/dean.jpg',
+        creationDate: 'Mon Jan 30 2013 12:12:12 GMT+0200 (CEST)'
     },
     {
         id: 6,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
-        avatarUrl: './assets/images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png',
+        creationDate: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)'
     },
     {
         id: 7,
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './assets/images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg',
+        creationDate: 'Mon Apr 02 2012 12:12:12 GMT+0200 (CEST)'
     }, 
     {
         id: 8,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './assets/images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg',
+        creationDate: 'Tue Jun 12 2012 12:12:12 GMT+0200 (CEST)'
     },
     {
         id: 9,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        avatarUrl: './assets/images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png',
+        creationDate: 'Mon Aug 17 2013 15:43:12 GMT+0200 (CEST)'
     },
     {
         id: 10,
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './assets/images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg',
+        creationDate: 'Mon Aug 17 2013 15:43:12 GMT+0200 (CEST)'
     }, 
     {
         id: 11,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './assets/images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg',
+        creationDate: 'Mon Aug 17 2013 15:43:12 GMT+0200 (CEST)'
     },
     {
         id: 12,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        avatarUrl: './assets/images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png',
+        creationDate: 'Mon Aug 12 2013 15:43:12 GMT+0200 (CEST)'
     },
     {
         id: 13,
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './assets/images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg',
+        creationDate: 'Mon Oct 12 2013 13:13:13 GMT+0200 (CEST)'
     }, 
     {
         id: 14,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './assets/images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg',
+        creationDate: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)'
     },
     {
         id: 15,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        avatarUrl: './assets/images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png',
+        creationDate: 'Thu Sep 17 2013 11:11:11 GMT+0200 (CEST)'
     }
 ];
 
@@ -377,11 +419,17 @@ function program2(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "email", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</address>\n    <p class=\"bio\">");
+  data.buffer.push("</address>\n    <p class=\"bio\">\n        ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "bio", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</p>\n\n    ");
+  data.buffer.push("\n\n        ");
+  data.buffer.push("\n        <span class=\"date\">Created ");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.formatDate),stack1 ? stack1.call(depth0, "creationDate", options) : helperMissing.call(depth0, "formatDate", "creationDate", options))));
+  data.buffer.push("</span>\n    </p>\n    \n\n    ");
   data.buffer.push("\n    ");
   data.buffer.push("\n    ");
   hashTypes = {};
