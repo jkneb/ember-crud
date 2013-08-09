@@ -15,7 +15,11 @@ it will install locally the following node modules
 * grunt-contrib-sass 
 * grunt-contrib-concat 
 * grunt-contrib-watch 
-* grunt-ember-handlebars 
+* grunt-ember-handlebars
+* grunt-karma
+* karma-mocha
+* karma-coverage
+* karma-coffee-preprocessor
 
 ### How to compile css
 
