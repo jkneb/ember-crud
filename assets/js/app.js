@@ -61,6 +61,32 @@ App.UsersCreateController = Ember.ObjectController.extend({
         this.transitionToRoute('user');
     }
 });
+// ----------------
+// For static datas you can use basic helpers
+// ----------------
+
+
+// this helper takes a raw date and format it with the moment.js library -> `2 days ago`
+Ember.Handlebars.helper('formatDate', function(date){
+    return moment(date).fromNow();
+});
+
+
+// ----------------
+// For datas that can be data-binded you should use BoundHelpers
+// ----------------
+
+// this helper takes a raw price and format it with 2 digits -> `0.00`
+/* Ember.Handlebars.registerBoundHelper('formatPrice', function(price){
+    return parseFloat(price).toFixed(2);
+});
+*/
+
+// this helper takes a raw date and format it with the moment.js library -> `August 9 2013`
+/* Ember.Handlebars.registerBoundHelper('formatDate', function(date){
+    return moment(date).format('LL');
+});
+*/
 App.Store = DS.Store.extend({
     revision: 13, 
     adapter: 'DS.FixtureAdapter'
@@ -70,7 +96,8 @@ App.User = DS.Model.extend({
     name   : DS.attr('string'),
     email  : DS.attr('string'),
     bio    : DS.attr('string'),
-    avatarUrl : DS.attr('string')
+    avatarUrl : DS.attr('string'),
+    creationDate : DS.attr('date')
 });
 
 // this is Ember-Data's fixtureAdapter 
@@ -84,105 +111,120 @@ App.User.FIXTURES = [
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './assets/images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg',
+        creationDate: 'Fri Aug 09 2013 15:13:16 GMT+0200 (CEST)'
     }, 
     {
         id: 2,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './assets/images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg',
+        creationDate: 'Fri Aug 07 2013 10:10:10 GMT+0200 (CEST)'
     },
     {
         id: 3,
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './assets/images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg',
+        creationDate: 'Mon Aug 17 2012 15:43:12 GMT+0200 (CEST)'
     }, 
     {
         id: 4,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './assets/images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg',
+        creationDate: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)'
     },
     {
         id: 5,
         name: 'Dean Winchester',
         email: 'deany@plopmail.com',
         bio: ':)',
-        avatarUrl: './assets/images/avatars/dean.jpg'
+        avatarUrl: './assets/images/avatars/dean.jpg',
+        creationDate: 'Mon Jan 30 2013 12:12:12 GMT+0200 (CEST)'
     },
     {
         id: 6,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.',
-        avatarUrl: './assets/images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png',
+        creationDate: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)'
     },
     {
         id: 7,
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './assets/images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg',
+        creationDate: 'Mon Apr 02 2012 12:12:12 GMT+0200 (CEST)'
     }, 
     {
         id: 8,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './assets/images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg',
+        creationDate: 'Tue Jun 12 2012 12:12:12 GMT+0200 (CEST)'
     },
     {
         id: 9,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        avatarUrl: './assets/images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png',
+        creationDate: 'Mon Aug 17 2013 15:43:12 GMT+0200 (CEST)'
     },
     {
         id: 10,
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './assets/images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg',
+        creationDate: 'Mon Aug 17 2013 15:43:12 GMT+0200 (CEST)'
     }, 
     {
         id: 11,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './assets/images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg',
+        creationDate: 'Mon Aug 17 2013 15:43:12 GMT+0200 (CEST)'
     },
     {
         id: 12,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        avatarUrl: './assets/images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png',
+        creationDate: 'Mon Aug 12 2013 15:43:12 GMT+0200 (CEST)'
     },
     {
         id: 13,
         name: 'Julien Knebel',
         email: 'julienknebel@gmail.com',
         bio: 'Freelance web & print designer + front-end developer',
-        avatarUrl: './assets/images/avatars/jk.jpg'
+        avatarUrl: './assets/images/avatars/jk.jpg',
+        creationDate: 'Mon Oct 12 2013 13:13:13 GMT+0200 (CEST)'
     }, 
     {
         id: 14,
         name: 'Sponge Bob',
         email: 'bob@sponge.com',
         bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-        avatarUrl: './assets/images/avatars/sb.jpg'
+        avatarUrl: './assets/images/avatars/sb.jpg',
+        creationDate: 'Tue May 22 2013 12:12:12 GMT+0200 (CEST)'
     },
     {
         id: 15,
         name: 'John Doe',
         email: 'john@doe.com',
         bio: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        avatarUrl: './assets/images/avatars/default.png'
+        avatarUrl: './assets/images/avatars/default.png',
+        creationDate: 'Thu Sep 17 2013 11:11:11 GMT+0200 (CEST)'
     }
 ];
 
@@ -377,20 +419,24 @@ function program2(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "email", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</address>\n    <p class=\"bio\">");
+  data.buffer.push("</address>\n    <p class=\"bio\">\n        ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "bio", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</p>\n\n    ");
-  data.buffer.push("\n    ");
+  data.buffer.push("\n\n        ");
+  data.buffer.push("\n        <span class=\"date\">Created ");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.formatDate),stack1 ? stack1.call(depth0, "creationDate", options) : helperMissing.call(depth0, "formatDate", "creationDate", options))));
+  data.buffer.push("</span>\n    </p>\n    \n\n    ");
   data.buffer.push("\n    ");
   data.buffer.push("\n    ");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.partial),stack1 ? stack1.call(depth0, "faces", options) : helperMissing.call(depth0, "partial", "faces", options))));
-  data.buffer.push("\n\n    ");
-  data.buffer.push("\n    <div class=\"cloned-views\"></div>\n</div>\n\n");
+  data.buffer.push("\n</div>\n\n");
   data.buffer.push("\n<div ");
   hashContexts = {'class': depth0};
   hashTypes = {'class': "STRING"};
@@ -440,7 +486,7 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "closeEditing", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(" title=\"Save modifications\"> ok </button>\n</div>\n");
+  data.buffer.push("> ok </button>\n</div>\n");
   return buffer;
   
 });
@@ -459,11 +505,11 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   var buffer = '', stack1, stack2, hashContexts, hashTypes, options;
-  data.buffer.push("\n        <li>\n        ");
-  data.buffer.push("\n        ");
-  data.buffer.push("\n        ");
-  data.buffer.push("\n        ");
-  data.buffer.push("\n        ");
+  data.buffer.push("\n        <li>\n            ");
+  data.buffer.push("\n            ");
+  data.buffer.push("\n            ");
+  data.buffer.push("\n            ");
+  data.buffer.push("\n            ");
   hashContexts = {'class': depth0};
   hashTypes = {'class': "STRING"};
   options = {hash:{
@@ -477,15 +523,16 @@ function program3(depth0,data) {
 function program4(depth0,data) {
   
   var buffer = '', hashTypes, hashContexts;
-  data.buffer.push("\n            ");
+  data.buffer.push("\n                ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "user.name", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n        ");
+  data.buffer.push("\n            ");
   return buffer;
   }
 
-  data.buffer.push("<div ");
+  data.buffer.push("\n");
+  data.buffer.push("\n<div ");
   hashContexts = {'class': depth0};
   hashTypes = {'class': "STRING"};
   data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
@@ -500,9 +547,7 @@ function program4(depth0,data) {
   },inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers.linkTo),stack1 ? stack1.call(depth0, "users.create", options) : helperMissing.call(depth0, "linkTo", "users.create", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n    </div>\n\n    ");
-  data.buffer.push("\n    ");
-  data.buffer.push("\n    <ul class=\"users-listing\">\n\n        ");
+  data.buffer.push("\n    </div>\n\n    <ul class=\"users-listing\">\n\n        ");
   data.buffer.push("\n        ");
   hashTypes = {};
   hashContexts = {};
@@ -585,48 +630,89 @@ App.UserEditView = Ember.View.extend({
     }
 });
 App.UserView = Ember.View.extend({
+
+    // touch gestures properties
+    startX      : 0,
+    dist        : 0,
+    active      : null,
+    threshold   : 40,
+
     didInsertElement: function(){
-        //$elem = this.$();
+        // the didInsertElement hook is the guarantee 
+        // that the view is in the DOM. 
+        // So from here, you can perform any DOM manipulation 
+        // or what ever you wish with or without jQuery.
+    }, 
+    
+    touchStart: function(event){
+        var touchEvent = event.originalEvent.changedTouches[0];
+        console.log($(touchEvent.target)[0]);
+        var layer = $(touchEvent.target).closest('.user-edit')[0];
+        if (layer) {
+            this.active = layer;
+            this.onStart(event, touchEvent);
+        }
+    },
+    
+    touchMove: function(event){
+        event.preventDefault();
+        if (!this.active) return;
+        this.onMove(event, event.originalEvent.changedTouches[0]);
+    },
+    
+    touchEnd: function(event){
+        if (!this.active) return;
+        this.onEnd(event);
+    }, 
+    
+    onStart: function(e,d) {
+        e.stopPropagation();
+        this.startX = d.pageX;
+        this.active.classList.add('drag');
+    },
+
+    onMove: function(e,d) {
+        e.stopPropagation();
+        this.dist = (d.pageX - this.startX) / 2;
+        var pct, r;
         
-        /* rotate things with mousemove for debug mode */
-        /*$(window).on('mousedown mouseup', function(e){
-            var $this = $(this); 
-            var oldX = e.pageX; 
-            var oldY = e.pageY; 
+        this.active.classList.remove('webkit-transform');
+        
+        // drag from left to right
+        if (this.dist > 0) { 
+            this.active.style.webkitTransform = 'translate3d(' + this.dist + 'px, 0, 0)';
+        } 
+        else { // drag from right to left
+            this.active.style.webkitTransform = 'translate3d(' + this.dist + 'px, 0, 0)';
+        }
+    },
 
-            if (e.type == 'mousedown') {
-                //console.group();
-                //  console.log('$this > ',$this);
-                //  console.log('oldX > ',oldX);
-                //  console.log('oldY > ',oldY);
-                //console.groupEnd();
+    onEnd: function(e) {
+        e.stopPropagation();
+        this.active.classList.remove('drag');
 
-                $elem.addClass('unselectable');
+        // dragged from left to right
+        if (this.dist >= this.threshold) { 
+            this.active.classList.add('webkit-transform');
+            this.active.style.webkitTransform = 'translate3d(' + $('.user-edit').outerWidth() + 'px, 0, 0)';
+            this.active.classList.remove('active');
 
-                $this.on('mousemove', function(e){
-                    var currX = e.pageX;
-                    var currY = e.pageY;
-                    //console.log(currX +' < x | y > '+currY);
-                    var newX = currY-oldY;
-                    var newY = currX-oldX;
-                    //console.log('%d - %d = %d', currY, oldY, currY-oldY);
-                    //console.log('newX > ',newX);
-                    //console.log('newY > ',newY);
-
-                    $elem.css({
-                        '-webkit-transform':'rotateX('+newX+'deg) rotateY('+newY+'deg)',
-                        '-moz-transform':'rotateX('+newX+'deg) rotateY('+newY+'deg)',
-                        'transform':'rotateX('+newX+'deg) rotateY('+newY+'deg)'
-                    });
-                });
-
-            } else {
-                // console.log('mouseup');
-                $this.off('mousemove');
-                $elem.removeClass('unselectable');
-            }
-
-            e.stopPropagation();
-        });*/
-    }
+            this.sendCloseEvent();
+        } 
+        // cancel
+        else if (this.dist > -this.threshold && this.dist < this.threshold) { 
+            this.active.classList.add('webkit-transform');
+            this.active.style.webkitTransform = 'translate3d(0px, 0, 0)';
+        } 
+        // dragged from right to left
+        else { 
+            console.log('canceled');
+            
+            this.active.classList.add('webkit-transform');
+            this.active.style.webkitTransform = 'translate3d(0px, 0, 0)';
+        }
+        
+        this.dist = 0;
+        this.active = null;
+    }    
 });

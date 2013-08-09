@@ -19,15 +19,17 @@
     <div class="img"><img {{bindAttr src="avatarUrl"}}></div>
     <h2>{{name}}</h2>
     <address>{{email}}</address>
-    <p class="bio">{{bio}}</p>
+    <p class="bio">
+        {{bio}}
+
+        {{! the date is formated by the formatDate helper - see helpers.js file }}
+        <span class="date">Created {{formatDate creationDate}}</span>
+    </p>
+    
 
     {{! partials are a good way to clean a bit the code, think of it as includes in php }}
-    {{! remember to start partials template name by a _ }}
-    {{! here we inject the partial _faces, it contains some reusable divs }}
+    {{! remember to start partials name by a _ }}
     {{partial faces}}
-
-    {{! this div is empty for now but we use it for the deleteUser css animation }}
-    <div class="cloned-views"></div>
 </div>
 
 {{! again here use the editMode property to switch class names between "shown" and "hidden" }}
