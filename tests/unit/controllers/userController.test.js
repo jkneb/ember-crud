@@ -1,8 +1,4 @@
-var should = chai.should();
-
 describe ('UserController', function(){
-
-
     var userCtrl = null;
 
     beforeEach(function(){
