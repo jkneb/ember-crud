@@ -19,13 +19,9 @@
     <div class="img"><img {{bindAttr src="avatarUrl"}}></div>
     <h2>{{name}}</h2>
     <address>{{email}}</address>
-    <p class="bio">
-        {{bio}}
-
-        {{! the date is formated by the formatDate helper - see helpers.js file }}
-        <span class="date">Created {{formatDate creationDate}}</span>
-    </p>
-    
+    <p class="bio">{{bio}}</p>
+    {{! the date is formated by the formatDate helper - see helpers.js file }}
+    <span class="date">Created {{formatDate creationDate}}</span>
 
     {{! partials are a good way to clean a bit the code, think of it as includes in php }}
     {{! remember to start partials name by a _ }}
