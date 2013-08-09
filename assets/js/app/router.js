@@ -1,16 +1,3 @@
-// this trick will handle a basic 404 error page 
-/*App.Router = Ember.Router.extend({
-    handleURL: function (url) {
-        try {
-            this._super(url);
-        }
-        catch (e) {
-            Em.debug('url not recognized: ' + url);
-            this.transitionTo('404');
-        }
-    }
-});*/
-
 // this is where we declare our routes
 App.Router.map(function(){
     // this route will be our list of all users
@@ -25,5 +12,11 @@ App.Router.map(function(){
     });
 
     // our 404 error route
-    this.route('404');
+    this.route('missing', {path:"/*path"});
+});
+
+App.MissingRoute = Em.Route.extend({
+   redirect:function(){
+       this.transitionTo('users.index');
+   }
 });
