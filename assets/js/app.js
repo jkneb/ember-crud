@@ -16,7 +16,7 @@ App.UserController = Ember.ObjectController.extend({
         this.toggleProperty('deleteMode');
     },
     cancelDelete: function(){
-        this.set('deleteMode', true);
+        this.set('deleteMode', false);
     },
     confirmDelete: function(){
         this.get('content').deleteRecord();
