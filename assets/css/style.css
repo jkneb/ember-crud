@@ -162,7 +162,7 @@ h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
 .for-oh-for > span { font-family: 'Helvetica Neue', Arial; text-transform: uppercase; color: #999; font-size: 90px; font-weight: bold; color: rgba(10, 10, 10, 0.1); text-shadow: 0px 2px 3px #eee, 0px 0px 0px #ccc, 1px 1px 1px white; }
 .for-oh-for > p { color: #999; margin: 0px 0px 15px; }
 
-/*  A collection of css animations  stored in class names so you can easely addClass/removeClass them on any HTML elements  the simple action to add the class on a newly added element will trigger the animations
+/*  A collection of css animations stored in class names  so you can easely addClass/removeClass them on any HTML elements 
 */
 .flipin { -webkit-animation: flipin 1s ease both; -moz-animation: flipin 1s ease both; animation: flipin 1s ease both; }
 
@@ -271,12 +271,12 @@ h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
 @media screen and (max-width: 650px) { .main { width: auto; margin: 0; -webkit-perspective: none; -moz-perspective: none; }
   .users-listing { margin: 0; width: auto; max-height: none; overflow: visible; border-radius: 0; }
   .user-pane { width: auto; height: auto; position: static; top: auto; right: auto; }
-  .user-profile, .user-edit, .user-create, .user-create { height: auto; }
+  .user-profile, .user-edit, .user-create, .user-create { height: 100%; }
   .pane { border-radius: 0; -webkit-animation: none; -moz-animation: none; animation: none; }
   .main { overflow: hidden; }
   .main > .tools { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; position: fixed; top: 0; z-index: 1; padding: 10px 20px; width: 100%; height: 45px; background-color: #222; border: 4px solid black; border-top: none; }
   .main > .tools .create-btn > span { color: white; left: 50px; }
   .users-listing { overflow: scroll; -webkit-overflow-scrolling: touch; height: 100%; padding-top: 45px; }
   .users-listing li a { border-bottom: 3px solid #292929; }
-  .user-pane { position: absolute; z-index: 1; top: 0; left: 100%; outline: 1px solid hotpink; width: 100%; height: 100%; padding-top: 45px; }
+  .user-pane { position: absolute; z-index: 1; top: 0; left: 100%; outline: 1px solid hotpink; width: 100%; height: 100%; padding-top: 45px; -webkit-transition: -webkit-transform .4s ease .1s; -moz-transition: -moz-transform .4s ease .1s; -ms-transition: -ms-transform .4s ease .1s; transition: transform .4s ease .1s; }
   .user-profile { -webkit-animation: slideFromRightToLeft 0.3s both; -moz-animation: slideFromRightToLeft 0.3s both; animation: slideFromRightToLeft 0.3s both; } }
