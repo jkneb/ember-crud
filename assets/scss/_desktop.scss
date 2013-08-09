@@ -86,7 +86,7 @@ $mainColHeight: 400px;
 
     h2 { margin-bottom:0; text-transform:uppercase; font:bold 18px 'Helvetica Neue', Arial; color:#333; }
     .img { 
-        width:110px; height:110px; margin:0 auto;
+        width:110px; height:110px; margin:12px auto 0;
         padding:5px; border:1px solid #ddd; 
         border-radius:100%; overflow:hidden; 
         img { max-width:100%; border-radius:100%; }
@@ -98,6 +98,12 @@ $mainColHeight: 400px;
         background:white;
         border:1px solid #eee;
         border-left:none; border-right:none;
+    }
+    .date {
+        padding:.4em .6em;
+        color:#999; font-size:10px; 
+        position:absolute; top:17px; left:17px;
+        border:1px solid #eee; border-radius:2px;
     }
 
     // -webkit-transform:rotateY(40deg) !important;
