@@ -62,7 +62,7 @@ module.exports = function(grunt) {
         tasks: ['concat']
       },
       karma: {
-        files: ['tests/unit/**/*'],
+        files: ['assets/js/app.js','tests/unit/**/*'],
         tasks: ['karma:unit:run']
       }
     },
