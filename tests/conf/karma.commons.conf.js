@@ -16,7 +16,7 @@ module.exports = function (config){
 
             // Tests
             'tests/libs/**/*.js',
-            'tests/unit/**/*.js'
+            'tests/tests-utils.js'
         ],
 
         preprocessors: {
@@ -30,7 +30,7 @@ module.exports = function (config){
         },
 
         reporters: ['progress', 'coverage'],
-        basePath: '../',
+        basePath: '../../',
         frameworks: ['mocha'],
         exclude: [],
         port: 9876,

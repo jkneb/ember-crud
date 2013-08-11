@@ -39,7 +39,7 @@ describe ('UserController', function(){
     });
 
     it('edit should set deleteMode to false and editMode to true then transition to user.edit', function (){
-        var transitionToRouteCall = 0
+        var transitionToRouteCall = 0;
         userCtrl.setProperties({
             target:{
                 transitionToRoute:function(route) {

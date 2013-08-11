@@ -69,8 +69,11 @@ module.exports = function(grunt) {
 
     karma: {
       unit: {
-        configFile: 'tests/karma.unit.conf.js',
-          background: true
+        configFile: 'tests/conf/karma.unit.conf.js',
+        background: true
+      },
+      integration: {
+        configFile: 'tests/conf/karma.integration.conf.js'
       }
     }
 
