@@ -23,7 +23,7 @@ it will install locally the following node modules
 
 ### How to compile css
 
-Requirements:  
+**Requirements:**  
 Install Ruby ([RVM](https://rvm.io/rvm/install) is your friend), then `gem install sass`
 
 Run the following command:  
@@ -39,3 +39,16 @@ Run the following command:
 Run the following command:  
 `grunt watch` or `grunt concat`
 
+### How to run tests
+
+**Requirements:**  
+You need [Karma](https://github.com/karma-runner/karma) on your machine  
+`sudo npm install -g karma`  
+
+Then run the following command:  
+`karma start tests/conf/karma.unit.conf.js`
+
+Or you could simply use the bin located in the node_module, so no need to `npm install -g`.
+
+And you can run the same command as above but like this:  
+`./node_modules/karma/bin/karma start tests/conf/karma.unit.conf.js`
