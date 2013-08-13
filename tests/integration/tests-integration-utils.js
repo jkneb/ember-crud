@@ -2,10 +2,6 @@
 $('<div id="ember-application-for-test"></div>').appendTo('body');
 App.rootElement = "#ember-application-for-test";
 
-
-// define Mocha adpater
-Ember.Test.adapter = Ember.Test.MochaAdapter.create();
-
 // defer ember initialisation, set router location to none
 App.setupForTesting();
 
