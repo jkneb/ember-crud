@@ -10,6 +10,7 @@
     .user-pane { width:auto; height:auto; position:static; top:auto; right:auto; }
     .user-profile, .user-edit, .user-create { height:100%; }
     .pane { border-radius:0; @include animation(none); }
+    [class*="face-"] { display:none; }
 
 
     // ------------
@@ -21,11 +22,15 @@
 
     .main { overflow:hidden; }
 
-    .main > .tools { 
+    .tools { 
         @include box-sizing(border-box);
-        position:fixed; top:0; z-index:1; padding:10px 20px; 
+        padding:10px 20px; 
         width:100%; height:$toolsHeight; 
-        background-color:#222; border:4px solid black; border-top:none;
+        background-color:#222; border:4px solid black; border-top:none; 
+    }
+
+    .main > .tools { 
+        position:fixed; top:0; z-index:1; 
         .create-btn > span { color:white; left:50px; }
     }
     .users-listing { 
@@ -48,7 +53,19 @@
     .user-profile {
         // trigger the entrance animation
         //@include transform(translate3d(-100%,0,0));
+        @include animation(slideFromRightToLeft .3s both .1s);
 
-        @include animation(slideFromRightToLeft .3s both);
+        padding-top:$toolsHeight+20;
+
+        .tools { 
+            position:absolute; top:0; left:0; 
+            background-color:lighten($gray,5%); border:none; border-bottom:4px solid $gray; 
+        }
+        
+        .date {
+            display:inline-block;
+            position:static; margin-top:25px;
+            font-size:12px; background:#f1f1f1; border-color:#ddd;
+        }
     }
 }
