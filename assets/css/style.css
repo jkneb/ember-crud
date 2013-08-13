@@ -144,6 +144,8 @@ i { font-style: normal; }
 
 h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
 
+hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
+
 .confirm-box { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 7px; position: absolute; top: 0px; left: 50%; margin-left: -63px; background: white; border-radius: 3px; border: 1px solid #ddd; }
 .confirm-box h4 { display: inline-block; margin: 0 2px 0 0; color: #666; line-height: 11px; font-size: 11px; }
 .confirm-box button { font-size: 11px; }

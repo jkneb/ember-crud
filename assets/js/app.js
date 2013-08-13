@@ -350,19 +350,20 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
 this["Ember"]["TEMPLATES"]["modal-demo"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [3,'>= 1.0.0-rc.4'];
 helpers = helpers || Ember.Handlebars.helpers; data = data || {};
-  var stack1, hashTypes, hashContexts, self=this;
+  var buffer = '', stack1, hashTypes, hashContexts, self=this;
 
 function program1(depth0,data) {
   
   
-  data.buffer.push("\n    <h3>About this demo</h3>\n    <p>This app is an Ember JS app. It demonstrate how you can achieve a simple CRUD with complexe css animations transitions.</p>\n    <p>There's also a mobile version, which has some cool responsive tricks. Visit this app with you phone or simply resize your browser.</p>\n    <p>A <a href=\"#\" target=\"_blank\">companion article</a> posted at Smashing Magazine teaches you all you need to know about this app and more generally about how to code single page web apps with Ember.</p>\n    <p>Finally this app and its source code are <a href=\"https://github.com/jkneb/ember-crud\" target=\"_blank\">hosted at Github</a>.</p>\n");
+  data.buffer.push("\n    <h3>About this demo</h3>\n    <hr/>\n    <p>This app is an Ember JS app. It demonstrates how you can achieve a simple CRUD with complexe css animations / transitions.</p>\n    <p>There is also a mobile version, which has some cool responsive tricks. Visit this app with your phone or simply resize your browser.</p>\n    <hr/>\n    <p>A <a href=\"#\" target=\"_blank\">companion article</a> posted at Smashing Magazine teaches you all you need to know about this app and more generally about how to code single page web apps with Ember.</p>\n    <p>Finally this app and its source code are <a href=\"https://github.com/jkneb/ember-crud\" target=\"_blank\">hosted at Github</a>.</p>\n");
   }
 
   hashTypes = {};
   hashContexts = {};
   stack1 = helpers.view.call(depth0, "App.Modal", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  else { data.buffer.push(''); }
+  data.buffer.push("\n");
+  return buffer;
   
 });
 
