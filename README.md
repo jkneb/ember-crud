@@ -51,4 +51,4 @@ Then run the following command:
 Or you could simply use the bin located in the node_module, so no need to `npm install -g`.
 
 And you can run the same command as above but like this:  
-`./node_modules/karma/bin/karma start tests/conf/karma.unit.conf.js`
+`./node_modules/karma/bin/karma start conf/karma.unit.conf.js`
