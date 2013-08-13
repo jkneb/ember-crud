@@ -139,3 +139,21 @@ $mainColHeight: 400px;
 .user-create {
     @extend .user-edit; 
 }
+
+.about-this-demo {
+    $color:black;
+    
+    position:absolute; bottom:10px; left:10px;
+    color:$color; text-decoration:none;
+    
+    &:hover { color:$blue; }
+    
+    // icon
+    &:before {
+        margin-right:7px;
+        width:30px; height:29px; line-height:32px;
+        display:inline-block; vertical-align:middle;
+        font-size:28px; text-align:center; text-indent:-1px;
+        border-radius:100%; border:2px solid $color;
+    }
+}
