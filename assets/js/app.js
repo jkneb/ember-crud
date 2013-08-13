@@ -355,7 +355,7 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
 function program1(depth0,data) {
   
   
-  data.buffer.push("\n    <h3>About this demo</h3>\n    <p>This app is an Ember JS app. It demonstrate how you can achieve a simple CRUD with complexe css animations transitions.</p>\n    <p>There's also a mobile version, which has some cool responsive tricks. Visit this app with you phone or simply resize your browser.</p>\n    <p>A <a href=\"#\" target=\"_blank\">companion article</a> posted at Smashing Magazine teaches you all you need to know about this app and more generally about how to code single page web apps with Ember.</p>\n    <p>Finally this app and its source code is hosted at Github.</p>\n");
+  data.buffer.push("\n    <h3>About this demo</h3>\n    <p>This app is an Ember JS app. It demonstrate how you can achieve a simple CRUD with complexe css animations transitions.</p>\n    <p>There's also a mobile version, which has some cool responsive tricks. Visit this app with you phone or simply resize your browser.</p>\n    <p>A <a href=\"#\" target=\"_blank\">companion article</a> posted at Smashing Magazine teaches you all you need to know about this app and more generally about how to code single page web apps with Ember.</p>\n    <p>Finally this app and its source code are <a href=\"https://github.com/jkneb/ember-crud\" target=\"_blank\">hosted at Github</a>.</p>\n");
   }
 
   hashTypes = {};
