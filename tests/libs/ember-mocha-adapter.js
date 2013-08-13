@@ -152,3 +152,6 @@
 
 
 }());
+
+// define Mocha adpater
+Ember.Test.adapter = Ember.Test.MochaAdapter.create();
