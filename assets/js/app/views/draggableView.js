@@ -63,7 +63,6 @@ App.DraggableView = Em.View.extend({
             Em.run.later(this, function(){
                 // there is no customTransitionTo in the controller so it will bubble up to routes
                 // the customTransitionTo event is located in the ApplicationRoute
-                debugger;
                 this.get('controller').send('customTransitionTo', (this.renderedName === 'user') ? 'users' : 'index');
             }, 600);
         }
