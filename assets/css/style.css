@@ -248,7 +248,7 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
 
 .user-pane { width: 290px; height: 400px; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -webkit-transform: rotateY(0deg); -moz-transform: rotateY(0deg); -ms-transform: rotateY(0deg); transform: rotateY(0deg); position: absolute; top: 0; right: 0; }
 
-.users-listing { position: relative; margin-top: 5px; border: 4px solid rgba(0, 0, 0, 0.5); background: #323232; border-radius: 4px; padding: 0; list-style: none; }
+.users-listing { max-height: 280px; position: relative; margin-top: 5px; border: 4px solid rgba(0, 0, 0, 0.5); background: #323232; border-radius: 4px; padding: 0; list-style: none; }
 .users-listing li a { display: block; padding: 15px 20px; text-decoration: none; color: #eee; }
 .users-listing li a.active { background-color: #000; }
 
@@ -290,10 +290,14 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
   .user-pane { width: auto; height: auto; position: static; top: auto; right: auto; }
   .user-profile, .user-edit, .user-create, .user-create { height: 100%; }
   .pane { border-radius: 0; -webkit-animation: none; -moz-animation: none; animation: none; }
+  [class*="face-"] { display: none; }
   .main { overflow: hidden; }
-  .main > .tools { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; position: fixed; top: 0; z-index: 1; padding: 10px 20px; width: 100%; height: 45px; background-color: #222; border: 4px solid black; border-top: none; }
+  .tools { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 10px 20px; width: 100%; height: 45px; background-color: #222; border: 4px solid black; border-top: none; }
+  .main > .tools { position: fixed; top: 0; z-index: 1; }
   .main > .tools .create-btn > span { color: white; left: 50px; }
   .users-listing { overflow: scroll; -webkit-overflow-scrolling: touch; height: 100%; padding-top: 45px; }
   .users-listing li a { border-bottom: 3px solid #292929; }
   .user-pane { position: absolute; z-index: 1; top: 0; left: 100%; outline: 1px solid hotpink; width: 100%; height: 100%; padding-top: 45px; -webkit-transition: -webkit-transform .4s ease .1s; -moz-transition: -moz-transform .4s ease .1s; -ms-transition: -ms-transform .4s ease .1s; transition: transform .4s ease .1s; }
-  .user-profile { -webkit-animation: slideFromRightToLeft 0.3s both; -moz-animation: slideFromRightToLeft 0.3s both; animation: slideFromRightToLeft 0.3s both; } }
+  .user-profile { -webkit-animation: slideFromRightToLeft 0.3s both 0.1s; -moz-animation: slideFromRightToLeft 0.3s both 0.1s; animation: slideFromRightToLeft 0.3s both 0.1s; padding-top: 65px; }
+  .user-profile .tools { position: absolute; top: 0; left: 0; background-color: #fbfbfb; border: none; border-bottom: 4px solid #eeeeee; }
+  .user-profile .date { display: inline-block; position: static; margin-top: 25px; font-size: 12px; background: #f1f1f1; border-color: #ddd; } }
