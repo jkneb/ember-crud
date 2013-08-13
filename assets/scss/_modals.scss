@@ -1,0 +1,47 @@
+.modal {
+    padding:35px; 
+    @include box-sizing(border-box);
+    width:400px; height:330px; 
+
+    // v + h centering
+    position:absolute; margin:auto; 
+    top:0; bottom:0; left:0; right:0; 
+
+    z-index:100;
+
+    background:white; 
+    border:1px solid #ddd; border-radius:4px;
+    box-shadow:5px 5px 12px rgba(0,0,0,.1);
+
+    // reveal logic
+    &.modal-show {
+        opacity:1;
+        @include transition( top 0ms linear 0ms, 
+                             opacity 300ms ease 10ms );
+    }
+    &.modal-hide { 
+        opacity:0; top:-200%;
+        @include transition( opacity 300ms ease 0ms, 
+                             top 0ms linear 900ms );
+    }
+
+    .modal-body { margin-top:15px; }
+
+    .modal-close {
+        padding:4px 10px;
+        position:absolute; top:15px; right:15px;
+        font-size:12px; cursor:pointer;
+        background:$gray; border:1px solid #ccc; border-radius:3px; 
+        &:hover { background:$blue; color:white; border-color:$blue; }
+    }
+    
+    h3 { color:$blue; }
+
+    + .modal-backdrop {
+        position:fixed; z-index:99;
+        top:0; left:0; right:0;
+        background:rgba(0,0,0,.3);
+    }
+    // reveal logic
+    &.modal-show + .modal-backdrop { bottom:0; }
+}

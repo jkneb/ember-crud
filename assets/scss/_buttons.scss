@@ -7,10 +7,6 @@ button, .button {
     border-radius:3px; 
 }
 
-$gray:#eee;
-$blue:#30a1e2;
-$red:#ee6666;
-
 @mixin buttonColorz($colorScheme) {
     color:white; 
     text-shadow:0 1px 0 darken($colorScheme,20%);
