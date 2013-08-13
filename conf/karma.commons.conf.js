@@ -30,7 +30,7 @@ module.exports = function (config){
         },
 
         reporters: ['progress', 'coverage'],
-        basePath: '../../',
+        basePath: '../',
         frameworks: ['mocha'],
         exclude: [],
         port: 9876,
