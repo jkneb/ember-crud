@@ -228,6 +228,14 @@ h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
 @keyframes slideFromRightToLeft { form { transform: translate3d(0%, 0, 0); }
   to { transform: translate3d(-100%, 0, 0); } }
 
+.modal { padding: 35px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; width: 400px; height: 330px; position: absolute; margin: auto; top: 0; bottom: 0; left: 0; right: 0; z-index: 0; background: white; border: 1px solid #ddd; border-radius: 4px; box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.1); }
+.modal.modal-show { opacity: 1; -webkit-transition: top 0ms linear 0ms, opacity 300ms ease 10ms; -moz-transition: top 0ms linear 0ms, opacity 300ms ease 10ms; -ms-transition: top 0ms linear 0ms, opacity 300ms ease 10ms; transition: top 0ms linear 0ms, opacity 300ms ease 10ms; }
+.modal.modal-hide { opacity: 0; top: -200%; -webkit-transition: opacity 300ms ease 0ms, top 0ms linear 900ms; -moz-transition: opacity 300ms ease 0ms, top 0ms linear 900ms; -ms-transition: opacity 300ms ease 0ms, top 0ms linear 900ms; transition: opacity 300ms ease 0ms, top 0ms linear 900ms; }
+.modal .modal-body { margin-top: 15px; }
+.modal .modal-close { padding: 4px 10px; position: absolute; top: 15px; right: 15px; font-size: 12px; cursor: pointer; background: #eeeeee; border: 1px solid #ccc; border-radius: 3px; }
+.modal .modal-close:hover { background: #30a1e2; color: white; border-color: #30a1e2; }
+.modal h3 { color: #30a1e2; }
+
 .border-box, .main, .users-listing, .user-pane, .pane, .user-profile { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 .main { position: relative; margin: 50px auto; width: 550px; -webkit-perspective: 2500px; -moz-perspective: 2500px; }
@@ -268,6 +276,10 @@ h3 { margin: 0 0 10px 0; text-align: left; text-transform: uppercase; }
 .user-edit button, .user-create button { margin-top: 5px; }
 .user-edit.hidden, .hidden.user-create { visibility: hidden; }
 .user-edit.shown, .shown.user-create { visibility: visible; }
+
+.about-this-demo { position: absolute; bottom: 10px; left: 10px; color: black; text-decoration: none; }
+.about-this-demo:hover { color: #30a1e2; }
+.about-this-demo:before { margin-right: 7px; width: 30px; height: 29px; line-height: 32px; display: inline-block; vertical-align: middle; font-size: 28px; text-align: center; text-indent: -1px; border-radius: 100%; border: 2px solid black; }
 
 @media screen and (max-width: 650px) { .main { width: auto; margin: 0; -webkit-perspective: none; -moz-perspective: none; }
   .users-listing { margin: 0; width: auto; max-height: none; overflow: visible; border-radius: 0; }

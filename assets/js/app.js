@@ -228,19 +228,6 @@ App.User.FIXTURES = [
     }
 ];
 
-// this trick will handle a basic 404 error page 
-/*App.Router = Ember.Router.extend({
-    handleURL: function (url) {
-        try {
-            this._super(url);
-        }
-        catch (e) {
-            Em.debug('url not recognized: ' + url);
-            this.transitionTo('404');
-        }
-    }
-});*/
-
 // this is where we declare our routes
 App.Router.map(function(){
     // this route will be our list of all users
@@ -255,7 +242,20 @@ App.Router.map(function(){
     });
 
     // our 404 error route
-    this.route('404');
+    this.route('missing', {path:"/*path"});
+});
+
+App.MissingRoute = Em.Route.extend({
+   redirect:function(){
+       this.transitionTo('users.index');
+   }
+});
+App.ApplicationRoute = Em.Route.extend({
+    events: {
+        showModal: function(name){
+            this.controllerFor(name).set('modalVisible', true);
+        }
+    }
 });
 // no need of a home page so we redirect "/" to "/users"
 App.IndexRoute = Ember.Route.extend({
@@ -329,7 +329,7 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
 this["Ember"]["TEMPLATES"]["application"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [3,'>= 1.0.0-rc.4'];
 helpers = helpers || Ember.Handlebars.helpers; data = data || {};
-  var buffer = '', hashTypes, hashContexts, escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, hashTypes, hashContexts, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
 
 
   data.buffer.push("\n");
@@ -338,7 +338,51 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n");
+  data.buffer.push("\n\n");
+  hashTypes = {};
+  hashContexts = {};
+  options = {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers.render),stack1 ? stack1.call(depth0, "modal-demo", options) : helperMissing.call(depth0, "render", "modal-demo", options))));
+  return buffer;
+  
+});
+
+this["Ember"]["TEMPLATES"]["modal-demo"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [3,'>= 1.0.0-rc.4'];
+helpers = helpers || Ember.Handlebars.helpers; data = data || {};
+  var stack1, hashTypes, hashContexts, self=this;
+
+function program1(depth0,data) {
+  
+  
+  data.buffer.push("\n    <h3>About this demo</h3>\n    <p>This app is an Ember JS app. It demonstrate how you can achieve a simple CRUD with complexe css animations transitions.</p>\n    <p>There's also a mobile version, which has some cool responsive tricks. Visit this app with you phone or simply resize your browser.</p>\n    <p>A <a href=\"#\" target=\"_blank\">companion article</a> posted at Smashing Magazine teaches you all you need to know about this app and more generally about how to code single page web apps with Ember.</p>\n    <p>Finally this app and its source code is hosted at Github.</p>\n");
+  }
+
+  hashTypes = {};
+  hashContexts = {};
+  stack1 = helpers.view.call(depth0, "App.Modal", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  else { data.buffer.push(''); }
+  
+});
+
+this["Ember"]["TEMPLATES"]["modal_layout"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [3,'>= 1.0.0-rc.4'];
+helpers = helpers || Ember.Handlebars.helpers; data = data || {};
+  var buffer = '', hashContexts, hashTypes, escapeExpression=this.escapeExpression;
+
+
+  data.buffer.push("<button class=\"modal-close\" ");
+  hashContexts = {'target': depth0};
+  hashTypes = {'target': "STRING"};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "hideModal", {hash:{
+    'target': ("view")
+  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">&times;</button>\n\n<div class=\"modal-body\">\n    ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "yield", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push("\n</div>");
   return buffer;
   
 });
@@ -419,17 +463,17 @@ function program2(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "email", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("</address>\n    <p class=\"bio\">\n        ");
+  data.buffer.push("</address>\n    <p class=\"bio\">");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "bio", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n\n        ");
-  data.buffer.push("\n        <span class=\"date\">Created ");
+  data.buffer.push("</p>\n    ");
+  data.buffer.push("\n    <span class=\"date\">Created ");
   hashTypes = {};
   hashContexts = {};
   options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.formatDate),stack1 ? stack1.call(depth0, "creationDate", options) : helperMissing.call(depth0, "formatDate", "creationDate", options))));
-  data.buffer.push("</span>\n    </p>\n    \n\n    ");
+  data.buffer.push("</span>\n\n    ");
   data.buffer.push("\n    ");
   data.buffer.push("\n    ");
   hashTypes = {};
@@ -558,7 +602,11 @@ function program4(depth0,data) {
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n    </div>\n\n</div>\n");
+  data.buffer.push("\n    </div>\n\n</div>\n\n<a href=\"#\" class=\"about-this-demo icon-eye\" ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "showModal", "modal-demo", {hash:{},contexts:[depth0,depth0],types:["ID","STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">About this demo</a>");
   return buffer;
   
 });
@@ -622,6 +670,15 @@ App.ConfirmDeleteButtonView = Ember.View.extend({
             // and when the animation is done we can call the controller to trigger its confirmDelete method
             this.get('controller').confirmDelete();
         }, 500);
+    }
+});
+App.Modal = Em.View.extend({
+    layoutName: 'modal_layout',
+    classNames: ['modal'],
+    classNameBindings: ['controller.modalVisible:modal-show:modal-hide'],
+    
+    hideModal: function(){
+        this.get('controller').set('modalVisible', false);
     }
 });
 App.UserEditView = Ember.View.extend({
