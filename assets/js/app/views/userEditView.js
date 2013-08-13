@@ -1,5 +1,2 @@
-App.UserEditView = Ember.View.extend({
-    sendCloseEditEvent: function(){
-        
-    }
-});
+// inherit from the DraggableView
+App.UserEditView = App.DraggableView.extend();
