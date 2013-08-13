@@ -7,7 +7,7 @@
     position:absolute; margin:auto; 
     top:0; bottom:0; left:0; right:0; 
 
-    z-index:0;
+    z-index:100;
 
     background:white; 
     border:1px solid #ddd; border-radius:4px;
@@ -36,4 +36,12 @@
     }
     
     h3 { color:$blue; }
+
+    + .modal-backdrop {
+        position:fixed; z-index:99;
+        top:0; left:0; right:0;
+        background:rgba(0,0,0,.3);
+    }
+    // reveal logic
+    &.modal-show + .modal-backdrop { bottom:0; }
 }

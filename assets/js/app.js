@@ -373,17 +373,23 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   var buffer = '', hashContexts, hashTypes, escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("<button class=\"modal-close\" ");
+  data.buffer.push("<div ");
+  hashContexts = {'class': depth0};
+  hashTypes = {'class': "STRING"};
+  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
+    'class': (":modal controller.modalVisible:modal-show:modal-hide")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n    <button class=\"modal-close\" ");
   hashContexts = {'target': depth0};
   hashTypes = {'target': "STRING"};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "hideModal", {hash:{
     'target': ("view")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">&times;</button>\n\n<div class=\"modal-body\">\n    ");
+  data.buffer.push(">&times;</button>\n\n    <div class=\"modal-body\">\n        ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "yield", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n</div>");
+  data.buffer.push("\n    </div>\n</div>\n<div class=\"modal-backdrop\"></div>\n");
   return buffer;
   
 });
@@ -675,13 +681,20 @@ App.ConfirmDeleteButtonView = Ember.View.extend({
 });
 App.Modal = Em.View.extend({
     layoutName: 'modal_layout',
-    classNames: ['modal'],
-    classNameBindings: ['controller.modalVisible:modal-show:modal-hide'],
-    
+
+    didInsertElement: function(){
+        var view = this;
+        var backdrop = view.$().find('.modal-backdrop');
+        backdrop.on('click', function(){
+            view.hideModal();
+        });
+    },
+
     hideModal: function(){
         this.get('controller').set('modalVisible', false);
     }
 });
+
 App.UserEditView = Ember.View.extend({
     sendCloseEditEvent: function(){
         
