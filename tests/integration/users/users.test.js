@@ -1,5 +1,10 @@
 describe('Users', function(){
+
     beforeEach(function(){
+        Ember.run(App, App.advanceReadiness);
+    });
+
+    afterEach(function(){
         // reset the application state before each test
         App.reset();
     });
