@@ -254,9 +254,6 @@ App.ApplicationRoute = Em.Route.extend({
     events: {
         showModal: function(name){
             this.controllerFor(name).set('modalVisible', true);
-        }, 
-        customTransitionTo: function(name){
-            this.transitionTo(name);
         }
     }
 });
@@ -287,6 +284,11 @@ App.UserEditRoute = Ember.Route.extend({
             'editMode': false,
             'deleteMode': false
         });
+    }, 
+    events: {
+        goBack: function(){
+            this.transitionTo('user');
+        }
     }
 });
 // normally we would certainly have to set stuff on our userRoute but Ember auto generated it for us :) 
@@ -301,6 +303,11 @@ App.UserRoute = Ember.Route.extend({
     // force the deleteMode to false when accessing user
     activate: function(){
         this.controllerFor('user').set('deleteMode', false);
+    }, 
+    events: {
+        goBack: function(){
+            this.transitionTo('users');
+        }
     }
 });
 App.UsersCreateRoute = Ember.Route.extend({
@@ -491,17 +498,10 @@ function program2(depth0,data) {
   options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   data.buffer.push(escapeExpression(((stack1 = helpers.partial),stack1 ? stack1.call(depth0, "faces", options) : helperMissing.call(depth0, "partial", "faces", options))));
   data.buffer.push("\n</div>\n\n");
-  data.buffer.push("\n<div ");
-  hashContexts = {'class': depth0};
-  hashTypes = {'class': "STRING"};
-  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
-    'class': (":user-edit :pane editMode:shown:hidden")
-  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">\n    ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "outlet", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n</div>\n");
+  data.buffer.push("\n");
   return buffer;
   
 });
@@ -512,35 +512,41 @@ helpers = helpers || Ember.Handlebars.helpers; data = data || {};
   var buffer = '', hashContexts, hashTypes, escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("<div class=\"line\">\n    <h3>Edit user</h3>\n</div>\n<div class=\"line\">\n    <label for=\"avatarUrl\">Choose user avatar</label>\n    ");
+  data.buffer.push("\n<div ");
+  hashContexts = {'class': depth0};
+  hashTypes = {'class': "STRING"};
+  data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
+    'class': (":user-edit :pane controllers.user.editMode:shown:hidden")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(">\n    <div class=\"line\">\n        <h3>Edit user</h3>\n    </div>\n    <div class=\"line\">\n        <label for=\"avatarUrl\">Choose user avatar</label>\n        ");
   hashContexts = {'valueBinding': depth0};
   hashTypes = {'valueBinding': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
     'valueBinding': ("avatarUrl")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n</div>\n<div class=\"line\">\n    <label for=\"name\">User name</label>\n    ");
+  data.buffer.push("\n    </div>\n    <div class=\"line\">\n        <label for=\"name\">User name</label>\n        ");
   hashContexts = {'valueBinding': depth0};
   hashTypes = {'valueBinding': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
     'valueBinding': ("name")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n</div>\n<div class=\"line\">\n    <label for=\"email\">User email</label>\n    ");
+  data.buffer.push("\n    </div>\n    <div class=\"line\">\n        <label for=\"email\">User email</label>\n        ");
   hashContexts = {'valueBinding': depth0};
   hashTypes = {'valueBinding': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
     'valueBinding': ("email")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n</div>\n<div class=\"line\">\n    <label for=\"bio\">User short bio</label>\n    ");
+  data.buffer.push("\n    </div>\n    <div class=\"line\">\n        <label for=\"bio\">User short bio</label>\n        ");
   hashContexts = {'valueBinding': depth0};
   hashTypes = {'valueBinding': "STRING"};
   data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextArea", {hash:{
     'valueBinding': ("bio")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n</div>\n<div class=\"aright\">\n    <button class=\"blue\" ");
+  data.buffer.push("\n    </div>\n    <div class=\"aright\">\n        <button class=\"blue\" ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "closeEditing", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("> ok </button>\n</div>\n");
+  data.buffer.push("> ok </button>\n    </div>\n</div>\n");
   return buffer;
   
 });
@@ -699,6 +705,7 @@ App.DraggableView = Em.View.extend({
             this.active = layer;
             this.onStart(event, touchEvent);
             this.activeWidth = $('.pane').outerWidth();
+            this.active.style.webkitTransform = 'translate3d(' + (-this.activeWidth) + 'px, 0, 0)';
         }
     },
 
@@ -740,28 +747,25 @@ App.DraggableView = Em.View.extend({
         // dragged ⇛
         if (this.dist >= this.threshold) { 
             //console.log('⇛');
-            this.active.style.webkitTransform = 'translate3d(0px, 0, 0)';
             this.active.classList.remove('active');
-            //this.active.style.webkitTransform = 'none';
+            this.active.classList.add('slide-from-left-to-right');
             
             Em.run.later(this, function(){
                 // there is no customTransitionTo in the controller so it will bubble up to routes
                 // the customTransitionTo event is located in the ApplicationRoute
-                this.get('controller').send('customTransitionTo', (this.renderedName === 'user') ? 'users' : 'index');
+                this.get('controller').send('goBack');
             }, 600);
         }
         // cancel
-        else if (this.dist > -this.threshold && this.dist < this.threshold) { 
-            this.active.style.webkitTransform = 'translate3d(' + -(this.activeWidth) + 'px, 0, 0)';
-        } 
+        /*else if (this.dist > -this.threshold && this.dist < this.threshold) { 
+            // no need to do anything in this case
+        }*/
         // dragged ⇚
         else { 
             //console.log('⇚');
-            //console.log('canceled');
-            this.active.style.webkitTransform = 'translate3d(' + -(this.activeWidth) + 'px, 0, 0)';
+            this.active.classList.add('slide-from-right-to-left');
         }
 
-        //this.active.removeAttribute('style');
         this.dist = 0;
         this.active = null;
     }
@@ -793,3 +797,5 @@ App.UserView = App.DraggableView.extend({
         // or what ever you want with or without jQuery.
     }
 });
+
+App.UsersCreateView = App.DraggableView.extend();

@@ -10,5 +10,10 @@ App.UserRoute = Ember.Route.extend({
     // force the deleteMode to false when accessing user
     activate: function(){
         this.controllerFor('user').set('deleteMode', false);
+    }, 
+    events: {
+        goBack: function(){
+            this.transitionTo('users');
+        }
     }
 });

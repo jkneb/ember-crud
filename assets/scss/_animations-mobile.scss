@@ -1,0 +1,32 @@
+
+// must be default offscreen then this animation apply a slide from right to left
+.slide-from-right-to-left { @include animation(slideFromRightToLeft .3s both .1s); }
+@-webkit-keyframes slideFromRightToLeft {
+    //form { -webkit-transform:translate3d(0%,0,0); } 
+    to   { -webkit-transform:translate3d(-100%,0,0); } }
+@-moz-keyframes slideFromRightToLeft {
+    //form { -moz-transform:translate3d(0%,0,0); } 
+    to   { -moz-transform:translate3d(-100%,0,0); } }
+@-ms-keyframes slideFromRightToLeft {
+    //form { -ms-transform:translate3d(0%,0,0); } 
+    to   { -ms-transform:translate3d(-100%,0,0); } }
+@keyframes slideFromRightToLeft {
+    //form { transform:translate3d(0%,0,0); } 
+    to   { transform:translate3d(-100%,0,0); } 
+}
+
+.slide-from-left-to-right { @include animation(slideFromLeftToRight .3s both .1s); }
+@-webkit-keyframes slideFromLeftToRight {
+    to   { -webkit-transform:translate3d(0%,0,0); } }
+@-moz-keyframes slideFromLeftToRight {
+    to   { -moz-transform:translate3d(0%,0,0); } }
+@-ms-keyframes slideFromLeftToRight {
+    to   { -ms-transform:translate3d(0%,0,0); } }
+@keyframes slideFromLeftToRight {
+    to   { transform:translate3d(0%,0,0); } 
+}
+
+.drag { 
+    @include animation(none); 
+    @include transition(none); 
+}

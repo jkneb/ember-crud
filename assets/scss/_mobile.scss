@@ -75,8 +75,7 @@
                 transition:        transform .4s ease .1s;
         
         // trigger the entrance animation
-        @include transform(translate3d(-100%,0,0));
-        //@include animation(slideFromRightToLeft .3s both .1s);
+        //@include transform(translate3d(-100%,0,0));
+        @include animation(slideFromRightToLeft .3s both .1s);
     }
-    .drag { @include animation(none); @include transition(none); }
 }

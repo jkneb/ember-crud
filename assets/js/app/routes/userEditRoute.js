@@ -19,5 +19,10 @@ App.UserEditRoute = Ember.Route.extend({
             'editMode': false,
             'deleteMode': false
         });
+    }, 
+    events: {
+        goBack: function(){
+            this.transitionTo('user');
+        }
     }
 });

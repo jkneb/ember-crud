@@ -1,0 +1,1 @@
+App.UsersCreateView = App.DraggableView.extend();
