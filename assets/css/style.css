@@ -285,7 +285,7 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
   .main > .tools .create-btn > span { color: white; left: 50px; }
   .users-listing { overflow: scroll; -webkit-overflow-scrolling: touch; height: 100%; padding-top: 45px; }
   .users-listing li a { border-bottom: 3px solid #292929; }
-  .user-pane { position: absolute; z-index: 1; top: 0; left: 100%; outline: 1px solid hotpink; width: 100%; height: 100%; padding-top: 45px; }
+  .user-pane { position: absolute; z-index: 1; top: 0; left: 100%; width: 100%; height: 100%; padding-top: 45px; }
   .user-profile { padding-top: 65px; }
   .user-profile .tools { position: absolute; top: 0; left: 0; background-color: #fbfbfb; border: none; border-bottom: 4px solid #eeeeee; }
   .user-profile .tools button { margin: -3px 0 0 10px; }

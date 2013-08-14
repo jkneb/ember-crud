@@ -41,7 +41,7 @@
 
     .user-pane { 
         // offscreen by default
-        position:absolute; z-index:1; top:0; left:100%; outline:1px solid hotpink;
+        position:absolute; z-index:1; top:0; left:100%; 
         // takes all space possible
         width:100%; height:100%; padding-top:$toolsHeight; 
         
