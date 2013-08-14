@@ -164,72 +164,6 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
 .for-oh-for > span { font-family: 'Helvetica Neue', Arial; text-transform: uppercase; color: #999; font-size: 90px; font-weight: bold; color: rgba(10, 10, 10, 0.1); text-shadow: 0px 2px 3px #eee, 0px 0px 0px #ccc, 1px 1px 1px white; }
 .for-oh-for > p { color: #999; margin: 0px 0px 15px; }
 
-/*  A collection of css animations stored in class names  so you can easely addClass/removeClass them on any HTML elements 
-*/
-.flipin { -webkit-animation: flipin 1s ease both; -moz-animation: flipin 1s ease both; animation: flipin 1s ease both; }
-
-@-webkit-keyframes flipin { from { -webkit-transform: rotateX(180deg); }
-  to { -webkit-transform: rotateX(0deg); } }
-
-@-moz-keyframes flipin { from { -moz-transform: rotateX(180deg); }
-  to { -moz-transform: rotateX(0deg); } }
-
-.scaleout { -webkit-animation: scaleout 0.8s ease both; -moz-animation: scaleout 0.8s ease both; animation: scaleout 0.8s ease both; }
-
-@-webkit-keyframes scaleout { from { -webkit-transform: translateZ(0px) translateX(0px) scale(1); }
-  50% { -webkit-transform: translateZ(-10px) translateX(-170px) scale(0.95); }
-  to { -webkit-transform: translateZ(-10px) translateX(-130px) scale(0.95); } }
-
-@-moz-keyframes scaleout { from { -moz-transform: translateZ(0px) translateX(0px) scale(1); }
-  50% { -moz-transform: translateZ(-10px) translateX(-170px) scale(0.95); }
-  to { -moz-transform: translateZ(-10px) translateX(-130px) scale(0.95); } }
-
-.hidden { -webkit-animation: hidden 1s ease both; -moz-animation: hidden 1s ease both; animation: hidden 1s ease both; }
-
-@-webkit-keyframes hidden { from { opacity: 1; }
-  to { opacity: 0; } }
-
-@-moz-keyframes hidden { from { -moz-opacity: 1; }
-  to { -moz-opacity: 0; } }
-
-.shown { -webkit-animation: shown 1s ease both; -moz-animation: shown 1s ease both; animation: shown 1s ease both; }
-
-@-webkit-keyframes shown { from { opacity: 0; -webkit-transform: translateZ(-10px) translateX(0px) scale(0.95); }
-  50% { opacity: 1; -webkit-transform: translateZ(0px) translateX(100px) scale(1); }
-  to { opacity: 1; -webkit-transform: translateZ(0px) translateX(50px) scale(1); } }
-
-@-moz-keyframes shown { from { -moz-opacity: 0; -moz-transform: translateZ(-10px) translateX(0px) scale(0.95); }
-  50% { -moz-opacity: 1; -moz-transform: translateZ(0px) translateX(100px) scale(1); }
-  to { -moz-opacity: 1; -moz-transform: translateZ(0px) translateX(0px) scale(1); } }
-
-.fadein { -webkit-animation: fadein 0.5s ease; -moz-animation: fadein 0.5s ease; animation: fadein 0.5s ease; }
-
-@-webkit-keyframes fadein { from { opacity: 0; }
-  to { opacity: 1; } }
-
-@-moz-keyframes fadein { from { -moz-opacity: 0; }
-  to { -moz-opacity: 1; } }
-
-.delete-animation { -webkit-animation: delete-animation 0.4s ease both; -moz-animation: delete-animation 0.4s ease both; animation: delete-animation 0.4s ease both; }
-
-@-webkit-keyframes delete-animation { from { opacity: 1; -webkit-transform-origin: top right; -webkit-transform: rotate(0deg) translate(0px, 0px); }
-  to { opacity: 0; -webkit-transform-origin: top right; -webkit-transform: rotate(15deg) translate(50px, -100px); } }
-
-@-moz-keyframes delete-animation { from { opacity: 1; -moz-transform-origin: top right; -moz-transform: rotate(0deg) translate(0px, 0px); }
-  to { opacity: 0; -moz-transform-origin: top right; -moz-transform: rotate(15deg) translate(50px, -100px); } }
-
-@-webkit-keyframes slideFromRightToLeft { form { -webkit-transform: translate3d(0%, 0, 0); }
-  to { -webkit-transform: translate3d(-100%, 0, 0); } }
-
-@-moz-keyframes slideFromRightToLeft { form { -moz-transform: translate3d(0%, 0, 0); }
-  to { -moz-transform: translate3d(-100%, 0, 0); } }
-
-@-ms-keyframes slideFromRightToLeft { form { -ms-transform: translate3d(0%, 0, 0); }
-  to { -ms-transform: translate3d(-100%, 0, 0); } }
-
-@keyframes slideFromRightToLeft { form { transform: translate3d(0%, 0, 0); }
-  to { transform: translate3d(-100%, 0, 0); } }
-
 .modal { padding: 35px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; width: 400px; height: 330px; position: absolute; margin: auto; top: 0; bottom: 0; left: 0; right: 0; z-index: 100; background: white; border: 1px solid #ddd; border-radius: 4px; box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.1); }
 .modal.modal-show { opacity: 1; -webkit-transition: top 0ms linear 0ms, opacity 300ms ease 10ms; -moz-transition: top 0ms linear 0ms, opacity 300ms ease 10ms; -ms-transition: top 0ms linear 0ms, opacity 300ms ease 10ms; transition: top 0ms linear 0ms, opacity 300ms ease 10ms; }
 .modal.modal-hide { opacity: 0; top: -200%; -webkit-transition: opacity 300ms ease 0ms, top 0ms linear 900ms; -moz-transition: opacity 300ms ease 0ms, top 0ms linear 900ms; -ms-transition: opacity 300ms ease 0ms, top 0ms linear 900ms; transition: opacity 300ms ease 0ms, top 0ms linear 900ms; }
@@ -285,6 +219,60 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
 .about-this-demo:hover { color: #30a1e2; }
 .about-this-demo:before { margin-right: 7px; width: 30px; height: 29px; line-height: 32px; display: inline-block; vertical-align: middle; font-size: 28px; text-align: center; text-indent: -1px; border-radius: 100%; border: 2px solid black; }
 
+/*  A collection of css animations stored in class names  so you can easely addClass/removeClass them on any HTML elements 
+*/
+.flipin { -webkit-animation: flipin 1s ease both; -moz-animation: flipin 1s ease both; animation: flipin 1s ease both; }
+
+@-webkit-keyframes flipin { from { -webkit-transform: rotateX(180deg); }
+  to { -webkit-transform: rotateX(0deg); } }
+
+@-moz-keyframes flipin { from { -moz-transform: rotateX(180deg); }
+  to { -moz-transform: rotateX(0deg); } }
+
+.scaleout { -webkit-animation: scaleout 0.8s ease both; -moz-animation: scaleout 0.8s ease both; animation: scaleout 0.8s ease both; }
+
+@-webkit-keyframes scaleout { from { -webkit-transform: translateZ(0px) translateX(0px) scale(1); }
+  50% { -webkit-transform: translateZ(-10px) translateX(-170px) scale(0.95); }
+  to { -webkit-transform: translateZ(-10px) translateX(-130px) scale(0.95); } }
+
+@-moz-keyframes scaleout { from { -moz-transform: translateZ(0px) translateX(0px) scale(1); }
+  50% { -moz-transform: translateZ(-10px) translateX(-170px) scale(0.95); }
+  to { -moz-transform: translateZ(-10px) translateX(-130px) scale(0.95); } }
+
+.hidden { -webkit-animation: hidden 1s ease both; -moz-animation: hidden 1s ease both; animation: hidden 1s ease both; }
+
+@-webkit-keyframes hidden { from { opacity: 1; }
+  to { opacity: 0; } }
+
+@-moz-keyframes hidden { from { -moz-opacity: 1; }
+  to { -moz-opacity: 0; } }
+
+.shown { -webkit-animation: shown 1s ease both; -moz-animation: shown 1s ease both; animation: shown 1s ease both; }
+
+@-webkit-keyframes shown { from { opacity: 0; -webkit-transform: translateZ(-10px) translateX(0px) scale(0.95); }
+  50% { opacity: 1; -webkit-transform: translateZ(0px) translateX(100px) scale(1); }
+  to { opacity: 1; -webkit-transform: translateZ(0px) translateX(50px) scale(1); } }
+
+@-moz-keyframes shown { from { -moz-opacity: 0; -moz-transform: translateZ(-10px) translateX(0px) scale(0.95); }
+  50% { -moz-opacity: 1; -moz-transform: translateZ(0px) translateX(100px) scale(1); }
+  to { -moz-opacity: 1; -moz-transform: translateZ(0px) translateX(0px) scale(1); } }
+
+.fadein { -webkit-animation: fadein 0.5s ease; -moz-animation: fadein 0.5s ease; animation: fadein 0.5s ease; }
+
+@-webkit-keyframes fadein { from { opacity: 0; }
+  to { opacity: 1; } }
+
+@-moz-keyframes fadein { from { -moz-opacity: 0; }
+  to { -moz-opacity: 1; } }
+
+.delete-animation { -webkit-animation: delete-animation 0.4s ease both; -moz-animation: delete-animation 0.4s ease both; animation: delete-animation 0.4s ease both; }
+
+@-webkit-keyframes delete-animation { from { opacity: 1; -webkit-transform-origin: top right; -webkit-transform: rotate(0deg) translate(0px, 0px); }
+  to { opacity: 0; -webkit-transform-origin: top right; -webkit-transform: rotate(15deg) translate(50px, -100px); } }
+
+@-moz-keyframes delete-animation { from { opacity: 1; -moz-transform-origin: top right; -moz-transform: rotate(0deg) translate(0px, 0px); }
+  to { opacity: 0; -moz-transform-origin: top right; -moz-transform: rotate(15deg) translate(50px, -100px); } }
+
 @media screen and (max-width: 650px) { .main { width: auto; margin: 0; -webkit-perspective: none; -moz-perspective: none; }
   .users-listing { margin: 0; width: auto; max-height: none; overflow: visible; border-radius: 0; }
   .user-pane { width: auto; height: auto; position: static; top: auto; right: auto; }
@@ -297,11 +285,31 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
   .main > .tools .create-btn > span { color: white; left: 50px; }
   .users-listing { overflow: scroll; -webkit-overflow-scrolling: touch; height: 100%; padding-top: 45px; }
   .users-listing li a { border-bottom: 3px solid #292929; }
-  .user-pane { position: absolute; z-index: 1; top: 0; left: 100%; outline: 1px solid hotpink; width: 100%; height: 100%; padding-top: 45px; }
+  .user-pane { position: absolute; z-index: 1; top: 0; left: 100%; width: 100%; height: 100%; padding-top: 45px; }
   .user-profile { padding-top: 65px; }
   .user-profile .tools { position: absolute; top: 0; left: 0; background-color: #fbfbfb; border: none; border-bottom: 4px solid #eeeeee; }
   .user-profile .tools button { margin: -3px 0 0 10px; }
   .user-profile .date { display: inline-block; position: static; margin-top: 25px; font-size: 12px; background: #f1f1f1; border-color: #ddd; }
   .user-edit, .user-create { z-index: 2; }
-  .pane { -webkit-transition: -webkit-transform .4s ease .1s; -moz-transition: -moz-transform .4s ease .1s; -ms-transition: -ms-transform .4s ease .1s; transition: transform .4s ease .1s; -webkit-transform: translate3d(-100%, 0, 0); -moz-transform: translate3d(-100%, 0, 0); -ms-transform: translate3d(-100%, 0, 0); transform: translate3d(-100%, 0, 0); }
-  .drag { -webkit-animation: none; -moz-animation: none; animation: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; transition: none; } }
+  .pane { -webkit-transition: -webkit-transform .4s ease .1s; -moz-transition: -moz-transform .4s ease .1s; -ms-transition: -ms-transform .4s ease .1s; transition: transform .4s ease .1s; -webkit-animation: slideFromRightToLeft 0.3s both 0.1s; -moz-animation: slideFromRightToLeft 0.3s both 0.1s; animation: slideFromRightToLeft 0.3s both 0.1s; } }
+.slide-from-right-to-left { -webkit-animation: slideFromRightToLeft 0.3s both 0.1s; -moz-animation: slideFromRightToLeft 0.3s both 0.1s; animation: slideFromRightToLeft 0.3s both 0.1s; }
+
+@-webkit-keyframes slideFromRightToLeft { to { -webkit-transform: translate3d(-100%, 0, 0); } }
+
+@-moz-keyframes slideFromRightToLeft { to { -moz-transform: translate3d(-100%, 0, 0); } }
+
+@-ms-keyframes slideFromRightToLeft { to { -ms-transform: translate3d(-100%, 0, 0); } }
+
+@keyframes slideFromRightToLeft { to { transform: translate3d(-100%, 0, 0); } }
+
+.slide-from-left-to-right { -webkit-animation: slideFromLeftToRight 0.3s both 0.1s; -moz-animation: slideFromLeftToRight 0.3s both 0.1s; animation: slideFromLeftToRight 0.3s both 0.1s; }
+
+@-webkit-keyframes slideFromLeftToRight { to { -webkit-transform: translate3d(0%, 0, 0); } }
+
+@-moz-keyframes slideFromLeftToRight { to { -moz-transform: translate3d(0%, 0, 0); } }
+
+@-ms-keyframes slideFromLeftToRight { to { -ms-transform: translate3d(0%, 0, 0); } }
+
+@keyframes slideFromLeftToRight { to { transform: translate3d(0%, 0, 0); } }
+
+.drag { -webkit-animation: none; -moz-animation: none; animation: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; transition: none; }

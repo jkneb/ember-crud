@@ -15,6 +15,7 @@ App.DraggableView = Em.View.extend({
             this.active = layer;
             this.onStart(event, touchEvent);
             this.activeWidth = $('.pane').outerWidth();
+            this.active.style.webkitTransform = 'translate3d(' + (-this.activeWidth) + 'px, 0, 0)';
         }
     },
 
@@ -56,28 +57,25 @@ App.DraggableView = Em.View.extend({
         // dragged ⇛
         if (this.dist >= this.threshold) { 
             //console.log('⇛');
-            this.active.style.webkitTransform = 'translate3d(0px, 0, 0)';
             this.active.classList.remove('active');
-            //this.active.style.webkitTransform = 'none';
+            this.active.classList.add('slide-from-left-to-right');
             
             Em.run.later(this, function(){
                 // there is no customTransitionTo in the controller so it will bubble up to routes
                 // the customTransitionTo event is located in the ApplicationRoute
-                this.get('controller').send('customTransitionTo', (this.renderedName === 'user') ? 'users' : 'index');
+                this.get('controller').send('goBack');
             }, 600);
         }
         // cancel
-        else if (this.dist > -this.threshold && this.dist < this.threshold) { 
-            this.active.style.webkitTransform = 'translate3d(' + -(this.activeWidth) + 'px, 0, 0)';
-        } 
+        /*else if (this.dist > -this.threshold && this.dist < this.threshold) { 
+            // no need to do anything in this case
+        }*/
         // dragged ⇚
         else { 
             //console.log('⇚');
-            //console.log('canceled');
-            this.active.style.webkitTransform = 'translate3d(' + -(this.activeWidth) + 'px, 0, 0)';
+            this.active.classList.add('slide-from-right-to-left');
         }
 
-        //this.active.removeAttribute('style');
         this.dist = 0;
         this.active = null;
     }
