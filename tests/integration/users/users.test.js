@@ -1,14 +1,5 @@
 describe('Users', function(){
 
-    beforeEach(function(){
-        Ember.run(App, App.advanceReadiness);
-    });
-
-    afterEach(function(){
-        // reset the application state before each test
-        App.reset();
-    });
-
     it ('User creation',function(){
         visit('/users/create')//
             .fillIn('.user-create.pane input:eq(0)', 'MatBreton')//

@@ -24,7 +24,7 @@ describe('Helpers', function () {
         });
     });
 
-    it('formatDate should exit ', function () {
+    it('formatDate should exist', function () {
         var formatDate = Em.Handlebars.helpers['formatDate'];
         formatDate.should.not.be.null;
     });
