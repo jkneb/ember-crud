@@ -6,3 +6,4 @@ assets/js/templates.js
 *.iml
 .idea
 tests/coverage/
+*.log
