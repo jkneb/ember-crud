@@ -24,9 +24,9 @@ describe('Users', function(){
 
     it ('User consultation',function(){
         visit('/users/1').then(function(){
-            find('.user-profile h2').text().should.not.be.empty;
-            find('.user-profile address').text().should.not.be.empty;
-            find('.user-profile p.bio').text().should.not.be.empty;
+            $('.user-profile h2').text().should.not.be.empty;
+            $('.user-profile address').text().should.not.be.empty;
+            $('.user-profile p.bio').text().should.not.be.empty;
         });
     });
 
@@ -37,8 +37,23 @@ describe('Users', function(){
             click('button.icon-trashcan.red')//
                 .click('.confirm-box.confirmin button:eq(0)')//
                 .then(function(){
-                    $('.users-listing li').length.should.be.equal(nbUser-1);
+                    $('.users-listing li').length.should.equal(nbUser-1);
             });
         });
+    });
+
+    it ('User editing',function(){
+        visit('/users/1')
+            .click('.user-profile .tools .icon-pencil')
+            .fillIn('.user-edit input:eq(0)', "expected_img")
+            .fillIn('.user-edit input:eq(1)',"expected_name")
+            .fillIn('.user-edit input:eq(2)',"expected_mail")
+            .fillIn('.user-edit textarea',"expected_bio")
+            .click('.user-edit button').then(function(){
+                $('.user-profile img').attr('src').should.equal('expected_img')
+                $('.user-profile h2').text().should.equal("expected_name");
+                $('.user-profile address').text().should.equal("expected_mail");
+                $('.user-profile p.bio').text().should.equal("expected_bio");
+            });
     });
 });

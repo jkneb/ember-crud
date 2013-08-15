@@ -4,4 +4,4 @@ assets/js/app.js
 assets/js/libs.js
 *.iml
 .idea
-coverage/
+tests/coverage/
