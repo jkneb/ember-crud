@@ -12,23 +12,17 @@ module.exports = function (config){
         files: [
             // Source
             'assets/js/libs.js',
-            'tests/libs/**/*.js',
-
+            'assets/js/templates.js',
             'assets/js/app.js',
 
             // Tests
-
+            'tests/libs/**/*.js',
             'tests/tests-utils.js'
         ],
 
         preprocessors: {
             '**/*.coffee': 'coffee',
             'assets/js/app.js': 'coverage'
-        },
-
-        coverageReporter: {
-            type : 'html',
-            dir : 'tests/coverage/'
         },
 
         reporters: ['progress', 'coverage'],
