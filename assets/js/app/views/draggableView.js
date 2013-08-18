@@ -94,7 +94,7 @@ App.DraggableView = Em.View.extend({
     },
     
     goBackAfterTransition: function(transitionType){
-        if (transitionType === 'collapsePanel') {
+        if (transitionType === 'collapsePanel' || !transitionType) {
 
             this.collapsePanel();
 
@@ -105,5 +105,25 @@ App.DraggableView = Em.View.extend({
             }, 600);
 
         }
+    }, 
+    
+    
+    closeUserWithTransition: function(){
+        this.$().find('.pane').css({ '-webkit-transform': 'translate3d(0%, 0, 0)' });
+        
+        Em.run.later(this, function(){
+            this.get('controller').send('goBack');
+        }, 600);
+    },
+    
+    closeEditingWithTransition: function(){
+        var controller = this.get('controller');
+        
+        this.$().find('.pane').css({ '-webkit-transform': 'translate3d(0%, 0, 0)' });
+        
+        Em.run.later(this, function(){
+            controller.send('closeEditing');
+            controller.send('goBack');
+        }, 600);
     }
 });

@@ -22,7 +22,8 @@
             {{view Ember.TextArea valueBinding="bio"}}
         </div>
         <div class="aright">
-            <button class="blue" {{action closeEditing}}> ok </button>
+            <button class="blue btn-desktop" {{action closeEditing}}> ok </button>
+            <button class="blue btn-mobile" {{action closeEditingWithTransition target="view"}}> ok </button>
         </div>
     </div>
 
