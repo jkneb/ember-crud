@@ -293,4 +293,14 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
   .user-edit, .user-create { z-index: 2; }
   .pane { -webkit-transition: -webkit-transform .4s ease; -moz-transition: -moz-transform .4s ease; -ms-transition: -ms-transform .4s ease; transition: transform .4s ease; }
   .mobile-drag-trigger { outline: 1px solid hotpink; position: absolute; top: 0; left: 0; height: 100%; width: 50px; } }
+.delete-animation { -webkit-animation: delete-animation 0.3s ease both; -moz-animation: delete-animation 0.3s ease both; animation: delete-animation 0.3s ease both; }
+
+@-webkit-keyframes delete-animation { to { -webkit-transform: translate3d(0%, 0, 0); } }
+
+@-moz-keyframes delete-animation { to { -moz-transform: translate3d(0%, 0, 0); } }
+
+@-ms-keyframes delete-animation { to { -ms-transform: translate3d(0%, 0, 0); } }
+
+@keyframes delete-animation { to { transform: translate3d(0%, 0, 0); } }
+
 .drag { -webkit-animation: none; -moz-animation: none; animation: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; transition: none; }

@@ -29,7 +29,6 @@ App.DraggableView = Em.View.extend({
     touchStart: function(event){
         var touchEvent = event.originalEvent.changedTouches[0];
         var layer = $(touchEvent.target).closest('.mobile-drag-trigger')[0];
-        console.log(layer);
         if (layer) {
             this.active = $(layer).parents('.pane')[0];
             this.onStart(event, touchEvent);
