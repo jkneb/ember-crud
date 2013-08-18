@@ -291,5 +291,6 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
   .user-profile .tools button { margin: -3px 0 0 10px; }
   .user-profile .date { display: inline-block; position: static; margin-top: 25px; font-size: 12px; background: #f1f1f1; border-color: #ddd; }
   .user-edit, .user-create { z-index: 2; }
-  .pane { -webkit-transition: -webkit-transform .4s ease; -moz-transition: -moz-transform .4s ease; -ms-transition: -ms-transform .4s ease; transition: transform .4s ease; } }
+  .pane { -webkit-transition: -webkit-transform .4s ease; -moz-transition: -moz-transform .4s ease; -ms-transition: -ms-transform .4s ease; transition: transform .4s ease; }
+  .mobile-drag-trigger { outline: 1px solid hotpink; position: absolute; top: 0; left: 0; height: 100%; width: 50px; } }
 .drag { -webkit-animation: none; -moz-animation: none; animation: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; transition: none; }
