@@ -40,11 +40,8 @@
     }
 
     .user-pane { 
-        // offscreen by default
-        position:absolute; z-index:1; top:0; left:100%; 
-        // takes all space possible
-        width:100%; height:100%; padding-top:$toolsHeight; 
-        
+        position:absolute; z-index:1; top:0; left:100%;
+        width:100%; height:100%; padding-top:$toolsHeight;
     }
     .user-profile {
         padding-top:$toolsHeight+20;
@@ -68,14 +65,12 @@
     }
     
     .pane {
-        // can transition if any transform property changes (but with a micro delay)
-        -webkit-transition:-webkit-transform .4s ease .1s;
-           -moz-transition:   -moz-transform .4s ease .1s;
-            -ms-transition:    -ms-transform .4s ease .1s;
-                transition:        transform .4s ease .1s;
-        
-        // trigger the entrance animation
-        //@include transform(translate3d(-100%,0,0));
-        @include animation(slideFromRightToLeft .3s both .1s);
+        // can transition if any transform property changes
+        -webkit-transition:-webkit-transform .4s ease;
+           -moz-transition:   -moz-transform .4s ease;
+            -ms-transition:    -ms-transform .4s ease;
+                transition:        transform .4s ease;
+
+        // default positionning is handled in the didInsertElement of the DraggableView.js
     }
 }
