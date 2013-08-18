@@ -33,7 +33,7 @@ describe('confirmDeleteButtonView',function(){
         });
     });
 
-    it('Should toggle add css class on its "user-profile" parent and call confirmeDelete on its controller ',function(done){
+    it('Should add css class on its "user-profile" parent and call confirmeDelete on its controller ',function(done){
         var confirmDeleteCall = 0;
         view = App.ConfirmDeleteButtonView.create({
            controller: {
@@ -50,7 +50,6 @@ describe('confirmDeleteButtonView',function(){
         view.click();
 
         wait(function(){
-            console.log('em next');
             confirmDeleteCall.should.equal(1);
             $userProfile.hasClass('delete-animation').should.be.true;
             $userProfile.remove();
