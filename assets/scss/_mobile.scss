@@ -73,4 +73,10 @@
 
         // default positionning is handled in the didInsertElement of the DraggableView.js
     }
+    
+    .mobile-drag-trigger {
+        outline:1px solid hotpink;
+        position:absolute; top:0; left:0;
+        height:100%; width:50px;
+    }
 }

@@ -18,6 +18,9 @@ App.DraggableView = Em.View.extend({
         var view = this;
         var $view = this.$().children('.pane');
 
+        var dragTrigger = '<div class="mobile-drag-trigger"></div>';
+        $(dragTrigger).appendTo($view);
+
         Em.run.later($view, function(){
             $view.css({ '-webkit-transform': 'translate3d(-100%, 0, 0)' });
         }, 100);
@@ -25,9 +28,10 @@ App.DraggableView = Em.View.extend({
 
     touchStart: function(event){
         var touchEvent = event.originalEvent.changedTouches[0];
-        var layer = $(touchEvent.target).closest('.pane')[0];
+        var layer = $(touchEvent.target).closest('.mobile-drag-trigger')[0];
+        console.log(layer);
         if (layer) {
-            this.active = layer;
+            this.active = $(layer).parents('.pane')[0];
             this.onStart(event, touchEvent);
             this.activeWidth = $('.pane').outerWidth();
         }
