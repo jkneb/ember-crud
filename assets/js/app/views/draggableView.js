@@ -1,5 +1,5 @@
 /*
- * The touch logic code is originally coming from this guy: http://evanyou.me
+ * The touch code logic is originally coming from this guy: http://evanyou.me
  * Who made this awesome demo: http://sketch.evanyou.me/layers
  * I tweaked it so it can fit the needs of a draggable panel
 */
@@ -16,7 +16,7 @@ App.DraggableView = Em.View.extend({
 
     didInsertElement: function(){
         var view = this;
-        var $view = this.$().children('.pane');
+        var $view = this.$().find('.pane');
 
         var dragTrigger = '<div class="mobile-drag-trigger"></div>';
         $(dragTrigger).appendTo($view);
@@ -32,7 +32,7 @@ App.DraggableView = Em.View.extend({
         if (layer) {
             this.active = $(layer).parents('.pane')[0];
             this.onStart(event, touchEvent);
-            this.activeWidth = $('.pane').outerWidth();
+            this.activeWidth = $(this.active).outerWidth();
         }
     },
 
