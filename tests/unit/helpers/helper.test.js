@@ -30,39 +30,20 @@ describe('Helpers', function () {
     });
 
 
-    it('formatDate should return a year ago when the input date is one year before', function () {
+    it('formatDate should return a relative date from now', function () {
         var formatDate = Em.Handlebars.helpers['formatDate'];
-        var now = new moment();
 
         view = Em.View.create({
-            context: Em.Object.create({date: now.subtract('years', 1)}),
-            template: Em.Handlebars.compile("{{formatDate date}}")
+            context: Em.Object.create({
+                aYear: new moment().subtract('years', 1),
+                threeMonths: new moment().subtract('months', 3),
+                tenDays: new moment().subtract('days', 10)
+            }),
+            template: Em.Handlebars.compile("{{formatDate aYear}}|" + //
+                                            "{{formatDate threeMonths}}|" + //
+                                            "{{formatDate tenDays}}")
         });
         appendView(view);
-        view.$().text().should.equal('a year ago');
-    });
-
-    it('formatDate should return three months ago when the input date is three months before', function () {
-        var formatDate = Em.Handlebars.helpers['formatDate'];
-        var now = new moment();
-
-        view = Em.View.create({
-            context: Em.Object.create({date: now.subtract('months', 3)}),
-            template: Em.Handlebars.compile("{{formatDate date}}")
-        });
-        appendView(view);
-        view.$().text().should.equal('3 months ago');
-    });
-
-    it('formatDate should return ten days ago when the input date is ten days before', function () {
-        var formatDate = Em.Handlebars.helpers['formatDate'];
-        var now = new moment();
-
-        view = Em.View.create({
-            context: Em.Object.create({date: now.subtract('days', 10)}),
-            template: Em.Handlebars.compile("{{formatDate date}}")
-        });
-        appendView(view);
-        view.$().text().should.equal('10 days ago');
+        view.$().text().should.equal('a year ago|3 months ago|10 days ago');
     });
 });
