@@ -1,5 +1,5 @@
 /*
- * The touch logic code is originally coming from this guy: http://evanyou.me
+ * The touch code logic is originally coming from this guy: http://evanyou.me
  * Who made this awesome demo: http://sketch.evanyou.me/layers
  * I tweaked it so it can fit the needs of a draggable panel
 */
@@ -16,7 +16,7 @@ App.DraggableView = Em.View.extend({
 
     didInsertElement: function(){
         var view = this;
-        var $view = this.$().children('.pane');
+        var $view = this.$().find('.pane');
 
         var dragTrigger = '<div class="mobile-drag-trigger"></div>';
         $(dragTrigger).appendTo($view);
@@ -29,11 +29,10 @@ App.DraggableView = Em.View.extend({
     touchStart: function(event){
         var touchEvent = event.originalEvent.changedTouches[0];
         var layer = $(touchEvent.target).closest('.mobile-drag-trigger')[0];
-        console.log(layer);
         if (layer) {
             this.active = $(layer).parents('.pane')[0];
             this.onStart(event, touchEvent);
-            this.activeWidth = $('.pane').outerWidth();
+            this.activeWidth = $(this.active).outerWidth();
         }
     },
 
@@ -95,7 +94,7 @@ App.DraggableView = Em.View.extend({
     },
     
     goBackAfterTransition: function(transitionType){
-        if (transitionType === 'collapsePanel') {
+        if (transitionType === 'collapsePanel' || !transitionType) {
 
             this.collapsePanel();
 
@@ -106,5 +105,25 @@ App.DraggableView = Em.View.extend({
             }, 600);
 
         }
+    }, 
+    
+    
+    closeUserWithTransition: function(){
+        this.$().find('.pane').css({ '-webkit-transform': 'translate3d(0%, 0, 0)' });
+        
+        Em.run.later(this, function(){
+            this.get('controller').send('goBack');
+        }, 600);
+    },
+    
+    closeEditingWithTransition: function(){
+        var controller = this.get('controller');
+        
+        this.$().find('.pane').css({ '-webkit-transform': 'translate3d(0%, 0, 0)' });
+        
+        Em.run.later(this, function(){
+            controller.send('closeEditing');
+            controller.send('goBack');
+        }, 600);
     }
 });

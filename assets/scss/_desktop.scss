@@ -113,9 +113,10 @@ $mainColHeight: 400px;
 //@import "delete-animation";
 
 .tools { 
-    display:block; 
+    display:block; z-index:1;
     .icon-pencil, 
-    .icon-trashcan { 
+    .icon-trashcan, 
+    .icon-arrow-left { 
         display:inline-block; cursor:pointer; 
         font-size:15px; text-decoration:none; 
         padding:4px 5px; 
@@ -157,4 +158,8 @@ $mainColHeight: 400px;
         font-size:28px; text-align:center; text-indent:-1px;
         border-radius:100%; border:2px solid $color;
     }
+}
+// all mobile btns are hidden by default
+.btn-mobile { 
+    display:none; 
 }
