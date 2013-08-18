@@ -1,25 +1,29 @@
-{{! again here use the editMode property to switch class names between "shown" and "hidden" }}
-<div {{bindAttr class=":user-edit :pane controllers.user.editMode:shown:hidden"}}>
-    <div class="line">
-        <h3>Edit user</h3>
+{{#view App.DraggableView}}
+
+    {{! again here use the editMode property to switch class names between "shown" and "hidden" }}
+    <div {{bindAttr class=":user-edit :pane controllers.user.editMode:shown:hidden"}}>
+        <div class="line">
+            <h3>Edit user</h3>
+        </div>
+        <div class="line">
+            <label for="avatarUrl">Choose user avatar</label>
+            {{view Ember.TextField valueBinding="avatarUrl"}}
+        </div>
+        <div class="line">
+            <label for="name">User name</label>
+            {{view Ember.TextField valueBinding="name"}}
+        </div>
+        <div class="line">
+            <label for="email">User email</label>
+            {{view Ember.TextField valueBinding="email"}}
+        </div>
+        <div class="line">
+            <label for="bio">User short bio</label>
+            {{view Ember.TextArea valueBinding="bio"}}
+        </div>
+        <div class="aright">
+            <button class="blue" {{action closeEditing}}> ok </button>
+        </div>
     </div>
-    <div class="line">
-        <label for="avatarUrl">Choose user avatar</label>
-        {{view Ember.TextField valueBinding="avatarUrl"}}
-    </div>
-    <div class="line">
-        <label for="name">User name</label>
-        {{view Ember.TextField valueBinding="name"}}
-    </div>
-    <div class="line">
-        <label for="email">User email</label>
-        {{view Ember.TextField valueBinding="email"}}
-    </div>
-    <div class="line">
-        <label for="bio">User short bio</label>
-        {{view Ember.TextArea valueBinding="bio"}}
-    </div>
-    <div class="aright">
-        <button class="blue" {{action closeEditing}}> ok </button>
-    </div>
-</div>
+
+{{/view}}

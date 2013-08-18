@@ -2,6 +2,8 @@ node_modules/
 .sass-cache/
 assets/js/app.js
 assets/js/libs.js
+assets/js/templates.js
 *.iml
 .idea
-coverage/
+tests/coverage/
+*.log

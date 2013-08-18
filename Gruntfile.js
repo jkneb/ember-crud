@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       },
       compile: {
         files: {
-          'assets/js/app/templates.js': 'assets/js/app/templates/**/*.hbs'
+          'assets/js/templates.js': 'assets/js/app/templates/**/*.hbs'
         }
       }
     },
@@ -58,7 +58,7 @@ module.exports = function(grunt) {
         tasks: ['ember_handlebars']
       }, 
       concat: {
-        files: ['assets/js/**/*.js', '!assets/js/app.js', '!assets/js/libs.js'],
+        files: ['assets/js/**/*.js', '!assets/js/app.js', '!assets/js/libs.js', '!assets/js/templates.js'],
         tasks: ['concat']
       }/*,
       karma: {
