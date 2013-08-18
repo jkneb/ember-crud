@@ -291,25 +291,5 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
   .user-profile .tools button { margin: -3px 0 0 10px; }
   .user-profile .date { display: inline-block; position: static; margin-top: 25px; font-size: 12px; background: #f1f1f1; border-color: #ddd; }
   .user-edit, .user-create { z-index: 2; }
-  .pane { -webkit-transition: -webkit-transform .4s ease .1s; -moz-transition: -moz-transform .4s ease .1s; -ms-transition: -ms-transform .4s ease .1s; transition: transform .4s ease .1s; -webkit-animation: slideFromRightToLeft 0.3s both 0.1s; -moz-animation: slideFromRightToLeft 0.3s both 0.1s; animation: slideFromRightToLeft 0.3s both 0.1s; } }
-.slide-from-right-to-left { -webkit-animation: slideFromRightToLeft 0.3s both 0.1s; -moz-animation: slideFromRightToLeft 0.3s both 0.1s; animation: slideFromRightToLeft 0.3s both 0.1s; }
-
-@-webkit-keyframes slideFromRightToLeft { to { -webkit-transform: translate3d(-100%, 0, 0); } }
-
-@-moz-keyframes slideFromRightToLeft { to { -moz-transform: translate3d(-100%, 0, 0); } }
-
-@-ms-keyframes slideFromRightToLeft { to { -ms-transform: translate3d(-100%, 0, 0); } }
-
-@keyframes slideFromRightToLeft { to { transform: translate3d(-100%, 0, 0); } }
-
-.slide-from-left-to-right { -webkit-animation: slideFromLeftToRight 0.3s both 0.1s; -moz-animation: slideFromLeftToRight 0.3s both 0.1s; animation: slideFromLeftToRight 0.3s both 0.1s; }
-
-@-webkit-keyframes slideFromLeftToRight { to { -webkit-transform: translate3d(0%, 0, 0); } }
-
-@-moz-keyframes slideFromLeftToRight { to { -moz-transform: translate3d(0%, 0, 0); } }
-
-@-ms-keyframes slideFromLeftToRight { to { -ms-transform: translate3d(0%, 0, 0); } }
-
-@keyframes slideFromLeftToRight { to { transform: translate3d(0%, 0, 0); } }
-
+  .pane { -webkit-transition: -webkit-transform .4s ease; -moz-transition: -moz-transform .4s ease; -ms-transition: -ms-transform .4s ease; transition: transform .4s ease; } }
 .drag { -webkit-animation: none; -moz-animation: none; animation: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; transition: none; }

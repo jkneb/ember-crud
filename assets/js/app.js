@@ -258,6 +258,9 @@ App.ApplicationRoute = Em.Route.extend({
     events: {
         showModal: function(name){
             this.controllerFor(name).set('modalVisible', true);
+        },
+        goBack: function(){
+            this.transitionTo('users');
         }
     }
 });
@@ -345,6 +348,12 @@ App.ConfirmDeleteButtonView = Ember.View.extend({
         }, 500);
     }
 });
+/*
+ * The touch logic code is originally coming from this guy: http://evanyou.me
+ * Who made this awesome demo: http://sketch.evanyou.me/layers
+ * I tweaked it so it can fit the needs of a draggable panel
+*/
+
 App.DraggableView = Em.View.extend({
 
     // touch gestures properties
@@ -355,6 +364,15 @@ App.DraggableView = Em.View.extend({
     threshold   : 40,
     activeWidth : null,
 
+    didInsertElement: function(){
+        var view = this;
+        var $view = this.$().children('.pane');
+
+        Em.run.later($view, function(){
+            $view.css({ '-webkit-transform': 'translate3d(-100%, 0, 0)' });
+        }, 100);
+    },
+
     touchStart: function(event){
         var touchEvent = event.originalEvent.changedTouches[0];
         var layer = $(touchEvent.target).closest('.pane')[0];
@@ -362,7 +380,6 @@ App.DraggableView = Em.View.extend({
             this.active = layer;
             this.onStart(event, touchEvent);
             this.activeWidth = $('.pane').outerWidth();
-            this.active.style.webkitTransform = 'translate3d(' + (-this.activeWidth) + 'px, 0, 0)';
         }
     },
 
@@ -403,28 +420,38 @@ App.DraggableView = Em.View.extend({
 
         // dragged ⇛
         if (this.dist >= this.threshold) { 
-            //console.log('⇛');
             this.active.classList.remove('active');
-            this.active.classList.add('slide-from-left-to-right');
-            
-            Em.run.later(this, function(){
-                // there is no customTransitionTo in the controller so it will bubble up to routes
-                // the customTransitionTo event is located in the ApplicationRoute
-                this.get('controller').send('goBack');
-            }, 600);
+            this.goBackAfterTransition('collapsePanel');
         }
-        // cancel
-        /*else if (this.dist > -this.threshold && this.dist < this.threshold) { 
-            // no need to do anything in this case
-        }*/
         // dragged ⇚
         else { 
-            //console.log('⇚');
-            this.active.classList.add('slide-from-right-to-left');
+            this.openPanel();
         }
 
         this.dist = 0;
         this.active = null;
+    },
+    
+    collapsePanel: function(){
+        this.active.style.webkitTransform = 'translate3d(0%, 0, 0)';
+    },
+    
+    openPanel: function(){
+        this.active.style.webkitTransform = 'translate3d(-100%, 0, 0)';
+    },
+    
+    goBackAfterTransition: function(transitionType){
+        if (transitionType === 'collapsePanel') {
+
+            this.collapsePanel();
+
+            Em.run.later(this, function(){
+                // there is no goBack method in the controller so it will bubble up to routes
+                // until it finds the goBack event located in the ApplicationRoute
+                this.get('controller').send('goBack');
+            }, 600);
+
+        }
     }
 });
 App.Modal = Em.View.extend({
