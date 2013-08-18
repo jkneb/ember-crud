@@ -1,7 +1,21 @@
 describe('confirmDeleteButtonView',function(){
 
     var view;
-    var $fixture
+    var $fixture;
+
+    var wait = function(callback, maxWaitCount) {
+        maxWaitCount = Ember.isNone(maxWaitCount) ? 100 : maxWaitCount;
+
+        setTimeout(function() {
+            if (maxWaitCount > 0 && (Ember.run.hasScheduledTimers() || Ember.run.currentRunLoop)) {
+                wait(callback, maxWaitCount - 1);
+
+                return;
+            }
+
+            callback();
+        }, 10);
+    };
 
     before(function () {
         $fixture = $('<div id="view-fixture"></div>').appendTo($('body'));
@@ -19,9 +33,9 @@ describe('confirmDeleteButtonView',function(){
         });
     });
 
-    it('Should toggle add css class on its "user-profile" parent and call confirmeDelete on its controller ',function(){
+    it('Should toggle add css class on its "user-profile" parent and call confirmeDelete on its controller ',function(done){
         var confirmDeleteCall = 0;
-        view = Em.View.create({
+        view = App.ConfirmDeleteButtonView.create({
            controller: {
                confirmDelete:function(){
                    confirmDeleteCall++;
@@ -33,13 +47,14 @@ describe('confirmDeleteButtonView',function(){
         Ember.run(function () {
             view.appendTo($userProfile);
         });
-        view.$().click();
+        view.click();
 
-        // To wait until the end of the animation
-        Em.run.next(function(){
+        wait(function(){
+            console.log('em next');
             confirmDeleteCall.should.equal(1);
             $userProfile.hasClass('delete-animation').should.be.true;
             $userProfile.remove();
-        });
+            done();
+        },600);
     });
 });
