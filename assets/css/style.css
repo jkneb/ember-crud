@@ -219,7 +219,7 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
 .about-this-demo:hover { color: #30a1e2; }
 .about-this-demo:before { margin-right: 7px; width: 30px; height: 29px; line-height: 32px; display: inline-block; vertical-align: middle; font-size: 28px; text-align: center; text-indent: -1px; border-radius: 100%; border: 2px solid black; }
 
-.btn-mobile { display: none; }
+.btn-mobile { display: none !important; }
 
 /*  A collection of css animations stored in class names  so you can easely addClass/removeClass them on any HTML elements 
 */

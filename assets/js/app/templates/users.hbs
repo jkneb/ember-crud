@@ -3,9 +3,10 @@
 <div {{bindAttr class=":main controllers.user.editMode:editing"}}>
 
     <div class="tools">
-        {{#linkTo "users.create" class="button blue create-btn" title="Add a new user"}}
+        {{! the createUser event will handle every thing and is located in the usersRoute}}
+        <a {{action createUser}} class="button blue create-btn">
             <i class="icon-plus"></i><span>⬅ Add user</span>
-        {{/linkTo}}
+        </a>
     </div>
 
     <ul class="users-listing">

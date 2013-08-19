@@ -7,8 +7,8 @@ App.Router.map(function(){
             // and another nested one for editing the current user
             this.route('edit');
         });
-        // and finally the create route nested in users
-        this.route('create');
+        
+        // no need of a create route, we will re-use the editRoute for this
     });
 
     // our 404 error route

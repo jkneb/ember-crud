@@ -268,15 +268,9 @@ function program1(depth0,data) {
 this["Ember"]["TEMPLATES"]["users"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, stack2, hashContexts, hashTypes, options, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
+  var buffer = '', stack1, hashContexts, hashTypes, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
-  
-  
-  data.buffer.push("\n            <i class=\"icon-plus\"></i><span>⬅ Add user</span>\n        ");
-  }
-
-function program3(depth0,data) {
   
   var buffer = '', stack1, stack2, hashContexts, hashTypes, options;
   data.buffer.push("\n        <li>\n            ");
@@ -288,13 +282,13 @@ function program3(depth0,data) {
   hashTypes = {'class': "STRING"};
   options = {hash:{
     'class': ("fadein")
-  },inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0,depth0],types:["STRING","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  },inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0],types:["STRING","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
   stack2 = ((stack1 = helpers.linkTo || depth0.linkTo),stack1 ? stack1.call(depth0, "user", "user", options) : helperMissing.call(depth0, "linkTo", "user", "user", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n        </li>\n        ");
   return buffer;
   }
-function program4(depth0,data) {
+function program2(depth0,data) {
   
   var buffer = '', hashTypes, hashContexts;
   data.buffer.push("\n                ");
@@ -313,20 +307,16 @@ function program4(depth0,data) {
     'class': (":main controllers.user.editMode:editing")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(">\n\n    <div class=\"tools\">\n        ");
-  hashContexts = {'class': depth0,'title': depth0};
-  hashTypes = {'class': "STRING",'title': "STRING"};
-  options = {hash:{
-    'class': ("button blue create-btn"),
-    'title': ("Add a new user")
-  },inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  stack2 = ((stack1 = helpers.linkTo || depth0.linkTo),stack1 ? stack1.call(depth0, "users.create", options) : helperMissing.call(depth0, "linkTo", "users.create", options));
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
-  data.buffer.push("\n    </div>\n\n    <ul class=\"users-listing\">\n\n        ");
+  data.buffer.push("\n        <a ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "createUser", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(" class=\"button blue create-btn\">\n            <i class=\"icon-plus\"></i><span>⬅ Add user</span>\n        </a>\n    </div>\n\n    <ul class=\"users-listing\">\n\n        ");
   data.buffer.push("\n        ");
   hashTypes = {};
   hashContexts = {};
-  stack2 = helpers.each.call(depth0, "user", "in", "controller", {hash:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  stack1 = helpers.each.call(depth0, "user", "in", "controller", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n\n    </ul>\n\n    ");
   data.buffer.push("\n    <div class=\"user-pane\">\n        ");
   hashTypes = {};
@@ -337,50 +327,6 @@ function program4(depth0,data) {
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "showModal", "modal-demo", {hash:{},contexts:[depth0,depth0],types:["ID","STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(">About this demo</a>");
-  return buffer;
-  
-});
-
-this["Ember"]["TEMPLATES"]["users/create"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashContexts, hashTypes, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
-
-
-  data.buffer.push("<div class=\"user-create pane flipin\">\n    <div class=\"line\">\n        <h3>Add a new user</h3>\n    </div>\n    <div class=\"line\">\n        <label for=\"avatarUrl\">Choose user avatar</label>\n        ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
-  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
-    'valueBinding': ("avatarUrl")
-  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n    </div>\n    <div class=\"line\">\n        <label for=\"name\">User name</label>\n        ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
-  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
-    'valueBinding': ("name")
-  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n    </div>\n    <div class=\"line\">\n        <label for=\"email\">User email</label>\n        ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
-  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextField", {hash:{
-    'valueBinding': ("email")
-  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n    </div>\n    <div class=\"line\">\n        <label for=\"bio\">User short bio</label>\n        ");
-  hashContexts = {'valueBinding': depth0};
-  hashTypes = {'valueBinding': "STRING"};
-  data.buffer.push(escapeExpression(helpers.view.call(depth0, "Ember.TextArea", {hash:{
-    'valueBinding': ("bio")
-  },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push("\n    </div>\n    <div class=\"line\">\n        <button class=\"blue fright\" ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "addUser", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(">add user</button>\n    </div>\n    ");
-  hashTypes = {};
-  hashContexts = {};
-  options = {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
-  data.buffer.push(escapeExpression(((stack1 = helpers.partial || depth0.partial),stack1 ? stack1.call(depth0, "faces", options) : helperMissing.call(depth0, "partial", "faces", options))));
-  data.buffer.push("\n</div>\n");
   return buffer;
   
 });

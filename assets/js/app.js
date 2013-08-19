@@ -59,12 +59,6 @@ App.UsersController = Ember.ArrayController.extend({
     // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/
     needs: ['user']
 });
-App.UsersCreateController = Ember.ObjectController.extend({
-    addUser: function(){
-        App.User.createRecord(this.content);
-        this.transitionToRoute('user');
-    }
-});
 // ----------------
 // For static datas you can use basic helpers
 // ----------------
@@ -241,8 +235,8 @@ App.Router.map(function(){
             // and another nested one for editing the current user
             this.route('edit');
         });
-        // and finally the create route nested in users
-        this.route('create');
+        
+        // no need of a create route, we will re-use the editRoute for this
     });
 
     // our 404 error route
@@ -317,17 +311,25 @@ App.UserRoute = Ember.Route.extend({
         }
     }
 });
-App.UsersCreateRoute = Ember.Route.extend({
-    model: function(){
-        return { id:new Date().getTime() };
-    }
-});
 // we can customize what's happening when accessing the users route
 // here we simply retreive datas from our model and assign it to the usersRoute model
 // http://emberjs.com/guides/routing/specifying-a-routes-model/
 App.UsersRoute = Ember.Route.extend({
     model: function(){
         return App.User.find();
+    },
+    
+    events: {
+        // no need of a whole createRoute/template/view/controller
+        // this createUser event creates a new empty user with only its new id
+        // and then it redirects to the edit route for this new user
+        createUser: function(){
+            var users = App.User.find();
+            var newUser = App.User.createRecord({
+                id: users.get('length')
+            });
+            this.transitionTo('user.edit', newUser);
+        }
     }
 });
 App.ConfirmDeleteButtonView = Ember.View.extend({
@@ -504,5 +506,3 @@ App.UserView = App.DraggableView.extend({
         // or what ever you want with or without jQuery.
     }
 });
-
-App.UsersCreateView = App.DraggableView.extend();
