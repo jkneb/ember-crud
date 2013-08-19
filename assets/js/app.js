@@ -326,7 +326,7 @@ App.UsersRoute = Ember.Route.extend({
         createUser: function(){
             var users = App.User.find();
             var newUser = App.User.createRecord({
-                id: users.get('length')
+                id: users.get('length') + 1
             });
             this.transitionTo('user.edit', newUser);
         }
