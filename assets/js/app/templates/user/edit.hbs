@@ -7,19 +7,19 @@
         </div>
         <div class="line">
             <label for="avatarUrl">Choose user avatar</label>
-            {{view Ember.TextField valueBinding="avatarUrl"}}
+            {{input value=avatarUrl}}
         </div>
         <div class="line">
             <label for="name">User name</label>
-            {{view Ember.TextField valueBinding="name"}}
+            {{input value=name}}
         </div>
         <div class="line">
             <label for="email">User email</label>
-            {{view Ember.TextField valueBinding="email"}}
+            {{input value=email}}
         </div>
         <div class="line">
             <label for="bio">User short bio</label>
-            {{view Ember.TextArea valueBinding="bio"}}
+            {{textarea value=bio}}
         </div>
         <div class="aright">
             <button class="blue btn-desktop" {{action closeEditing}}> ok </button>
