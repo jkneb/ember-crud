@@ -1,5 +1,3 @@
-// those are overrides of the main styles but only for small screens ( < 650px )
-@media screen and (max-width:650px) {
 
     // ------------
     // desktop styles reset
@@ -84,4 +82,3 @@
     }
     
     .confirm-box { top:21px; z-index:1; }
-}

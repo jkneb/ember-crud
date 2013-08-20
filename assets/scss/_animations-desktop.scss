@@ -59,13 +59,24 @@
     to   { -moz-opacity:1; } 
 }
 
-// delete-animation
-.delete-animation { @include animation(delete-animation .4s ease both); }
-@-webkit-keyframes delete-animation { 
-    from { opacity:1; -webkit-transform-origin:top right; -webkit-transform:rotate( 0deg) translate(0px, 0px); } 
-    to   { opacity:0; -webkit-transform-origin:top right; -webkit-transform:rotate(15deg) translate(50px, -100px); } 
+// Daniel Eden's Hinge animation from https://github.com/daneden/animate.css
+.hinge, .delete-animation { -webkit-animation-name:hinge; -moz-animation-name:hinge; animation-name:hinge; }
+@-webkit-keyframes hinge { 0% { -webkit-transform:rotate(0); -webkit-transform-origin:top left; -webkit-animation-timing-function:ease-in-out; }
+    20%, 60% { -webkit-transform:rotate(80deg); -webkit-transform-origin:top left; -webkit-animation-timing-function:ease-in-out; }
+    40% { -webkit-transform:rotate(60deg); -webkit-transform-origin:top left; -webkit-animation-timing-function:ease-in-out; }
+    80% { -webkit-transform:rotate(60deg) translateY(0); opacity:1; -webkit-transform-origin:top left; -webkit-animation-timing-function:ease-in-out; }
+    100% { -webkit-transform:translateY(700px); opacity:0; }
 }
-@-moz-keyframes delete-animation { 
-    from { opacity:1; -moz-transform-origin:top right; -moz-transform:rotate( 0deg) translate(0px, 0px); } 
-    to   { opacity:0; -moz-transform-origin:top right; -moz-transform:rotate(15deg) translate(50px, -100px); } 
+@-moz-keyframes hinge { 0% { -moz-transform:rotate(0); -moz-transform-origin:top left; -moz-animation-timing-function:ease-in-out; }
+    20%, 60% { -moz-transform:rotate(80deg); -moz-transform-origin:top left; -moz-animation-timing-function:ease-in-out; }
+    40% { -moz-transform:rotate(60deg); -moz-transform-origin:top left; -moz-animation-timing-function:ease-in-out; }
+    80% { -moz-transform:rotate(60deg) translateY(0); opacity:1; -moz-transform-origin:top left; -moz-animation-timing-function:ease-in-out; }
+    100% { -moz-transform:translateY(700px); opacity:0; }
 }
+@keyframes hinge { 0% { transform:rotate(0); transform-origin:top left; animation-timing-function:ease-in-out; }
+    20%, 60% { transform:rotate(80deg); transform-origin:top left; animation-timing-function:ease-in-out; }
+    40% { transform:rotate(60deg); transform-origin:top left; animation-timing-function:ease-in-out; }
+    80% { transform:rotate(60deg) translateY(0); opacity:1; transform-origin:top left; animation-timing-function:ease-in-out; }
+    100% { transform:translateY(700px); opacity:0; }
+}
+
