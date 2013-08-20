@@ -7,5 +7,12 @@ App.UsersController = Ember.ArrayController.extend({
     // in this case it's userController
     // http://emberjs.com/guides/controllers/dependencies-between-controllers/
     // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/
-    needs: ['user']
+    needs: ['user'],
+
+    // no need of a whole createRoute/template/view/controller
+    // this createUser event creates a new empty user with only its new id
+    // and then it redirects to the edit route for this new user
+    createUser: function(){
+        this.transitionToRoute('user.create');
+    }
 });

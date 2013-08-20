@@ -4,18 +4,5 @@
 App.UsersRoute = Ember.Route.extend({
     model: function(){
         return App.User.find();
-    },
-    
-    events: {
-        // no need of a whole createRoute/template/view/controller
-        // this createUser event creates a new empty user with only its new id
-        // and then it redirects to the edit route for this new user
-        createUser: function(){
-            var users = App.User.find();
-            var newUser = Em.Object.create({
-                id: new Date().getTime()
-            });
-            this.transitionTo('user.edit', newUser);
-        }
     }
 });

@@ -116,13 +116,13 @@ App.DraggableView = Em.View.extend({
         }, 600);
     },
     
-    closeEditingWithTransition: function(){
+    saveWithTransition: function(){
         var controller = this.get('controller');
         
         this.$().find('.pane').css({ '-webkit-transform': 'translate3d(0%, 0, 0)' });
         
         Em.run.later(this, function(){
-            controller.send('closeEditing');
+            controller.save();
             controller.send('goBack');
         }, 600);
     }

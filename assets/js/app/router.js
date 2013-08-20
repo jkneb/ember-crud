@@ -6,6 +6,7 @@ App.Router.map(function(){
         this.resource('user', { path:'/:user_id' }, function(){
             // and another nested one for editing the current user
             this.route('edit');
+            this.route('create')
         });
         
         // no need of a create route, we will re-use the editRoute for this
