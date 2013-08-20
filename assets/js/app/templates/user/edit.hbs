@@ -2,6 +2,10 @@
 
     {{! again here use the editMode property to switch class names between "shown" and "hidden" }}
     <div {{bindAttr class=":user-edit :pane controllers.user.editMode:shown:hidden"}}>
+        <div class="tools">
+            <button class="icon-arrow-left blue fleft btn-mobile" {{action closeEditingWithTransition target="view"}}></button>
+        </div>
+        
         <div class="line">
             <h3>Edit user</h3>
         </div>

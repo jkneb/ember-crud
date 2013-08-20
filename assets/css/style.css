@@ -219,7 +219,7 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
 .about-this-demo:hover { color: #30a1e2; }
 .about-this-demo:before { margin-right: 7px; width: 30px; height: 29px; line-height: 32px; display: inline-block; vertical-align: middle; font-size: 28px; text-align: center; text-indent: -1px; border-radius: 100%; border: 2px solid black; }
 
-.btn-mobile { display: none !important; }
+.btn-mobile { display: none; }
 
 /*  A collection of css animations stored in class names  so you can easely addClass/removeClass them on any HTML elements 
 */
@@ -302,11 +302,11 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
   .users-listing { overflow: scroll; -webkit-overflow-scrolling: touch; height: 100%; padding-top: 45px; }
   .users-listing li a { border-bottom: 3px solid #292929; }
   .user-pane { position: absolute; z-index: 1; top: 0; left: 100%; width: 100%; height: 100%; padding-top: 45px; }
+  .user-pane .tools { position: absolute; top: 0; left: 0; background-color: #fbfbfb; border: none; border-bottom: 4px solid #eeeeee; }
+  .user-pane .tools button { margin: -3px 0 0 10px; }
   .user-profile { padding-top: 65px; }
-  .user-profile .tools { position: absolute; top: 0; left: 0; background-color: #fbfbfb; border: none; border-bottom: 4px solid #eeeeee; }
-  .user-profile .tools button { margin: -3px 0 0 10px; }
   .user-profile .date { display: inline-block; position: static; margin-top: 25px; font-size: 12px; background: #f1f1f1; border-color: #ddd; }
-  .user-edit, .user-create { z-index: 2; }
+  .user-edit, .user-create { z-index: 2; top: 0; padding-top: 65px; }
   .pane { -webkit-transition: -webkit-transform .4s ease; -moz-transition: -moz-transform .4s ease; -ms-transition: -ms-transform .4s ease; transition: transform .4s ease; }
   .mobile-drag-trigger { outline: 1px solid hotpink; position: absolute; top: 0; left: 0; height: 100%; width: 50px; }
   .confirm-box { top: 21px; z-index: 1; }
