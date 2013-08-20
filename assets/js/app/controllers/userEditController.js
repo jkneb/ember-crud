@@ -9,9 +9,11 @@ App.UserEditController = Ember.ObjectController.extend({
     closeEditing: function(){
         // sets the parent controller editMode to false
         this.get('controllers.user').set('editMode', false); 
-        // and then goes back to the previous route 
-        this.transitionToRoute('user'); 
-        // this will save modifications we made while editing the user 
+        // and then goes back to the previous route
+        /*this.get('content').set('creationDate', new Date());
+        App.User.createRecord(this.get('content'));
         this.get('store').commit();
+        this.transitionToRoute('user');*/
+        // this will save modifications we made while editing the user
     }
 });

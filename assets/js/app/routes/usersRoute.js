@@ -12,8 +12,8 @@ App.UsersRoute = Ember.Route.extend({
         // and then it redirects to the edit route for this new user
         createUser: function(){
             var users = App.User.find();
-            var newUser = App.User.createRecord({
-                id: users.get('length') + 1
+            var newUser = Em.Object.create({
+                id: new Date().getTime()
             });
             this.transitionTo('user.edit', newUser);
         }
