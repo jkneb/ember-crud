@@ -1,5 +1,3 @@
-// normally we would certainly have to set stuff on our userRoute but Ember auto generated it for us :) 
-// in fact we could even delete this userRoute lines of code
 App.UserRoute = Ember.Route.extend({
     // this route model is auto generated internally 
     // because we followed Ember's naming conventions 
@@ -7,10 +5,13 @@ App.UserRoute = Ember.Route.extend({
         return App.User.find(params.user_id);
     },*/
 
-    // force the deleteMode to false when accessing user
-    activate: function(){
+    setupController: function(controller, model){
+        // force the deleteMode to false when accessing user
         this.controllerFor('user').set('deleteMode', false);
-    }, 
+        // have no fucking idea why I have to do this
+        controller.set('model', model);
+    },
+
     events: {
         goBack: function(){
             this.transitionTo('users');
