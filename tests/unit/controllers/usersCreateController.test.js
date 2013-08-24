@@ -6,6 +6,7 @@ describe ('UsersCreateController', function(){
         oldUserClass = App.User;
         var container = new Em.Container ();
         container.register("controller:usersCreate", App.UsersCreateController);
+        container.register("controller:user", Em.Object);
         usersCreateCtrl = container.lookup("controller:usersCreate");
     });
 
@@ -16,8 +17,12 @@ describe ('UsersCreateController', function(){
     it('addUser should createRecord and transition to user', function (){
         var transitionToRouteCall = 0;
         var createRecordCall = 0;
+        var commitCall = 0;
 
-        var content = {id:"Content's UsersCreateController"};
+        var content = Em.Object.create({
+            id:"Content's UsersCreateController",
+            creationDate:null
+        });
         App.User = {
             createRecord:function(user){
                 user.should.be.equal(content);
@@ -27,16 +32,23 @@ describe ('UsersCreateController', function(){
 
         usersCreateCtrl.setProperties({
             target: {
-                transitionToRoute:function(route){
+                transitionToRoute:function(route, model){
                     route.should.equal('user');
+                    model.should.equal(model);
                     transitionToRouteCall++;
                 }
             },
-            content : content
+            content : content,
+            store : {
+                commit:function(){
+                    commitCall++;
+                }
+            }
         });
-        usersCreateCtrl.addUser();
+        usersCreateCtrl.save();
 
         transitionToRouteCall.should.equal(1);
         createRecordCall.should.equal(1);
+        commitCall.should.equal(1);
     });
 });

@@ -20,11 +20,16 @@ describe ('UserController', function(){
     });
 
     it('confirmDelete should delete record and transition to users', function (){
-        var deleteRecordCall = 0,
-            transitionToRouteCall = 0
+        var deleteRecordCall = 0;
+        var transitionToRouteCall = 0;
+        var commitCall = 0;
+
         userCtrl.setProperties({
             content:{
                 deleteRecord:function(){ deleteRecordCall++; }
+            },
+            store: {
+                commit:function(){commitCall++;}
             },
             target:{
                 transitionToRoute:function(route) {
@@ -36,6 +41,7 @@ describe ('UserController', function(){
         userCtrl.confirmDelete();
         deleteRecordCall.should.equal(1);
         transitionToRouteCall.should.equal(1);
+        commitCall.should.equal(1);
     });
 
     it('edit should set deleteMode to false and editMode to true then transition to user.edit', function (){

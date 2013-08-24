@@ -28,11 +28,10 @@ describe ('UserEditController', function(){
                 }
             }
         });
-        userEditCtrl.closeEditing();
+        userEditCtrl.save();
 
         commitCall.should.equal(1);
         transitionToRouteCall.should.equal(1);
-        userCtrl.get('editMode').should.be.false;
     });
 
 
