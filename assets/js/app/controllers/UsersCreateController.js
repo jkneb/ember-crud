@@ -1,6 +1,10 @@
-App.UsersCreateController = Em.ObjectController.extend({
-   save : function(){
-       this.get('content').set('creationDate', new Date());
-       App.User.createRecord(this.get('content'));
-   }
+App.UsersCreateController = Ember.ObjectController.extend({
+    needs: ['user'],
+
+    save: function () {
+        this.get('content').set('creationDate', new Date());
+        App.User.createRecord(this.get('content'));
+        this.transitionToRoute('index');
+        this.get('store').commit();
+    }
 });

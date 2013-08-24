@@ -4,9 +4,9 @@
 
     <div class="tools">
         {{! the createUser event will handle every thing and is located in the usersRoute}}
-        <a href="#" {{action createUser}} class="button blue create-btn">
+        {{#linkTo "users.create" class="button blue create-btn" }}
             <i class="icon-plus"></i><span>⬅ Add user</span>
-        </a>
+        {{/linkTo}}
     </div>
 
     <ul class="users-listing">

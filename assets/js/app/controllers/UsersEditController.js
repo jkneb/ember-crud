@@ -1,4 +1,4 @@
-App.UserEditController = Ember.ObjectController.extend({
+App.UsersEditController = Ember.ObjectController.extend({
     // we want this controller to inherit from another controller 
     // in this case it's userController 
     // http://emberjs.com/guides/controllers/dependencies-between-controllers/ 
