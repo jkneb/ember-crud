@@ -1,6 +1,7 @@
 App.AUserFormRoute = Ember.Route.extend({
     // fix when trying to manually access the route
     activate: function(){
+        console.log('activate edit')
         this.controllerFor('user').setProperties({
             'editMode': true,
             'deleteMode': false
@@ -12,10 +13,5 @@ App.AUserFormRoute = Ember.Route.extend({
             'editMode': false,
             'deleteMode': false
         });
-    },
-    events: {
-        goBack: function(){
-            this.transitionTo('user');
-        }
     }
 });
