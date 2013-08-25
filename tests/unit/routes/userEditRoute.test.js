@@ -6,7 +6,6 @@ describe('UserEditRoute', function () {
     // container of injection of dependances
     var container;
 
-
     // before each unit test
     beforeEach(function () {
 
@@ -25,8 +24,9 @@ describe('UserEditRoute', function () {
         });
     });
 
-    // deleting all object created for the test, to reset state
+    // after each unit test
     afterEach(function () {
+        // deleting all objects created for the test, to reset state
         container = userEditRoute = null;
     });
 
