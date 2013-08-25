@@ -35,7 +35,7 @@ describe('Helpers', function () {
         // the first step is to create the container view. This view will
         // contains a fake controller with specific dates. We define in the
         // same time a template of the fly containing the few uses of "formatDate"
-        // width the specifics dates.
+        // with the specifics dates.
         view = Em.View.create({
              controller: Em.Object.create({
                 aYear: new moment().subtract('years', 1),
@@ -52,6 +52,6 @@ describe('Helpers', function () {
         // And finally : we can check here the HTML resulting and
         // verify that the helper have the expected behaviour
         view.$().text().should.equal('a year ago|3 months ago|10 days ago');
-        // Note : text method here is a JQuery method
+        // Note : text method here, is a JQuery method
     });
 });
