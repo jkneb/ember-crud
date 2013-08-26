@@ -27,7 +27,9 @@ hr { -moz-box-sizing: content-box; box-sizing: content-box; height: 0; }
 
 mark { background: #ff0; color: #000; }
 
-code, kbd, pre, samp { font-family: monospace, serif; font-size: 1em; }
+kbd, pre, samp { font-family: monospace, serif; font-size: 1em; }
+
+code { background: #eee; border: 1px solid #ddd; padding: 2px 4px; border-radius: 3px; font-family: Monaco, monospace, serif; font-size: .8em; }
 
 pre { white-space: pre-wrap; }
 
@@ -164,7 +166,7 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
 .for-oh-for > span { font-family: 'Helvetica Neue', Arial; text-transform: uppercase; color: #999; font-size: 90px; font-weight: bold; color: rgba(10, 10, 10, 0.1); text-shadow: 0px 2px 3px #eee, 0px 0px 0px #ccc, 1px 1px 1px white; }
 .for-oh-for > p { color: #999; margin: 0px 0px 15px; }
 
-.modal { padding: 35px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; width: 400px; height: 330px; position: absolute; margin: auto; top: 0; bottom: 0; left: 0; right: 0; z-index: 100; background: white; border: 1px solid #ddd; border-radius: 4px; box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.1); }
+.modal { padding: 20px 35px 35px; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; width: 400px; min-height: 330px; position: absolute; left: 50%; margin-left: -200px; top: 18%; z-index: 100; background: white; border: 1px solid #ddd; border-radius: 4px; box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.1); }
 .modal.modal-show { opacity: 1; -webkit-transition: top 0ms linear 0ms, opacity 300ms ease 10ms; -moz-transition: top 0ms linear 0ms, opacity 300ms ease 10ms; -ms-transition: top 0ms linear 0ms, opacity 300ms ease 10ms; transition: top 0ms linear 0ms, opacity 300ms ease 10ms; }
 .modal.modal-hide { opacity: 0; top: -200%; -webkit-transition: opacity 300ms ease 0ms, top 0ms linear 900ms; -moz-transition: opacity 300ms ease 0ms, top 0ms linear 900ms; -ms-transition: opacity 300ms ease 0ms, top 0ms linear 900ms; transition: opacity 300ms ease 0ms, top 0ms linear 900ms; }
 .modal .modal-body { margin-top: 15px; }
