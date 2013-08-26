@@ -1,7 +1,10 @@
 App.Store = DS.Store.extend({
-    revision: 13,
-    adapter: 'DS.FixtureAdapter'
+    adapter: 'DS.LSAdapter'
 });
+
+/*App.LSAdapter = DS.LSAdapter.extend({
+  namespace: 'todos-emberjs'
+});*/
 
 App.User = DS.Model.extend({
     name   : DS.attr('string'),
@@ -16,7 +19,7 @@ App.User = DS.Model.extend({
 // the RestAdapter aims to make it easy to switch to a REST API oriented project
 // I can suggest you to watch this screencast http://www.youtube.com/watch?v=Ga99hMi7wfY 
 // start to play the video at 25' you'll see a demonstration on how easy it is to replace the fixtureAdapter with the restAdapter
-App.User.FIXTURES = [
+/*App.User.FIXTURES = [
     {
         id: 1,
         name: 'Julien Knebel',
@@ -137,4 +140,4 @@ App.User.FIXTURES = [
         avatarUrl: './assets/images/avatars/default.png',
         creationDate: 'Thu Sep 17 2013 11:11:11 GMT+0200 (CEST)'
     }
-];
+];*/

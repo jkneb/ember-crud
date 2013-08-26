@@ -327,7 +327,7 @@ function program4(depth0,data) {
 function program6(depth0,data) {
   
   
-  data.buffer.push("\n            <li>no users… :(</li>\n        ");
+  data.buffer.push("\n            <li class=\"no-users-yet\">no users… :(</li>\n        ");
   }
 
   data.buffer.push("\n<div class=\"main\">\n\n    <div class=\"tools\">\n        ");

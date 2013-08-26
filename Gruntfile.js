@@ -38,6 +38,7 @@ module.exports = function(grunt) {
           'assets/js/libs/handlebars-1.0.0.js',
           'assets/js/libs/ember-1.0.0-rc.7.js',
           'assets/js/libs/ember-data-latest.js',
+          'assets/js/libs/localstorage_adapter.js',
           'assets/js/libs/moment.min.js'
         ],
         dest: 'assets/js/libs.js'
