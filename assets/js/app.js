@@ -263,7 +263,7 @@ App.MissingRoute = Em.Route.extend({
        this.transitionTo('users.index');
    }
 });
-App.AUserFormRoute = Ember.Route.extend({
+App.UserCreateAndEditRoute = Ember.Route.extend({
     // fix when trying to manually access the route
     activate: function(){
         this.controllerFor('user').setProperties({
@@ -279,7 +279,21 @@ App.AUserFormRoute = Ember.Route.extend({
         });
     }
 });
-App.UsersCreateRoute = App.AUserFormRoute.extend({
+// we also want to manually set user.editMode when accessing the userEditRoute (its child route) 
+// so we can use the controllerFor method to access the parent controller 
+// http://emberjs.com/guides/routing/setting-up-a-controller/ 
+App.UserEditRoute = App.UserCreateAndEditRoute.extend({
+    model: function() {
+        // here we tell the route to use its parent model 
+        return this.modelFor('user'); 
+    },
+    events: {
+        goBack: function(){
+            this.transitionTo('user');
+        }
+    }
+});
+App.UsersCreateRoute = App.UserCreateAndEditRoute.extend({
     model:function(){
         // Model will create a "template" of User object with an id already computed
         return Em.Object.create({
