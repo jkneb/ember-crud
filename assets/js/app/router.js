@@ -2,21 +2,22 @@
 App.Router.map(function(){
     // this route will be our list of all users
     this.resource('users', function(){
-        // this one is nested and dynamic route, we need it to see one user at a time with its id
+        // this one is nested and dynamic, we need it to see one user at a time with its id
         this.resource('user', { path:'/:user_id' }, function(){
-            // and another nested one for editing the current user
+            // another nested one for editing the current user
             this.route('edit');
         });
-        // and the last to create an user
+        // finally a last one to create a new user
         this.route('create');
     });
 
-    // our 404 error route
-    this.route('missing', {path:"/*path"});
+    // this is our 404 error route - see MissingRoute just bellow
+    this.route('missing', { path: '/*path' });
 });
 
+// this handles wrong routes - you could use it to redirect to a 404 route
 App.MissingRoute = Em.Route.extend({
-   redirect:function(){
-       this.transitionTo('users.index');
-   }
+    redirect: function(){
+        this.transitionTo('users.index');
+    }
 });

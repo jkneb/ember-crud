@@ -1,12 +1,11 @@
-// our nested user route will render only a single user at a time 
-// so in this case we'll use an ObjectController
+// our nested user route will render only a single user at a time so it's an ObjectController
 App.UserController = Ember.ObjectController.extend({
-    // the property editMode is also used in the user template 
-    // we will use it to manage css transitions when entering and exiting the edit route
-    editMode: false, 
+    // editMode / deleteMode properties are used in the user template 
+    // we use them to manage css transitions when entering and exiting the edit route
+    editMode: false,
 
-    deleteMode: false, 
-    
+    deleteMode: false,
+
     delete: function(){
         this.toggleProperty('deleteMode');
     },
@@ -14,8 +13,10 @@ App.UserController = Ember.ObjectController.extend({
         this.set('deleteMode', false);
     },
     confirmDelete: function(){
+        // delete a user
         this.get('content').deleteRecord();
         this.get('store').commit();
+        // then transition to the UsersRoute
         this.transitionToRoute('users');
     },
     edit: function(){

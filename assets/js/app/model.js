@@ -1,11 +1,11 @@
 App.Store = DS.Store.extend({
+    // adapter: 'DS.FixtureAdapter'
+    
+    // in this demo we are using the LocalStorageAdapter to persist data
     adapter: 'DS.LSAdapter'
 });
 
-/*App.LSAdapter = DS.LSAdapter.extend({
-  namespace: 'todos-emberjs'
-});*/
-
+// the model for our users
 App.User = DS.Model.extend({
     name   : DS.attr('string'),
     email  : DS.attr('string'),
@@ -14,11 +14,8 @@ App.User = DS.Model.extend({
     creationDate : DS.attr('date')
 });
 
-// this is Ember-Data's fixtureAdapter 
-// it let's us work with fake datas while we are in development mode
-// the RestAdapter aims to make it easy to switch to a REST API oriented project
-// I can suggest you to watch this screencast http://www.youtube.com/watch?v=Ga99hMi7wfY 
-// start to play the video at 25' you'll see a demonstration on how easy it is to replace the fixtureAdapter with the restAdapter
+// These are fakes datas for the FixtureAdapter.
+// The FixtureAdapter lets you work with fake datas while in development stage.
 /*App.User.FIXTURES = [
     {
         id: 1,

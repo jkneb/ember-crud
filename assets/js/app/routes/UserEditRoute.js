@@ -1,6 +1,4 @@
-// we also want to manually set user.editMode when accessing the userEditRoute (its child route) 
-// so we can use the controllerFor method to access the parent controller 
-// http://emberjs.com/guides/routing/setting-up-a-controller/ 
+// the UserEditRoute is an extend of the UserCreateAndEditRoute
 App.UserEditRoute = App.UserCreateAndEditRoute.extend({
     model: function() {
         // here we tell the route to use its parent model 
