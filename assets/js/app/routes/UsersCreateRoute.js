@@ -1,4 +1,4 @@
-App.UsersCreateRoute = App.AUserFormRoute.extend({
+App.UsersCreateRoute = App.UserCreateAndEditRoute.extend({
     model:function(){
         // Model will create a "template" of User object with an id already computed
         return Em.Object.create({
