@@ -1,4 +1,4 @@
-App.AUserFormRoute = Ember.Route.extend({
+App.UserCreateAndEditRoute = Ember.Route.extend({
     // fix when trying to manually access the route
     activate: function(){
         this.controllerFor('user').setProperties({
