@@ -1,11 +1,13 @@
 .modal {
-    padding:35px; 
+    padding:20px 35px 35px; 
     @include box-sizing(border-box);
-    width:400px; height:330px; 
+    width:400px; min-height:330px; 
 
-    // v + h centering
-    position:absolute; margin:auto; 
-    top:0; bottom:0; left:0; right:0; 
+    position:absolute;
+    // hrz centering
+    left:50%; margin-left:-200px;
+    // vrt positioning
+    top:18%; 
 
     z-index:100;
 

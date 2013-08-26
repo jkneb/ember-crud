@@ -7,11 +7,9 @@ App.UserEditController = Ember.ObjectController.extend({
     
     // in the template we used a {{action save}} tag wich will trigger this method on click
     save: function(){
-        // sets the parent controller editMode to false
-        //this.get('controllers.user').set('editMode', false);
-        // and then goes back to the previous route
-        this.get('store').commit();
-        this.transitionToRoute('user');
         // this will save modifications we made while editing the user
+        this.get('store').commit();
+        // then transitino to UserRoute
+        this.transitionToRoute('user');
     }
 });

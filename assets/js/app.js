@@ -1,7 +1,6 @@
 // first things first: let's create our app
 window.App = Ember.Application.create({
-    LOG_TRANSITIONS: true,
-    LOG_TRANSITIONS_INTERNAL: true
+    LOG_TRANSITIONS: true
 });
 
 App.UserEditController = Ember.ObjectController.extend({
@@ -13,20 +12,18 @@ App.UserEditController = Ember.ObjectController.extend({
     
     // in the template we used a {{action save}} tag wich will trigger this method on click
     save: function(){
-        // sets the parent controller editMode to false
-        //this.get('controllers.user').set('editMode', false);
-        // and then goes back to the previous route
-        this.get('store').commit();
-        this.transitionToRoute('user');
         // this will save modifications we made while editing the user
+        this.get('store').commit();
+        // then transitino to UserRoute
+        this.transitionToRoute('user');
     }
 });
 // This controller is an ArrayController because it handles a list of "array-ish" models.
-// Usually you'll use ObjectController which deals with a single model.
+// Usually you'll use an ObjectController which deals with single models.
 // We could also do without this controller because Ember is able to figure out we're dealing with multiple models 
-// and could then genereate this one for us (in memory).
+// and then could genereate this one for us (in memory).
 App.UsersController = Em.ArrayController.extend({
-    // here we tell the controller to sort Users by alphabetical order
+    // but here we tell the controller to sort Users by alphabetical order
     sortProperties: ['name'],
     sortAscending: true
 });
@@ -34,26 +31,25 @@ App.UsersCreateController = Ember.ObjectController.extend({
     needs: ['user'],
 
     save: function () {
-        // just before to save, we set the creation date
+        // just before saving, we set the creationDate
         this.get('content').set('creationDate', new Date());
 
         // save and commit
         App.User.createRecord(this.get('content'));
         this.get('store').commit();
 
-        // we redirect to the user himself
+        // redirects to the user itself
         this.transitionToRoute('user', this.get('content'));
     }
 });
-// our nested user route will render only a single user at a time 
-// so in this case we'll use an ObjectController
+// our nested user route will render only a single user at a time so it's an ObjectController
 App.UserController = Ember.ObjectController.extend({
-    // the property editMode is also used in the user template 
-    // we will use it to manage css transitions when entering and exiting the edit route
-    editMode: false, 
+    // editMode / deleteMode properties are used in the user template 
+    // we use them to manage css transitions when entering and exiting the edit route
+    editMode: false,
 
-    deleteMode: false, 
-    
+    deleteMode: false,
+
     delete: function(){
         this.toggleProperty('deleteMode');
     },
@@ -61,8 +57,10 @@ App.UserController = Ember.ObjectController.extend({
         this.set('deleteMode', false);
     },
     confirmDelete: function(){
+        // delete a user
         this.get('content').deleteRecord();
         this.get('store').commit();
+        // then transition to the UsersRoute
         this.transitionToRoute('users');
     },
     edit: function(){
@@ -101,13 +99,13 @@ Ember.Handlebars.helper('formatDate', function(date){
 });
 */
 App.Store = DS.Store.extend({
+    // adapter: 'DS.FixtureAdapter'
+    
+    // in this demo we are using the LocalStorageAdapter to persist data
     adapter: 'DS.LSAdapter'
 });
 
-/*App.LSAdapter = DS.LSAdapter.extend({
-  namespace: 'todos-emberjs'
-});*/
-
+// the model for our users
 App.User = DS.Model.extend({
     name   : DS.attr('string'),
     email  : DS.attr('string'),
@@ -116,11 +114,8 @@ App.User = DS.Model.extend({
     creationDate : DS.attr('date')
 });
 
-// this is Ember-Data's fixtureAdapter 
-// it let's us work with fake datas while we are in development mode
-// the RestAdapter aims to make it easy to switch to a REST API oriented project
-// I can suggest you to watch this screencast http://www.youtube.com/watch?v=Ga99hMi7wfY 
-// start to play the video at 25' you'll see a demonstration on how easy it is to replace the fixtureAdapter with the restAdapter
+// These are fakes datas for the FixtureAdapter.
+// The FixtureAdapter lets you work with fake datas while in development stage.
 /*App.User.FIXTURES = [
     {
         id: 1,
@@ -248,24 +243,27 @@ App.User = DS.Model.extend({
 App.Router.map(function(){
     // this route will be our list of all users
     this.resource('users', function(){
-        // this one is nested and dynamic route, we need it to see one user at a time with its id
+        // this one is nested and dynamic, we need it to see one user at a time with its id
         this.resource('user', { path:'/:user_id' }, function(){
-            // and another nested one for editing the current user
+            // another nested one for editing the current user
             this.route('edit');
         });
-        // and the last to create an user
+        // finally a last one to create a new user
         this.route('create');
     });
 
-    // our 404 error route
-    this.route('missing', {path:"/*path"});
+    // this is our 404 error route - see MissingRoute just bellow
+    this.route('missing', { path: '/*path' });
 });
 
+// this handles wrong routes - you could use it to redirect to a 404 route
 App.MissingRoute = Em.Route.extend({
-   redirect:function(){
-       this.transitionTo('users.index');
-   }
+    redirect: function(){
+        this.transitionTo('users.index');
+    }
 });
+// this route will be used by the edit AND the create route
+// in other words the edit and the create routes will inherit from this one
 App.UserCreateAndEditRoute = Ember.Route.extend({
     // fix when trying to manually access the route
     activate: function(){
@@ -282,9 +280,7 @@ App.UserCreateAndEditRoute = Ember.Route.extend({
         });
     }
 });
-// we also want to manually set user.editMode when accessing the userEditRoute (its child route) 
-// so we can use the controllerFor method to access the parent controller 
-// http://emberjs.com/guides/routing/setting-up-a-controller/ 
+// the UserEditRoute is an extend of the UserCreateAndEditRoute
 App.UserEditRoute = App.UserCreateAndEditRoute.extend({
     model: function() {
         // here we tell the route to use its parent model 
@@ -296,19 +292,25 @@ App.UserEditRoute = App.UserCreateAndEditRoute.extend({
         }
     }
 });
+// the UsersCreateRoute is an extend of the UserCreateAndEditRoute
 App.UsersCreateRoute = App.UserCreateAndEditRoute.extend({
-    model:function(){
-        // Model will create a "template" of User object with an id already computed
+    model: function(){
+        // the model for this route is a new Ember.Object with an specific ID
         return Em.Object.create({
             id: new Date().getTime()
         });
     },
-    renderTemplate:function(){
-        this.render('user.edit',{
-            controller:'usersCreate'
+    
+    // in this case (the create route) we can re-use the user/edit template
+    // associated with the usersCreateController
+    renderTemplate: function(){
+        this.render('user.edit', {
+            controller: 'usersCreate'
         });
     }
 });
+// the applicationRoute is the highest route possible
+// here we use it to store some global events for our app
 App.ApplicationRoute = Em.Route.extend({
     events: {
         showModal: function(name){
@@ -326,7 +328,7 @@ App.IndexRoute = Ember.Route.extend({
     }
 });
 App.UserRoute = Ember.Route.extend({
-    // this route model is auto generated internally 
+    // this route model is auto generated by Ember internally (in memory) 
     // because we followed Ember's naming conventions 
     /*model: function(params) { 
         return App.User.find(params.user_id);
@@ -344,14 +346,14 @@ App.UserRoute = Ember.Route.extend({
         controller.set('model', model);
     },
 
+    // each route has this goBack event to transition to the correct "parent route"
     events: {
         goBack: function(){
             this.transitionTo('users');
         }
     }
 });
-// we can customize what's happening when accessing the users route
-// here we simply retreive datas from our model and assign it to the usersRoute model
+// each route has this `model` hook where you specify which Model the route needs to use
 // http://emberjs.com/guides/routing/specifying-a-routes-model/
 App.UsersRoute = Ember.Route.extend({
     model: function(){
