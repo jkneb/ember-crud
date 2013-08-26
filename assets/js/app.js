@@ -1,8 +1,41 @@
 // first things first: let's create our app
 window.App = Ember.Application.create({
-    LOG_TRANSITIONS: true
+    LOG_TRANSITIONS: true,
+    LOG_TRANSITIONS_INTERNAL: true
 });
 
+App.UserEditController = Ember.ObjectController.extend({
+    // we want this controller to inherit from another controller 
+    // in this case it's userController 
+    // http://emberjs.com/guides/controllers/dependencies-between-controllers/ 
+    // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/ 
+    needs: ['user'], 
+    
+    // in the template we used a {{action save}} tag wich will trigger this method on click
+    save: function(){
+        // sets the parent controller editMode to false
+        //this.get('controllers.user').set('editMode', false);
+        // and then goes back to the previous route
+        this.get('store').commit();
+        this.transitionToRoute('user');
+        // this will save modifications we made while editing the user
+    }
+});
+App.UsersCreateController = Ember.ObjectController.extend({
+    needs: ['user'],
+
+    save: function () {
+        // just before to save, we set the creation date
+        this.get('content').set('creationDate', new Date());
+
+        // save and commit
+        App.User.createRecord(this.get('content'));
+        this.get('store').commit();
+
+        // we redirect to the user himself
+        this.transitionToRoute('user', this.get('content'));
+    }
+});
 // our nested user route will render only a single user at a time 
 // so in this case we'll use an ObjectController
 App.UserController = Ember.ObjectController.extend({
@@ -20,6 +53,7 @@ App.UserController = Ember.ObjectController.extend({
     },
     confirmDelete: function(){
         this.get('content').deleteRecord();
+        this.get('store').commit();
         this.transitionToRoute('users');
     },
     edit: function(){
@@ -31,34 +65,6 @@ App.UserController = Ember.ObjectController.extend({
     }
 });
 
-App.UserEditController = Ember.ObjectController.extend({
-    // we want this controller to inherit from another controller 
-    // in this case it's userController 
-    // http://emberjs.com/guides/controllers/dependencies-between-controllers/ 
-    // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/ 
-    needs: ['user'], 
-    
-    // in the template we used a {{action closeEditing}} tag wich will trigger this method on click 
-    closeEditing: function(){
-        // sets the parent controller editMode to false
-        this.get('controllers.user').set('editMode', false); 
-        // and then goes back to the previous route 
-        this.transitionToRoute('user'); 
-        // this will save modifications we made while editing the user 
-        this.get('store').commit();
-    }
-});
-// the usersRoute grabs a LIST of users so we need an ArrayController 
-// because ArrayController are meant to manage multiple models 
-// http://emberjs.com/guides/controllers/#toc_representing-models 
-App.UsersController = Ember.ArrayController.extend({
-    // in this controller is inject the reference of another controller,
-    // this practice commonly named IOC (Injection Of Dependence)
-    // in this case it's userController
-    // http://emberjs.com/guides/controllers/dependencies-between-controllers/
-    // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/
-    needs: ['user']
-});
 // ----------------
 // For static datas you can use basic helpers
 // ----------------
@@ -86,7 +92,7 @@ Ember.Handlebars.helper('formatDate', function(date){
 });
 */
 App.Store = DS.Store.extend({
-    revision: 13, 
+    revision: 13,
     adapter: 'DS.FixtureAdapter'
 });
 
@@ -230,13 +236,13 @@ App.User.FIXTURES = [
 App.Router.map(function(){
     // this route will be our list of all users
     this.resource('users', function(){
-        // this one is nested and is dynamic, we need it to see one user at a time with its id
+        // this one is nested and dynamic route, we need it to see one user at a time with its id
         this.resource('user', { path:'/:user_id' }, function(){
             // and another nested one for editing the current user
             this.route('edit');
         });
-        
-        // no need of a create route, we will re-use the editRoute for this
+        // and the last to create an user
+        this.route('create');
     });
 
     // our 404 error route
@@ -247,6 +253,35 @@ App.MissingRoute = Em.Route.extend({
    redirect:function(){
        this.transitionTo('users.index');
    }
+});
+App.AUserFormRoute = Ember.Route.extend({
+    // fix when trying to manually access the route
+    activate: function(){
+        this.controllerFor('user').setProperties({
+            'editMode': true,
+            'deleteMode': false
+        });
+    },
+    // fix when trying to manually leave the route
+    deactivate: function(){
+        this.controllerFor('user').setProperties({
+            'editMode': false,
+            'deleteMode': false
+        });
+    }
+});
+App.UsersCreateRoute = App.AUserFormRoute.extend({
+    model:function(){
+        // Model will create a "template" of User object with an id already computed
+        return Em.Object.create({
+            id: new Date().getTime()
+        });
+    },
+    renderTemplate:function(){
+        this.render('user.edit',{
+            controller:'usersCreate'
+        });
+    }
 });
 App.ApplicationRoute = Em.Route.extend({
     events: {
@@ -264,34 +299,6 @@ App.IndexRoute = Ember.Route.extend({
         this.transitionTo('users');
     }
 });
-// we also want to manually set user.editMode when accessing the userEditRoute (its child route) 
-// so we can use the controllerFor method to access the parent controller 
-// http://emberjs.com/guides/routing/setting-up-a-controller/ 
-App.UserEditRoute = Ember.Route.extend({
-    model: function() {
-        // here we tell the route to use its parent model 
-        return this.modelFor('user'); 
-    }, 
-    // fix when trying to manually access the route 
-    activate: function(){
-        this.controllerFor('user').setProperties({
-            'editMode': true,
-            'deleteMode': false
-        });
-    }, 
-    // fix when trying to manually leave the route 
-    deactivate: function(){ 
-        this.controllerFor('user').setProperties({
-            'editMode': false,
-            'deleteMode': false
-        });
-    }, 
-    events: {
-        goBack: function(){
-            this.transitionTo('user');
-        }
-    }
-});
 App.UserRoute = Ember.Route.extend({
     // this route model is auto generated internally 
     // because we followed Ember's naming conventions 
@@ -302,7 +309,12 @@ App.UserRoute = Ember.Route.extend({
     setupController: function(controller, model){
         // force the deleteMode to false when accessing user
         this.controllerFor('user').set('deleteMode', false);
-        // have no fucking idea why I have to do this
+
+        // when we override the setupController, we disabled the default behavior
+        // of the Ember Route about the automatic model registration : By default the
+        // Ember route will save automaticly the model (the object passed by a transitionTo
+        // or, returned by the model method of the route) into a 'model' variable in the Controller.
+        // So to keep the fonctionnality after overriding you must implement it yourself.
         controller.set('model', model);
     },
 
@@ -318,19 +330,6 @@ App.UserRoute = Ember.Route.extend({
 App.UsersRoute = Ember.Route.extend({
     model: function(){
         return App.User.find();
-    },
-    
-    events: {
-        // no need of a whole createRoute/template/view/controller
-        // this createUser event creates a new empty user with only its new id
-        // and then it redirects to the edit route for this new user
-        createUser: function(){
-            var users = App.User.find();
-            var newUser = App.User.createRecord({
-                id: users.get('length') + 1
-            });
-            this.transitionTo('user.edit', newUser);
-        }
     }
 });
 App.ConfirmDeleteButtonView = Ember.View.extend({
@@ -343,7 +342,7 @@ App.ConfirmDeleteButtonView = Ember.View.extend({
         // now we can add an animation to any div as we would do with regular jQuery
         $thisParent.removeAttr('style').addClass('delete-animation');
         
-        // we know our delete-animation will take 500ms seconds to complete
+        // we know our delete-animation will take 900ms seconds to complete
         // Ember.run.later is ember's equivalent to setTimeout
         Ember.run.later(this, function() {
             // and when the animation is done we can call the controller to trigger its confirmDelete method
@@ -469,13 +468,13 @@ App.DraggableView = Em.View.extend({
         }, 600);
     },
     
-    closeEditingWithTransition: function(){
+    saveWithTransition: function(){
         var controller = this.get('controller');
         
         this.$().find('.pane').css({ '-webkit-transform': 'translate3d(0%, 0, 0)' });
         
         Em.run.later(this, function(){
-            controller.send('closeEditing');
+            controller.save();
             controller.send('goBack');
         }, 600);
     }

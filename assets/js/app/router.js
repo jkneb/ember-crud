@@ -2,13 +2,13 @@
 App.Router.map(function(){
     // this route will be our list of all users
     this.resource('users', function(){
-        // this one is nested and is dynamic, we need it to see one user at a time with its id
+        // this one is nested and dynamic route, we need it to see one user at a time with its id
         this.resource('user', { path:'/:user_id' }, function(){
             // and another nested one for editing the current user
             this.route('edit');
         });
-        
-        // no need of a create route, we will re-use the editRoute for this
+        // and the last to create an user
+        this.route('create');
     });
 
     // our 404 error route

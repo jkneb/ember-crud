@@ -8,7 +8,7 @@ App.ConfirmDeleteButtonView = Ember.View.extend({
         // now we can add an animation to any div as we would do with regular jQuery
         $thisParent.removeAttr('style').addClass('delete-animation');
         
-        // we know our delete-animation will take 500ms seconds to complete
+        // we know our delete-animation will take 900ms seconds to complete
         // Ember.run.later is ember's equivalent to setTimeout
         Ember.run.later(this, function() {
             // and when the animation is done we can call the controller to trigger its confirmDelete method

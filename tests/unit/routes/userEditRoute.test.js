@@ -1,113 +1,47 @@
-describe ('Routes', function(){
+describe('UserEditRoute', function () {
 
-    var originalTemplates;
+    // common UserEditRoute instance
+    var userEditRoute;
+
+    // container of injection of dependances
     var container;
-    var router;
 
-    function bootTestApplication() {
-        Ember.run(TestApp, 'advanceReadiness');
-        router = container.lookup('router:main');
-    };
+    // before each unit test
+    beforeEach(function () {
 
-    function handleURL(path) {
-        return Ember.run(function() {
-            return router.handleURL(path).then(function(value) {
-                ok(true, 'url: `' + path + '` was handled');
-                return value;
-            }, function(reason) {
-                ok(false, 'failed to visit:`' + path + '` reason: `' + reason);
-                throw reason;
-            });
-        });
-    };
+        // we create a new container to isolate the unit test
+        container = new Em.Container();
 
-    beforeEach(function(){
-        $('<div id="route-fixtures"></div>').appendTo($('body'));
-        Em.run(function(){
-
-            // We create an Application
-            TestApp = Em.Application.create({
-                LOG_TRANSITIONS: true,
-                name:"TestApp",
-                rootElement:"#route-fixtures"
-            });
-            TestApp.setupForTesting();
-
-            TestApp.LoadingRoute = Ember.Route.extend({
-            });
-
-            container = TestApp.__container__;
-
-            TestApp.Store = DS.Store.extend({
-
-            });
-
-            originalTemplates = Ember.$.extend({}, Ember.TEMPLATES);
-
-            //Ember.TEMPLATES.application = Ember.Handlebars.compile("{{outlet}}");
+        // instantiation by passing it the container previously created in two
+        // locations. The first in the route itself and the second in the router.
+        // we need too to mock the 'router' instance with a blank object
+        userEditRoute = App.UserEditRoute.create({
+            router: {
+                container: container,
+                router: {}
+            },
+            container: container
         });
     });
 
-
-    afterEach(function(){
-        Ember.run(function() {
-            TestApp.destroy();
-            TestApp = null;
-            Ember.TEMPLATES = originalTemplates;
-        });
-        $('#route-fixtures').remove();
+    // after each unit test
+    afterEach(function () {
+        // deleting all objects created for the test, to reset state
+        container = userEditRoute = null;
     });
 
-    it('UserEditRoute', function (){
-        Ember.run(function() {
-            TestApp.Router.map(function(){
-                this.resource('user',function(){
-                    this.route('edit');
-                });
-            });
+    it("the model is that this parent route, the UserRoute", function () {
+        // we create model who will be return by the fake UserRoute
+        var expectedUserModel = Em.Object.create({name: 'Model from user route'});
 
-            // Save the App.UserEditRoute to test into the isolated context
-            TestApp.UserEditRoute = App.UserEditRoute;
+        // we register a faked UserRoute with the mocked model
+        container.register("route:user", Em.Route.extend({
+            currentModel: expectedUserModel
+        }));
 
-            // we define a fake UserRoute who will return the expected model of the UserEditRoute
-            var expectedUserModel = Em.Object.create({name:'Model from user route'});
-            TestApp.UserRoute = Em.Route.extend({
-                model:function(){
-                    return expectedUserModel;
-                }
-            });
-
-            // Mock of UserController class
-            TestApp.UserController = Em.Object.extend({
-                editMode:false,
-                deleteMode:true
-            });
-
-            // We define an empty template
-            Ember.TEMPLATES['user/edit'] = Ember.Handlebars.compile("");
-
-            // Start TestApp application
-            bootTestApplication();
-
-            // retrieve UserController instance
-            var userCtrl = container.lookup('controller:user');
-
-            handleURL('/user/edit');
-            // assert activate hook behavior
-            userCtrl.get('editMode').should.be.true;
-            userCtrl.get('deleteMode').should.be.false;
-
-            // reset tested properties
-            userCtrl.setProperties({
-                editMode:true,
-                deleteMode:true
-            });
-
-            handleURL('/');
-            // assert deactivate hook behavior
-            userCtrl.get('editMode').should.be.false;
-            userCtrl.get('deleteMode').should.be.false;
-        });
+        // we check that when we call the model method of UserEditRoute,
+        // it's return the model of the UserRoute
+        userEditRoute.model().should.be.equal(expectedUserModel);
     });
 
 });

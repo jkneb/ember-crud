@@ -5,13 +5,13 @@ App.UserEditController = Ember.ObjectController.extend({
     // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/ 
     needs: ['user'], 
     
-    // in the template we used a {{action closeEditing}} tag wich will trigger this method on click 
-    closeEditing: function(){
+    // in the template we used a {{action save}} tag wich will trigger this method on click
+    save: function(){
         // sets the parent controller editMode to false
-        this.get('controllers.user').set('editMode', false); 
-        // and then goes back to the previous route 
-        this.transitionToRoute('user'); 
-        // this will save modifications we made while editing the user 
+        //this.get('controllers.user').set('editMode', false);
+        // and then goes back to the previous route
         this.get('store').commit();
+        this.transitionToRoute('user');
+        // this will save modifications we made while editing the user
     }
 });
