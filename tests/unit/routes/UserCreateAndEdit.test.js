@@ -10,7 +10,7 @@ describe('AUserFormRoute',function(){
             deleteMode: undefined
         }));
 
-        userEditRoute = App.AUserFormRoute.create({
+        userEditRoute = App.UserCreateAndEditRoute.create({
             router : {
                 container:container,
                 router:{}
