@@ -182,9 +182,10 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
 
 .user-pane { width: 290px; height: 400px; -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; -webkit-transform: rotateY(0deg); -moz-transform: rotateY(0deg); -ms-transform: rotateY(0deg); transform: rotateY(0deg); position: absolute; top: 0; right: 0; }
 
-.users-listing { max-height: 280px; position: relative; margin-top: 5px; border: 4px solid rgba(0, 0, 0, 0.5); background: #323232; border-radius: 4px; padding: 0; list-style: none; }
+.users-listing { height: 280px; position: relative; margin-top: 5px; border: 4px solid rgba(0, 0, 0, 0.5); background: #323232; border-radius: 4px; padding: 0; list-style: none; }
 .users-listing li a { display: block; padding: 15px 20px; text-decoration: none; color: #eee; }
 .users-listing li a.active { background-color: #000; }
+.users-listing li.no-users-yet { margin: 80px; color: #555; font-size: 18px; text-shadow: 0px -1px 0px #000; }
 
 .create-btn { padding: 4px 5px; position: static; top: -18px; left: 0; }
 .create-btn > span { position: absolute; color: black; font-size: 11px; text-shadow: none; left: 30px; }
