@@ -1,8 +1,9 @@
 node_modules/
 .sass-cache/
-#assets/js/app.js
-#assets/js/libs.js
-#assets/js/templates.js
+assets/css/style.css
+assets/js/app.js
+assets/js/libs.js
+assets/js/templates.js
 *.iml
 .idea
 tests/coverage/
