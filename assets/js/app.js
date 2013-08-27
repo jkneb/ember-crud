@@ -1,132 +1,15 @@
-// this is where we declare our routes
-App.Router.map(function(){
-    // this route will be our list of all users
-    this.resource('users', function(){
-        // this one is nested and dynamic, we need it to see one user at a time with its id
-        this.resource('user', { path:'/:user_id' }, function(){
-            // another nested one for editing the current user
-            this.route('edit');
-        });
-        // finally a last one to create a new user
-        this.route('create');
-    });
-
-    // this is our 404 error route - see MissingRoute just bellow
-    this.route('missing', { path: '/*path' });
+// first things first: let's create our app
+window.App = Ember.Application.create({
+    LOG_TRANSITIONS: true
 });
 
-// this handles wrong routes - you could use it to redirect to a 404 route
-App.MissingRoute = Em.Route.extend({
-    redirect: function(){
-        this.transitionTo('users.index');
-    }
-});
 App.Store = DS.Store.extend({
-    /* adapter: 'DS.FixtureAdapter' */
+    // adapter: 'DS.FixtureAdapter'
     
     // in this demo we are using the LocalStorageAdapter to persist data
     adapter: 'DS.LSAdapter'
 });
-// first things first: let's create our app
-window.App = Ember.Application.create({
-    LOG_TRANSITIONS_INTERNAL: false
-});
 
-// our nested user route will render only a single user at a time so it's an ObjectController
-App.UserController = Ember.ObjectController.extend({
-    // editMode / deleteMode properties are used in the user template 
-    // we use them to manage css transitions when entering and exiting the edit route
-    editMode: false,
-
-    deleteMode: false,
-
-    delete: function(){
-        this.toggleProperty('deleteMode');
-    },
-    cancelDelete: function(){
-        this.set('deleteMode', false);
-    },
-    confirmDelete: function(){
-        // delete a user
-        this.get('content').deleteRecord();
-        this.get('store').commit();
-        // then transition to the UsersRoute
-        this.transitionToRoute('users');
-    },
-    edit: function(){
-        this.setProperties({
-            'editMode': true,
-            'deleteMode': false
-        });
-        this.transitionToRoute('user.edit');
-    }
-});
-
-App.UserEditController = Ember.ObjectController.extend({
-    // we want this controller to inherit from another controller 
-    // in this case it's userController 
-    // http://emberjs.com/guides/controllers/dependencies-between-controllers/ 
-    // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/ 
-    needs: ['user'], 
-    
-    // in the template we used a {{action save}} tag wich will trigger this method on click
-    save: function(){
-        // this will save modifications we made while editing the user
-        this.get('store').commit();
-        // then transitino to UserRoute
-        this.transitionToRoute('user');
-    }
-});
-// This controller is an ArrayController because it handles a list of "array-ish" models.
-// Usually you'll use an ObjectController which deals with single models.
-// We could also do without this controller because Ember is able to figure out we're dealing with multiple models 
-// and then could genereate this one for us (in memory).
-App.UsersController = Em.ArrayController.extend({
-    // but here we tell the controller to sort Users by alphabetical order
-    sortProperties: ['name'],
-    sortAscending: true
-});
-App.UsersCreateController = Ember.ObjectController.extend({
-    needs: ['user'],
-
-    save: function () {
-        // just before saving, we set the creationDate
-        this.get('content').set('creationDate', new Date());
-
-        // save and commit
-        App.User.createRecord(this.get('content'));
-        this.get('store').commit();
-
-        // redirects to the user itself
-        this.transitionToRoute('user', this.get('content'));
-    }
-});
-// ----------------
-// For static datas you can use basic helpers
-// ----------------
-
-
-// this helper takes a raw date and format it with the moment.js library -> `2 days ago`
-Ember.Handlebars.helper('formatDate', function(date){
-    return moment(date).fromNow();
-});
-
-
-// ----------------
-// For datas that can be data-binded you should use BoundHelpers
-// ----------------
-
-// this helper takes a raw price and format it with 2 digits -> `0.00`
-/* Ember.Handlebars.registerBoundHelper('formatPrice', function(price){
-    return parseFloat(price).toFixed(2);
-});
-*/
-
-// this helper takes a raw date and format it with the moment.js library -> `August 9 2013`
-/* Ember.Handlebars.registerBoundHelper('formatDate', function(date){
-    return moment(date).format('LL');
-});
-*/
 // the model for our users
 App.User = DS.Model.extend({
     name   : DS.attr('string'),
@@ -261,6 +144,130 @@ App.User = DS.Model.extend({
     }
 ];*/
 
+// this is where we declare our routes
+App.Router.map(function(){
+    // this route will be our list of all users
+    this.resource('users', function(){
+        // this one is nested and dynamic, we need it to see one user at a time with its id
+        this.resource('user', { path:'/:user_id' }, function(){
+            // another nested one for editing the current user
+            this.route('edit');
+        });
+        // finally a last one to create a new user
+        this.route('create');
+    });
+
+    // this is our 404 error route - see MissingRoute just bellow
+    this.route('missing', { path: '/*path' });
+});
+
+// this handles wrong routes - you could use it to redirect to a 404 route
+App.MissingRoute = Em.Route.extend({
+    redirect: function(){
+        this.transitionTo('users.index');
+    }
+});
+App.Store = DS.Store.extend({
+    /* adapter: 'DS.FixtureAdapter' */
+    
+    // in this demo we are using the LocalStorageAdapter to persist data
+    adapter: 'DS.LSAdapter'
+});
+// our nested user route will render only a single user at a time so it's an ObjectController
+App.UserController = Ember.ObjectController.extend({
+    // editMode / deleteMode properties are used in the user template 
+    // we use them to manage css transitions when entering and exiting the edit route
+    editMode: false,
+
+    deleteMode: false,
+
+    delete: function(){
+        this.toggleProperty('deleteMode');
+    },
+    cancelDelete: function(){
+        this.set('deleteMode', false);
+    },
+    confirmDelete: function(){
+        // delete a user
+        this.get('content').deleteRecord();
+        this.get('store').commit();
+        // then transition to the UsersRoute
+        this.transitionToRoute('users');
+    },
+    edit: function(){
+        this.setProperties({
+            'editMode': true,
+            'deleteMode': false
+        });
+        this.transitionToRoute('user.edit');
+    }
+});
+
+App.UserEditController = Ember.ObjectController.extend({
+    // we want this controller to inherit from another controller 
+    // in this case it's userController 
+    // http://emberjs.com/guides/controllers/dependencies-between-controllers/ 
+    // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/ 
+    needs: ['user'], 
+    
+    // in the template we used a {{action save}} tag wich will trigger this method on click
+    save: function(){
+        // this will save modifications we made while editing the user
+        this.get('store').commit();
+        // then transitino to UserRoute
+        this.transitionToRoute('user');
+    }
+});
+// This controller is an ArrayController because it handles a list of "array-ish" models.
+// Usually you'll use an ObjectController which deals with single models.
+// We could also do without this controller because Ember is able to figure out we're dealing with multiple models 
+// and then could genereate this one for us (in memory).
+App.UsersController = Em.ArrayController.extend({
+    // but here we tell the controller to sort Users by alphabetical order
+    sortProperties: ['name'],
+    sortAscending: true
+});
+App.UsersCreateController = Ember.ObjectController.extend({
+    needs: ['user'],
+
+    save: function () {
+        // just before saving, we set the creationDate
+        this.get('content').set('creationDate', new Date());
+
+        // save and commit
+        App.User.createRecord(this.get('content'));
+        this.get('store').commit();
+
+        // redirects to the user itself
+        this.transitionToRoute('user', this.get('content'));
+    }
+});
+// ----------------
+// For static datas you can use basic helpers
+// ----------------
+
+
+// this helper takes a raw date and format it with the moment.js library -> `2 days ago`
+Ember.Handlebars.helper('formatDate', function(date){
+    return moment(date).fromNow();
+});
+
+
+// ----------------
+// For datas that can be data-binded you should use BoundHelpers
+// ----------------
+
+// this helper takes a raw price and format it with 2 digits -> `0.00`
+/* Ember.Handlebars.registerBoundHelper('formatPrice', function(price){
+    return parseFloat(price).toFixed(2);
+});
+*/
+
+// this helper takes a raw date and format it with the moment.js library -> `August 9 2013`
+/* Ember.Handlebars.registerBoundHelper('formatDate', function(date){
+    return moment(date).format('LL');
+});
+*/
 // the applicationRoute is the highest route possible
 // here we use it to store some global events for our app
 App.ApplicationRoute = Em.Route.extend({
@@ -340,7 +347,7 @@ App.UsersCreateRoute = App.UserCreateAndEditRoute.extend({
     model: function(){
         // the model for this route is a new Ember.Object with an specific ID
         return Em.Object.create({
-           // id: new Date().getTime()
+            id: new Date().getTime()
         });
     },
     
