@@ -231,7 +231,7 @@ function program1(depth0,data) {
   data.buffer.push(">\n        <div class=\"tools\">\n            <button class=\"icon-arrow-left blue fleft btn-mobile\" ");
   hashContexts = {'target': depth0};
   hashTypes = {'target': "STRING"};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "saveWithTransition", {hash:{
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "closeUserWithTransition", {hash:{
     'target': ("view")
   },contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("></button>\n        </div>\n        \n        <div class=\"line\">\n            <h3>Edit user</h3>\n        </div>\n        <div class=\"line\">\n            <label for=\"avatarUrl\">Choose user avatar</label>\n            ");
