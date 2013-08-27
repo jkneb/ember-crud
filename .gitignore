@@ -1,6 +1,5 @@
 node_modules/
 .sass-cache/
-assets/css/style.css
 assets/js/app.js
 assets/js/libs.js
 assets/js/templates.js
