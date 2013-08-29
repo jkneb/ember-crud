@@ -34,8 +34,8 @@ describe('Helpers', function () {
 
         // the first step is to create the container view. This view will
         // contains a fake controller with specific dates. We define in the
-        // same time a template of the fly containing the few uses of "formatDate"
-        // with the specifics dates.
+        // same time a template of the fly containing few uses of "formatDate"
+        // with specifics dates.
         view = Em.View.create({
              controller: Em.Object.create({
                 aYear: new moment().subtract('years', 1),
