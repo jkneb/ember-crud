@@ -1,6 +1,6 @@
 describe('UsersCreateRoute', function () {
 
-    // common UserCreateRoute instance
+    // common UsersCreateRoute instance
     var usersCreateRoute;
 
     // container of injection of dependencies
