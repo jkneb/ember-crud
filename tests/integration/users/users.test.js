@@ -34,7 +34,7 @@ describe('Users', function () {
                 var nbUser = $('.users-listing li a').length;
 
                 // when we are in a then callback we need to return the
-                // value of click to chain the call
+                // value of click to chain the calls
                 return click('button.icon-trashcan.red')// then ... click on the delete button
                     .click('.confirm-box.confirmin button:eq(0)')// then ... click on the confirmation button
                     .then(function(){
@@ -56,7 +56,7 @@ describe('Users', function () {
             .fillIn('.user-edit textarea', "expected_bio")
             .click('.user-edit button')// then ... click on the validation button
             .click('ul.users-listing li a:eq(0)').then(function () { // then ...
-                // check that all field are updated
+                // check that all fields are updated
                 $('.user-profile img').attr('src').should.equal('expected_img')
                 $('.user-profile h2').text().should.equal("expected_name");
                 $('.user-profile address').text().should.equal("expected_mail");
