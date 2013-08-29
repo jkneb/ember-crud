@@ -3,7 +3,7 @@ describe('UsersRoute', function () {
     // common UsersRoute instance
     var usersRoute;
 
-    // container of injection of dependances
+    // container of injection of dependencies
     var container;
 
     var userClass;

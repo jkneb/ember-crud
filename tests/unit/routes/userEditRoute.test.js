@@ -3,7 +3,7 @@ describe('UserEditRoute', function () {
     // common UserEditRoute instance
     var userEditRoute;
 
-    // container of injection of dependances
+    // container of injection of dependencies
     var container;
 
     // before each unit test
