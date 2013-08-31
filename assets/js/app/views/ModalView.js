@@ -1,15 +1,19 @@
 App.Modal = Em.View.extend({
     layoutName: 'modal_layout',
+    $modalBackdrop:null,
 
     didInsertElement: function(){
         var view = this;
-        var backdrop = view.$().find('.modal-backdrop');
-        backdrop.on('click', function(){
-            view.hideModal();
-        });
+        this.$modalBackdrop = view.$('.modal-backdrop');
+        this.$modalBackdrop.on('click', {view:view}, this.hideModal);
     },
 
-    hideModal: function(){
-        this.get('controller').set('modalVisible', false);
+    willDestroy:function(){
+        this.$modalBackdrop.off('click', this.hideModal);
+    },
+
+    hideModal: function(e){
+        var view = this.isView ? this : e.data.view;
+        view.get('controller').set('modalVisible', false);
     }
 });
