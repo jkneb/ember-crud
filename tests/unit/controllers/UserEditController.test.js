@@ -6,7 +6,7 @@ describe ('UserEditController', function(){
     // the common instance of UserController
     var userCtrl = null;
 
-    // container of injection of dependances
+    // container of injection of dependencies
     var container = null;
 
     // before each test

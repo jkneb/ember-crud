@@ -6,10 +6,12 @@ App.UserEditController = Ember.ObjectController.extend({
     needs: ['user'], 
     
     // in the template we used a {{action save}} tag wich will trigger this method on click
-    save: function(){
-        // this will save modifications we made while editing the user
-        this.get('store').commit();
-        // then transitino to UserRoute
-        this.transitionToRoute('user');
+    actions: {
+        save: function(){
+            // this will save modifications we made while editing the user
+            this.get('store').commit();
+            // then transitino to UserRoute
+            this.transitionToRoute('user');
+        }
     }
 });

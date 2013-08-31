@@ -4,7 +4,7 @@ App.UserEditRoute = App.UserCreateAndEditRoute.extend({
         // here we tell the route to use its parent model 
         return this.modelFor('user'); 
     },
-    events: {
+    actions: {
         goBack: function(){
             this.transitionTo('user');
         }

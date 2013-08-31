@@ -1,7 +1,7 @@
-describe('UserEditRoute', function () {
+describe('UserRoute', function () {
 
-    // common UserEditRoute instance
-    var userEditRoute;
+    // common UserRoute instance
+    var userRoute;
 
     // container of injection of dependencies
     var container;
@@ -15,7 +15,7 @@ describe('UserEditRoute', function () {
         // instantiation by passing it the container previously created in two
         // locations. The first in the route itself and the second in the router.
         // we need too to mock the 'router' instance with a blank object
-        userEditRoute = App.UserEditRoute.create({
+        userRoute = App.UserRoute.create({
             router: {
                 container: container,
                 router: {}
@@ -27,35 +27,38 @@ describe('UserEditRoute', function () {
     // after each unit test
     afterEach(function () {
         // deleting all objects created for the test, to reset state
-        container = userEditRoute = null;
+        container = userRoute = null;
     });
 
-    it("the model is that this parent route, the UserRoute", function () {
-        // we create model who will be return by the fake UserRoute
-        var expectedUserModel = Em.Object.create({name: 'Model from user route'});
-
-        // we register a faked UserRoute with the mocked model
-        container.register("route:user", Em.Route.extend({
-            currentModel: expectedUserModel
+    it("setupController should initialize model and deleteMode", function () {
+        // we create controller with a container for the future potential needs
+        container.register('controller:user', Em.Object.extend({
+            deleteMode: true,
+            model: null
         }));
+        var userCtrl = container.lookup("controller:user");
+        var expectedModel = {}; // fake expected model passed to setupController
 
-        // we check that when we call the model method of UserEditRoute,
-        // it's return the model of the UserRoute
-        userEditRoute.model().should.be.equal(expectedUserModel);
+        userRoute.setupController(userCtrl, expectedModel);
+
+        // checking...
+        userCtrl.deleteMode.should.be.false;
+        userCtrl.model.should.be.equal(expectedModel);
     });
+
 
     it('goBack event should transitionTo users',function(){
         var transitionToRouteCall =0;
 
         // a few dirty, but no idea to how to unit test by another manner
-        userEditRoute.events.transitionTo = function(route){
+        userRoute.events.transitionTo = function(route){
             // we check if the targeted route by the transition
             // is the 'user' route
-            route.should.be.equal('user');
+            route.should.be.equal('users');
             // we increment the number of call of the transitionToRoute
             transitionToRouteCall++;
         }
-        userEditRoute.events.goBack();
+        userRoute.events.goBack();
 
         // checking ...
         transitionToRouteCall.should.be.equal(1);

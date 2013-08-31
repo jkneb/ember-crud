@@ -6,18 +6,20 @@ App.UserController = Ember.ObjectController.extend({
 
     deleteMode: false,
 
-    delete: function(){
-        this.toggleProperty('deleteMode');
-    },
-    cancelDelete: function(){
-        this.set('deleteMode', false);
-    },
-    confirmDelete: function(){
-        // delete a user
-        this.get('content').deleteRecord();
-        this.get('store').commit();
-        // then transition to the UsersRoute
-        this.transitionToRoute('users');
+    actions: {
+        delete: function(){
+            this.toggleProperty('deleteMode');
+        },
+        cancelDelete: function(){
+            this.set('deleteMode', false);
+        },
+        confirmDelete: function(){
+            // delete a user
+            this.get('content').deleteRecord();
+            this.get('store').commit();
+            // then transition to the UsersRoute
+            this.transitionToRoute('users');
+        }
     },
     edit: function(){
         this.setProperties({

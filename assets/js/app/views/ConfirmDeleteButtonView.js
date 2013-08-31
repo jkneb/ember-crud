@@ -12,7 +12,7 @@ App.ConfirmDeleteButtonView = Ember.View.extend({
         // Ember.run.later is ember's equivalent to setTimeout
         Ember.run.later(this, function() {
             // and when the animation is done we can call the controller to trigger its confirmDelete method
-            this.get('controller').confirmDelete();
+            this.get('controller').send('confirmDelete');
         }, 900);
     }
 });

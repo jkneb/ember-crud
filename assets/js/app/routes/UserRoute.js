@@ -7,18 +7,18 @@ App.UserRoute = Ember.Route.extend({
 
     setupController: function(controller, model){
         // force the deleteMode to false when accessing user
-        this.controllerFor('user').set('deleteMode', false);
+        controller.set('deleteMode', false);
 
         // when we override the setupController, we disabled the default behavior
         // of the Ember Route about the automatic model registration : By default the
-        // Ember route will save automaticly the model (the object passed by a transitionTo
+        // Ember route will save automatically the model (the object passed by a transitionTo
         // or, returned by the model method of the route) into a 'model' variable in the Controller.
-        // So to keep the fonctionnality after overriding you must implement it yourself.
+        // So to keep the functionality after overriding you must implement it yourself.
         controller.set('model', model);
     },
 
     // each route has this goBack event to transition to the correct "parent route"
-    events: {
+    actions: {
         goBack: function(){
             this.transitionTo('users');
         }
