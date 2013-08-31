@@ -18,7 +18,7 @@ App.UserRoute = Ember.Route.extend({
     },
 
     // each route has this goBack event to transition to the correct "parent route"
-    events: {
+    actions: {
         goBack: function(){
             this.transitionTo('users');
         }
