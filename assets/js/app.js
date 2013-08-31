@@ -181,18 +181,20 @@ App.UserController = Ember.ObjectController.extend({
 
     deleteMode: false,
 
-    delete: function(){
-        this.toggleProperty('deleteMode');
-    },
-    cancelDelete: function(){
-        this.set('deleteMode', false);
-    },
-    confirmDelete: function(){
-        // delete a user
-        this.get('content').deleteRecord();
-        this.get('store').commit();
-        // then transition to the UsersRoute
-        this.transitionToRoute('users');
+    actions: {
+        delete: function(){
+            this.toggleProperty('deleteMode');
+        },
+        cancelDelete: function(){
+            this.set('deleteMode', false);
+        },
+        confirmDelete: function(){
+            // delete a user
+            this.get('content').deleteRecord();
+            this.get('store').commit();
+            // then transition to the UsersRoute
+            this.transitionToRoute('users');
+        }
     },
     edit: function(){
         this.setProperties({
@@ -211,11 +213,13 @@ App.UserEditController = Ember.ObjectController.extend({
     needs: ['user'], 
     
     // in the template we used a {{action save}} tag wich will trigger this method on click
-    save: function(){
-        // this will save modifications we made while editing the user
-        this.get('store').commit();
-        // then transitino to UserRoute
-        this.transitionToRoute('user');
+    actions: {
+        save: function(){
+            // this will save modifications we made while editing the user
+            this.get('store').commit();
+            // then transitino to UserRoute
+            this.transitionToRoute('user');
+        }
     }
 });
 // This controller is an ArrayController because it handles a list of "array-ish" models.
@@ -230,16 +234,18 @@ App.UsersController = Em.ArrayController.extend({
 App.UsersCreateController = Ember.ObjectController.extend({
     needs: ['user'],
 
-    save: function () {
-        // just before saving, we set the creationDate
-        this.get('content').set('creationDate', new Date());
+    actions: {
+        save: function () {
+            // just before saving, we set the creationDate
+            this.get('content').set('creationDate', new Date());
 
-        // save and commit
-        App.User.createRecord(this.get('content'));
-        this.get('store').commit();
+            // save and commit
+            App.User.createRecord(this.get('content'));
+            this.get('store').commit();
 
-        // redirects to the user itself
-        this.transitionToRoute('user', this.get('content'));
+            // redirects to the user itself
+            this.transitionToRoute('user', this.get('content'));
+        }
     }
 });
 // ----------------
@@ -271,7 +277,7 @@ Ember.Handlebars.helper('formatDate', function(date){
 // the applicationRoute is the highest route possible
 // here we use it to store some global events for our app
 App.ApplicationRoute = Em.Route.extend({
-    events: {
+    actions: {
         showModal: function(name){
             this.controllerFor(name).set('modalVisible', true);
         },
@@ -310,7 +316,7 @@ App.UserEditRoute = App.UserCreateAndEditRoute.extend({
         // here we tell the route to use its parent model 
         return this.modelFor('user'); 
     },
-    events: {
+    actions: {
         goBack: function(){
             this.transitionTo('user');
         }
@@ -325,18 +331,18 @@ App.UserRoute = Ember.Route.extend({
 
     setupController: function(controller, model){
         // force the deleteMode to false when accessing user
-        this.controllerFor('user').set('deleteMode', false);
+        controller.set('deleteMode', false);
 
         // when we override the setupController, we disabled the default behavior
         // of the Ember Route about the automatic model registration : By default the
-        // Ember route will save automaticly the model (the object passed by a transitionTo
+        // Ember route will save automatically the model (the object passed by a transitionTo
         // or, returned by the model method of the route) into a 'model' variable in the Controller.
-        // So to keep the fonctionnality after overriding you must implement it yourself.
+        // So to keep the functionality after overriding you must implement it yourself.
         controller.set('model', model);
     },
 
     // each route has this goBack event to transition to the correct "parent route"
-    events: {
+    actions: {
         goBack: function(){
             this.transitionTo('users');
         }
@@ -347,7 +353,7 @@ App.UsersCreateRoute = App.UserCreateAndEditRoute.extend({
     model: function(){
         // the model for this route is a new Ember.Object with an specific ID
         return Em.Object.create({
-            id: new Date().getTime()
+            //id: new Date().getTime()
         });
     },
     
@@ -380,7 +386,7 @@ App.ConfirmDeleteButtonView = Ember.View.extend({
         // Ember.run.later is ember's equivalent to setTimeout
         Ember.run.later(this, function() {
             // and when the animation is done we can call the controller to trigger its confirmDelete method
-            this.get('controller').confirmDelete();
+            this.get('controller').send('confirmDelete');
         }, 900);
     }
 });
@@ -493,39 +499,47 @@ App.DraggableView = Em.View.extend({
         }
     }, 
     
-    
-    closeUserWithTransition: function(){
-        this.$().find('.pane').css({ '-webkit-transform': 'translate3d(0%, 0, 0)' });
-        
-        Em.run.later(this, function(){
-            this.get('controller').send('goBack');
-        }, 600);
-    },
-    
-    saveWithTransition: function(){
-        var controller = this.get('controller');
-        
-        this.$().find('.pane').css({ '-webkit-transform': 'translate3d(0%, 0, 0)' });
-        
-        Em.run.later(this, function(){
-            controller.save();
-            controller.send('goBack');
-        }, 600);
+    actions: {
+        closeUserWithTransition: function(){
+            this.$().find('.pane').css({ '-webkit-transform': 'translate3d(0%, 0, 0)' });
+
+            Em.run.later(this, function(){
+                this.get('controller').send('goBack');
+            }, 600);
+        },
+
+        saveWithTransition: function(){
+            var controller = this.get('controller');
+
+            this.$().find('.pane').css({ '-webkit-transform': 'translate3d(0%, 0, 0)' });
+
+            Em.run.later(this, function(){
+                controller.send('save');
+                controller.send('goBack');
+            }, 600);
+        }
     }
+    
 });
 App.Modal = Em.View.extend({
     layoutName: 'modal_layout',
+    $modalBackdrop: null,
 
     didInsertElement: function(){
         var view = this;
-        var backdrop = view.$().find('.modal-backdrop');
-        backdrop.on('click', function(){
-            view.hideModal();
-        });
+        this.$modalBackdrop = view.$('.modal-backdrop');
+        this.$modalBackdrop.on('click', { view: view }, this.hideModal);
     },
 
-    hideModal: function(){
-        this.get('controller').set('modalVisible', false);
+    willDestroy:function(){
+        this.$modalBackdrop.off('click', this.hideModal);
+    },
+
+    actions: {
+        hideModal: function(e){
+            var view = this.isView ? this : e.data.view;
+            view.get('controller').set('modalVisible', false);
+        }
     }
 });
 
