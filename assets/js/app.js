@@ -183,7 +183,7 @@ App.UserController = Ember.ObjectController.extend({
         },
         confirmDelete: function(){
             // delete a user
-            this.get('content').deleteRecord();
+            this.get('model').deleteRecord();
             this.get('model').save();
             // then transition to the UsersRoute
             this.transitionToRoute('users');
@@ -230,14 +230,12 @@ App.UsersCreateController = Ember.ObjectController.extend({
     actions: {
         save: function () {
             // just before saving, we set the creationDate
-            this.get('content').set('creationDate', new Date());
-
+            this.get('model').set('creationDate', new Date());
             // save and commit
-            this.store.createRecord(this.get('content'));
-            this.get('model').save();
+            this.store.createRecord('user', this.get('model'));
 
             // redirects to the user itself
-            this.transitionToRoute('user', this.get('content'));
+            this.transitionToRoute('user', this.get('model'));
         }
     }
 });
@@ -332,6 +330,12 @@ App.UserRoute = Ember.Route.extend({
         // or, returned by the model method of the route) into a 'model' variable in the Controller.
         // So to keep the functionality after overriding you must implement it yourself.
         controller.set('model', model);
+
+        // force saving newly created users
+        // when comming from the create user route
+        if (model.get('isDirty')) {
+            model.save();
+        }
     },
 
     // each route has this goBack event to transition to the correct "parent route"
