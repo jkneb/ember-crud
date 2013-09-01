@@ -7,8 +7,7 @@ App.UsersCreateController = Ember.ObjectController.extend({
             this.get('content').set('creationDate', new Date());
 
             // save and commit
-            this.store.createRecord(this.get('content'));
-            this.get('model').save();
+            this.store.createRecord('user', this.get('model'));
 
             // redirects to the user itself
             this.transitionToRoute('user', this.get('content'));

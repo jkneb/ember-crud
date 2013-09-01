@@ -15,6 +15,12 @@ App.UserRoute = Ember.Route.extend({
         // or, returned by the model method of the route) into a 'model' variable in the Controller.
         // So to keep the functionality after overriding you must implement it yourself.
         controller.set('model', model);
+
+        // force saving newly created users
+        // when comming from the create user route
+        if (model.get('isDirty')) {
+            model.save();
+        }
     },
 
     // each route has this goBack event to transition to the correct "parent route"
