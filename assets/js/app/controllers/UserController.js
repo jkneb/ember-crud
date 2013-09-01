@@ -15,7 +15,7 @@ App.UserController = Ember.ObjectController.extend({
         },
         confirmDelete: function(){
             // delete a user
-            this.get('content').deleteRecord();
+            this.get('model').deleteRecord();
             this.get('model').save();
             // then transition to the UsersRoute
             this.transitionToRoute('users');
