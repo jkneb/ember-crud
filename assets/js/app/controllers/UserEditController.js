@@ -9,7 +9,7 @@ App.UserEditController = Ember.ObjectController.extend({
     actions: {
         save: function(){
             // this will save modifications we made while editing the user
-            this.get('store').commit();
+            this.get('model').save();
             // then transitino to UserRoute
             this.transitionToRoute('user');
         }
