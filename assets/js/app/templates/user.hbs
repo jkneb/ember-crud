@@ -6,16 +6,16 @@
     {{! http://emberjs.com/guides/templates/binding-element-class-names/#toc_binding-to-boolean-values }}
     <div {{bindAttr class=":user-profile :pane editMode:scaleout:flipin"}}>
         <div class="tools aright">
-            <button {{bindAttr class=":icon-arrow-left :blue :fleft :btn-mobile"}} {{action closeUserWithTransition target="view"}}></button>
-            <button {{bindAttr class=":icon-trashcan :red deleteMode:active"}} {{action delete}}></button>
-            {{#linkTo 'user.edit' }}<button {{bindAttr class=":icon-pencil editMode:active"}}></button>{{/linkTo}}
+            <button {{bindAttr class=":icon-arrow-left :blue :fleft :btn-mobile"}} {{action "closeUserWithTransition" target="view"}}></button>
+            <button {{bindAttr class=":icon-trashcan :red deleteMode:active"}} {{action "delete"}}></button>
+            {{#link-to 'user.edit' }}<button {{bindAttr class=":icon-pencil editMode:active"}}></button>{{/link-to}}
         </div>
 
         {{#if deleteMode}}
         <div class="confirm-box confirmin">
             <h4>Really?</h4>
             {{#view App.ConfirmDeleteButtonView tagName="button"}}y{{/view}}
-            <button {{action cancelDelete}} title="no">n</button>
+            <button {{action "cancelDelete"}} title="no">n</button>
         </div>
         {{/if}}
 

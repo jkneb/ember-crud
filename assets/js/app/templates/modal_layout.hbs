@@ -1,5 +1,5 @@
 <div {{bindAttr class=":modal controller.modalVisible:modal-show:modal-hide"}}>
-    <button class="modal-close" {{action hideModal target="view"}}>&times;</button>
+    <button class="modal-close" {{action "hideModal" target="view"}}>&times;</button>
 
     <div class="modal-body">
         {{yield}}

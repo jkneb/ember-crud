@@ -5,7 +5,7 @@ App.UserEditController = Ember.ObjectController.extend({
     // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/ 
     needs: ['user'], 
     
-    // in the template we used a {{action save}} tag wich will trigger this method on click
+    // in the template we used a {{action "save"}} tag wich will trigger this method on click
     actions: {
         save: function(){
             // this will save modifications we made while editing the user
