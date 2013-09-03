@@ -10,6 +10,7 @@
     .pane { border-radius:0; @include animation(none); }
     [class*="face-"] { display:none; }
     .btn-desktop { display:none; }
+    .btn-mobile { display:block !important; }
 
 
     // ------------
@@ -79,7 +80,7 @@
     .mobile-drag-trigger {
         outline:1px solid hotpink;
         position:absolute; top:0; left:0;
-        height:100%; width:50px;
+        height:100%; width:25px;
     }
 
     .confirm-box { top:21px; z-index:1; }
