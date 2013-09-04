@@ -1,0 +1,108 @@
+<!doctype html public="♥">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+
+    <!-- TEMPLATES -->
+    
+    <!-- application template -->
+    <script type="text/x-handlebars" id="application">
+        <div id="your-app">
+            <h1>Hello World</h1>
+            {{outlet}}
+        </div>
+    </script>
+
+    <!-- users template -->
+    <script type="text/x-handlebars" id="users">
+        <ul class="users-listing">
+            {{#each user in controller}}
+            <li>
+                {{#link-to "user" user}}
+                    {{user.name}}
+                {{/link-to}}
+            </li>
+            {{else}}
+            <li>no users… :(</li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <!-- DEPENDENCIES -->
+    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//builds.emberjs.com/handlebars-1.0.0.js"></script>
+    <script src="//builds.emberjs.com/tags/v1.0.0/ember.js"></script>
+    <script src="//builds.emberjs.com/tags/v1.0.0-beta.1/ember-data.js"></script>
+
+    <!-- APP CODE -->
+    <script>
+        // app initialization
+        window.App = Em.Application.create({
+            LOG_TRANSITIONS: true
+        });
+        
+        // Store initialization
+        App.Store = DS.Store.extend({
+            adapter : DS.FixtureAdapter
+        });
+        
+        // the model for a user
+        App.User = DS.Model.extend({
+            name         : DS.attr('string'),
+            email        : DS.attr('string'),
+            bio          : DS.attr('string'),
+            avatarUrl    : DS.attr('string'),
+            creationDate : DS.attr('date')
+        });
+        
+        // FIXTURE data
+        App.User.FIXTURES = [{
+            id: 1,
+            name: 'Sponge Bob',
+            email: 'bob@sponge.com',
+            bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
+            avatarUrl: './images/avatars/sb.jpg',
+            creationDate: 'Mon, 26 Aug 2013 20:23:43 GMT'
+        }, {
+            id: 2,
+            name: 'John David',
+            email: 'john@david.com',
+            bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
+            avatarUrl: './images/avatars/jk.jpg',
+            creationDate: 'Fri, 07 Aug 2013 10:10:10 GMT'
+        }];
+        
+        // Router initialization
+        App.Router.map(function(){
+            this.resource('users', function(){
+                this.resource('user', { path:'/:user_id' }, function(){
+                    this.route('edit');
+                });
+                this.route('create');
+            });
+        });
+        
+        // index route
+        App.IndexRoute = Ember.Route.extend({
+            redirect: function(){
+                this.transitionTo('users');
+            }
+        });
+        
+        // users route
+        App.UsersRoute = Ember.Route.extend({
+          model: function(){
+            return this.store.find('user');
+          }
+        });
+        
+        // users array controller
+        App.UsersController = Ember.ArrayController.extend({
+            sortProperties: ['name'],
+            sortAscending: true // false = descending
+        });
+    </script>
+</body>
+</html>
