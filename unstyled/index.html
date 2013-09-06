@@ -28,13 +28,26 @@
             <li>no users… :(</li>
             {{/each}}
         </ul>
+        {{outlet}}
+    </script>
+    
+    <script type="text/x-handlebars" id="user">
+        <div class="user-pane">
+            <div class="user-profile pane">
+                <img {{bindAttr src="avatarUrl"}}>
+                <h2>{{name}}</h2>
+                <span>{{email}}</span>
+                <p>{{bio}}</p>
+                <span>Created {{creationDate}}</span>
+            </div>
+        </div>
     </script>
 
     <!-- DEPENDENCIES -->
     <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="//builds.emberjs.com/handlebars-1.0.0.js"></script>
     <script src="//builds.emberjs.com/tags/v1.0.0/ember.js"></script>
-    <script src="//builds.emberjs.com/tags/v1.0.0-beta.1/ember-data.js"></script>
+    <script src="//builds.emberjs.com/tags/v1.0.0-beta.2/ember-data.js"></script>
 
     <!-- APP CODE -->
     <script>
@@ -93,9 +106,9 @@
         
         // users route
         App.UsersRoute = Ember.Route.extend({
-          model: function(){
-            return this.store.find('user');
-          }
+            model: function(){
+                return this.store.find('user');
+            }
         });
         
         // users array controller
@@ -103,6 +116,21 @@
             sortProperties: ['name'],
             sortAscending: true // false = descending
         });
+        
+        // single user - dynamic segment
+        App.UserRoute = Ember.Route.extend({
+            /*model: function(params) { 
+                console.log(params);
+                return this.store.find('user', params.post_id);
+            }/*,
+            setupController: function(controller, model){
+                controller.set('model', model);
+            }*/
+        });
+        // single user controller
+        App.UserController = Ember.ObjectController.extend();
+        
+        
     </script>
 </body>
 </html>
