@@ -52,6 +52,7 @@
             <h2>{{name}}</h2>
             <span>{{email}}</span>
             <p>{{bio}}</p>
+            <span>Created {{formatDate creationDate}}</span>
         </div>
         
         {{outlet}}
@@ -84,6 +85,7 @@
 
     <!-- DEPENDENCIES -->
     <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
     <script src="//builds.emberjs.com/handlebars-1.0.0.js"></script>
     <script src="//builds.emberjs.com/tags/v1.0.0/ember.js"></script>
     <script src="//builds.emberjs.com/tags/v1.0.0-beta.2/ember-data.js"></script>
@@ -229,6 +231,12 @@
             }
         });
         
+        Em.Handlebars.helper('formatDate', function(date){
+            return moment(date).fromNow();
+        });
+        /*Em.Handlebars.registerBoundHelper('formatDate', function(date){
+            return moment(date).fromNow();
+        });*/
     </script>
 </body>
 </html>
