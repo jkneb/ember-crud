@@ -101,6 +101,7 @@
     <script src="//builds.emberjs.com/handlebars-1.0.0.js"></script>
     <script src="//builds.emberjs.com/tags/v1.0.0/ember.js"></script>
     <script src="//builds.emberjs.com/tags/v1.0.0-beta.2/ember-data.js"></script>
+    <script src="localstorage_adapter.js"></script>
 
     <!-- APP CODE -->
     <script>
@@ -111,9 +112,10 @@
         
         // Store initialization
         App.Store = DS.Store.extend({
-            adapter : DS.FixtureAdapter
+            adapter: DS.LSAdapter
+            // adapter: DS.FixtureAdapter
         });
-        
+
         // the model for a user
         App.User = DS.Model.extend({
             name         : DS.attr('string'),
@@ -124,7 +126,7 @@
         });
         
         // FIXTURE data
-        App.User.FIXTURES = [{
+        /*App.User.FIXTURES = [{
             id: 1,
             name: 'Sponge Bob',
             email: 'bob@sponge.com',
@@ -138,7 +140,7 @@
             bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
             avatarUrl: '../assets/images/avatars/jk.jpg',
             creationDate: 'Fri, 07 Aug 2013 10:10:10 GMT'
-        }];
+        }];*/
         
         // Router initialization
         App.Router.map(function(){
@@ -177,7 +179,7 @@
         });
         
         App.UserController = Em.ObjectController.extend({
-            deleteMode: false, 
+            deleteMode: false,
             
             actions: {
                 delete: function(){
