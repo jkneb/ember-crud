@@ -2,6 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <style>
+        /* minimum styling possible */
+        * { -webkit-box-sizing:border-box; box-sizing:border-box; }
+        #your-app { overflow:hidden; }
+        .users-listing { outline:1px solid pink; float:left; width:200px; height:300px; padding:20px; }
+        .users-listing a.active { font-weight:bold; }
+        .user-pane { outline:1px solid hotpink; float:left; height:300px; padding:20px; }
+        .user-pane img { float:left; margin:0 20px 20px 0; }
+        .user-edit { outline:1px solid pink; float:left; height:300px; padding:20px; }
+        .create-btn { display:block; }
+    </style>
 </head>
 <body>
 
@@ -17,6 +29,8 @@
 
     <!-- users template -->
     <script type="text/x-handlebars" id="users">
+        {{#link-to "users.create" class="create-btn"}} Add user {{/link-to}}
+
         <ul class="users-listing">
             {{#each user in controller}}
             <li>
@@ -28,26 +42,66 @@
             <li>no users… :(</li>
             {{/each}}
         </ul>
+        
         {{outlet}}
     </script>
     
+    <!-- single user template -->
     <script type="text/x-handlebars" id="user">
         <div class="user-pane">
-            <div class="user-profile pane">
-                <img {{bindAttr src="avatarUrl"}}>
-                <h2>{{name}}</h2>
-                <span>{{email}}</span>
-                <p>{{bio}}</p>
-                <span>Created {{creationDate}}</span>
+            {{#if deleteMode}}
+            <div class="confirm-box">
+                <h4>Really?</h4>
+                <button {{action "confirmDelete"}}> yes </button>
+                <button {{action "cancelDelete"}}> no </button>
+            </div>
+            {{/if}}
+
+            <button {{action "edit"}}>Edit</button>
+            <button {{action "delete"}}>Delete</button>
+
+            <img {{bindAttr src="avatarUrl"}}>
+            <h2>{{name}}</h2>
+            <span>{{email}}</span>
+            <p>{{bio}}</p>
+            <span>Created {{formatDate creationDate}}</span>
+        </div>
+        
+        {{outlet}}
+    </script>
+    
+    <!-- single user edit template - also used by the create route -->
+    <script type="text/x-handlebars" id="user/edit">
+        <div class="user-edit">
+            <div>
+                <label>Choose user avatar</label>
+                {{input value=avatarUrl}}
+            </div>
+            <div>
+                <label>User name</label>
+                {{input value=name}}
+            </div>
+            <div>
+                <label>User email</label>
+                {{input value=email}}
+            </div>
+            <div>
+                <label>User short bio</label>
+                {{textarea value=bio}}
+            </div>
+            <div>
+                <button {{action "save"}}> ok </button>
             </div>
         </div>
     </script>
 
     <!-- DEPENDENCIES -->
     <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
     <script src="//builds.emberjs.com/handlebars-1.0.0.js"></script>
     <script src="//builds.emberjs.com/tags/v1.0.0/ember.js"></script>
     <script src="//builds.emberjs.com/tags/v1.0.0-beta.2/ember-data.js"></script>
+    <script src="localstorage_adapter.js"></script>
 
     <!-- APP CODE -->
     <script>
@@ -58,9 +112,10 @@
         
         // Store initialization
         App.Store = DS.Store.extend({
-            adapter : DS.FixtureAdapter
+            adapter: DS.LSAdapter
+            // adapter: DS.FixtureAdapter
         });
-        
+
         // the model for a user
         App.User = DS.Model.extend({
             name         : DS.attr('string'),
@@ -71,21 +126,21 @@
         });
         
         // FIXTURE data
-        App.User.FIXTURES = [{
+        /*App.User.FIXTURES = [{
             id: 1,
             name: 'Sponge Bob',
             email: 'bob@sponge.com',
             bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-            avatarUrl: './images/avatars/sb.jpg',
+            avatarUrl: '../assets/images/avatars/sb.jpg',
             creationDate: 'Mon, 26 Aug 2013 20:23:43 GMT'
         }, {
             id: 2,
             name: 'John David',
             email: 'john@david.com',
             bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
-            avatarUrl: './images/avatars/jk.jpg',
+            avatarUrl: '../assets/images/avatars/jk.jpg',
             creationDate: 'Fri, 07 Aug 2013 10:10:10 GMT'
-        }];
+        }];*/
         
         // Router initialization
         App.Router.map(function(){
@@ -98,39 +153,117 @@
         });
         
         // index route
-        App.IndexRoute = Ember.Route.extend({
+        App.IndexRoute = Em.Route.extend({
             redirect: function(){
                 this.transitionTo('users');
             }
         });
         
         // users route
-        App.UsersRoute = Ember.Route.extend({
+        App.UsersRoute = Em.Route.extend({
             model: function(){
                 return this.store.find('user');
             }
         });
         
         // users array controller
-        App.UsersController = Ember.ArrayController.extend({
+        App.UsersController = Em.ArrayController.extend({
             sortProperties: ['name'],
             sortAscending: true // false = descending
         });
         
-        // single user - dynamic segment
-        App.UserRoute = Ember.Route.extend({
-            /*model: function(params) { 
-                console.log(params);
-                return this.store.find('user', params.post_id);
-            }/*,
-            setupController: function(controller, model){
-                controller.set('model', model);
-            }*/
+        // single user route - dynamic segment
+        App.UserRoute = Em.Route.extend({
+            model: function(params){
+                return this.store.find('user', params.user_id);
+            }
         });
+        
         // single user controller
-        App.UserController = Ember.ObjectController.extend();
+        App.UserController = Em.ObjectController.extend({
+            deleteMode: false,
+            
+            actions: {
+                delete: function(){
+                    // our delete method now only toggles deleteMode value
+                    this.toggleProperty('deleteMode');
+                },
+                cancelDelete: function(){
+                    // set deleteMode back to false
+                    this.set('deleteMode', false);
+                },
+                confirmDelete: function(){
+                    // this will tell Ember-Data to delete the current user
+                    this.get('model').deleteRecord();
+                    this.get('model').save();
+                    // and then go to the users route
+                    this.transitionToRoute('users');
+                    // set deleteMode back to false
+                    this.set('deleteMode', false);
+                },
+                edit: function(){
+                    this.transitionToRoute('user.edit');
+                }
+            }
+        });
         
+        // singe user edit form route
+        App.UserEditRoute = Em.Route.extend({
+            model: function(){ 
+                return this.modelFor('user');
+            }
+        });
         
+        // singe user edit form controller
+        App.UserEditController = Em.ObjectController.extend({
+            actions: {
+                save: function(){
+                    this.get('model').save();
+                    this.transitionToRoute('user');
+                }
+            }
+        });
+        
+        // user creation form route
+        App.UsersCreateRoute = Em.Route.extend({
+            model: function(){
+                // the model for this route is a new empty Ember.Object
+                return Em.Object.create({});
+            },
+
+            // in this case (the create route) we can re-use the user/edit template
+            // associated with the usersCreateController
+            renderTemplate: function(){
+                this.render('user.edit', {
+                    controller: 'usersCreate'
+                });
+            }
+        });
+        
+        // user creation form controller
+        App.UsersCreateController = Em.ObjectController.extend({
+            actions: {
+                save: function () {
+                    // just before saving, we set the creationDate
+                    this.get('model').set('creationDate', new Date());
+
+                    // save and commit
+                    var newUser = this.store.createRecord('user', this.get('model'));
+                    newUser.save();
+
+                    // redirects to the user itself
+                    this.transitionToRoute('user', this.get('model'));
+                }
+            }
+        });
+        
+        // formatDate helper - with moment.js
+        Em.Handlebars.helper('formatDate', function(date){
+            return moment(date).fromNow();
+        });
+        /*Em.Handlebars.registerBoundHelper('formatDate', function(date){
+            return moment(date).fromNow();
+        });*/
     </script>
 </body>
 </html>
