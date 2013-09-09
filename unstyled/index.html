@@ -172,12 +172,14 @@
             sortAscending: true // false = descending
         });
         
-        App.UserEditRoute = Em.Route.extend({
-            model: function(){ 
-                return this.modelFor('user');
+        // single user route - dynamic segment
+        App.UserRoute = Em.Route.extend({
+            model: function(params){
+                return this.store.find('user', params.user_id);
             }
         });
         
+        // single user controller
         App.UserController = Em.ObjectController.extend({
             deleteMode: false,
             
@@ -205,6 +207,14 @@
             }
         });
         
+        // singe user edit form route
+        App.UserEditRoute = Em.Route.extend({
+            model: function(){ 
+                return this.modelFor('user');
+            }
+        });
+        
+        // singe user edit form controller
         App.UserEditController = Em.ObjectController.extend({
             actions: {
                 save: function(){
@@ -214,6 +224,23 @@
             }
         });
         
+        // user creation form route
+        App.UsersCreateRoute = Em.Route.extend({
+            model: function(){
+                // the model for this route is a new empty Ember.Object
+                return Em.Object.create({});
+            },
+
+            // in this case (the create route) we can re-use the user/edit template
+            // associated with the usersCreateController
+            renderTemplate: function(){
+                this.render('user.edit', {
+                    controller: 'usersCreate'
+                });
+            }
+        });
+        
+        // user creation form controller
         App.UsersCreateController = Em.ObjectController.extend({
             actions: {
                 save: function () {
@@ -230,21 +257,7 @@
             }
         });
         
-        App.UsersCreateRoute = Em.Route.extend({
-            model: function(){
-                // the model for this route is a new empty Em.Object
-                return Em.Object.create({ id: new Date().getTime() });
-            },
-
-            // in this case (the create route) we can re-use the user/edit template
-            // associated with the usersCreateController
-            renderTemplate: function(){
-                this.render('user.edit', {
-                    controller: 'usersCreate'
-                });
-            }
-        });
-        
+        // formatDate helper - with moment.js
         Em.Handlebars.helper('formatDate', function(date){
             return moment(date).fromNow();
         });
