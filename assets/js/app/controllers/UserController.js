@@ -19,6 +19,8 @@ App.UserController = Ember.ObjectController.extend({
             this.get('model').save();
             // then transition to the UsersRoute
             this.transitionToRoute('users');
+            // set deleteMode back to false
+            this.set('deleteMode', false);
         }
     },
     edit: function(){
