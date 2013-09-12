@@ -57,6 +57,7 @@ $mainColHeight: 400px;
     position:static; top:-18px; left:0;
     > span { position:absolute; color:black; font-size:11px; text-shadow:none; left:30px; }
 }
+.users-count { position:absolute; top:7px; left:200px; }
 
 .pane { 
     @extend .border-box; 

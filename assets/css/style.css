@@ -192,6 +192,8 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
 .create-btn { padding: 4px 5px; position: static; top: -18px; left: 0; }
 .create-btn > span { position: absolute; color: black; font-size: 11px; text-shadow: none; left: 30px; }
 
+.users-count { position: absolute; top: 7px; left: 200px; }
+
 .pane { -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; background: white; border-radius: 3px; border: 1px solid #ccc; }
 .pane [class*="face-"] { position: absolute; background-color: rgba(0, 0, 0, 0.3); }
 .pane .face-left, .pane .face-right { top: 0; bottom: 0; width: 6px; -webkit-transform: translateZ(-3px) rotateY(90deg); -moz-transform: translateZ(-3px) rotateY(90deg); -ms-transform: translateZ(-3px) rotateY(90deg); transform: translateZ(-3px) rotateY(90deg); }
@@ -303,6 +305,7 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
   .btn-mobile { display: inline-block; }
   .main > .tools { position: fixed; top: 0; z-index: 1; }
   .main > .tools .create-btn > span { color: white; left: 50px; }
+  .main > .tools .users-count { color: white; top: 15px; left: auto; right: 20px; }
   .users-listing { overflow: scroll; -webkit-overflow-scrolling: touch; height: 100%; padding-top: 45px; }
   .users-listing li a { border-bottom: 3px solid #292929; }
   .user-pane { position: absolute; z-index: 1; top: 0; left: 100%; width: 100%; height: 100%; padding-top: 45px; }
