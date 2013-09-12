@@ -114,8 +114,8 @@
         
         // Store initialization
         App.Store = DS.Store.extend({
-            adapter: DS.LSAdapter
             // adapter: DS.FixtureAdapter
+            adapter: DS.LSAdapter
         });
 
         // the model for a user
@@ -144,7 +144,7 @@
             creationDate: 'Fri, 07 Aug 2013 10:10:10 GMT'
         }];*/
         
-        // Router initialization
+        // router initialization
         App.Router.map(function(){
             this.resource('users', function(){
                 this.resource('user', { path:'/:user_id' }, function(){
@@ -191,7 +191,7 @@
             
             actions: {
                 delete: function(){
-                    // our delete method now only toggles deleteMode value
+                    // the delete method only toggles deleteMode value
                     this.toggleProperty('deleteMode');
                 },
                 cancelDelete: function(){
