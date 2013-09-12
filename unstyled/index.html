@@ -31,6 +31,8 @@
     <script type="text/x-handlebars" id="users">
         {{#link-to "users.create" class="create-btn"}} Add user {{/link-to}}
 
+        <div>Users: {{usersCount}}</div>
+
         <ul class="users-listing">
             {{#each user in controller}}
             <li>
@@ -169,7 +171,11 @@
         // users array controller
         App.UsersController = Em.ArrayController.extend({
             sortProperties: ['name'],
-            sortAscending: true // false = descending
+            sortAscending: true, // false = descending
+            
+            usersCount: function(){
+                return this.get('model.length');
+            }.property('@each')
         });
         
         // single user route - dynamic segment

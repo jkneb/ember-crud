@@ -5,5 +5,9 @@
 App.UsersController = Em.ArrayController.extend({
     // but here we tell the controller to sort Users by alphabetical order
     sortProperties: ['name'],
-    sortAscending: true
+    sortAscending: true, 
+    
+    usersCount: function(){
+        return this.get('model.length');
+    }.property('@each')
 });

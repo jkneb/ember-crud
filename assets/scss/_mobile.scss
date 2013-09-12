@@ -34,6 +34,7 @@
     .main > .tools { 
         position:fixed; top:0; z-index:1; 
         .create-btn > span { color:white; left:50px; }
+        .users-count { color:white; top:15px; left:auto; right:20px; }
     }
     .users-listing { 
         overflow:scroll; -webkit-overflow-scrolling:touch;
