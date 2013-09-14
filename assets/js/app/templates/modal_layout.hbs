@@ -1,3 +1,4 @@
+{{! this is the default markup for a modal, take a look at the modal-demo template to see it in action }}
 <div {{bindAttr class=":modal controller.modalVisible:modal-show:modal-hide"}}>
     <button class="modal-close" {{action "hideModal" target="view"}}>&times;</button>
 

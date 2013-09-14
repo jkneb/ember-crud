@@ -2,6 +2,7 @@
 App.UserController = Ember.ObjectController.extend({
     // editMode / deleteMode properties are used in the user template 
     // we use them to manage css transitions when entering and exiting the edit route
+    // see also the UserCreateAndEditRoute for more
     editMode: false,
 
     deleteMode: false,

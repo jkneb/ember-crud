@@ -1,4 +1,4 @@
-// inherit from the DraggableView
+// only inherit from the DraggableView
 App.UserView = App.DraggableView.extend({
 
     didInsertElement: function(){
