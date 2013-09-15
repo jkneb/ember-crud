@@ -2,7 +2,6 @@
 <div class="main">
 
     <div class="tools">
-        {{! the createUser event will handle every thing and is located in the usersRoute}}
         {{#link-to "users.create" class="button blue create-btn"}}
             <i class="icon-plus"></i><span>⬅ Add user</span>
         {{/link-to}}
@@ -13,27 +12,26 @@
     <ul class="users-listing">
 
         {{! this is our users loop, here controller is usersController }}
+
         {{#each user in controller}}
-        <li>
-            {{! link-to are <a> tags and Ember handles for us the "active" class when clicking on it }}
-            {{! basically here it means user.name will be surrounded by <a href="user/user_id">user.name</a> }}
-            {{! http://emberjs.com/guides/templates/links/#toc_links-the-code-linkto-code-helper }}
-            {{! http://emberjs.com/api/classes/Ember.Handlebars.helpers.html#method_linkTo }}
-            {{#link-to "user" user class="fadein"}}
-                {{user.name}}
-            {{/link-to}}
-        </li>
+            <li>
+                {{#link-to "user" user class="fadein"}}
+                    {{user.name}}
+                {{/link-to}}
+            </li>
         {{else}}
             <li class="no-users-yet">no users… :(</li>
         {{/each}}
 
     </ul>
 
-    {{! see the link-to helper a few lines above? This outlet will host views reached by clicking on it (the link-to tag) }}
+    {{! see the link-to helper a few lines above? this outlet will host views reached by clicking on it (the link-to tag) }}
     <div class="user-pane">
         {{outlet}}
     </div>
 
 </div>
 
+{{! this is the modal trigger, the action takes two arguments, first the action name, second the template name of the desired modal }}
+{{! the showModal action is in the ApplicationRoute }}
 <a href="#" class="about-this-demo icon-eye" {{action "showModal" "modal-demo"}}>About this demo</a>

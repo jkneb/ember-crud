@@ -1,2 +1,2 @@
-// inherit from the DraggableView
+// only inherit from the DraggableView
 App.UserEditView = App.DraggableView.extend();
