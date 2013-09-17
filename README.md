@@ -24,7 +24,7 @@ This command will install locally the following node modules
 * [grunt-contrib-sass](https://npmjs.org/package/grunt-contrib-sass)
 * [grunt-contrib-concat](https://npmjs.org/package/grunt-contrib-concat)
 * [grunt-contrib-watch](https://npmjs.org/package/grunt-contrib-watch)
-* [grunt-ember-handlebars](https://npmjs.org/package/grunt-ember-handlebars)
+* [grunt-ember-templates](https://npmjs.org/package/grunt-ember-templates)
 * [grunt-karma](https://npmjs.org/package/grunt-karma)
 * [karma-mocha](https://npmjs.org/package/karma-mocha)
 * [karma-coverage](https://npmjs.org/package/karma-coverage)
