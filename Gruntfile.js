@@ -13,18 +13,11 @@ module.exports = function(grunt) {
       }
     },
     
-    ember_handlebars: {
-      options: {
-          processName: function(filePath) {
-            var shortFilePath = filePath.replace(/assets\/js\/app\/templates\//, '').replace('.hbs', '');
-            return shortFilePath;
-          },
-          processPartialName: function(filePath) {
-            var shortFilePath = filePath.replace(/assets\/js\/app\/templates\//, '').replace('.hbs', '');
-            return shortFilePath;
-          }
-      },
+    emberTemplates: {
       compile: {
+        options: {
+          templateBasePath: /assets\/js\/app\/templates\//
+        },
         files: {
           'assets/js/templates.js': 'assets/js/app/templates/**/*.hbs'
         }
@@ -55,9 +48,9 @@ module.exports = function(grunt) {
         files: 'assets/scss/*.scss',
         tasks: ['sass']
       }, 
-      ember_handlebars: {
+      emberTemplates: {
         files: 'assets/js/app/templates/**/*.hbs',
-        tasks: ['ember_handlebars']
+        tasks: ['emberTemplates']
       }, 
       concat: {
         files: ['assets/js/**/*.js', '!assets/js/app.js', '!assets/js/libs.js', '!assets/js/templates.js'],
@@ -84,9 +77,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-ember-handlebars');
+  grunt.loadNpmTasks('grunt-ember-templates');
   grunt.loadNpmTasks('grunt-karma');
 
   // Default task(s).
-  grunt.registerTask('default', ['sass', 'concat', 'ember_handlebars']);
+  grunt.registerTask('default', ['sass', 'concat', 'emberTemplates']);
 };
