@@ -1,12 +1,13 @@
-This repository is an Ember JS app demonstrating: 
+This repository is an Ember 1.0.0 + Ember Data 1.0.0-beta2 simple demo demonstrating: 
 
-* a simple `Creation` / `Read` / `Update` / `Delete` of a list of `users`
-* with complex CSS transitions / animations in `views`
+* a `Creation` / `Read` / `Update` / `Delete` of a collection of `users`
+* complex CSS transitions / animations on `views`
 * Handlebars templates precompiling with [Grunt](http://gruntjs.com/getting-started)
 * test suite with [Karma](https://github.com/karma-runner/karma)
-* fully responsive version (with touch events, and yes, with animations between routes)
+* fully responsive version (with touch events, and with animations between routes)
 
-**And here's the demo ➔ [jkneb.github.io/ember-crud](http://jkneb.github.io/ember-crud)**
+
+**Here's the demo ➔ [jkneb.github.io/ember-crud](http://jkneb.github.io/ember-crud)**
 
 ## Working with this app files after cloned
 
@@ -41,7 +42,7 @@ Run the following command:
 ### How to compile .hbs templates
 
 Run the following command:  
-`grunt watch` or `grunt ember_handlebars`
+`grunt watch` or `grunt emberTemplates`
 
 ### How to concatenate js files
 
