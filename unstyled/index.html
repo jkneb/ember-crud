@@ -115,11 +115,9 @@
             LOG_TRANSITIONS: true
         });
         
-        // Store initialization
-        App.Store = DS.Store.extend({
-            // adapter: DS.FixtureAdapter
-            adapter: DS.LSAdapter
-        });
+        // Adapter initialization
+        // App.ApplicationAdapter = DS.FixtureAdapter;
+        App.ApplicationAdapter = DS.LSAdapter;
 
         // the model for a user
         App.User = DS.Model.extend({
@@ -137,14 +135,14 @@
             email: 'bob@sponge.com',
             bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
             avatarUrl: '../assets/images/avatars/sb.jpg',
-            creationDate: 'Mon, 26 Aug 2013 20:23:43 GMT'
+            creationDate: '2013-08-26'
         }, {
             id: 2,
             name: 'John David',
             email: 'john@david.com',
             bio: 'Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.',
             avatarUrl: '../assets/images/avatars/jk.jpg',
-            creationDate: 'Fri, 07 Aug 2013 10:10:10 GMT'
+            creationDate: '2013-08-07'
         }];*/
         
         // router initialization
@@ -267,12 +265,12 @@
         });
         
         // formatDate helper - with moment.js
-        Em.Handlebars.helper('formatDate', function(date){
-            return moment(date).fromNow();
-        });
-        /*Em.Handlebars.registerBoundHelper('formatDate', function(date){
+        /*Em.Handlebars.helper('formatDate', function(date){
             return moment(date).fromNow();
         });*/
+        Em.Handlebars.registerBoundHelper('formatDate', function(date){
+            return moment(date).fromNow();
+        });
     </script>
 </body>
 </html>

@@ -17,7 +17,7 @@ var defaultUsers = {
                 "name":"Julien Knebel",
                 "email":"julienknebel@gmail.com",
                 "bio":"Freelance UI/UX Interface Designer + Front-End Developer",
-                "avatarUrl":"./assets/images/avatars/jk.jpg",
+                "avatarUrl":"/ember-crud/assets/images/avatars/jk.jpg",
                 "creationDate":"Mon, 26 Aug 2013 20:23:43 GMT"
             },
             "2":{
@@ -25,7 +25,7 @@ var defaultUsers = {
                 "name":"Sponge Bob",
                 "email":"bob@sponge.com",
                 "bio":"Lorem ispum dolor sit amet in voluptate fugiat nulla pariatur.",
-                "avatarUrl":"./assets/images/avatars/sb.jpg",
+                "avatarUrl":"/ember-crud/assets/images/avatars/sb.jpg",
                 "creationDate":"Fri, 07 Aug 2013 10:10:10 GMT"
             },
             "3":{
@@ -33,7 +33,7 @@ var defaultUsers = {
                 "name":"Dean Winchester",
                 "email":"deany@plopmail.com",
                 "bio":":)",
-                "avatarUrl":"./assets/images/avatars/dean.jpg",
+                "avatarUrl":"/ember-crud/assets/images/avatars/dean.jpg",
                 "creationDate":"Mon, 30 Jan 2013 12:12:12 GMT"
             },
             "4":{
@@ -41,7 +41,7 @@ var defaultUsers = {
                 "name":"John Doe",
                 "email":"john@doe.com",
                 "bio":"Sed do eiusmod tempor velit esse cillum dolore eu fugiat pariatur.",
-                "avatarUrl":"./assets/images/avatars/default.png",
+                "avatarUrl":"/ember-crud/assets/images/avatars/default.png",
                 "creationDate":"Tue, 22 May 2013 12:12:12 GMT"
             }
         }
