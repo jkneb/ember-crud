@@ -12,13 +12,7 @@
             {{#link-to 'user.edit' }}<button {{bindAttr class=":icon-pencil editMode:active"}} title="edit"></button>{{/link-to}}
         </div>
 
-        {{#if deleteMode}}
-        <div class="confirm-box confirmin">
-            <h4>Really?</h4>
-            {{#view App.ConfirmDeleteButtonView tagName="button"}}y{{/view}}
-            <button {{action "cancelDelete"}} title="no">n</button>
-        </div>
-        {{/if}}
+        {{confirm-box action="confirmDelete" param=user isVisible=deleteMode}}
 
         <div class="img"><img {{bindAttr src="avatarUrl"}}></div>
         <h2>{{name}}</h2>

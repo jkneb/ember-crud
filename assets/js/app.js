@@ -3,6 +3,151 @@ window.App = Ember.Application.create({
     LOG_TRANSITIONS: true
 });
 
+App.ConfirmBoxComponent = Ember.Component.extend({
+
+    isVisible: false,
+
+    actions: {
+      cancelDelete: function(){
+        this.toggleProperty('isVisible');
+      },
+
+      confirmDelete: function(){
+        // In Ember the jQuery-ish $(this) is a bit different, it's: this.$()
+        var $thisParent = this.$().parents('.user-profile');
+
+        $thisParent.removeAttr('style').addClass('delete-animation');
+
+        // we know our delete-animation will take 900ms seconds to complete
+        // and Ember.run.later is Ember's setTimeout equivalent
+        Ember.run.later(this, function() {
+            // when the animation is done we can call the controller to trigger its confirmDelete action
+            this.sendAction('action', this.get('param'));
+        }, 900);
+      }
+    }
+});
+// the modal component has a {{yield}} (in the template) where content can be encapsulated by the {{#modal-box}}...{{/modal-box}} block tags
+App.ModalBoxComponent = Em.Component.extend({
+
+    // the isModalVisible property depends on the modalVisible property set inside the modal-demo controller
+    // the modal-demo controller is instantiated by the {{render}} helper located inside the application template
+    // the applicationRoute holds the showModal action which can be called from anywhere by passing the name of the modal as the first argument of the action (see the action at the end of the users template)
+    isModalVisible: false,
+
+    actions: {
+        hideModal: function(){
+            this.set('isModalVisible', false);
+        }
+    }
+});
+
+// our nested user route will render only a single user at a time so it's an ObjectController
+App.UserController = Ember.ObjectController.extend({
+    // editMode / deleteMode properties are used in the user template 
+    // we use them to manage css transitions when entering and exiting the edit route
+    // see also the UserCreateAndEditRoute for more
+    editMode: false,
+
+    deleteMode: false,
+
+    actions: {
+        delete: function(){
+            this.toggleProperty('deleteMode');
+        },
+        cancelDelete: function(){
+            this.set('deleteMode', false);
+        },
+        confirmDelete: function(){
+            // delete a user
+            this.get('model').deleteRecord();
+            this.get('model').save();
+            // then transition to the UsersRoute
+            this.transitionToRoute('users');
+            // set deleteMode back to false
+            this.set('deleteMode', false);
+        }
+    },
+    edit: function(){
+        this.setProperties({
+            'editMode': true,
+            'deleteMode': false
+        });
+        this.transitionToRoute('user.edit');
+    }
+});
+
+App.UserEditController = Ember.ObjectController.extend({
+    // we want this controller to inherit from another controller 
+    // in this case it's userController 
+    // http://emberjs.com/guides/controllers/dependencies-between-controllers/ 
+    // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/ 
+    needs: ['user'], 
+    
+    // in the template we used an {{action "save"}} wich will trigger these methods on click
+    actions: {
+        save: function(){
+            // this will save modifications we made while editing the user
+            this.get('model').save();
+            // then transition to UserRoute
+            this.transitionToRoute('user');
+        }
+    }
+});
+// This controller is an ArrayController because it handles a collection of models.
+// Usually you'll use an ObjectController which deals with single model.
+// Ember is able to guess we are dealing with multiple models and can genereate this one in memory, so we could omit to declare this one, but here in addition of declaring it we also set some sorting properties (so declaration can't be omitted).
+App.UsersController = Em.ArrayController.extend({
+    // here we tell the controller to sort Users by alphabetical order
+    sortProperties: ['name'],
+    sortAscending: true, 
+    // usersCount is a computed property that returns the number of users
+    usersCount: function(){
+        return this.get('model.length');
+    }.property('@each')
+});
+App.UsersCreateController = Ember.ObjectController.extend({
+    needs: ['user'],
+
+    actions: {
+        save: function () {
+            // just before saving, we set the creationDate
+            this.get('model').set('creationDate', new Date());
+            // create a new user and save it
+            var newUser = this.store.createRecord('user', this.get('model'));
+            newUser.save();
+
+            // redirects to the user itself
+            this.transitionToRoute('user', this.get('model'));
+        }
+    }
+});
+// ----------------
+// For static datas you can use basic helpers
+// ----------------
+
+
+// this helper takes a raw date and format it with the moment.js library -> `2 days ago`
+Ember.Handlebars.helper('formatDate', function(date){
+    return moment(date).fromNow();
+});
+
+
+// ----------------
+// For datas that can be data-binded you should use BoundHelpers
+// ----------------
+
+// this helper takes a raw price and format it with 2 digits -> `0.00`
+/* Ember.Handlebars.registerBoundHelper('formatPrice', function(price){
+    return parseFloat(price).toFixed(2);
+});
+*/
+
+// this helper takes a raw date and format it with the moment.js library -> `August 9 2013`
+/* Ember.Handlebars.registerBoundHelper('formatDate', function(date){
+    return moment(date).format('LL');
+});
+*/
 // the model for a user
 App.User = DS.Model.extend({
     name   : DS.attr('string'),
@@ -160,116 +305,6 @@ App.MissingRoute = Em.Route.extend({
         this.transitionTo('users.index');
     }
 });
-// App.ApplicationAdapter = DS.FixtureAdapter;
-
-// in this demo we are using the LocalStorageAdapter to persist data
-App.ApplicationAdapter = DS.LSAdapter;
-// our nested user route will render only a single user at a time so it's an ObjectController
-App.UserController = Ember.ObjectController.extend({
-    // editMode / deleteMode properties are used in the user template 
-    // we use them to manage css transitions when entering and exiting the edit route
-    // see also the UserCreateAndEditRoute for more
-    editMode: false,
-
-    deleteMode: false,
-
-    actions: {
-        delete: function(){
-            this.toggleProperty('deleteMode');
-        },
-        cancelDelete: function(){
-            this.set('deleteMode', false);
-        },
-        confirmDelete: function(){
-            // delete a user
-            this.get('model').deleteRecord();
-            this.get('model').save();
-            // then transition to the UsersRoute
-            this.transitionToRoute('users');
-            // set deleteMode back to false
-            this.set('deleteMode', false);
-        }
-    },
-    edit: function(){
-        this.setProperties({
-            'editMode': true,
-            'deleteMode': false
-        });
-        this.transitionToRoute('user.edit');
-    }
-});
-
-App.UserEditController = Ember.ObjectController.extend({
-    // we want this controller to inherit from another controller 
-    // in this case it's userController 
-    // http://emberjs.com/guides/controllers/dependencies-between-controllers/ 
-    // http://darthdeus.github.com/blog/2013/01/27/controllers-needs-explained/ 
-    needs: ['user'], 
-    
-    // in the template we used an {{action "save"}} wich will trigger these methods on click
-    actions: {
-        save: function(){
-            // this will save modifications we made while editing the user
-            this.get('model').save();
-            // then transition to UserRoute
-            this.transitionToRoute('user');
-        }
-    }
-});
-// This controller is an ArrayController because it handles a collection of models.
-// Usually you'll use an ObjectController which deals with single model.
-// Ember is able to guess we are dealing with multiple models and can genereate this one in memory, so we could omit to declare this one, but here in addition of declaring it we also set some sorting properties (so declaration can't be omitted).
-App.UsersController = Em.ArrayController.extend({
-    // here we tell the controller to sort Users by alphabetical order
-    sortProperties: ['name'],
-    sortAscending: true, 
-    // usersCount is a computed property that returns the number of users
-    usersCount: function(){
-        return this.get('model.length');
-    }.property('@each')
-});
-App.UsersCreateController = Ember.ObjectController.extend({
-    needs: ['user'],
-
-    actions: {
-        save: function () {
-            // just before saving, we set the creationDate
-            this.get('model').set('creationDate', new Date());
-            // create a new user and save it
-            var newUser = this.store.createRecord('user', this.get('model'));
-            newUser.save();
-
-            // redirects to the user itself
-            this.transitionToRoute('user', this.get('model'));
-        }
-    }
-});
-// ----------------
-// For static datas you can use basic helpers
-// ----------------
-
-
-// this helper takes a raw date and format it with the moment.js library -> `2 days ago`
-Ember.Handlebars.helper('formatDate', function(date){
-    return moment(date).fromNow();
-});
-
-
-// ----------------
-// For datas that can be data-binded you should use BoundHelpers
-// ----------------
-
-// this helper takes a raw price and format it with 2 digits -> `0.00`
-/* Ember.Handlebars.registerBoundHelper('formatPrice', function(price){
-    return parseFloat(price).toFixed(2);
-});
-*/
-
-// this helper takes a raw date and format it with the moment.js library -> `August 9 2013`
-/* Ember.Handlebars.registerBoundHelper('formatDate', function(date){
-    return moment(date).format('LL');
-});
-*/
 // the applicationRoute is the highest route possible
 // here we use it to store some global events for our app
 App.ApplicationRoute = Em.Route.extend({
@@ -288,6 +323,22 @@ App.IndexRoute = Ember.Route.extend({
         this.transitionTo('users');
     }
 });
+App.UserRoute = Ember.Route.extend({
+    // this route model is auto generated by Ember internally (in memory) 
+    // because we followed Ember's naming conventions 
+    // so we could omit to set the model hook
+    model: function(params) { 
+        return this.store.find('user', params.user_id);
+    },
+
+    // each route has this goBack event to transition to the correct "parent route"
+    actions: {
+        goBack: function(){
+            this.transitionTo('users');
+        }
+    }
+});
+
 // this route will be used by the edit AND the create route
 // in other words the edit and the create routes will inherit from this one
 App.UserCreateAndEditRoute = Ember.Route.extend({
@@ -318,22 +369,13 @@ App.UserEditRoute = App.UserCreateAndEditRoute.extend({
         }
     }
 });
-App.UserRoute = Ember.Route.extend({
-    // this route model is auto generated by Ember internally (in memory) 
-    // because we followed Ember's naming conventions 
-    // so we could omit to set the model hook
-    model: function(params) { 
-        return this.store.find('user', params.user_id);
-    },
-
-    // each route has this goBack event to transition to the correct "parent route"
-    actions: {
-        goBack: function(){
-            this.transitionTo('users');
-        }
+// each route has this `model` hook where you specify which Model the route needs to load
+// http://emberjs.com/guides/routing/specifying-a-routes-model/
+App.UsersRoute = Ember.Route.extend({
+    model: function(){
+        return this.store.find('user');
     }
 });
-
 // the UsersCreateRoute is an extend of the UserCreateAndEditRoute
 App.UsersCreateRoute = App.UserCreateAndEditRoute.extend({
     model: function(){
@@ -349,30 +391,10 @@ App.UsersCreateRoute = App.UserCreateAndEditRoute.extend({
         });
     }
 });
-// each route has this `model` hook where you specify which Model the route needs to load
-// http://emberjs.com/guides/routing/specifying-a-routes-model/
-App.UsersRoute = Ember.Route.extend({
-    model: function(){
-        return this.store.find('user');
-    }
-});
-App.ConfirmDeleteButtonView = Ember.View.extend({
-    // here we can handle the click event on the view
-    // and do almost everything we want with regular jQuery
-    click: function(){
-        // In Ember the jQuery-ish $(this) is a bit different, it's: this.$()
-        var $thisParent = this.$().parents('.user-profile');
+// App.ApplicationAdapter = DS.FixtureAdapter;
 
-        $thisParent.removeAttr('style').addClass('delete-animation');
-
-        // we know our delete-animation will take 900ms seconds to complete
-        // and Ember.run.later is Ember's setTimeout equivalent
-        Ember.run.later(this, function() {
-            // when the animation is done we can call the controller to trigger its confirmDelete action
-            this.get('controller').send('confirmDelete');
-        }, 900);
-    }
-});
+// in this demo we are using the LocalStorageAdapter to persist data
+App.ApplicationAdapter = DS.LSAdapter;
 /*
  * The touch code logic is originally coming from this guy: http://evanyou.me
  * Who made this awesome demo: http://sketch.evanyou.me/layers
@@ -504,20 +526,6 @@ App.DraggableView = Em.View.extend({
     }
     
 });
-// the modal view is a layout, take a look at the modal_layout template it has a {{yield}} where content can be encapsulated by the ModalView
-App.ModalView = Em.View.extend({
-    layoutName: 'modal_layout',
-
-    // each modal has a hideModal method triggered from inside the modal_layout template
-    actions: {
-        hideModal: function(e){
-            this.get('controller').set('modalVisible', false);
-        }
-    }
-});
-
-// only inherit from the DraggableView
-App.UserEditView = App.DraggableView.extend();
 // only inherit from the DraggableView
 App.UserView = App.DraggableView.extend({
 
@@ -527,3 +535,6 @@ App.UserView = App.DraggableView.extend({
         // or what ever you want with or without jQuery.
     }
 });
+
+// only inherit from the DraggableView
+App.UserEditView = App.DraggableView.extend();

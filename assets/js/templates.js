@@ -31,27 +31,36 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   
 });
 
-Ember.TEMPLATES["modal-demo"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+Ember.TEMPLATES["components/confirm-box"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, hashTypes, hashContexts, self=this;
+  var buffer = '', stack1, hashTypes, hashContexts, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
-  
-  data.buffer.push("\n\n    <h3>About this demo</h3>\n    <hr/>\n    <p>This demo is an Ember JS app, it demonstrates how you can achieve a simple CRUD with Ember 1.0 + Ember-Data 1.0-beta. It also demonstrates the use of complexe css animations / transitions on views and before route transitions.</p>\n    <p>Datas are stored / persisted in the browser's <code>Local Storage</code> with Ember-Data's <a href=\"https://github.com/rpflorence/ember-localstorage-adapter\" target=\"_blank\">LSAdapter</a>.</p>\n    <p>There is also a mobile version, which has some cool responsive tricks. Visit this app with your phone or simply resize your browser to test it out.</p>\n    <hr/>\n    <p>A <a href=\"#\" target=\"_blank\">companion article</a> posted at Smashing Magazine teaches you all you need to know about this app and more generally about how to code web apps with Ember.</p>\n    <p>Finally this app and its source code are <a href=\"https://github.com/jkneb/ember-crud\" target=\"_blank\">hosted at Github</a>.</p>\n\n");
+  var buffer = '', hashTypes, hashContexts;
+  data.buffer.push("\n<div class=\"confirm-box confirmin\">\n    <h4>Really?</h4>\n    <button ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "confirmDelete", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(" title=\"yes\"> y </button>\n    <button ");
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "cancelDelete", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  data.buffer.push(" title=\"no\"> n </button>\n</div>\n");
+  return buffer;
   }
 
   hashTypes = {};
   hashContexts = {};
-  stack1 = helpers.view.call(depth0, "App.ModalView", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
+  stack1 = helpers['if'].call(depth0, "isVisible", {hash:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n");
   return buffer;
   
 });
 
-Ember.TEMPLATES["modal_layout"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+Ember.TEMPLATES["components/modal-box"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', hashContexts, hashTypes, escapeExpression=this.escapeExpression;
@@ -61,25 +70,44 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   hashContexts = {'class': depth0};
   hashTypes = {'class': "STRING"};
   data.buffer.push(escapeExpression(helpers.bindAttr.call(depth0, {hash:{
-    'class': (":modal controller.modalVisible:modal-show:modal-hide")
+    'class': (":modal isModalVisible:modal-show:modal-hide")
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(">\n    <button class=\"modal-close\" ");
-  hashContexts = {'target': depth0};
-  hashTypes = {'target': "STRING"};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "hideModal", {hash:{
-    'target': ("view")
-  },contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "hideModal", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(">&times;</button>\n\n    <div class=\"modal-body\">\n        ");
   hashTypes = {};
   hashContexts = {};
   data.buffer.push(escapeExpression(helpers._triageMustache.call(depth0, "yield", {hash:{},contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("\n    </div>\n</div>\n<div class=\"modal-backdrop\" ");
-  hashContexts = {'target': depth0};
-  hashTypes = {'target': "STRING"};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "hideModal", {hash:{
-    'target': ("view")
-  },contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
+  hashTypes = {};
+  hashContexts = {};
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "hideModal", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push("></div>\n");
+  return buffer;
+  
+});
+
+Ember.TEMPLATES["modal-demo"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, stack2, hashContexts, hashTypes, options, self=this, helperMissing=helpers.helperMissing;
+
+function program1(depth0,data) {
+  
+  
+  data.buffer.push("\n\n    <h3>About this demo</h3>\n    <hr/>\n    <p>This demo is an Ember JS app, it demonstrates how you can achieve a simple CRUD with Ember 1.0 + Ember-Data 1.0-beta. It also demonstrates the use of complexe css animations / transitions on views and before route transitions.</p>\n    <p>Datas are stored / persisted in the browser's <code>Local Storage</code> with Ember-Data's <a href=\"https://github.com/rpflorence/ember-localstorage-adapter\" target=\"_blank\">LSAdapter</a>.</p>\n    <p>There is also a mobile version, which has some cool responsive tricks. Visit this app with your phone or simply resize your browser to test it out.</p>\n    <hr/>\n    <p>A <a href=\"#\" target=\"_blank\">companion article</a> posted at Smashing Magazine teaches you all you need to know about this app and more generally about how to code web apps with Ember.</p>\n    <p>Finally this app and its source code are <a href=\"https://github.com/jkneb/ember-crud\" target=\"_blank\">hosted at Github</a>.</p>\n\n");
+  }
+
+  hashContexts = {'isModalVisible': depth0};
+  hashTypes = {'isModalVisible': "ID"};
+  options = {hash:{
+    'isModalVisible': ("modalVisible")
+  },inverse:self.noop,fn:self.program(1, program1, data),contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  stack2 = ((stack1 = helpers['modal-box'] || depth0['modal-box']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "modal-box", options));
+  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  data.buffer.push("\n");
   return buffer;
   
 });
@@ -131,10 +159,14 @@ function program1(depth0,data) {
   stack2 = ((stack1 = helpers['link-to'] || depth0['link-to']),stack1 ? stack1.call(depth0, "user.edit", options) : helperMissing.call(depth0, "link-to", "user.edit", options));
   if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
   data.buffer.push("\n        </div>\n\n        ");
-  hashTypes = {};
-  hashContexts = {};
-  stack2 = helpers['if'].call(depth0, "deleteMode", {hash:{},inverse:self.noop,fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack2 || stack2 === 0) { data.buffer.push(stack2); }
+  hashContexts = {'action': depth0,'param': depth0,'isVisible': depth0};
+  hashTypes = {'action': "STRING",'param': "ID",'isVisible': "ID"};
+  options = {hash:{
+    'action': ("confirmDelete"),
+    'param': ("user"),
+    'isVisible': ("deleteMode")
+  },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data};
+  data.buffer.push(escapeExpression(((stack1 = helpers['confirm-box'] || depth0['confirm-box']),stack1 ? stack1.call(depth0, options) : helperMissing.call(depth0, "confirm-box", options))));
   data.buffer.push("\n\n        <div class=\"img\"><img ");
   hashContexts = {'src': depth0};
   hashTypes = {'src': "STRING"};
@@ -180,29 +212,6 @@ function program2(depth0,data) {
   },contexts:[],types:[],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
   data.buffer.push(" title=\"edit\"></button>");
   return buffer;
-  }
-
-function program4(depth0,data) {
-  
-  var buffer = '', stack1, hashContexts, hashTypes;
-  data.buffer.push("\n        <div class=\"confirm-box confirmin\">\n            <h4>Really?</h4>\n            ");
-  hashContexts = {'tagName': depth0};
-  hashTypes = {'tagName': "STRING"};
-  stack1 = helpers.view.call(depth0, "App.ConfirmDeleteButtonView", {hash:{
-    'tagName': ("button")
-  },inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],hashContexts:hashContexts,hashTypes:hashTypes,data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n            <button ");
-  hashTypes = {};
-  hashContexts = {};
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "cancelDelete", {hash:{},contexts:[depth0],types:["STRING"],hashContexts:hashContexts,hashTypes:hashTypes,data:data})));
-  data.buffer.push(" title=\"no\">n</button>\n        </div>\n        ");
-  return buffer;
-  }
-function program5(depth0,data) {
-  
-  
-  data.buffer.push("y");
   }
 
   data.buffer.push("\n");

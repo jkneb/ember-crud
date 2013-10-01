@@ -62,7 +62,7 @@
             <button {{action "edit"}}>Edit</button>
             <button {{action "delete"}}>Delete</button>
 
-            <img {{bindAttr src="avatarUrl"}}>
+            <img {{bind-attr src="avatarUrl"}}>
             <h2>{{name}}</h2>
             <span>{{email}}</span>
             <p>{{bio}}</p>
@@ -221,7 +221,7 @@
             }
         });
         
-        // singe user edit form controller
+        // single user edit form controller
         App.UserEditController = Em.ObjectController.extend({
             actions: {
                 save: function(){
