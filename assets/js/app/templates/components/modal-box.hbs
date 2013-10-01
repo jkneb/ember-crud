@@ -1,0 +1,9 @@
+{{! this is the default markup for any modal, take a look at the modal-demo template to see how to invoke it }}
+<div {{bindAttr class=":modal isModalVisible:modal-show:modal-hide"}}>
+    <button class="modal-close" {{action "hideModal"}}>&times;</button>
+
+    <div class="modal-body">
+        {{yield}}
+    </div>
+</div>
+<div class="modal-backdrop" {{action "hideModal"}}></div>
