@@ -1,7 +1,13 @@
-App.ConfirmDeleteButtonView = Ember.View.extend({
-    // here we can handle the click event on the view
-    // and do almost everything we want with regular jQuery
-    click: function(){
+App.ConfirmBoxComponent = Ember.Component.extend({
+
+    isVisible: false,
+
+    actions: {
+      cancelDelete: function(){
+        this.toggleProperty('isVisible');
+      },
+
+      confirmDelete: function(){
         // In Ember the jQuery-ish $(this) is a bit different, it's: this.$()
         var $thisParent = this.$().parents('.user-profile');
 
@@ -11,7 +17,8 @@ App.ConfirmDeleteButtonView = Ember.View.extend({
         // and Ember.run.later is Ember's setTimeout equivalent
         Ember.run.later(this, function() {
             // when the animation is done we can call the controller to trigger its confirmDelete action
-            this.get('controller').send('confirmDelete');
+            this.sendAction('action', this.get('param'));
         }, 900);
+      }
     }
 });
