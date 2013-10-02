@@ -225,8 +225,9 @@
         App.UserEditController = Em.ObjectController.extend({
             actions: {
                 save: function(){
-                    this.get('model').save();
-                    this.transitionToRoute('user');
+                    var user = this.get('model');
+                    user.save();
+                    this.transitionToRoute('user', user);
                 }
             }
         });
