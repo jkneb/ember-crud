@@ -9,8 +9,8 @@
         #your-app { overflow:hidden; }
         .users-listing { outline:1px solid pink; float:left; width:200px; height:300px; padding:20px; }
         .users-listing a.active { font-weight:bold; }
-        .user-pane { outline:1px solid hotpink; float:left; width:460px; height:300px; padding:20px; }
-        .user-pane img { float:left; margin:0 20px 20px 0; }
+        .user-profile { outline:1px solid hotpink; float:left; width:460px; height:300px; padding:20px; }
+        .user-profile img { float:left; margin:0 20px 20px 0; }
         .user-edit { outline:1px solid pink; float:left; height:300px; padding:20px; }
         .create-btn { display:block; }
     </style>
@@ -50,7 +50,7 @@
     
     <!-- single user template -->
     <script type="text/x-handlebars" id="user">
-        <div class="user-pane">
+        <div class="user-profile">
             {{#if deleteMode}}
             <div class="confirm-box">
                 <h4>Really?</h4>
@@ -105,7 +105,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
     <script src="//builds.emberjs.com/handlebars-1.0.0.js"></script>
     <script src="//builds.emberjs.com/tags/v1.0.0/ember.js"></script>
-    <script src="//builds.emberjs.com/tags/v1.0.0-beta.2/ember-data.js"></script>
+    <script src="//builds.emberjs.com/tags/v1.0.0-beta.3/ember-data.js"></script>
     <script src="localstorage_adapter.js"></script>
 
     <!-- APP CODE -->
@@ -225,8 +225,9 @@
         App.UserEditController = Em.ObjectController.extend({
             actions: {
                 save: function(){
-                    this.get('model').save();
-                    this.transitionToRoute('user');
+                    var user = this.get('model');
+                    user.save();
+                    this.transitionToRoute('user', user);
                 }
             }
         });
