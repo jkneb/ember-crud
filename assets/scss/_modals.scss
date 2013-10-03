@@ -1,11 +1,12 @@
 .modal {
+    $modalWidth:400px;
     padding:20px 35px 35px; 
     @include box-sizing(border-box);
-    width:400px; min-height:330px; 
+    width:$modalWidth; min-height:330px; 
 
     position:absolute;
     // hrz centering
-    left:50%; margin-left:-200px;
+    left:50%; margin-left:-$modalWidth/2;
     // vrt positioning
     top:18%; 
 
@@ -46,4 +47,9 @@
     }
     // reveal logic
     &.modal-show + .modal-backdrop { bottom:0; }
+}
+
+@media screen and (max-width:650px) {
+  $modalWidth:310px;
+  .modal { top:5px; width:$modalWidth; margin-left:-$modalWidth/2; }
 }

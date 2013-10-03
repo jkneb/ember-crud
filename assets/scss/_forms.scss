@@ -2,14 +2,14 @@
 // ------------------------------------ \
 input, textarea { 
     @include box-sizing(border-box); 
-    padding:5px; margin-bottom:7px; 
+    padding:5px; margin-bottom:6px; 
     color:#666; 
     border:1px solid #ccc; 
     box-shadow:inset 0px 1px 1px rgba(0,0,0,.1); 
     border-radius:3px; 
     width:100%; 
 }
-textarea { min-height:80px; }
+textarea { min-height:45px; }
 label { 
     text-align:left; 
     display:block; 

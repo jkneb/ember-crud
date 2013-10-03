@@ -75,9 +75,9 @@ textarea { overflow: auto; vertical-align: top; }
 
 table { border-collapse: collapse; border-spacing: 0; }
 
-input, textarea { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 5px; margin-bottom: 7px; color: #666; border: 1px solid #ccc; box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.1); border-radius: 3px; width: 100%; }
+input, textarea { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 5px; margin-bottom: 6px; color: #666; border: 1px solid #ccc; box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.1); border-radius: 3px; width: 100%; }
 
-textarea { min-height: 80px; }
+textarea { min-height: 45px; }
 
 label { text-align: left; display: block; margin-bottom: 2px; }
 
@@ -118,6 +118,8 @@ button:active, button.active, .gray:active, .gray.active { background: #eeeeee; 
 .icon-eye:before { content: "\e008"; }
 
 .icon-pencil-2:before { content: "\e009"; }
+
+.icon-grip:before { content: "\e00a"; }
 
 .invisible { visibility: hidden; }
 
@@ -176,6 +178,7 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
 .modal + .modal-backdrop { position: fixed; z-index: 99; top: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.3); }
 .modal.modal-show + .modal-backdrop { bottom: 0; }
 
+@media screen and (max-width: 650px) { .modal { top: 5px; width: 310px; margin-left: -155px; } }
 .border-box, .main, .users-listing, .user-pane, .pane, .user-profile { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 .main { position: relative; margin: 50px auto; width: 550px; -webkit-perspective: 2500px; -moz-perspective: 2500px; }
@@ -225,6 +228,8 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
 .about-this-demo:before { margin-right: 7px; width: 30px; height: 29px; line-height: 32px; display: inline-block; vertical-align: middle; font-size: 28px; text-align: center; text-indent: -1px; border-radius: 100%; border: 2px solid black; }
 
 .btn-mobile { display: none !important; }
+
+.icon-grip { display: none; }
 
 /*  A collection of css animations stored in class names  so you can easely addClass/removeClass them on any HTML elements 
 */
@@ -300,6 +305,7 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
   [class*="face-"] { display: none; }
   .btn-desktop { display: none; }
   .btn-mobile { display: block !important; }
+  .icon-grip { display: block; }
   .main { overflow: hidden; }
   .tools { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding: 10px 20px; width: 100%; height: 45px; background-color: #222; border: 4px solid black; border-top: none; }
   .btn-mobile { display: inline-block; }
@@ -314,8 +320,9 @@ hr { border: none; border-bottom: 1px solid #eee; margin: 15px 0; }
   .user-profile { padding-top: 65px; }
   .user-profile .date { display: inline-block; position: static; margin-top: 25px; font-size: 12px; background: #f1f1f1; border-color: #ddd; }
   .user-edit, .user-create { z-index: 2; top: 0; padding-top: 65px; }
-  .pane { -webkit-transition: -webkit-transform .4s ease; -moz-transition: -moz-transform .4s ease; -ms-transition: -ms-transform .4s ease; transition: transform .4s ease; }
-  .mobile-drag-trigger { outline: 1px solid hotpink; position: absolute; top: 0; left: 0; height: 100%; width: 25px; }
+  .pane { padding-left: 45px; padding-right: 45px; -webkit-transition: -webkit-transform .4s ease; -moz-transition: -moz-transform .4s ease; -ms-transition: -ms-transform .4s ease; transition: transform .4s ease; }
+  .mobile-drag-trigger { position: absolute; top: 0; left: 0; height: 100%; width: 20px; background-color: #f8f8f8; border-right: 1px solid #e9e9e9; }
+  .mobile-drag-trigger .icon-grip { position: absolute; top: 50%; left: 50%; font-size: 16px; width: 16px; height: 16px; margin-left: -4px; }
   .confirm-box { top: 21px; z-index: 1; }
   .delete-animation { -webkit-animation: delete-animation 0.3s ease both; -moz-animation: delete-animation 0.3s ease both; animation: delete-animation 0.3s ease both; }
   @-webkit-keyframes delete-animation { from { -webkit-transform: translate3d(-100%, 0, 0); }

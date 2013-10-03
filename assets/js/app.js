@@ -417,7 +417,7 @@ App.DraggableView = Em.View.extend({
         var view = this;
         var $view = this.$().find('.pane');
 
-        var dragTrigger = '<div class="mobile-drag-trigger"></div>';
+        var dragTrigger = '<div class="mobile-drag-trigger"><i class="icon-grip"></i></div>';
         $(dragTrigger).appendTo($view);
 
         Em.run.later($view, function(){

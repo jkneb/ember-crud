@@ -11,6 +11,7 @@
     [class*="face-"] { display:none; }
     .btn-desktop { display:none; }
     .btn-mobile { display:block !important; }
+    .icon-grip { display:block; }
 
 
     // ------------
@@ -69,6 +70,8 @@
     }
     
     .pane {
+        padding-left:45px; padding-right:45px;
+
         // can transition if any transform property changes
         -webkit-transition:-webkit-transform .4s ease;
            -moz-transition:   -moz-transform .4s ease;
@@ -79,9 +82,16 @@
     }
 
     .mobile-drag-trigger {
-        outline:1px solid hotpink;
         position:absolute; top:0; left:0;
-        height:100%; width:25px;
+        height:100%; width:20px;
+        background-color:#f8f8f8;
+        border-right:1px solid #e9e9e9;
+
+        .icon-grip {
+            position:absolute; top:50%; left:50%;
+            font-size:16px; width:16px; height:16px;
+            margin-left:-4px; //margin-top:-8px;
+        }
     }
 
     .confirm-box { top:21px; z-index:1; }
