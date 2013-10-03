@@ -87,10 +87,11 @@ App.UserEditController = Ember.ObjectController.extend({
     // in the template we used an {{action "save"}} wich will trigger these methods on click
     actions: {
         save: function(){
+            var user = this.get('model');
             // this will save modifications we made while editing the user
-            this.get('model').save();
+            user.save();
             // then transition to UserRoute
-            this.transitionToRoute('user');
+            this.transitionToRoute('user', user);
         }
     }
 });
@@ -118,10 +119,11 @@ App.UsersCreateController = Ember.ObjectController.extend({
             newUser.save();
 
             // redirects to the user itself
-            this.transitionToRoute('user', this.get('model'));
+            this.transitionToRoute('user', newUser);
         }
     }
 });
+
 // ----------------
 // For static datas you can use basic helpers
 // ----------------
