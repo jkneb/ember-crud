@@ -1,4 +1,4 @@
-This repository is an Ember 1.0.0 + Ember Data 1.0.0-beta2 simple demo demonstrating: 
+This repository is an Ember 1.0.0 + Ember Data 1.0.0-beta3 simple demo demonstrating: 
 
 * a `Creation` / `Read` / `Update` / `Delete` of a collection of `users`
 * complex CSS transitions / animations on `views`
@@ -9,7 +9,7 @@ This repository is an Ember 1.0.0 + Ember Data 1.0.0-beta2 simple demo demonstra
 
 **Here's the demo ➔ [jkneb.github.io/ember-crud](http://jkneb.github.io/ember-crud)**
 
-## Working with this app files after cloned
+## Working with the files
 
 ### First install Grunt
 
