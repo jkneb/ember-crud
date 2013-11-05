@@ -55,20 +55,6 @@ module.exports = function(grunt) {
       concat: {
         files: ['assets/js/**/*.js', '!assets/js/app.js', '!assets/js/libs.js', '!assets/js/templates.js'],
         tasks: ['concat']
-      }/*,
-      karma: {
-        files: ['assets/js/app.js','tests/unit/** /*'],
-        tasks: ['karma:unit:run']
-      }*/
-    },
-
-    karma: {
-      unit: {
-        configFile: 'conf/karma.unit.conf.js',
-        background: true
-      },
-      integration: {
-        configFile: 'conf/karma.integration.conf.js'
       }
     }
 
@@ -78,7 +64,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-ember-templates');
-  grunt.loadNpmTasks('grunt-karma');
 
   // Default task(s).
   grunt.registerTask('default', ['sass', 'concat', 'emberTemplates']);

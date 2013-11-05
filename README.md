@@ -3,7 +3,6 @@ This repository is an Ember 1.0.0 + Ember Data 1.0.0-beta3 simple demo demonstra
 * a `Creation` / `Read` / `Update` / `Delete` of a collection of `users`
 * complex CSS transitions / animations on `views`
 * Handlebars templates precompiling with [Grunt](http://gruntjs.com/getting-started)
-* test suite with [Karma](https://github.com/karma-runner/karma)
 * fully responsive version (with touch events, and with animations between routes)
 
 
@@ -26,10 +25,6 @@ This command will install locally the following node modules
 * [grunt-contrib-concat](https://npmjs.org/package/grunt-contrib-concat)
 * [grunt-contrib-watch](https://npmjs.org/package/grunt-contrib-watch)
 * [grunt-ember-templates](https://npmjs.org/package/grunt-ember-templates)
-* [grunt-karma](https://npmjs.org/package/grunt-karma)
-* [karma-mocha](https://npmjs.org/package/karma-mocha)
-* [karma-coverage](https://npmjs.org/package/karma-coverage)
-* [karma-coffee-preprocessor](https://npmjs.org/package/karma-coffee-preprocessor)
 
 ### How to compile css
 
@@ -48,15 +43,3 @@ Run the following command:
 
 Run the following command:  
 `grunt watch` or `grunt concat`
-
-### How to run tests
-
-**Requirements:**  
-You need [Karma](https://github.com/karma-runner/karma) on your machine  
-`sudo npm install -g karma`  
-
-Then run the following command:  
-`karma start tests/conf/karma.unit.conf.js`
-
-If you don't want to install Karma on your system you could simply use the `bin` located in the `node_modules/`. So you could run the same command as above but like this:  
-`./node_modules/karma/bin/karma start conf/karma.unit.conf.js`
