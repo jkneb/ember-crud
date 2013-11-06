@@ -21,6 +21,7 @@
 @mixin animation($params) {
   -webkit-animation: $params;
      -moz-animation: $params;
+      -ms-animation: $params;
           animation: $params;
 }
 

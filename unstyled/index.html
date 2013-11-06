@@ -6,13 +6,18 @@
     <style>
         /* minimum styling possible */
         * { -webkit-box-sizing:border-box; box-sizing:border-box; }
-        #your-app { overflow:hidden; }
-        .users-listing { outline:1px solid pink; float:left; width:200px; height:300px; padding:20px; }
+        body { width:960px; margin:0 auto; }
+        #your-app { overflow:hidden; padding:1px; }
+        .users-listing { float:left; width:200px; height:330px; padding:20px; }
         .users-listing a.active { font-weight:bold; }
-        .user-profile { outline:1px solid hotpink; float:left; width:460px; height:300px; padding:20px; }
+        .user-profile { border:1px solid #ddd; border-radius:3px; float:left; width:460px; height:330px; padding:20px; position:relative; }
         .user-profile img { float:left; margin:0 20px 20px 0; }
-        .user-edit { outline:1px solid pink; float:left; height:300px; padding:20px; }
-        .create-btn { display:block; }
+        .user-edit { border:1px solid #ddd; border-left:none; float:left; height:330px; padding:20px; background:#ebebeb; }
+        .create-btn { display:inline-block; border:1px solid #ccc; padding:2px 10px; margin:10px 0; background:#eee; }
+        label { display:block; margin-bottom:2px; margin-top:3px; }
+        input, textarea { border:1px solid #ccc; border-radius:3px; box-shadow:none; min-width:220px; padding:5px; }
+        .confirm-box { display:inline-block; border:1px solid #ddd; background:#f1f1f1; border-radius:3px; padding:12px; position:absolute; right:12px; }
+        h5 { margin-top:0; }
     </style>
 </head>
 <body>
@@ -22,7 +27,7 @@
     <!-- application template -->
     <script type="text/x-handlebars" id="application">
         <div id="your-app">
-            <h1>Hello World</h1>
+            <h3>Hello World</h3>
             {{outlet}}
         </div>
     </script>
@@ -53,7 +58,7 @@
         <div class="user-profile">
             {{#if deleteMode}}
             <div class="confirm-box">
-                <h4>Really?</h4>
+                <h5>Really?</h5>
                 <button {{action "confirmDelete"}}> yes </button>
                 <button {{action "cancelDelete"}}> no </button>
             </div>
@@ -92,6 +97,7 @@
                 {{textarea value=bio}}
             </div>
             <div>
+                <br/>
                 <button {{action "save"}}> ok </button>
             </div>
         </div>
