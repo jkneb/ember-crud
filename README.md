@@ -1,3 +1,4 @@
+
 This repository is a simple demo of Ember 1.1.2 and Ember Data 1.0.0-beta3 that features
 
 * a `Creation` / `Read` / `Update` / `Delete` of a collection of `users`
@@ -7,6 +8,12 @@ This repository is a simple demo of Ember 1.1.2 and Ember Data 1.0.0-beta3 that 
 
 
 **Here's the demo ➔ [jkneb.github.io/ember-crud](http://jkneb.github.io/ember-crud)**
+
+
+## Smashing Magazine step by step tutorial
+
+For those coming from the [Ember introduction](http://coding.smashingmagazine.com/2013/11/07/an-in-depth-introduction-to-ember-js/) I wrote for Smashing magazine, then you'll find each snippets of the article in the `/unstyled` folder.
+
 
 ## Working with the files
 
