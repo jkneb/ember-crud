@@ -5,7 +5,7 @@
 
 // this helper takes a raw date and format it with the moment.js library -> `2 days ago`
 Ember.Handlebars.helper('formatDate', function(date){
-    return moment(date).fromNow();
+    return date ? moment(date).fromNow() : '';
 });
 
 
